@@ -1,0 +1,13 @@
+class Sample {
+
+    function void main(){
+        var int a,b;
+        var int c;
+        let a = 5;
+        let b = 10;
+   
+        let c = a+b;
+        return c;
+    }
+    
+}
