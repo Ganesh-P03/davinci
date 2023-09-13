@@ -1,15 +1,15 @@
-module ALU_RISCv ( A,B,Cin,sel,ALUOut,Zero,Negative,Carry,Overflow);
+module ALU_RISCv ( A,B,sel,ALUOut,Zero,Negative,Carry,Overflow);
 input [31:0] A;
 input [31:0] B;
-input [1:0] sel;
-input Cin;
+input [2:0] sel;
 output [31:0] ALUOut;
 output Zero,Negative,Carry,Overflow;
 
-wire [31:0] sum, Anot, Bnot, mux1, mux2,and1,or1,extended;
+wire [31:0] sub, add, Anot, Bnot, mux1, mux2,and1,or1,extended;
 wire Cout,xor1,xnor1;
 
-add_sub  as1 ( .a(A), .b(B), .k(Cin), .o(sum), .carry(Cout));
+add_sub  as1 ( .a(A), .b(B), .k(1'b0), .o(add), .carry(Cout));
+add_sub  as2 ( .a(A), .b(B), .k(1'b1), .o(sub), .carry(Cout));
 NOT_32bit n1 ( .in(A), .out(Anot));
 MUX2x1_32bit m1( .a(Anot), .b(A), .s(sel[0]), .y(mux1));
 NOT_32bit n2 ( .in(B), .out(Bnot));
@@ -22,6 +22,6 @@ AND_1bit_3inp a1 ( .i1( ~ sel[1]), .i2(xor1), .i3(xnor1), .o(Overflow));
 AND_1bit_2inp a2 ( .i1( ~ sel[1]), .i2(Cout), .o(Carry));
 XOR_1bit_2inp x3 ( .i1(sum[31]), .i2(Overflow), .o(xor2));
 zero_extender ze1 ( .inp(xor2), .out(extended));
-MUX4x1_32bit m3 (.i0(sum),.i1(extended), .i2(or1), .i3(and1), .sel(sel), .o(ALUOut));
+MUX8x1_32bit m3 (.i0(add),.i1(sub), .i2(or1), .i3(and1), .i4(extended) .sel(sel), .o(ALUOut));
 
 endmodule

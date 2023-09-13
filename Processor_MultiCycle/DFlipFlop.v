@@ -1,22 +1,15 @@
 // D-FlipFlop design without reset
 // -- Written by Dr. Vikramkumar Pudi 
 
-module DFlipFlop(clk, D, Q, Qbar);
+module DFlipFlop(clk, D, Q);
 
 input clk; 
 input D; // input to the D FlipFlop
 output reg Q;
-output Qbar; 
 
-always@*
+always @ (posedge clk)
 begin
-if (clk == 1'b1)
 Q <= D; // Assigning Q value to D
-else 
-Q <= Q; 
-
 end
-
-assign Qbar = ~Q; 
 
 endmodule

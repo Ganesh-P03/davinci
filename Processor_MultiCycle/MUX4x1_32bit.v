@@ -7,7 +7,7 @@ module MUX4x1_32bit (
   output reg [31:0] o
 );
 
-wire [31:0] m0, m1, m2, m3;
+wire [31:0] m0, m1, m2;
 
 MUX2x1_32bit mux0 (.a(i0), .b(i1), .s(sel[0]), .y(m0));
 MUX2x1_32bit mux1 (.a(i2), .b(i3), .s(sel[0]), .y(m1));
