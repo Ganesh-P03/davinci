@@ -1,0 +1,6 @@
+# 17-9-2023
+- Not gate using and + or
+- Implement gt + lt using RISC V gates
+
+# 20-9-2023
+- Write original command as comment
