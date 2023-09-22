@@ -7,6 +7,6 @@ wire outp;
 output Q;
 
 MUX2x1_1bit m (.a(Q), .b(D), .s(regwrite), .y(outp));
-Dflipflop d (.D(outp), .Q(Q), .clk(clk));
+DFlipFlop d (.D(outp), .Q(Q), .clk(clk));
 
 endmodule

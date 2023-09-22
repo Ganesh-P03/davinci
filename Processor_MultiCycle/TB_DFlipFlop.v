@@ -1,9 +1,9 @@
-module Dflipflop_tb ();
+module TB_DFlipFlop ();
 
 reg D,clk;
 wire Q;
 
-Dflipflop dff ( .D(D) , .clk(clk) , .Q(Q) );
+DFlipFlop dff ( .D(D) , .clk(clk) , .Q(Q) );
 
 always #10 clk = ~clk;
 

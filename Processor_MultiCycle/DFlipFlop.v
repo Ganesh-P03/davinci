@@ -1,5 +1,4 @@
 // D-FlipFlop design without reset
-// -- Written by Dr. Vikramkumar Pudi 
 
 module DFlipFlop(clk, D, Q);
 
