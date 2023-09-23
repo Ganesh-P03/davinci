@@ -9,6 +9,6 @@ assign Imm = (ImmSrc == 2'b00)? {{20{Inst[24]}},Inst[24:13]}: //I-Type : Add,Sub
              (ImmSrc == 2'b10)? {{20{Inst[24]}},Inst[24:18],Inst[4:0]}:  //S-Type : sw
              (ImmSrc == 2'b11)? {{11{Inst[24]}},Inst[24],Inst[12:5],Inst[13],Inst[23-14],1'b0}: 0;// J-type : j,jal 
         // U -Type : lui is not considered. If considered, then ImmSrc
-      //should be 3 bits
+        //should be 3 bits
 
 endmodule
