@@ -4,7 +4,7 @@ module MUX4x1_32bit (
   input [31:0] i2,
   input [31:0] i3,
   input [1:0] sel,
-  output reg [31:0] o
+  output [31:0] o
 );
 
 wire [31:0] m0, m1, m2;

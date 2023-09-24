@@ -11,7 +11,7 @@ for(i=0;i<4;i=i+1)
 
 begin
 
-Dflipflop d1 ( .D(D[i]) , .clk(clk) , .Q(Q[i]) );
+DFlipFlop d1 ( .D(D[i]) , .clk(clk) , .Q(Q[i]) );
 
 end 
 
