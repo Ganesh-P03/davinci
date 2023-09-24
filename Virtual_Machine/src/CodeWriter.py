@@ -168,11 +168,18 @@ class CodeWriter:
       self.write('or $t0, $t0, $t1') # t0 = x | y
       
     # Eq/Gt/Lt
+    # if x3 is 1 its strictly less so no need to consider
     elif command == 'eq':
       # [TODO] Implement seq
+      #  slt x3,x1,x2 -> x1>=x2  then x3-> 0
+      # slt x4,x2,x1 -> x2>=x1 then x4 -> 0
+      # only possible when x3 = x4 = 0
       self.write('seq $t0, $t0, $t1') # t0 = x == y
     elif command == 'gt':
       # [TODO] Implement sgt
+      # slt x3,x1,x2 -> x1>=x2  then x3-> 0
+      # slt x4,x2,x1 -> x2<x1 then x4 -> 1
+      # then its greater
       self.write('sgt $t0, $t0, $t1') # t0 = x > y
     elif command == 'lt':
       self.write('slt $t0, $t0, $t1') # t0 = x < y
