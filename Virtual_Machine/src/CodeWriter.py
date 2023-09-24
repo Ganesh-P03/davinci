@@ -137,8 +137,9 @@ class CodeWriter:
       if command == 'neg':
         self.write('sub $t0, $zero, $t0')  # t0 = 0 - x (-x)
       else:
-        # [TODO] Implement not
-        self.write('not $t0, $t0')  # t0 = !x
+        # [DONES] Implement not
+        self.write("sub $t0, $zero, $t0")  # t0 = 0 - x (-x)
+        self.write("addi $t0, $t0, -1")     # t0 = -x + -1 (~x)
       
       # Push result to stack
       self.writeMessage('Push to stack')
@@ -326,7 +327,7 @@ class CodeWriter:
     self.write('lw $this, 3($t0)') # $this = THIS
     self.write('lw $that, 4($t0)') # $that = THAT
     
-    # [TODO] Reposition ARG pointer
+    # [TODO] Reposition ARG pointer ( $arg has the value )
     # [TODO] Jump to value in $ra? How?
   
   # Writes assembly code that effects the function command
