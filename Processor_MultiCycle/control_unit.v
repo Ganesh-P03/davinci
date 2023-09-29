@@ -1,5 +1,5 @@
 module control_unit(instr, reset, zero, overflow, carry, negative, clk, pcwrite, ResultSrc, 
-ALUSrcA, ALUSrcB, RegWrite, PCUpdate, AddrSrc, MemWrite, IRWrite, ALUControl, ImmSrc);
+ALUSrcA, ALUSrcB, RegWrite, AddrSrc, MemWrite, IRWrite, ALUControl, ImmSrc);
 
 input zero, reset, overflow, carry, negative;
 input instr [31:0];

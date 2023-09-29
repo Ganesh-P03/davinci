@@ -1,8 +1,8 @@
 module reg_file ( rs1, rs2, rd, regwrite, wd3, clk, rd1, rd2 );
 
-input [5:0] rs1;
-input [5:0] rs2;
-input [5:0] rd;
+input [4:0] rs1;
+input [4:0] rs2;
+input [4:0] rd;
 input regwrite;
 input [31:0] wd3;
 input clk;
