@@ -141,6 +141,8 @@ class CodeWriter:
         self.write("sub $t0, $zero, $t0")  # t0 = 0 - x (-x)
         self.write("addi $t0, $t0, -1")     # t0 = -x + -1 (~x)
       
+      self.writeMessage('')
+      
       # Push result to stack
       self.writeMessage('Push to stack')
       self.write('sw $t0, 0($sp)')    # *SP = t0
@@ -185,6 +187,7 @@ class CodeWriter:
     else:
       assert False, 'Error while parsing arithmetic command'
     
+    self.writeMessage('')
     
     # Push result to stack
     self.writeMessage('Push to stack')
@@ -195,8 +198,11 @@ class CodeWriter:
   
   # Writes assembly code that effects the push/pop commands
   def writePushPop(self, command: str, segment: str, index: int) -> None:
-    if command == 'C_PUSH':
-      self.writeMessage('Push from ' + str(segment) + ' (' +str(index) + ')')
+    parser = self.p
+    command_type = parser.commandType()
+    
+    if command_type == 'C_PUSH':
+      self.writeMessage('Push to stack from ' + str(segment) + ' (' +str(index) + ')')
       if segment == 'argument':
         self.write('lw $t0, ' + str(index) + '($arg)') # t0 = *(arg + index)
       elif segment == 'local':
@@ -221,13 +227,18 @@ class CodeWriter:
       
       self.write('sw $t0, 0($sp)')   # *SP = t0
       self.write('addi $sp, $sp, 4') # SP = SP + 1
+      
       self.writeMessage('')
-    else:
+      return
+    
+    
+    elif command_type == 'C_POP':
+      self.writeMessage('Pop from stack to ' + str(segment) + ' (' +str(index) + ')')
+      
       self.write('addi $sp, $sp, -4') # SP = SP - 1
       self.write('lw $t0, 0($sp)')    # t0 = *SP (x)
       self.writeMessage('')
       
-      self.writeMessage('Pop from stack to ' + str(segment) + ' (' +str(index) + ')')
       if segment == 'argument':
         self.write('sw $t0, ' + str(index) + '($arg)') # t0 = *(arg + index)
       elif segment == 'local':
@@ -242,7 +253,7 @@ class CodeWriter:
         # [DONE] Implement static (filename.index)
         self.write('sw $t0, ' + str(self.__file_name) + '.' + str(index)) # t0 = *(filename.index)
       self.writeMessage('')
-    
+
   
   # Writes assembly code that effects the label command
   def writeLabel(self, label: str) -> None:
@@ -298,7 +309,8 @@ class CodeWriter:
     self.write('addi $lcl, $zero, $sp') # $lcl = $sp
     
     self.writeGoto(function_name)
-    self.writeLabel(return_label)    
+    self.writeMessage('')
+    self.writeLabel(return_label)
 
   
   # Writes assembly code that effects the return command
@@ -325,12 +337,13 @@ class CodeWriter:
     # Restore SP = ARG + 1
     self.write('addi $sp, $arg, 4')
     
-    self.write('lw $that, 4($t0)') # $that = THAT
-    self.write('lw $this, 3($t0)') # $this = THIS
-    self.write('lw $arg, 2($t0)')  # $arg  = ARG
-    self.write('lw $lcl, 1($t0)')  # $lcl  = LCL
+    self.write('lw $that, -4($t0)') # $that = THAT
+    self.write('lw $this, -8($t0)') # $this = THIS
+    self.write('lw $arg, -12($t0)')  # $arg  = ARG
+    self.write('lw $lcl, -16($t0)')  # $lcl  = LCL
+    self.writeMessage('')
     
-    
+    self.write('jalr $ra, $ra, 0') # goto <return-address>
   
   # Writes assembly code that effects the function command
   def writeFunction(self, function_name: str, n: int) -> None:
