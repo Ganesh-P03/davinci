@@ -15,32 +15,28 @@ class CodeWriter:
   
   #Inner flags
   __meaningFull = False
+  
   p = None # Parser object
 
   
   # Set the output file/stream
-  def __init__(self, input, output, meaningFull: bool = True):
+  def __init__(self, output_path, meaningFull: bool = True):
     self.__meaningFull = meaningFull
     
     output_stream = None
-    file_name = output.split('.')[0]
       
     # Ensure that output file is not present in the current directory
-    if os.path.exists(os.path.join(os.getcwd(), output)):
+    if os.path.exists(output_path):
       print('Warning: Output file already exists. Overwriting...')
     
     # Create / Open output file
     try:
-      output_stream = open(os.path.join(os.getcwd(), output), 'w')
+      output_stream = open(output_path, 'w')
     except FileNotFoundError:
       print('Error: Output file not found.')
       sys.exit(1)
     
-    # Set the input stream
-    self.p = Parser(input)
-    
     self.__output_stream = output_stream
-    self.__file_name = file_name
 
   
   # Set the output file name
@@ -49,9 +45,9 @@ class CodeWriter:
 
 
   # Generate return labels
-  def genReturnLabel(self) -> str:
+  def genReturnLabel(self, function_name: str) -> str:
     self.__return_counter += 1
-    return 'RETURN_' + str(self.__return_counter)
+    return function_name + '$ret.' + str(self.__return_counter)
   
   
   # Generate loop labels
@@ -74,18 +70,27 @@ class CodeWriter:
     
     
   # VM Initialization code
-  def writeInit(self) -> None:
+  def writeBootstrapCode(self) -> None:
+    self.writeMessage('====================================')
+    self.writeMessage('BOOTSTRAP CODE')
+    self.writeMessage('====================================')
+    self.writeMessage('')
+    
     # Initialize SP to 256
     self.writeMessage('Initializing SP to 256')
-    self.write('li $sp, 256')
+    self.write('addi $sp, $zero, 256')
     self.writeMessage('')
     
     # Call Sys.init
     self.writeMessage('Call Sys.init')
-    # self.writeCall('Sys.init', 0)
+    self.writeCall('Sys.init', 0)
     self.writeMessage('')
+  
+  
+  def writeASM(self, parser: Parser):
+    self.setFileName(parser.getFileName())
+    self.p = parser
     
-    parser = self.p
     while parser.hasMoreCommands():
       cmd = parser.command()
       
@@ -121,8 +126,6 @@ class CodeWriter:
       
       parser.advance()
     
-    self.close()
-    
   
   # Writes assembly code that effects arithmetic/logical commands
   def writeArithmetic(self, command: str) -> None:    
@@ -140,6 +143,8 @@ class CodeWriter:
         # [DONES] Implement not
         self.write("sub $t0, $zero, $t0")  # t0 = 0 - x (-x)
         self.write("addi $t0, $t0, -1")     # t0 = -x + -1 (~x)
+      
+      self.writeMessage('')
       
       # Push result to stack
       self.writeMessage('Push to stack')
@@ -159,35 +164,31 @@ class CodeWriter:
     if command == 'add':
       self.write('add $t0, $t0, $t1')  # t0 = x + y
     elif command == 'sub':
-      # [CHECK] Is $t0 = x - y or $t0 = y - x? In terms of regs
+      # [DONE] Is $t0 = x - y or $t0 = y - x? In terms of regs
       self.write('sub $t0, $t0, $t1')  # t0 = x - y
     
     # And/Or
     elif command == 'and':
       self.write('and $t0, $t0, $t1') # t0 = x & y
     elif command == 'or':
-      self.write('or $t0, $t0, $t1') # t0 = x | y
+      self.write('or $t0, $t0, $t1')  # t0 = x | y
       
     # Eq/Gt/Lt
-    # if x3 is 1 its strictly less so no need to consider
     elif command == 'eq':
-      # [TODO] Implement seq
-      #  slt x3,x1,x2 -> x1>=x2  then x3-> 0
-      # slt x4,x2,x1 -> x2>=x1 then x4 -> 0
-      # only possible when x3 = x4 = 0
-      self.write('seq $t0, $t0, $t1') # t0 = x == y
+      self.write('slt $t2, $t0, $t1') # t2 = x < y
+      self.write('slt $t3, $t1, $t2') # t2 = y < x
+      self.write('add $t0, $t2, $t3') # t0 = (x < y) + (y < x)
+      self.write('addi $t0, $t0, 1')  # t0 = (x < y) | (y < x) + 1
+      self.write('andi $t0, $t0, 1')  # t0 = ((x < y) | (y < x) + 1) & 1
     elif command == 'gt':
-      # [TODO] Implement sgt
-      # slt x3,x1,x2 -> x1>=x2  then x3-> 0
-      # slt x4,x2,x1 -> x2<x1 then x4 -> 1
-      # then its greater
-      self.write('sgt $t0, $t0, $t1') # t0 = x > y
+      self.write('slt $t0, $t1, $t0') # t0 = (y < x) => x > y
     elif command == 'lt':
       self.write('slt $t0, $t0, $t1') # t0 = x < y
     
     else:
       assert False, 'Error while parsing arithmetic command'
     
+    self.writeMessage('')
     
     # Push result to stack
     self.writeMessage('Push to stack')
@@ -198,8 +199,11 @@ class CodeWriter:
   
   # Writes assembly code that effects the push/pop commands
   def writePushPop(self, command: str, segment: str, index: int) -> None:
-    if command == 'C_PUSH':
-      self.writeMessage('Push from ' + str(segment) + ' (' +str(index) + ')')
+    parser = self.p
+    command_type = parser.commandType()
+    
+    if command_type == 'C_PUSH':
+      self.writeMessage('Push to stack from ' + str(segment) + ' (' +str(index) + ')')
       if segment == 'argument':
         self.write('lw $t0, ' + str(index) + '($arg)') # t0 = *(arg + index)
       elif segment == 'local':
@@ -208,23 +212,39 @@ class CodeWriter:
         self.write('lw $t0, ' + str(index) + '($this)') # t0 = *(this + index)
       elif segment == 'that' or (segment == 'pointer' and index == 1):
         self.write('lw $t0, ' + str(index) + '($that)') # t0 = *(that + index)
+      elif segment == 'temp':
+        self.write('lw $t0, ' + str(index) + '($temp)') # t0 = *(temp + index)
       elif segment == 'static':
-        # [TODO] Implement static
-        pass
+        self.write('lw $t0, ' + str(self.__file_name) + '.' + str(index)) # t0 = *(filename.index)
       elif segment == 'constant':
-        # [TODO] Implement constant
-        pass
+        if index == 0:
+          self.write('addi $t0, $zero, 0')
+        else:
+          lower_bits = index & 0xFFF
+          upper_bits = (index & 0xFFF000) >> 12
+          
+          if lower_bits != 0:
+            self.write('addi $t0, $zero, ' + str(lower_bits)) # t0 = lower_bits
+        
+          if upper_bits != 0:
+            self.write('lui $t0, ' + str(upper_bits << 12)) # t0 = upper_bits
+           
       self.writeMessage('')
       
-      self.write('sw $t0, 0($sp)') # *SP = t0
+      self.write('sw $t0, 0($sp)')   # *SP = t0
       self.write('addi $sp, $sp, 4') # SP = SP + 1
+      
       self.writeMessage('')
-    else:
-      self.write('addi $sp, $sp, -4')  # SP = SP - 1
-      self.write('lw $t0, 0($sp)')     # t0 = *SP (x)
+      return
+    
+    
+    elif command_type == 'C_POP':
+      self.writeMessage('Pop from stack to ' + str(segment) + ' (' +str(index) + ')')
+      
+      self.write('addi $sp, $sp, -4') # SP = SP - 1
+      self.write('lw $t0, 0($sp)')    # t0 = *SP (x)
       self.writeMessage('')
       
-      self.writeMessage('Pop from stack to ' + str(segment) + ' (' +str(index) + ')')
       if segment == 'argument':
         self.write('sw $t0, ' + str(index) + '($arg)') # t0 = *(arg + index)
       elif segment == 'local':
@@ -233,11 +253,12 @@ class CodeWriter:
         self.write('sw $t0, ' + str(index) + '($this)') # t0 = *(this + index)
       elif segment == 'that' or (segment == 'pointer' and index == 1):
         self.write('sw $t0, ' + str(index) + '($that)') # t0 = *(that + index)
+      elif segment == 'temp':
+        self.write('sw $t0, ' + str(index) + '($temp)') # t0 = *(temp + index)
       elif segment == 'static':
-        # [TODO] Implement static
-        pass
+        self.write('sw $t0, ' + str(self.__file_name) + '.' + str(index)) # t0 = *(filename.index)
       self.writeMessage('')
-    
+
   
   # Writes assembly code that effects the label command
   def writeLabel(self, label: str) -> None:
@@ -246,7 +267,7 @@ class CodeWriter:
   
   # Writes assembly code that effects the goto command
   def writeGoto(self, label: str) -> None:
-    self.write('jal ' + str(label)) # goto <label>
+    self.write('jal $ra, ' + str(label)) # goto <label>
 
   
   # Writes assembly code that effects the if-goto command
@@ -254,18 +275,22 @@ class CodeWriter:
     self.write('addi $sp, $sp, -4')  # SP = SP - 1
     self.write('lw $t0, 0($sp)')     # t0 = *SP (x)
     
-    self.write('bne $t0, $zero, ' + str(label)) # If t0 == 1 goto <label>
-
+    loop_label, loop_exit_label = self.genLoopLabel()
+    self.write('beq $t0, $zero, ' + str(loop_exit_label)) # if t0 == 0, goto loop_exit_label
+    self.write('lui $t0, ' + label) # t0
+    self.write('addi $t0, $t0, ' + label) # t0 = return_label
+    self.write('jalr $ra, $t0, 0') # goto (label)
+    self.writeLabel(loop_exit_label)
+    
   
   # Writes assembly code that effects the call command
   def writeCall(self, function_name: str, n: int) -> None:    
     
     # Push return-address
-    return_label = self.genReturnLabel()
-    # [TODO] Assembler team should handle converting label to address to store in stack
-    self.write('addi $t0, $zero, ' + str(return_label)) # t0 = return_label
-    
-    self.write('sw $t0, 0($sp)') # *SP = t0
+    return_label = self.genReturnLabel(function_name)
+    self.write('lui $t0, ' + str(return_label)) # t0 = return_label
+    self.write('addi $t0, $t0, ' + str(return_label)) # t0 = return_label
+    self.write('sw $t0, 0($sp)')   # *SP = t0
     self.write('addi $sp, $sp, 4') # SP = SP + 1
     
     # Push $lcl
@@ -285,30 +310,17 @@ class CodeWriter:
     self.write('addi $sp, $sp, 4') # SP = SP + 1
     
     # Write $sp - (n+5)*4 to $arg
-    if n > 0:
-      loop_label, loop_exit_label = self.genLoopLabel()
-      
-      self.write('addi $t0, $t0, 20') # t0 = 20
-      self.write('addi $t1, $zero, 0') # t1 = 0
-      self.write('addi $t2, $zero, ' + str(n)) # t2 = n
-      
-      self.write(loop_label + ':') # <loop_label>:
-      self.write('beq $t1, $t2, ' + str(loop_exit_label))
-      self.write('addi $t0, $t0, 4') # t0 = t0 + 4
-      self.write('addi $t1, $t1, 1') # t1 = t1 + 1
-      self.writeGoto(loop_label)
-
-      self.writeLabel(loop_exit_label)
-      
+    self.write('addi $t0, $zero, 20') # t0 = 20
+    self.write('addi $t0, $t0, ' + str(n*4)) # t1 = n*4 + 20
     self.write('sub $t0, $sp, $t0') # t0 = ($sp) - (20 + n*4)
     self.write('add $arg, $zero, $t0') # $arg = (0 + t0)
     
     # Write $sp to $lcl
-    self.write('addi $lcl, $zero, $sp') # $lcl = $sp
+    self.write('add $lcl, $zero, $sp') # $lcl = $sp
     
     self.writeGoto(function_name)
-    # [TODO] Assembler handle part
-    self.writeLabel(return_label)    
+    self.writeMessage('')
+    self.writeLabel(return_label)
 
   
   # Writes assembly code that effects the return command
@@ -319,45 +331,41 @@ class CodeWriter:
     # -2 : <THIS> : 3
     # -1 : <THAT> : 4
     
-    self.write('addi $t0, $lcl, -20') # t0 = (lcl - 5)
-    # [TODO] Can label be saved as value or JALR be used?
+    self.write('addi $t0, $zero, 20') # t0 = 20
+    self.write('sub $t0, $lcl, $t0') # t0 = (lcl - 5)
     self.write('lw $ra, 0($t0)')   # $ra = RETURN ADDRESS
-    self.write('lw $lcl, 1($t0)')  # $lcl  = LCL
-    self.write('lw $arg, 2($t0)')  # $arg  = ARG
-    self.write('lw $this, 3($t0)') # $this = THIS
-    self.write('lw $that, 4($t0)') # $that = THAT
     
-    # [TODO] Reposition ARG pointer ( $arg has the value )
-    # [TODO] Jump to value in $ra? How?
+    #[TODO] Is this correct?
+    # Reposition ARG = pop()
+    self.write('addi $sp, $sp, -4') # SP = SP - 1
+    self.write('addi $t0, $sp, 0')  # t0 = val at SP
+    self.write('lw $t0, 0($t0)')  # $arg = *SP
+    
+    self.write('addi $t1, $arg, 0') # t1 = $arg
+    self.write('sw $t0, 0($t1)')   # *(arg) = $arg
+    
+    # Restore SP = ARG + 1
+    self.write('addi $sp, $arg, 4')
+    
+    self.write('lw $that, -4($t0)') # $that = THAT
+    self.write('lw $this, -8($t0)') # $this = THIS
+    self.write('lw $arg, -12($t0)')  # $arg  = ARG
+    self.write('lw $lcl, -16($t0)')  # $lcl  = LCL
+    self.writeMessage('')
+    
+    self.write('jalr $ra, $ra, 0') # goto <return-address>
+  
   
   # Writes assembly code that effects the function command
   def writeFunction(self, function_name: str, n: int) -> None:
-    loop_label, loop_exit_label = self.genLoopLabel()
-    
     self.writeLabel(function_name) # <function_name>:
     
-    self.write('addi $t0, $zero, 0') # t0 = 0
-    self.write('addi $t1, $zero, ' + str(n)) # t1 = n
-    
-    self.write(loop_label + ':') # <loop_label>:
-    self.write('beq $t0, $t1, ' + str(loop_exit_label)) # beq $t0, $t1, <loop_label>
-    
-    self.write('sw $zero, 0($sp)') # ? Redundant (Push 0 to stack)
-    self.write('addi $sp, $sp, 4') # SP = SP + 1
-    
-    self.write('addi $t0, $t0, 1') # t0 = t0 + 1
-    self.writeGoto(loop_label) # goto <loop_label>
-    self.writeLabel(loop_exit_label) # <loop_exit_label>:
-
+    for _ in range(n):
+      self.write('sw $zero, 0($sp)')
+      self.write('addi $sp, $sp, 4')
   
   # Closes the output file
   def close(self) -> None:
     self.__output_stream.close()
 
-
-def test_CodeWriter():
-  cw = CodeWriter('test.vm', 'test.asm')
-  cw.writeInit()
-  cw.close()
-  
-test_CodeWriter()
+# End of CodeWriter.py

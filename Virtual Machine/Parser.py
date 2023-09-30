@@ -14,7 +14,7 @@ import sys
 class Parser:
   commands = []
   __cptr = 0
-  
+  __filename = None
   command_map = {}
   
   __errors = [
@@ -25,11 +25,12 @@ class Parser:
   
   
   # Opens the input file/stream
-  def __init__(self, input):
+  def __init__(self, input_path: str):
     commands = []
+    self.__filename = os.path.basename(input_path).replace('.vm', '')
     
     try:
-      input_file = open(os.path.join(os.getcwd(), input), 'r')
+      input_file = open(input_path, 'r')
     except FileNotFoundError:
       print('File not found: ', input)
       sys.exit(1)
@@ -74,9 +75,16 @@ class Parser:
     self.commands = commands
     self.__cptr = 0
   
+  
+  # Returns the filename of the current command
+  def getFileName(self) -> str:
+    return self.__filename
+  
+  
   # Return the current command
   def command(self) -> str:
     return self.commands[self.__cptr][0]
+  
   
   # Returns True if there are more commands to parse, False otherwise
   def hasMoreCommands(self) -> bool:
