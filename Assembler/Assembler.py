@@ -48,8 +48,12 @@ class Assembler:
   
   __symbol_table = {}
   __label_table = {}
+  
+  __scounter = 0
     
-  __sbase = 0x0
+  # TODO: Define where the instructions start 
+  __sbase = 0x10
+  __dbase = 0x0
   
   def __init__(self, input_path):    
     try:
@@ -265,13 +269,14 @@ class Assembler:
     # imm = 0   + 2...7   + 8...12  + 1
     
     if cmd == 'beq':
-      return (imm[0] + imm[2:8]) + rs2 + rs1 + (imm[8:13] + imm[1]) + '1100011'
+      return (imm[0] + imm[2:8]) + rs2 + rs1 + '000' + (imm[8:12] + imm[1]) + '1100011'
     elif cmd == 'bne':
-      return (imm[0] + imm[2:8]) + rs2 + rs1 + (imm[8:13] + imm[1]) + '1100011'
+      return (imm[0] + imm[2:8]) + rs2 + rs1 + '001' + (imm[8:12] + imm[1]) + '1100011'
     elif cmd == 'blt':
-      return (imm[0] + imm[2:8]) + rs2 + rs1 + (imm[8:13] + imm[1]) + '1100011'
+      return (imm[0] + imm[2:8]) + rs2 + rs1 + '100' + (imm[8:12] + imm[1]) + '1100011'
     elif cmd == 'bge':
-      return (imm[0] + imm[2:8]) + rs2 + rs1 + (imm[8:13] + imm[1]) + '1100011'
+      return (imm[0] + imm[2:8]) + rs2 + rs1 + '101' + (imm[8:12] + imm[1]) + '1100011'
+    
   
   
   def translateJType(self, code: list) -> str:
@@ -345,13 +350,13 @@ class Assembler:
             label = self.getLabel(line[-1])
             
             line.pop()
-            line.append(str(label & 0xfff))
+            line.append(str((label + self.__dbase) & 0xfff))
         elif cmd == 'lui':
           if (self.isLabel(line[-1])):
             label = self.getLabel(line[-1])
             
             line.pop()
-            line.append(str(label))
+            line.append(str(label + self.__dbase))
         else:
           if cmd != 'jalr':
             label = line[-1]
@@ -363,7 +368,7 @@ class Assembler:
         symbol = self.getSymbol(line[-1])
         
         line.pop()
-        line.append(self.getStaticLocation(symbol))
+        line.append(str(self.getStaticLocation(symbol)))
         line.append('$zero')
         
       pcode.append(line)
@@ -402,7 +407,8 @@ class Assembler:
         code = self.translateUType(code)
       else:
         assert False, "Invalid command" + cmd
-        
+      
+      assert (len(code) == 32), "Invalid machine code length " + cmd + " " + str(len(code))
       mcode.append(code)
       
     self.__contents = mcode

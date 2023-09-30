@@ -81,6 +81,11 @@ class CodeWriter:
     self.write('addi $sp, $zero, 256')
     self.writeMessage('')
     
+    # Initialize TEMP to 0
+    self.writeMessage('Initializing TEMP to 256')
+    self.write('addi $temp, $zero, 0')
+    self.writeMessage('')
+    
     # Call Sys.init
     self.writeMessage('Call Sys.init')
     self.writeCall('Sys.init', 0)
