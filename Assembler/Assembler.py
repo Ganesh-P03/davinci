@@ -49,7 +49,9 @@ class Assembler:
   __symbol_table = {}
   __label_table = {}
     
-  __sbase = 0x0
+  __sbase = 0x10
+  # TODO: Define where the instructions start
+  __dbase = 0x0
   
   def __init__(self, input_path):    
     try:
@@ -345,13 +347,13 @@ class Assembler:
             label = self.getLabel(line[-1])
             
             line.pop()
-            line.append(str(label & 0xfff))
+            line.append(str((label + self.__dbase) & 0xfff))
         elif cmd == 'lui':
           if (self.isLabel(line[-1])):
             label = self.getLabel(line[-1])
             
             line.pop()
-            line.append(str(label))
+            line.append(str(label + self.__dbase))
         else:
           if cmd != 'jalr':
             label = line[-1]
