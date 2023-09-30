@@ -45,10 +45,11 @@ class Assembler:
     'x12': '01100',
     '$temp': '01100',
   }
+  
   __symbol_table = {}
   __label_table = {}
     
-  __scounter = 0
+  __sbase = 0x0
   
   def __init__(self, input_path):    
     try:
@@ -76,6 +77,8 @@ class Assembler:
   def getContents(self):
     return self.__contents
 
+  def getStaticLocation(self, size: int):
+    return self.__sbase + size
 
   # Show tables
   def showTables(self, save: bool = False):
@@ -360,7 +363,7 @@ class Assembler:
         symbol = self.getSymbol(line[-1])
         
         line.pop()
-        line.append(str(symbol))
+        line.append(self.getStaticLocation(symbol))
         line.append('$zero')
         
       pcode.append(line)

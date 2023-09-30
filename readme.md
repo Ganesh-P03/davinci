@@ -14,3 +14,10 @@
 - Binary code will be in bin.txt
 - First pass, Second pass view will be in first_pass.txt and second_pass.txt respectively
 - Symbol table, Label table, Register table will be in symbol_table.txt, label_table.txt, register_table.txt respectively (in tables folder)
+
+#### TODO:
+[] Set the base address in $temp register
+[] Set the static base address
+[] Using register instead of memory(for temp segment)
+[] Most of the registers are not used(try to use them)
+[] Verification & Bug fixes.
