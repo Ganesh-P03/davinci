@@ -15,32 +15,28 @@ class CodeWriter:
   
   #Inner flags
   __meaningFull = False
+  
   p = None # Parser object
 
   
   # Set the output file/stream
-  def __init__(self, input, output, meaningFull: bool = True):
+  def __init__(self, output_path, meaningFull: bool = True):
     self.__meaningFull = meaningFull
     
     output_stream = None
-    file_name = output.split('.')[0]
       
     # Ensure that output file is not present in the current directory
-    if os.path.exists(os.path.join(os.getcwd(), output)):
+    if os.path.exists(output_path):
       print('Warning: Output file already exists. Overwriting...')
     
     # Create / Open output file
     try:
-      output_stream = open(os.path.join(os.getcwd(), output), 'w')
+      output_stream = open(output_path, 'w')
     except FileNotFoundError:
       print('Error: Output file not found.')
       sys.exit(1)
     
-    # Set the input stream
-    self.p = Parser(input)
-    
     self.__output_stream = output_stream
-    self.__file_name = file_name
 
   
   # Set the output file name
@@ -74,18 +70,27 @@ class CodeWriter:
     
     
   # VM Initialization code
-  def writeInit(self) -> None:
+  def writeBootstrapCode(self) -> None:
+    self.writeMessage('====================================')
+    self.writeMessage('BOOTSTRAP CODE')
+    self.writeMessage('====================================')
+    self.writeMessage('')
+    
     # Initialize SP to 256
     self.writeMessage('Initializing SP to 256')
-    self.write('li $sp, 256')
+    self.write('addi $sp, $zero, 256')
     self.writeMessage('')
     
     # Call Sys.init
     self.writeMessage('Call Sys.init')
     self.writeCall('Sys.init', 0)
     self.writeMessage('')
+  
+  
+  def writeASM(self, parser: Parser):
+    self.setFileName(parser.getFileName())
+    self.p = parser
     
-    parser = self.p
     while parser.hasMoreCommands():
       cmd = parser.command()
       
@@ -120,8 +125,6 @@ class CodeWriter:
         assert False, 'Error while parsing command type'
       
       parser.advance()
-    
-    self.close()
     
   
   # Writes assembly code that effects arithmetic/logical commands
@@ -172,14 +175,12 @@ class CodeWriter:
       
     # Eq/Gt/Lt
     elif command == 'eq':
-      # [DONE] Implement seq
       self.write('slt $t2, $t0, $t1') # t2 = x < y
       self.write('slt $t3, $t1, $t2') # t2 = y < x
       self.write('add $t0, $t2, $t3') # t0 = (x < y) + (y < x)
       self.write('addi $t0, $t0, 1')  # t0 = (x < y) | (y < x) + 1
       self.write('andi $t0, $t0, 1')  # t0 = ((x < y) | (y < x) + 1) & 1
     elif command == 'gt':
-      # [DONE] Implement sgt
       self.write('slt $t0, $t1, $t0') # t0 = (y < x) => x > y
     elif command == 'lt':
       self.write('slt $t0, $t0, $t1') # t0 = x < y
@@ -214,14 +215,19 @@ class CodeWriter:
       elif segment == 'temp':
         self.write('lw $t0, ' + str(index) + '($temp)') # t0 = *(temp + index)
       elif segment == 'static':
-        # [DONE] Implement static (filename.index)
         self.write('lw $t0, ' + str(self.__file_name) + '.' + str(index)) # t0 = *(filename.index)
       elif segment == 'constant':
-        # [DONE] Implement constant
-        self.write('addi $t0, $zero, ' + str(index)) # t0 = index
-        # [TODO] Is lui implemented?
-        # upper_bits = (index & 0xFFF000) >> 12
-        # self.write('lui $t0, ' + str(upper_bits)) # t0 = upper_bits
+        if index == 0:
+          self.write('addi $t0, $zero, 0')
+        else:
+          lower_bits = index & 0xFFF
+          upper_bits = (index & 0xFFF000) >> 12
+          
+          if lower_bits != 0:
+            self.write('addi $t0, $zero, ' + str(lower_bits)) # t0 = lower_bits
+        
+          if upper_bits != 0:
+            self.write('lui $t0, ' + str(upper_bits << 12)) # t0 = upper_bits
            
       self.writeMessage('')
       
@@ -250,7 +256,6 @@ class CodeWriter:
       elif segment == 'temp':
         self.write('sw $t0, ' + str(index) + '($temp)') # t0 = *(temp + index)
       elif segment == 'static':
-        # [DONE] Implement static (filename.index)
         self.write('sw $t0, ' + str(self.__file_name) + '.' + str(index)) # t0 = *(filename.index)
       self.writeMessage('')
 
@@ -262,7 +267,7 @@ class CodeWriter:
   
   # Writes assembly code that effects the goto command
   def writeGoto(self, label: str) -> None:
-    self.write('jal $ra' + str(label)) # goto <label>
+    self.write('jal $ra, ' + str(label)) # goto <label>
 
   
   # Writes assembly code that effects the if-goto command
@@ -270,16 +275,21 @@ class CodeWriter:
     self.write('addi $sp, $sp, -4')  # SP = SP - 1
     self.write('lw $t0, 0($sp)')     # t0 = *SP (x)
     
-    self.write('bne $t0, $zero, ' + str(label)) # If t0 == 1 goto <label>
-
+    loop_label, loop_exit_label = self.genLoopLabel()
+    self.write('beq $t0, $zero, ' + str(loop_exit_label)) # if t0 == 0, goto loop_exit_label
+    self.write('lui $t0, ' + label) # t0
+    self.write('addi $t0, $t0, ' + label) # t0 = return_label
+    self.write('jalr $ra, $t0, 0') # goto (label)
+    self.writeLabel(loop_exit_label)
+    
   
   # Writes assembly code that effects the call command
   def writeCall(self, function_name: str, n: int) -> None:    
     
     # Push return-address
     return_label = self.genReturnLabel(function_name)
-    # [DONE] Assembler team should handle converting label to address to store in stack
-    self.write('addi $t0, $zero, ' + str(return_label)) # t0 = return_label
+    self.write('lui $t0, ' + str(return_label)) # t0 = return_label
+    self.write('addi $t0, $t0, ' + str(return_label)) # t0 = return_label
     self.write('sw $t0, 0($sp)')   # *SP = t0
     self.write('addi $sp, $sp, 4') # SP = SP + 1
     
@@ -306,7 +316,7 @@ class CodeWriter:
     self.write('add $arg, $zero, $t0') # $arg = (0 + t0)
     
     # Write $sp to $lcl
-    self.write('addi $lcl, $zero, $sp') # $lcl = $sp
+    self.write('add $lcl, $zero, $sp') # $lcl = $sp
     
     self.writeGoto(function_name)
     self.writeMessage('')
@@ -345,6 +355,7 @@ class CodeWriter:
     
     self.write('jalr $ra, $ra, 0') # goto <return-address>
   
+  
   # Writes assembly code that effects the function command
   def writeFunction(self, function_name: str, n: int) -> None:
     self.writeLabel(function_name) # <function_name>:
@@ -357,10 +368,4 @@ class CodeWriter:
   def close(self) -> None:
     self.__output_stream.close()
 
-
-def test_CodeWriter():
-  cw = CodeWriter('test.vm', 'test.asm')
-  cw.writeInit()
-  cw.close()
-  
-test_CodeWriter()
+# End of CodeWriter.py
