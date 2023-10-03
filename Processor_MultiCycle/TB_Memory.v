@@ -4,6 +4,8 @@ module TB_Memory;
   reg MemWrite;
   reg [31:0] WD;
   reg clk;
+  reg sample;
+  reg [7:0] key_reg;
 
   wire [31:0] RD;
 
@@ -13,6 +15,8 @@ module TB_Memory;
     .MemWrite(MemWrite),
     .WD(WD),
     .clk(clk),
+    .sample(sample),
+    .key_reg(key_reg),
     .RD(RD)
   );
 
@@ -26,6 +30,10 @@ module TB_Memory;
     clk = 0;
     MemWrite = 0;
     addr = 0;
+    sample = 1;
+    key_reg = 8'd49;
+
+
     WD = 32'hA5A5A5A5; // Input data
     #100;
     // Write to memory
@@ -46,6 +54,30 @@ module TB_Memory;
     MemWrite=0;
     addr=32'h00001234;
     #100;
+
+    //test keyboard
+    addr = 32'd16383;
+    key_reg = 8'd50;
+    sample = 0;
+    #100;
+    sample = 1;
+    key_reg = 8'd51;
+    #100;
+    sample = 0;
+    #100;
+    sample = 1;
+    key_reg = 8'd52;
+    #100;
+    sample = 0;
+    #100;
+    sample = 1;
+    #100;
+    sample = 0;
+
+    
+
+
+
     // Check the output
     if (RD == WD)
       $display("Test passed: RD matches WD");
