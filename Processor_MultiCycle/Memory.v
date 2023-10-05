@@ -20,38 +20,33 @@ wire [31:0] RD_RAM;
 
 parameter keyboard_address = 32'd16383;
 
-    initial
-        begin
-            dample <= 1'b1;
-        end
+initial
+    begin
+        dample <= 1'b1;
+        keyVal <= 8'd0;
+    end
 
 wire readKeyboard;
 assign readKeyboard = (addr == keyboard_address && MemWrite == 1'b0) ? 1'b1 : 1'b0;
 
 always @(posedge clk)
-    if(sample != dample && readKeyboard == 1'b1)
-       begin
-        keyVal <= key_reg;
-        dample <= sample;
-       end
-    else
-        keyVal <= 8'd0;
-    
+    begin
+        if( readKeyboard == 1'b1 )
+            begin
+                if( sample != dample )
+                    begin
+                        keyVal <= key_reg;
+                        dample <= sample;
+                    end
+                else
+                    keyVal <= 8'd0;
+            end
+        else
+            keyVal <= 8'd0;
+    end
 
-    // always @(negedge MemWrite)
-    // if( addr == keyboard_address )
-    //     begin
-    //         readKeyboard <= 1'b1;
-    //         if( sample != dample )
-    //             begin
-    //                 keyVal <= key_reg;
-    //                 dample <= sample;
-    //             end
-    //         else
-    //             keyVal <= 8'd0;
-    //     end
-    // else
-    //     readKeyboard <= 1'b0;
+
+
 
 decoder_14x16384 dc1 ( .addr(addr[15:2]), .enable(MemWrite), .out(loadbits) );
 
@@ -69,9 +64,7 @@ endgenerate
 MUX16384x1 m1 ( .inputs(regout), .select(addr[15:2]), .out(RD_RAM) );
 
 
-// if readKeyboard is 1, then read from keyboard
-// else read from memory
-//first make keyVal 32 bits
+
 
 wire [31:0] keyVal32;
 assign keyVal32 = {24'd0,keyVal}; 

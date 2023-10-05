@@ -33,7 +33,7 @@ module TB_Memory;
     sample = 1;
     key_reg = 8'd49;
 
-
+    #100;
     WD = 32'hA5A5A5A5; // Input data
     #100;
     // Write to memory
@@ -73,6 +73,19 @@ module TB_Memory;
     sample = 1;
     #100;
     sample = 0;
+    #100;
+
+    key_reg = 8'd53;
+    sample = 1;
+    #100;
+    sample = 0;
+    #100;
+    sample = 1;
+    #100;
+    sample = 0;
+    key_reg = 8'd54;
+    #100;
+    sample = 1;
 
     
 
