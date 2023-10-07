@@ -1,0 +1,11 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../keyboard_memory_led.srcs/sources_1/new/ps2_rx.v" \
+"../../../../keyboard_memory_led.srcs/sources_1/new/scanToAscii.v" \
+"../../../../keyboard_memory_led.srcs/sources_1/new/keyboard_driver.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
