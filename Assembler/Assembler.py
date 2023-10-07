@@ -237,8 +237,8 @@ class Assembler:
     # [0..6](opcode) [7..11](imm[4..0]) [12..14](funct3) [15..19](rs1) [20..24](rs2) [25..31](imm[11..5])
     
     cmd  = code[0]
-    rs1  = self.getRegister(code[1])
-    rs2  = self.getRegister(code[3])
+    rs1  = self.getRegister(code[3])
+    rs2  = self.getRegister(code[1])
     imm  = self.bin(int(code[2]), 12)
     
     assert (len(rs1) == 5 and len(rs2) == 5), "Invalid register length " + cmd
@@ -265,13 +265,13 @@ class Assembler:
     # imm = 0   + 2...7   + 8...12  + 1
     
     if cmd == 'beq':
-      return (imm[0] + imm[2:8]) + rs2 + rs1 + (imm[8:13] + imm[1]) + '1100011'
+      return (imm[0] + imm[2:8]) + rs2 + rs1 + '000' + (imm[8:12] + imm[1]) + '1100011'
     elif cmd == 'bne':
-      return (imm[0] + imm[2:8]) + rs2 + rs1 + (imm[8:13] + imm[1]) + '1100011'
+      return (imm[0] + imm[2:8]) + rs2 + rs1 + '001' + (imm[8:12] + imm[1]) + '1100011'
     elif cmd == 'blt':
-      return (imm[0] + imm[2:8]) + rs2 + rs1 + (imm[8:13] + imm[1]) + '1100011'
+      return (imm[0] + imm[2:8]) + rs2 + rs1 + '100' + (imm[8:12] + imm[1]) + '1100011'
     elif cmd == 'bge':
-      return (imm[0] + imm[2:8]) + rs2 + rs1 + (imm[8:13] + imm[1]) + '1100011'
+      return (imm[0] + imm[2:8]) + rs2 + rs1 + '101' + (imm[8:12] + imm[1]) + '1100011'
   
   
   def translateJType(self, code: list) -> str:
