@@ -25,8 +25,9 @@ module keyboard_driver(
       input sysclk,
  
 	  output scan_code_ready,
-	  output [7:0] ascii_code
-	  //output reg [3:0] led
+	  output [7:0] ascii_code,
+	  output [3:0] led
+	
     );
 
     parameter lowercase = 0;
@@ -35,11 +36,18 @@ module keyboard_driver(
 	
     wire scan_done_tick;
     wire [7:0] scan_out;
+    reg key_reg;
     
     //    (*DONT_TOUCH = "true"*)
     wire [2:0] next_state;
     //    (*DONT_TOUCH = "true"*)
     reg [2:0] current_state;
+    reg sample;
+    
+    initial
+        begin
+        sample<=1'b1;
+        end
     
     ps2_rx ps2_rx_unit (.clk(sysclk), .reset(1'b0), .rx_en(1'b1), .ps2d(ps2d), .ps2c(ps2c), .rx_done_tick(scan_done_tick), .rx_data(scan_out));
     
@@ -58,6 +66,15 @@ module keyboard_driver(
 	
     scanToAscii scanToAscii_unit (.letter_case(1'b0), .scan_code(scan_out), .ascii_code(ascii_code));
     
-//    always @(negedge scan_code_ready)
-//        led <= ascii_code[3:0]; 
+    
+    always @(negedge scan_code_ready)
+        begin
+            key_reg <= ascii_code;
+            sample <= ~sample;
+        end
+       
+     wire  [31:0] mem_out;
+     Memory my_mem_unit ( .addr(32'd16383), .WD(32'd1456),.clk(sysclk), .MemWrite(1'b1),.sample(sample),.key_reg(key_reg),.RD(mem_out));
+     
+     assign led = mem_out[3:0];
 endmodule

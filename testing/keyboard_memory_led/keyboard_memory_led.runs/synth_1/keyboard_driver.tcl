@@ -71,7 +71,6 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 2
-set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
 
@@ -88,8 +87,18 @@ set_property ip_output_repo {d:/semester/7th sem/davinci/testing/keyboard_memory
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
+read_verilog -library xil_defaultlib -sv {
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/imports/Processor_MultiCycle/MUX16384x1.v}
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/Memory.v}
+}
 read_verilog -library xil_defaultlib {
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/imports/Processor_MultiCycle/DFlipFlop.v}
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_1bit.v}
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_32bit.v}
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/imports/Processor_MultiCycle/decoder_14x16384.v}
   {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/ps2_rx.v}
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/imports/Processor_MultiCycle/register_1bit.v}
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/imports/Processor_MultiCycle/register_32bit.v}
   {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/scanToAscii.v}
   {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/keyboard_driver.v}
 }

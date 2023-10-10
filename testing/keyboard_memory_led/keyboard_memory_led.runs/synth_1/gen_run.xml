@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1696070026" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/keyboard_driver.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1696524291" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/keyboard_driver.dcp">
   <File Type="PA-TCL" Name="keyboard_driver.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="keyboard_driver_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="keyboard_driver_reports.tcl"/>
@@ -11,6 +11,42 @@
   <File Type="VDS-TIMING-PB" Name="keyboard_driver_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/DFlipFlop.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/DFlipFlop.v"/>
+        <Attr Name="ImportTime" Val="1695403362"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/MUX2x1_1bit.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/MUX2x1_1bit.v"/>
+        <Attr Name="ImportTime" Val="1695398609"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/MUX2x1_32bit.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/MUX2x1_32bit.v"/>
+        <Attr Name="ImportTime" Val="1695398609"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/decoder_14x16384.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/decoder_14x16384.v"/>
+        <Attr Name="ImportTime" Val="1695398609"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/ps2_rx.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -18,8 +54,42 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/register_1bit.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/register_1bit.v"/>
+        <Attr Name="ImportTime" Val="1695403612"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/register_32bit.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/register_32bit.v"/>
+        <Attr Name="ImportTime" Val="1695398609"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/scanToAscii.v">
       <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/MUX16384x1.v">
+      <FileInfo SFType="SVerilog">
+        <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/MUX16384x1.v"/>
+        <Attr Name="ImportTime" Val="1695398609"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Memory.v">
+      <FileInfo SFType="SVerilog">
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -65,9 +135,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>
