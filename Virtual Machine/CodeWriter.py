@@ -206,6 +206,7 @@ class CodeWriter:
   def writePushPop(self, command: str, segment: str, index: int) -> None:
     parser = self.p
     command_type = parser.commandType()
+    index *= 4
     
     if command_type == 'C_PUSH':
       self.writeMessage('Push to stack from ' + str(segment) + ' (' +str(index) + ')')
