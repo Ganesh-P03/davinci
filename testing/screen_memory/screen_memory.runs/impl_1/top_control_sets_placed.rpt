@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Sat Oct 14 00:11:17 2023
+| Date         : Sat Oct 14 01:06:43 2023
 | Host         : Ganesh running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |     7 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    28 |
+| Unused register locations in slices containing registers |    23 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -42,9 +42,9 @@ Table of Contents
 | Total control sets |     7 |
 | >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     1 |
-| >= 6 to < 8        |     0 |
+| >= 6 to < 8        |     1 |
 | >= 8 to < 10       |     0 |
-| >= 10 to < 12      |     2 |
+| >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
 | >= 16              |     4 |
@@ -58,10 +58,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              56 |           12 |
+| No           | No                    | No                     |              57 |           16 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              25 |            9 |
-| Yes          | No                    | No                     |              19 |            6 |
+| No           | Yes                   | No                     |              21 |            8 |
+| Yes          | No                    | No                     |              19 |            5 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -70,16 +70,16 @@ Table of Contents
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------------+---------------------+----------------------------------+------------------+----------------+--------------+
-|     Clock Signal     |    Enable Signal    |         Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------------+---------------------+----------------------------------+------------------+----------------+--------------+
-|  dispDriver/clk_TMDS |                     | dispDriver/_inferred__0/i__n_0   |                1 |              4 |         4.00 |
-|  dispDriver/pixclk   |                     | dispDriver/CounterY              |                5 |             10 |         2.00 |
-|  dispDriver/pixclk   |                     | dispDriver/encode_G/DrawArea_reg |                3 |             11 |         3.67 |
-|  dispDriver/pixclk   | dispDriver/CounterY |                                  |                6 |             19 |         3.17 |
-|  dispDriver/pixclk   |                     |                                  |                7 |             25 |         3.57 |
-|  dispDriver/clk_TMDS |                     |                                  |                5 |             31 |         6.20 |
-|  clk_IBUF_BUFG       |                     |                                  |              128 |            512 |         4.00 |
-+----------------------+---------------------+----------------------------------+------------------+----------------+--------------+
++----------------------+---------------------+--------------------------------+------------------+----------------+--------------+
+|     Clock Signal     |    Enable Signal    |        Set/Reset Signal        | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------------+---------------------+--------------------------------+------------------+----------------+--------------+
+|  dispDriver/clk_TMDS |                     | dispDriver/_inferred__0/i__n_0 |                1 |              4 |         4.00 |
+|  dispDriver/pixclk   |                     | dispDriver/encode_G/SR[0]      |                2 |              7 |         3.50 |
+|  dispDriver/pixclk   |                     | dispDriver/CounterY            |                5 |             10 |         2.00 |
+|  dispDriver/pixclk   | dispDriver/CounterY |                                |                5 |             19 |         3.80 |
+|  dispDriver/pixclk   |                     |                                |                9 |             26 |         2.89 |
+|  dispDriver/clk_TMDS |                     |                                |                7 |             31 |         4.43 |
+|  clk_IBUF_BUFG       |                     |                                |               14 |             56 |         4.00 |
++----------------------+---------------------+--------------------------------+------------------+----------------+--------------+
 
 

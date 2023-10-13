@@ -18,28 +18,34 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
 module Screen_Memory(
-    input clk,
-    input [9:0] addr,
+    input clock,
+    input [15:0] address,
+    input [15:0] displayAddr,
     input isWrite,
     input [31:0] writeData,
     output [31:0] displayData
-);
+    );
     
-
-    (* ram_style="block" *)
-    reg [31:0] disp_mem [9600:0];
-
+    (* ram_style = "block" *)
+    reg [31:0] memory [2399:0];
+    
     initial
-        $readmemb("display.mem", disp_mem, 0, 9600);
+        $readmemb("display.mem", memory, 0, 2399);
+    
+    wire [15:0] addr;
+    assign addr = 16'd0 | address[15:2];
+    
+    always @ (posedge clock) 
+	begin
+		if(isWrite) 
+			begin
+			
+			         memory[addr] <= writeData;
+		
+			end
+	end
 
-    always @ (posedge clk)
-    begin
-        if(isWrite)
-            disp_mem[addr] <= writeData;
-    end
-
-    assign displayData = (addr < 32'd9600) ? disp_mem[addr] : 32'd0;
+assign displayData = (displayAddr < 16'd2400 ) ? memory[displayAddr] : 32'd0;
 
 endmodule
