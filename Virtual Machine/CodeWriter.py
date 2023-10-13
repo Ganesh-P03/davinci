@@ -337,26 +337,24 @@ class CodeWriter:
     # -2 : <THIS> : 3
     # -1 : <THAT> : 4
     
-    self.write('addi $t0, $zero, 20') # t0 = 20
-    self.write('sub $t0, $lcl, $t0') # t0 = (lcl - 5)
-    self.write('lw $ra, 0($t0)')   # $ra = RETURN ADDRESS
-    
-    #[TODO] Is this correct?
     # Reposition ARG = pop()
     self.write('addi $sp, $sp, -4') # SP = SP - 1
     self.write('addi $t0, $sp, 0')  # t0 = val at SP
-    self.write('lw $t0, 0($t0)')  # $arg = *SP
+    self.write('lw $t0, 0($t0)')    # $arg = *SP
     
     self.write('addi $t1, $arg, 0') # t1 = $arg
-    self.write('sw $t0, 0($t1)')   # *(arg) = $arg
+    self.write('sw $t0, 0($t1)')    # *(arg) = $arg
     
     # Restore SP = ARG + 1
     self.write('addi $sp, $arg, 4')
     
-    self.write('lw $that, -4($t0)') # $that = THAT
-    self.write('lw $this, -8($t0)') # $this = THIS
-    self.write('lw $arg, -12($t0)')  # $arg  = ARG
-    self.write('lw $lcl, -16($t0)')  # $lcl  = LCL
+    self.write('addi $t0, $zero, 20') # t0 = 20
+    self.write('sub $t0, $lcl, $t0')  # t0 = (lcl - 5)
+    self.write('lw $ra, 0($t0)')      # $ra = RETURN ADDRESS
+    self.write('lw $lcl, 4($t0)')     # $lcl  = LCL
+    self.write('lw $arg, 8($t0)')     # $arg  = ARG
+    self.write('lw $this, 12($t0)')   # $this = THIS
+    self.write('lw $that, 16($t0)')   # $that = THAT
     self.writeMessage('')
     
     self.write('jalr $ra, $ra, 0') # goto <return-address>
