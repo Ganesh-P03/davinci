@@ -61,19 +61,19 @@ add $lcl, $zero, $sp
 jal $ra, Memory.alloc
 
 Memory.alloc$ret.2:
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Array.dispose:
@@ -127,19 +127,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -165,19 +165,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Keyboard.keyPressed:
@@ -218,19 +218,19 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Keyboard.readChar:
@@ -441,19 +441,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Keyboard.readLine:
@@ -783,19 +783,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Keyboard.readInt:
@@ -859,19 +859,19 @@ add $lcl, $zero, $sp
 jal $ra, String.intValue
 
 String.intValue$ret.17:
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -2779,19 +2779,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -3545,19 +3545,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.bit:
@@ -3653,19 +3653,19 @@ addi $t0, $t0, -1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.abs:
@@ -3733,19 +3733,19 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.multiply:
@@ -3982,19 +3982,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.divide:
@@ -4185,19 +4185,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_3:
@@ -4480,19 +4480,19 @@ sub $t0, $zero, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 jal $ra, ENDIF_5
@@ -4503,19 +4503,19 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_5:
@@ -4848,19 +4848,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.max:
@@ -4905,19 +4905,19 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_8:
@@ -4927,19 +4927,19 @@ lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.min:
@@ -4984,19 +4984,19 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_9:
@@ -5006,19 +5006,19 @@ lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.twoToThe:
@@ -5059,19 +5059,19 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -5285,19 +5285,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Memory.peek:
@@ -5338,19 +5338,19 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Memory.poke:
@@ -5403,19 +5403,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Memory.bestFit:
@@ -5559,19 +5559,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_0:
@@ -5860,19 +5860,19 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Memory.alloc:
@@ -6534,19 +6534,19 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Memory.deAlloc:
@@ -7528,19 +7528,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Memory.findPreFree:
@@ -7587,19 +7587,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_8:
@@ -7828,19 +7828,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -7916,19 +7916,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.initMap:
@@ -17380,19 +17380,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.create:
@@ -17952,19 +17952,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.getMap:
@@ -18093,19 +18093,19 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.moveCursor:
@@ -18139,19 +18139,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.printChar:
@@ -18971,19 +18971,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.printString:
@@ -19164,19 +19164,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.printInt:
@@ -19322,19 +19322,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.println:
@@ -19476,19 +19476,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.backSpace:
@@ -19705,19 +19705,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -19765,19 +19765,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.clearScreen:
@@ -19891,19 +19891,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.setColor:
@@ -19925,19 +19925,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.drawPixel:
@@ -20302,19 +20302,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.drawLine:
@@ -21474,19 +21474,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.drawHLine:
@@ -21698,19 +21698,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.drawVLine:
@@ -21922,19 +21922,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.drawRectangle:
@@ -22078,19 +22078,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.drawCircle:
@@ -22438,19 +22438,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -22604,19 +22604,19 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.dispose:
@@ -22670,19 +22670,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.length:
@@ -22704,19 +22704,19 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.charAt:
@@ -22769,19 +22769,19 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.setCharAt:
@@ -22846,19 +22846,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.appendChar:
@@ -22991,19 +22991,19 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.eraseLastChar:
@@ -23093,19 +23093,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.intValue:
@@ -23586,19 +23586,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 jal $ra, ENDIF_5
@@ -23619,19 +23619,19 @@ sub $t0, $zero, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_5:
@@ -23724,19 +23724,19 @@ and $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.charToDigit:
@@ -23766,19 +23766,19 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.digitToChar:
@@ -23808,19 +23808,19 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.setInt:
@@ -23988,19 +23988,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.setIntHelper:
@@ -24298,19 +24298,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.newLine:
@@ -24320,19 +24320,19 @@ addi $t0, $zero, 512
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.backSpace:
@@ -24342,19 +24342,19 @@ addi $t0, $zero, 516
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.doubleQuote:
@@ -24364,19 +24364,19 @@ addi $t0, $zero, 136
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -24572,19 +24572,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Sys.halt:
@@ -24631,19 +24631,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Sys.wait:
@@ -24839,19 +24839,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Sys.error:
@@ -25049,18 +25049,18 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
