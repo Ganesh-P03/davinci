@@ -21,13 +21,13 @@
 
 module DisplayDriver(
 	input clk,
-   // input [0:31] displayData,
+    input [31:0] displayData,
  
 	output [2:0] TMDSp, TMDSn,
-	output TMDSp_clock, TMDSn_clock
-	//output [31:0] pointer
+	output TMDSp_clock, TMDSn_clock,
+	output [31:0] pointer
 );
-parameter [0:31] displayData = 32'd1023;
+//parameter [0:31] displayData = 32'd1023;
 
 
 ////////////////////////////////////////////////////////////////////
@@ -129,7 +129,6 @@ always @(posedge pixclk)
         hSync <= (CounterX>=656) && (CounterX<752);         // hsync high for 96 counts                                                 
         vSync <= (CounterY>=490) && (CounterY<492);         // vsync high for 2 counts
     end
-
 //assign red = 8'd0;
 //assign blue = 8'd0;
 //assign green = 8'd255;

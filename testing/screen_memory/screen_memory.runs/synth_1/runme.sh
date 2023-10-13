@@ -41,4 +41,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log DisplayDriver.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source DisplayDriver.tcl
+EAStep vivado -log top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
