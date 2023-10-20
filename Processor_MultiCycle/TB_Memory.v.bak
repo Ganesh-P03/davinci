@@ -8,9 +8,10 @@ module TB_Memory;
     reg byteWrite;
     reg byteRead;
     reg [31:0] writeData;
+    wire [31:0] data;
     reg [31:0] displayAddr;
     wire [31:0] displayData;
-    wire [31:0] RD;
+    wire [31:0] IR;
     reg sample;
     reg [7:0] key_reg;
 
@@ -27,7 +28,8 @@ module TB_Memory;
 	.isWrite(isWrite),
 	.address(address),
 	.writeData(writeData),
-	.RD(RD),
+	.data(data),
+	.IR(IR),
     .byteWrite(byteWrite),
 	.displayAddr(displayAddr),
 	.displayData(displayData),
@@ -51,14 +53,14 @@ module TB_Memory;
     // IRWrite=1;
   
     byteWrite=0;
-    displayAddr=32'd0;
+    displayAddr=32'd100;
 
     byteRead=0;
     key_reg=8'd100;
     sample=1;
     #100
     address=32'd1000;
-    displayAddr=32'd1;
+    displayAddr=32'd100;
     #100;
     // Write to memory
     address=18'd10000;
@@ -70,7 +72,7 @@ module TB_Memory;
     // Read from memory
     address=18'd150000;
     writeData=32'd1023; // Address to read from
-    #10; // Wait for a few clock cycles
+    #100; // Wait for a few clock cycles
     // MemWrite = 0;
     // WD = 32'hA5A5A596; 
     // addr = 32'h0000123C;

@@ -7,15 +7,14 @@ module Memory
     input byteRead,
     input [31:0] address, //memory is 2^18
     input [31:0] writeData, 
+    output [31:0] data,
     input [31:0] displayAddr,
     output [31:0] displayData,
-    output [31:0]RD,
+    output [31:0] IR,
     input sample,
     input [7:0] key_reg //8 bit ascii code ///***
     );
     
-    wire [31:0] data;
-    wire [31:0] IR;
     wire [15:0] displayAddress;
     wire [15:0] ramAddress;
     wire [16:0] romAddress;
@@ -111,12 +110,10 @@ module Memory
     );
     
     ROM rom(
-        .addr(romAddress[16:0]),     
+        .addr(romAddress[17:2]),     
         .clock(clock),          //correct
         .Inst(IR)                 //correct
     );
-
-    assign RD = (address >= 32'd9600 && address < 32'd140672 ) ? IR : data;
  
  endmodule
 

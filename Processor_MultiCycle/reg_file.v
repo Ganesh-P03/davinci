@@ -16,7 +16,9 @@ decoder_5x32 dc1 ( .addr(rd), .enable(regwrite), .out(loadbits) );
 genvar i;
 generate 
 
-for(i = 0;i < 32;i = i+1)
+//register_32bit reg0 (.D(32'd0), .clk(clk), .regwrite(1'b1), .Q(regout[0]) );
+assign regout[0] = 32'd0;
+for(i = 1;i < 32;i = i+1)
 begin
 
 register_32bit reg1 ( .D(wd3), .clk(clk), .regwrite(loadbits[i]), .Q(regout[i]) );

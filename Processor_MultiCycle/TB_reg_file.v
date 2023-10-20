@@ -29,17 +29,18 @@ module TB_reg_file;
     #5 clk = ~clk;
   end
 
+
   // Testbench stimulus
   initial begin
     clk = 0;
-    rs1 = 6;  // Example values for rs1, rs2, and rd
-    rs2 = 10;
-    rd = 20;
+    rs1 = 5'd0;  // Example values for rs1, rs2, and rd
+    rs2 = 5'd31;
+    rd = 5'd20;
     regwrite = 1;
     wd3 = 32'h12345678;
 
     // Wait for some time to allow initialization
-    #100;
+    #100
 
     // Display initial state
     $display("Initial State:");
@@ -47,11 +48,13 @@ module TB_reg_file;
     $display("regwrite = %b, wd3 = %h", regwrite, wd3);
     // Apply stimulus
     #100 regwrite = 0;
-    rs1 = 20;
     $display("%h", uut.regout[20]);
     #100 wd3 = 32'h87654321;
-    #100 rd = 18;
-    #100 rs2 = 18;
+    #100 rd = 5'd18;
+
+    #100 
+    rs1 = 5'd11;
+    rs2 = 5'd20;
     #100 regwrite =1;
     // Display final state
     $display("Final State:");

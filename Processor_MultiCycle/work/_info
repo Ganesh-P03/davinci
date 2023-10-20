@@ -1,0 +1,1103 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle
+vadd_sub
+Z1 !s110 1697219411
+!i10b 1
+!s100 P[^^PKHNVPS62nRSmRACz0
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IV`8CoV5Rk0HcVz_JUW@6T0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1693602159
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/add_sub.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/add_sub.v
+!i122 21
+Z4 L0 1 31
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1697219411.000000
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/add_sub.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/add_sub.v|
+!i113 1
+Z7 o-work work
+Z8 tCvgOpt 0
+vALU_Decoder
+R1
+!i10b 1
+!s100 j0Z9QdV2:m4hmkzI?LNkg3
+R2
+I>]KFZ7K]jB_=biT<C7W3S0
+R3
+R0
+Z9 w1696066417
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/ALU_Decoder.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/ALU_Decoder.v
+!i122 22
+L0 1 35
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/ALU_Decoder.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/ALU_Decoder.v|
+!i113 1
+R7
+R8
+n@a@l@u_@decoder
+vALU_RISCv
+R1
+!i10b 1
+!s100 CJ>U_kzTim[oFc]BlAo:_3
+R2
+IX=DEnnCl_8W?:J5eUgFzQ1
+R3
+R0
+w1696072532
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/ALU_RISCv.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/ALU_RISCv.v
+!i122 23
+L0 1 27
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/ALU_RISCv.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/ALU_RISCv.v|
+!i113 1
+R7
+R8
+n@a@l@u_@r@i@s@cv
+vAND_1bit_2inp
+Z10 !s110 1697219412
+!i10b 1
+!s100 WIl8GC]O`<I^O]g2K9Em31
+R2
+IQ0noaQFeRN>nDb]mhAEel1
+R3
+R0
+Z11 w1693601732
+Z12 8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Gates.v
+Z13 FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Gates.v
+!i122 30
+L0 19 5
+R5
+r1
+!s85 0
+31
+Z14 !s108 1697219412.000000
+Z15 !s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Gates.v|
+Z16 !s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Gates.v|
+!i113 1
+R7
+R8
+n@a@n@d_1bit_2inp
+vAND_1bit_3inp
+R10
+!i10b 1
+!s100 l:>Tn8PFXo_K_e?@V<KFn1
+R2
+I5odZ<kC]oWVancSEfMBfV3
+R3
+R0
+R11
+R12
+R13
+!i122 30
+L0 13 5
+R5
+r1
+!s85 0
+31
+R14
+R15
+R16
+!i113 1
+R7
+R8
+n@a@n@d_1bit_3inp
+vbitwiseAND
+R10
+!i10b 1
+!s100 TH2kcQ;WU[^=554nE3Aif2
+R2
+I9Y>XZ>Zh`S7gT9=Ua2<[f0
+R3
+R0
+w1693601323
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/bitwiseAND.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/bitwiseAND.v
+!i122 24
+Z17 L0 1 19
+R5
+r1
+!s85 0
+31
+R14
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/bitwiseAND.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/bitwiseAND.v|
+!i113 1
+R7
+R8
+nbitwise@a@n@d
+vcontrol_unit
+R10
+!i10b 1
+!s100 XRb7Bl`hC73JfhJzZFfE]2
+R2
+IIU?[BN^Rf<mWcQz=f8LH52
+R3
+R0
+w1696067758
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/control_unit.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/control_unit.v
+!i122 25
+L0 1 63
+R5
+r1
+!s85 0
+31
+R14
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/control_unit.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/control_unit.v|
+!i113 1
+R7
+R8
+vdecoder_14x16384
+R10
+!i10b 1
+!s100 TmT<EEPz^mRR0lo3=oYBf2
+R2
+IEV=oM<iX4aQ@2mfQIfi?k1
+R3
+R0
+w1694269753
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/decoder_14x16384.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/decoder_14x16384.v
+!i122 27
+L0 23 11
+R5
+r1
+!s85 0
+31
+R14
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/decoder_14x16384.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/decoder_14x16384.v|
+!i113 1
+R7
+R8
+vdecoder_5x32
+R10
+!i10b 1
+!s100 G[oNDBXO5?I_>JVCn:QNZ1
+R2
+I1mNRzif<ZTaNj`iTGeCHl2
+R3
+R0
+w1693950863
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/decoder_5x32.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/decoder_5x32.v
+!i122 26
+L0 1 10
+R5
+r1
+!s85 0
+31
+R14
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/decoder_5x32.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/decoder_5x32.v|
+!i113 1
+R7
+R8
+vDFlipFlop
+R10
+!i10b 1
+!s100 <7Yc1D_6VIdiG3cTHR<<M3
+R2
+ILgQV`inZUic06X=bVV[HB0
+R3
+R0
+R9
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/DFlipFlop.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/DFlipFlop.v
+!i122 28
+L0 3 12
+R5
+r1
+!s85 0
+31
+R14
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/DFlipFlop.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/DFlipFlop.v|
+!i113 1
+R7
+R8
+n@d@flip@flop
+vExtender
+R10
+!i10b 1
+!s100 [zLk?z35=K:JC1cSOVPeE1
+R2
+IYaL7<FH;iK758Te47OHGm2
+R3
+R0
+R9
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Extender.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Extender.v
+!i122 29
+L0 1 14
+R5
+r1
+!s85 0
+31
+R14
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Extender.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Extender.v|
+!i113 1
+R7
+R8
+n@extender
+vInstr_Decoder
+R10
+!i10b 1
+!s100 j]VUf`mU@hdVTB@633Vln2
+R2
+IglPDQ1b[JRG5zPOK@>JdI0
+R3
+R0
+w1696067996
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Instr_Decoder.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Instr_Decoder.v
+!i122 31
+Z18 L0 1 15
+R5
+r1
+!s85 0
+31
+R14
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Instr_Decoder.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Instr_Decoder.v|
+!i113 1
+R7
+R8
+n@instr_@decoder
+vMain_Decoder
+Z19 !s110 1697219413
+!i10b 1
+!s100 ;OUie>RREhU>k40hF6C^20
+R2
+IVLHj_0SK:WGRCH81ALV>e0
+R3
+R0
+R9
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Main_Decoder.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Main_Decoder.v
+!i122 32
+L0 1 111
+R5
+r1
+!s85 0
+31
+Z20 !s108 1697219413.000000
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Main_Decoder.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Main_Decoder.v|
+!i113 1
+R7
+R8
+n@main_@decoder
+vMemory
+R19
+!i10b 1
+!s100 ZW>Ko7lS4XgN@H8Kd_84a3
+R2
+ISf^G`LnXEeb?_4<6QBEe<3
+R3
+R0
+w1697216432
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Memory.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Memory.v
+!i122 33
+L0 2 120
+R5
+r1
+!s85 0
+31
+R20
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Memory.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Memory.v|
+!i113 1
+R7
+R8
+n@memory
+vMUX16384x1
+R19
+!i10b 1
+!s100 0NBajG7nXJHPD=I0Ez]Q50
+R2
+I^Znjce;>[CWe5ehb]`fKZ0
+R3
+R0
+w1694270142
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX16384x1.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX16384x1.v
+!i122 39
+R18
+R5
+r1
+!s85 0
+31
+R20
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX16384x1.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX16384x1.v|
+!i113 1
+R7
+R8
+n@m@u@x16384x1
+vMUX2x1_1bit
+R19
+!i10b 1
+!s100 ]8cmfhP:aI0e5Zz?@gJRN2
+R2
+Ioij::gzQ?YmY]5l6ef@nF1
+R3
+R0
+w1693942112
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX2x1_1bit.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX2x1_1bit.v
+!i122 34
+Z21 L0 1 7
+R5
+r1
+!s85 0
+31
+R20
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX2x1_1bit.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX2x1_1bit.v|
+!i113 1
+R7
+R8
+n@m@u@x2x1_1bit
+vMUX2x1_32bit
+R19
+!i10b 1
+!s100 Am`PiQVh1kWRRITI[WzXT1
+R2
+IWYe=PjhL@fCoeg;34E0><3
+R3
+R0
+w1693593980
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX2x1_32bit.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX2x1_32bit.v
+!i122 35
+R21
+R5
+r1
+!s85 0
+31
+R20
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX2x1_32bit.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX2x1_32bit.v|
+!i113 1
+R7
+R8
+n@m@u@x2x1_32bit
+vMUX32x1
+R19
+!i10b 1
+!s100 ]NZ56QlkzhK4::I:ef?i[3
+R2
+IKl]aPKk3Kbi?5E<8Cl6zi2
+R3
+R0
+w1695399735
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX32x1.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX32x1.v
+!i122 38
+L0 1 43
+R5
+r1
+!s85 0
+31
+R20
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX32x1.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX32x1.v|
+!i113 1
+R7
+R8
+n@m@u@x32x1
+vMUX4x1_32bit
+R19
+!i10b 1
+!s100 EH<54Uo>zT:bbLA28aTN43
+R2
+I`@g2CX8]3]GZNz5AKQKGC0
+R3
+R0
+R9
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX4x1_32bit.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX4x1_32bit.v
+!i122 36
+Z22 L0 1 18
+R5
+r1
+!s85 0
+31
+R20
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX4x1_32bit.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX4x1_32bit.v|
+!i113 1
+R7
+R8
+n@m@u@x4x1_32bit
+vMUX8x1_32bit
+R19
+!i10b 1
+!s100 a;<WRz[59VBF>=]6e[iG81
+R2
+IlK8DOa^V64jT7HKB8i`4N1
+R3
+R0
+w1694357866
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX8x1.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX8x1.v
+!i122 37
+L0 1 22
+R5
+r1
+!s85 0
+31
+R20
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX8x1.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/MUX8x1.v|
+!i113 1
+R7
+R8
+n@m@u@x8x1_32bit
+vNOT_32bit
+Z23 !s110 1697219414
+!i10b 1
+!s100 YQ]fW?zP49XPcz3C>AkHj3
+R2
+IldTjj0IaB0^FQ<N50Jj9>0
+R3
+R0
+w1693604495
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/NOT_32bit.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/NOT_32bit.v
+!i122 40
+Z24 L0 1 8
+R5
+r1
+!s85 0
+31
+Z25 !s108 1697219414.000000
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/NOT_32bit.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/NOT_32bit.v|
+!i113 1
+R7
+R8
+n@n@o@t_32bit
+vprocessor
+R23
+!i10b 1
+!s100 S]io@?01FU^7`?E;aS>o]2
+R2
+IS=8eil^6f1_fH@Xd<zc=01
+R3
+R0
+w1697218945
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/processor.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/processor.v
+!i122 41
+L0 1 70
+R5
+r1
+!s85 0
+31
+R25
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/processor.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/processor.v|
+!i113 1
+R7
+R8
+vRAM
+R23
+!i10b 1
+!s100 >ifGHznFVQJE:Z;A=Na>Q3
+R2
+IC9M>Cd;l>X]eBWbKL:;Dc3
+R3
+R0
+w1697217927
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/RAM.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/RAM.v
+!i122 42
+L0 2 52
+R5
+r1
+!s85 0
+31
+R25
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/RAM.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/RAM.v|
+!i113 1
+R7
+R8
+n@r@a@m
+vreg_file
+R23
+!i10b 1
+!s100 Y8Pm^6^nk1LzGJ<PlW1?V1
+R2
+I@odVc3F;=eNz2S^cO6SCJ3
+R3
+R0
+w1697219313
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/reg_file.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/reg_file.v
+!i122 43
+R4
+R5
+r1
+!s85 0
+31
+R25
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/reg_file.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/reg_file.v|
+!i113 1
+R7
+R8
+vregister_1bit
+R23
+!i10b 1
+!s100 V7=NA4;7]o6[Wa^7:oaiz3
+R2
+I`UR_EYn33;6cD1P_T1A?90
+R3
+R0
+R9
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_1bit.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_1bit.v
+!i122 44
+L0 1 12
+R5
+r1
+!s85 0
+31
+R25
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_1bit.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_1bit.v|
+!i113 1
+R7
+R8
+vregister_32bit
+R23
+!i10b 1
+!s100 5]U:fOL`hRKBEQN_3:NQ@3
+R2
+Ib3BO@JcZ3THbdie`2962K0
+R3
+R0
+w1693949065
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_32bit.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_32bit.v
+!i122 47
+R17
+R5
+r1
+!s85 0
+31
+R25
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_32bit.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_32bit.v|
+!i113 1
+R7
+R8
+vregister_32bit_tb
+Z26 !s110 1697219415
+!i10b 1
+!s100 5kA2O=?VY7>=QQQ6lIO?32
+R2
+IjzBAW6?W6k8a8UA09Pj@F0
+R3
+R0
+w1650377413
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_32bit_tb.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_32bit_tb.v
+!i122 48
+R22
+R5
+r1
+!s85 0
+31
+Z27 !s108 1697219415.000000
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_32bit_tb.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_32bit_tb.v|
+!i113 1
+R7
+R8
+vregister_4bit
+R23
+!i10b 1
+!s100 ?W6YN3U`flGKc4PXI<5ZE1
+R2
+IfeaYW;c5[NknKSF>8NUZU3
+R3
+R0
+R9
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_4bit.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_4bit.v
+!i122 45
+L0 1 20
+R5
+r1
+!s85 0
+31
+R25
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_4bit.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_4bit.v|
+!i113 1
+R7
+R8
+vregister_4bit_tb
+R23
+!i10b 1
+!s100 mV:h1?NSnLo`>]j0iG0b93
+R2
+IBHaf8DADA?RU4:=mHiCQa1
+R3
+R0
+w1650476646
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_4bit_tb.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_4bit_tb.v
+!i122 46
+R22
+R5
+r1
+!s85 0
+31
+R25
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_4bit_tb.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/register_4bit_tb.v|
+!i113 1
+R7
+R8
+vROM
+R26
+!i10b 1
+!s100 <LC5VfSI@FiB7L[?DgJ2c0
+R2
+I1_en>09_c[HIT>EgUkP3E0
+R3
+R0
+w1697219060
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/ROM.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/ROM.v
+!i122 49
+R22
+R5
+r1
+!s85 0
+31
+R27
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/ROM.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/ROM.v|
+!i113 1
+R7
+R8
+n@r@o@m
+vScreen_Memory
+R26
+!i10b 1
+!s100 `Vio2@h^1JP=NiOknHWLG2
+R2
+IQZi:_nl3ozd3L4kk;9lgE2
+R3
+R0
+w1697206029
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Screen_Memory.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Screen_Memory.v
+!i122 50
+Z28 L0 1 42
+R5
+r1
+!s85 0
+31
+R27
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Screen_Memory.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/Screen_Memory.v|
+!i113 1
+R7
+R8
+n@screen_@memory
+vTB_add_sub
+R26
+!i10b 1
+!s100 LaHH:NZn3lWG[Z<;_X0aY3
+R2
+I@8CNlQ[_LGH2_<?C]C;a^3
+R3
+R0
+R9
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_add_sub.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_add_sub.v
+!i122 51
+L0 1 40
+R5
+r1
+!s85 0
+31
+R27
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_add_sub.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_add_sub.v|
+!i113 1
+R7
+R8
+n@t@b_add_sub
+vTB_ALU_Decoder
+R26
+!i10b 1
+!s100 JmS>F4l?<5k5eTYF0M<e72
+R2
+IGehd5GFzAUhXl9dGz3cZA3
+R3
+R0
+R9
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_ALU_Decoder.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_ALU_Decoder.v
+!i122 52
+Z29 L0 1 100
+R5
+r1
+!s85 0
+31
+R27
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_ALU_Decoder.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_ALU_Decoder.v|
+!i113 1
+R7
+R8
+n@t@b_@a@l@u_@decoder
+vTB_ALU_RISCv
+R26
+!i10b 1
+!s100 dgE4:XTf`49bMinQebmP53
+R2
+Ij_9HnoB[>E[RUUAgc5IUb2
+R3
+R0
+w1693605270
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_ALU_RISCv.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_ALU_RISCv.v
+!i122 53
+R29
+R5
+r1
+!s85 0
+31
+R27
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_ALU_RISCv.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_ALU_RISCv.v|
+!i113 1
+R7
+R8
+n@t@b_@a@l@u_@r@i@s@cv
+vTB_bitwiseAND
+R26
+!i10b 1
+!s100 bT^8EiGVX<U4ZO^^KXGTX0
+R2
+IXHl9Ta[KAcI5]Z:dSJ;Un0
+R3
+R0
+R9
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_bitwiseAND.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_bitwiseAND.v
+!i122 54
+L0 1 33
+R5
+r1
+!s85 0
+31
+R27
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_bitwiseAND.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_bitwiseAND.v|
+!i113 1
+R7
+R8
+n@t@b_bitwise@a@n@d
+vTB_Control_Unit
+Z30 !s110 1697219416
+!i10b 1
+!s100 e>W7KA:^XUZFMk:cR<I:=2
+R2
+IABEFd63`eb]YIRiXW3L4Z0
+R3
+R0
+w1696067316
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Control_Unit.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Control_Unit.v
+!i122 55
+L0 1 72
+R5
+r1
+!s85 0
+31
+Z31 !s108 1697219416.000000
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Control_Unit.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Control_Unit.v|
+!i113 1
+R7
+R8
+n@t@b_@control_@unit
+vTB_DFlipFlop
+R30
+!i10b 1
+!s100 <3kZFOCJdTfF@`h<I1=i]2
+R2
+ITo0MKnE`I@Oeg33OGG;V71
+R3
+R0
+R9
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_DFlipFlop.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_DFlipFlop.v
+!i122 56
+L0 1 23
+R5
+r1
+!s85 0
+31
+R31
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_DFlipFlop.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_DFlipFlop.v|
+!i113 1
+R7
+R8
+n@t@b_@d@flip@flop
+vTB_Extender
+R30
+!i10b 1
+!s100 ]kW5<lM[fUgYU^XE[XA6g2
+R2
+I:?3T8;0dlUCJk1S<8@IH_2
+R3
+R0
+w1694285059
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Extender.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Extender.v
+!i122 57
+L0 1 45
+R5
+r1
+!s85 0
+31
+R31
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Extender.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Extender.v|
+!i113 1
+R7
+R8
+n@t@b_@extender
+vTB_Instr_Decoder
+R30
+!i10b 1
+!s100 hn6zK@DCgodm6k8U_3?UH2
+R2
+IB[;WR`K=M>jWI?555;``e1
+R3
+R0
+R9
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Instr_Decoder.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Instr_Decoder.v
+!i122 58
+R28
+R5
+r1
+!s85 0
+31
+R31
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Instr_Decoder.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Instr_Decoder.v|
+!i113 1
+R7
+R8
+n@t@b_@instr_@decoder
+vTB_Main_Decoder
+R30
+!i10b 1
+!s100 G7h]P9T1Q4Pn``UbBin??0
+R2
+IRLlN=_SQn4K>T87>A_<`h3
+R3
+R0
+R9
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Main_Decoder.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Main_Decoder.v
+!i122 59
+L0 1 65
+R5
+r1
+!s85 0
+31
+R31
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Main_Decoder.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Main_Decoder.v|
+!i113 1
+R7
+R8
+n@t@b_@main_@decoder
+vTB_Memory
+R30
+!i10b 1
+!s100 ?2bDHM?<PGRaJ_=jDK?]:1
+R2
+ITb?NdUnIF9K9E3MbcRnd33
+R3
+R0
+w1697217949
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Memory.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Memory.v
+!i122 60
+L0 2 91
+R5
+r1
+!s85 0
+31
+R31
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Memory.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Memory.v|
+!i113 1
+R7
+R8
+n@t@b_@memory
+vTB_Processor
+!s110 1697219486
+!i10b 1
+!s100 SHc_QP9TV:T4:CoV0??U?0
+R2
+Il[IaXCn50;5E1Q78OYfY`3
+R3
+R0
+w1697219460
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Processor.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Processor.v
+!i122 64
+L0 2 23
+R5
+r1
+!s85 0
+31
+!s108 1697219485.000000
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Processor.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_Processor.v|
+!i113 1
+R7
+R8
+n@t@b_@processor
+vTB_reg_file
+Z32 !s110 1697219417
+!i10b 1
+!s100 >7W_XV4JDYlIdg9aeI^2:1
+R2
+IjA9>0aj^f1kfD>:2i9m1X1
+R3
+R0
+w1694271850
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_reg_file.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_reg_file.v
+!i122 62
+L0 1 66
+R5
+r1
+!s85 0
+31
+R31
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_reg_file.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/TB_reg_file.v|
+!i113 1
+R7
+R8
+n@t@b_reg_file
+vXNOR_1bit_3inp
+R10
+!i10b 1
+!s100 YPLkGUgSdLn`_H3F9nB?T0
+R2
+IK>JJKJd4GT53X^NDg]1ZW0
+R3
+R0
+R11
+R12
+R13
+!i122 30
+L0 7 5
+R5
+r1
+!s85 0
+31
+R14
+R15
+R16
+!i113 1
+R7
+R8
+n@x@n@o@r_1bit_3inp
+vXOR_1bit_2inp
+R10
+!i10b 1
+!s100 NV6``F6zDBFf:hiAPVk3l1
+R2
+IW:mzRd<CcG2QR0gQ[YbZa3
+R3
+R0
+R11
+R12
+R13
+!i122 30
+L0 1 5
+R5
+r1
+!s85 0
+31
+R14
+R15
+R16
+!i113 1
+R7
+R8
+n@x@o@r_1bit_2inp
+vzero_extender
+R32
+!i10b 1
+!s100 A4cUh?[n4nA^DfS9WzZV;1
+R2
+Ilc0Q15KD]I20bO]^mdFiD3
+R3
+R0
+w1693602592
+8C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/zero_extender.v
+FC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/zero_extender.v
+!i122 63
+R24
+R5
+r1
+!s85 0
+31
+!s108 1697219417.000000
+!s107 C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/zero_extender.v|
+!s90 -reportprogress|300|-work|work|C:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle/zero_extender.v|
+!i113 1
+R7
+R8

@@ -1,6 +1,5 @@
-module MUX32x1 (inputs, select, out // 32-bit out
-);
-  input [31:0] inputs [0:31]; // 32 input lines, each 32 bits wide
+module MUX32x1 (inputs, select, out );
+  input [31:0] inputs [31:0]; // 32 input lines, each 32 bits wide
   input [4:0] select;         // 5-bit select signal
   output reg [31:0] out;
 always @* begin

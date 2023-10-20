@@ -1,9 +1,9 @@
-module Instr_Decoder (op,Immsrc);
+module Instr_Decoder (op,ImmSrc);
 
 input [6:0] op;
-output [1:0] Immsrc;
+output [1:0] ImmSrc;
 
-assign Immsrc = (op == 7'b0000011)? 2'b00: //I-Type : lw
+assign ImmSrc = (op == 7'b0000011)? 2'b00: //I-Type : lw
                 (op == 7'b0010011)? 2'b00: //I-Type : Addi,Subi,ANDi,ORi
                 (op == 7'b1100111)? 2'b00: //I-Type : jalr
                (op == 7'b1100011)? 2'b01: //B-Type : bne,blt,bgt,beq
