@@ -111,12 +111,12 @@ module Memory
     );
     
     ROM rom(
-        .addr(romAddress[16:2]),     
+        .addr(romAddress[16:0]),     
         .clock(clock),          //correct
         .Inst(IR)                 //correct
     );
 
-    assign RD = (address >= 32'd140672 ) ? data : IR;
+    assign RD = (address >= 32'd9600 && address < 32'd140672 ) ? IR : data;
  
  endmodule
 

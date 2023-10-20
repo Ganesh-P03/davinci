@@ -5,6 +5,9 @@
 // Initializing SP to 256
 addi $sp, $zero, 256
 
+// Initializing TEMP to 256
+addi $temp, $zero, 0
+
 // Call Sys.init
 lui $t0, Sys.init$ret.1
 addi $t0, $t0, Sys.init$ret.1
@@ -58,19 +61,19 @@ add $lcl, $zero, $sp
 jal $ra, Memory.alloc
 
 Memory.alloc$ret.2:
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Array.dispose:
@@ -124,19 +127,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -144,8 +147,8 @@ jalr $ra, $ra, 0
 // ====================================
 
 Keyboard.init:
-// Push to stack from constant (24576)
-lui $t0, 24576
+// Push to stack from constant (98304)
+lui $t0, 98304
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -162,19 +165,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Keyboard.keyPressed:
@@ -204,11 +207,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -216,19 +218,19 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Keyboard.readChar:
@@ -439,19 +441,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Keyboard.readLine:
@@ -491,8 +493,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (50)
-addi $t0, $zero, 50
+// Push to stack from constant (200)
+addi $t0, $zero, 200
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -543,15 +545,15 @@ add $lcl, $zero, $sp
 jal $ra, Keyboard.readChar
 
 Keyboard.readChar$ret.10:
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 WHILE_2:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -623,8 +625,8 @@ lui $t0, END_WHILE_2
 addi $t0, $t0, END_WHILE_2
 jalr $ra, $t0, 0
 LOOP_EXIT_3:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -680,8 +682,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -767,11 +769,11 @@ add $lcl, $zero, $sp
 jal $ra, Keyboard.readChar
 
 Keyboard.readChar$ret.15:
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 jal $ra, WHILE_2
 END_WHILE_2:
@@ -781,19 +783,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Keyboard.readInt:
@@ -857,19 +859,19 @@ add $lcl, $zero, $sp
 jal $ra, String.intValue
 
 String.intValue$ret.17:
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -885,8 +887,8 @@ sw $zero, 0($sp)
 addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
-// Push to stack from constant (18)
-addi $t0, $zero, 18
+// Push to stack from constant (72)
+addi $t0, $zero, 72
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -911,8 +913,8 @@ add $lcl, $zero, $sp
 jal $ra, String.new
 
 String.new$ret.18:
-// Push to stack from constant (72)
-addi $t0, $zero, 72
+// Push to stack from constant (288)
+addi $t0, $zero, 288
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -937,8 +939,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.19:
-// Push to stack from constant (111)
-addi $t0, $zero, 111
+// Push to stack from constant (444)
+addi $t0, $zero, 444
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -963,8 +965,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.20:
-// Push to stack from constant (119)
-addi $t0, $zero, 119
+// Push to stack from constant (476)
+addi $t0, $zero, 476
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -989,8 +991,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.21:
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1015,8 +1017,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.22:
-// Push to stack from constant (109)
-addi $t0, $zero, 109
+// Push to stack from constant (436)
+addi $t0, $zero, 436
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1041,8 +1043,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.23:
-// Push to stack from constant (97)
-addi $t0, $zero, 97
+// Push to stack from constant (388)
+addi $t0, $zero, 388
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1067,8 +1069,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.24:
-// Push to stack from constant (110)
-addi $t0, $zero, 110
+// Push to stack from constant (440)
+addi $t0, $zero, 440
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1093,8 +1095,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.25:
-// Push to stack from constant (121)
-addi $t0, $zero, 121
+// Push to stack from constant (484)
+addi $t0, $zero, 484
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1119,8 +1121,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.26:
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1145,8 +1147,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.27:
-// Push to stack from constant (110)
-addi $t0, $zero, 110
+// Push to stack from constant (440)
+addi $t0, $zero, 440
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1171,8 +1173,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.28:
-// Push to stack from constant (117)
-addi $t0, $zero, 117
+// Push to stack from constant (468)
+addi $t0, $zero, 468
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1197,8 +1199,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.29:
-// Push to stack from constant (109)
-addi $t0, $zero, 109
+// Push to stack from constant (436)
+addi $t0, $zero, 436
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1223,8 +1225,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.30:
-// Push to stack from constant (98)
-addi $t0, $zero, 98
+// Push to stack from constant (392)
+addi $t0, $zero, 392
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1249,8 +1251,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.31:
-// Push to stack from constant (101)
-addi $t0, $zero, 101
+// Push to stack from constant (404)
+addi $t0, $zero, 404
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1275,8 +1277,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.32:
-// Push to stack from constant (114)
-addi $t0, $zero, 114
+// Push to stack from constant (456)
+addi $t0, $zero, 456
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1301,8 +1303,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.33:
-// Push to stack from constant (115)
-addi $t0, $zero, 115
+// Push to stack from constant (460)
+addi $t0, $zero, 460
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1327,8 +1329,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.34:
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1353,8 +1355,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.35:
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1399,20 +1401,20 @@ add $lcl, $zero, $sp
 jal $ra, Keyboard.readInt
 
 Keyboard.readInt$ret.37:
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1431,14 +1433,14 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1469,17 +1471,17 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-// Push to stack from constant (2)
-addi $t0, $zero, 2
+// Push to stack from constant (8)
+addi $t0, $zero, 8
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -1513,11 +1515,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -1525,8 +1526,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1537,8 +1538,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1557,11 +1558,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -1570,14 +1570,14 @@ lw $t0, 0($sp)
 sw $t0, 0($that)
 
 WHILE_0:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1620,72 +1620,14 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-sub $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Push to stack from that (0)
-lw $t0, 0($that)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (0)
-lw $t0, 0($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (2)
-lw $t0, 2($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (2)
-addi $t0, $zero, 2
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1718,11 +1660,67 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
+
+// Push to stack from that (0)
+lw $t0, 0($that)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (8)
+lw $t0, 8($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (8)
+addi $t0, $zero, 8
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -1750,8 +1748,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1770,11 +1768,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -1782,14 +1779,14 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1808,16 +1805,16 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
 jal $ra, WHILE_0
 END_WHILE_0:
-// Push to stack from constant (26)
-addi $t0, $zero, 26
+// Push to stack from constant (104)
+addi $t0, $zero, 104
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1842,8 +1839,8 @@ add $lcl, $zero, $sp
 jal $ra, String.new
 
 String.new$ret.39:
-// Push to stack from constant (84)
-addi $t0, $zero, 84
+// Push to stack from constant (336)
+addi $t0, $zero, 336
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1868,8 +1865,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.40:
-// Push to stack from constant (104)
-addi $t0, $zero, 104
+// Push to stack from constant (416)
+addi $t0, $zero, 416
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1894,8 +1891,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.41:
-// Push to stack from constant (101)
-addi $t0, $zero, 101
+// Push to stack from constant (404)
+addi $t0, $zero, 404
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1920,8 +1917,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.42:
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1946,8 +1943,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.43:
-// Push to stack from constant (70)
-addi $t0, $zero, 70
+// Push to stack from constant (280)
+addi $t0, $zero, 280
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1972,8 +1969,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.44:
-// Push to stack from constant (105)
-addi $t0, $zero, 105
+// Push to stack from constant (420)
+addi $t0, $zero, 420
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -1998,8 +1995,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.45:
-// Push to stack from constant (98)
-addi $t0, $zero, 98
+// Push to stack from constant (392)
+addi $t0, $zero, 392
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2024,8 +2021,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.46:
-// Push to stack from constant (111)
-addi $t0, $zero, 111
+// Push to stack from constant (444)
+addi $t0, $zero, 444
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2050,8 +2047,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.47:
-// Push to stack from constant (110)
-addi $t0, $zero, 110
+// Push to stack from constant (440)
+addi $t0, $zero, 440
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2076,8 +2073,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.48:
-// Push to stack from constant (97)
-addi $t0, $zero, 97
+// Push to stack from constant (388)
+addi $t0, $zero, 388
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2102,8 +2099,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.49:
-// Push to stack from constant (99)
-addi $t0, $zero, 99
+// Push to stack from constant (396)
+addi $t0, $zero, 396
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2128,8 +2125,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.50:
-// Push to stack from constant (99)
-addi $t0, $zero, 99
+// Push to stack from constant (396)
+addi $t0, $zero, 396
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2154,8 +2151,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.51:
-// Push to stack from constant (105)
-addi $t0, $zero, 105
+// Push to stack from constant (420)
+addi $t0, $zero, 420
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2180,8 +2177,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.52:
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2206,8 +2203,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.53:
-// Push to stack from constant (83)
-addi $t0, $zero, 83
+// Push to stack from constant (332)
+addi $t0, $zero, 332
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2232,8 +2229,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.54:
-// Push to stack from constant (101)
-addi $t0, $zero, 101
+// Push to stack from constant (404)
+addi $t0, $zero, 404
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2258,8 +2255,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.55:
-// Push to stack from constant (114)
-addi $t0, $zero, 114
+// Push to stack from constant (456)
+addi $t0, $zero, 456
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2284,8 +2281,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.56:
-// Push to stack from constant (105)
-addi $t0, $zero, 105
+// Push to stack from constant (420)
+addi $t0, $zero, 420
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2310,8 +2307,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.57:
-// Push to stack from constant (101)
-addi $t0, $zero, 101
+// Push to stack from constant (404)
+addi $t0, $zero, 404
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2336,8 +2333,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.58:
-// Push to stack from constant (115)
-addi $t0, $zero, 115
+// Push to stack from constant (460)
+addi $t0, $zero, 460
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2362,8 +2359,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.59:
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2388,8 +2385,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.60:
-// Push to stack from constant (105)
-addi $t0, $zero, 105
+// Push to stack from constant (420)
+addi $t0, $zero, 420
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2414,8 +2411,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.61:
-// Push to stack from constant (115)
-addi $t0, $zero, 115
+// Push to stack from constant (460)
+addi $t0, $zero, 460
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2440,8 +2437,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.62:
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2466,8 +2463,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.63:
-// Push to stack from constant (58)
-addi $t0, $zero, 58
+// Push to stack from constant (232)
+addi $t0, $zero, 232
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2492,8 +2489,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.64:
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2544,27 +2541,27 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (3)
+// Pop from stack to local (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 3($lcl)
+sw $t0, 12($lcl)
 
 WHILE_1:
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2607,8 +2604,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2627,11 +2624,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -2665,8 +2661,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2691,8 +2687,8 @@ add $lcl, $zero, $sp
 jal $ra, String.new
 
 String.new$ret.68:
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2743,14 +2739,14 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2769,11 +2765,11 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (3)
+// Pop from stack to local (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 3($lcl)
+sw $t0, 12($lcl)
 
 jal $ra, WHILE_1
 END_WHILE_1:
@@ -2783,19 +2779,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -2803,8 +2799,8 @@ jalr $ra, $ra, 0
 // ====================================
 
 Math.init:
-// Push to stack from constant (16)
-addi $t0, $zero, 16
+// Push to stack from constant (64)
+addi $t0, $zero, 64
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2835,8 +2831,8 @@ lw $t0, 0($sp)
 
 sw $t0, Math.0
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2867,99 +2863,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from constant (2)
-addi $t0, $zero, 2
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from static (0)
-lw $t0, Math.0
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (1)
-addi $t0, $zero, 1
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from constant (4)
-addi $t0, $zero, 4
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from static (0)
-lw $t0, Math.0
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (2)
-addi $t0, $zero, 2
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -2979,8 +2886,8 @@ lw $t0, Math.0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -2999,11 +2906,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -3023,182 +2929,6 @@ lw $t0, Math.0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (4)
-addi $t0, $zero, 4
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from constant (32)
-addi $t0, $zero, 32
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from static (0)
-lw $t0, Math.0
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (5)
-addi $t0, $zero, 5
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from constant (64)
-addi $t0, $zero, 64
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from static (0)
-lw $t0, Math.0
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from constant (128)
-addi $t0, $zero, 128
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from static (0)
-lw $t0, Math.0
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (7)
-addi $t0, $zero, 7
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from constant (256)
-addi $t0, $zero, 256
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from static (0)
-lw $t0, Math.0
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
 // Push to stack from constant (8)
 addi $t0, $zero, 8
 
@@ -3219,11 +2949,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -3231,140 +2960,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from constant (512)
-addi $t0, $zero, 512
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from static (0)
-lw $t0, Math.0
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (9)
-addi $t0, $zero, 9
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from constant (1024)
-addi $t0, $zero, 1024
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from static (0)
-lw $t0, Math.0
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (10)
-addi $t0, $zero, 10
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from constant (2048)
-addi $t0, $zero, 2048
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from static (0)
-lw $t0, Math.0
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (11)
-addi $t0, $zero, 11
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from constant (4096)
-lui $t0, 4096
+// Push to stack from constant (32)
+addi $t0, $zero, 32
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -3395,11 +2992,311 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from constant (64)
+addi $t0, $zero, 64
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (0)
+lw $t0, Math.0
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (16)
+addi $t0, $zero, 16
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from constant (128)
+addi $t0, $zero, 128
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (0)
+lw $t0, Math.0
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (20)
+addi $t0, $zero, 20
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from constant (256)
+addi $t0, $zero, 256
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (0)
+lw $t0, Math.0
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (24)
+addi $t0, $zero, 24
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from constant (512)
+addi $t0, $zero, 512
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (0)
+lw $t0, Math.0
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (28)
+addi $t0, $zero, 28
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from constant (1024)
+addi $t0, $zero, 1024
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (0)
+lw $t0, Math.0
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (32)
+addi $t0, $zero, 32
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from constant (2048)
+addi $t0, $zero, 2048
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (0)
+lw $t0, Math.0
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (36)
+addi $t0, $zero, 36
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from constant (4096)
+lui $t0, 4096
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (0)
+lw $t0, Math.0
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (40)
+addi $t0, $zero, 40
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -3419,8 +3316,8 @@ lw $t0, Math.0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (13)
-addi $t0, $zero, 13
+// Push to stack from constant (44)
+addi $t0, $zero, 44
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -3439,11 +3336,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -3463,8 +3359,8 @@ lw $t0, Math.0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (14)
-addi $t0, $zero, 14
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -3483,11 +3379,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -3495,14 +3390,100 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from constant (16384)
-lui $t0, 16384
+// Push to stack from constant (32768)
+lui $t0, 32768
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (16384)
-lui $t0, 16384
+// Push to stack from static (0)
+lw $t0, Math.0
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (52)
+addi $t0, $zero, 52
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from constant (65536)
+lui $t0, 65536
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (0)
+lw $t0, Math.0
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (56)
+addi $t0, $zero, 56
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from constant (65536)
+lui $t0, 65536
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65536)
+lui $t0, 65536
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -3527,8 +3508,8 @@ lw $t0, Math.0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -3547,11 +3528,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -3565,19 +3545,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.bit:
@@ -3593,8 +3573,8 @@ lw $t0, Math.0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -3613,11 +3593,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -3674,19 +3653,19 @@ addi $t0, $t0, -1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.abs:
@@ -3754,19 +3733,19 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.multiply:
@@ -3794,11 +3773,11 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -3806,21 +3785,21 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
 WHILE_1:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (16)
-addi $t0, $zero, 16
+// Push to stack from constant (64)
+addi $t0, $zero, 64
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -3857,14 +3836,14 @@ lui $t0, END_WHILE_1
 addi $t0, $t0, END_WHILE_1
 jalr $ra, $t0, 0
 LOOP_EXIT_8:
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -3904,8 +3883,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -3931,46 +3910,14 @@ lw $t0, 0($sp)
 sw $t0, 0($lcl)
 
 ENDIF_2:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to local (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($lcl)
-
-// Push to stack from local (2)
-lw $t0, 2($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -3989,11 +3936,43 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 4($lcl)
+
+// Push to stack from local (8)
+lw $t0, 8($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (4)
+addi $t0, $zero, 4
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (8)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
 
 jal $ra, WHILE_1
 END_WHILE_1:
@@ -4003,19 +3982,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.divide:
@@ -4051,8 +4030,8 @@ slt $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4095,11 +4074,11 @@ andi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
 // Push to stack from argument (0)
 lw $t0, 0($arg)
@@ -4133,8 +4112,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($arg)
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4159,14 +4138,14 @@ add $lcl, $zero, $sp
 jal $ra, Math.abs
 
 Math.abs$ret.74:
-// Pop from stack to argument (1)
+// Pop from stack to argument (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($arg)
+sw $t0, 4($arg)
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4206,19 +4185,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_3:
@@ -4228,14 +4207,14 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4286,8 +4265,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (2)
-addi $t0, $zero, 2
+// Push to stack from constant (8)
+addi $t0, $zero, 8
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4318,8 +4297,8 @@ add $lcl, $zero, $sp
 jal $ra, Math.multiply
 
 Math.multiply$ret.76:
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4358,8 +4337,8 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4411,8 +4390,8 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4431,11 +4410,11 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 jal $ra, ENDIF_4
 IF_4:
@@ -4465,15 +4444,15 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 ENDIF_4:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4485,8 +4464,8 @@ lui $t0, IF_5
 addi $t0, $t0, IF_5
 jalr $ra, $t0, 0
 LOOP_EXIT_12:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4501,42 +4480,42 @@ sub $t0, $zero, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 jal $ra, ENDIF_5
 IF_5:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_5:
@@ -4561,21 +4540,21 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-// Push to stack from constant (7)
-addi $t0, $zero, 7
+// Push to stack from constant (28)
+addi $t0, $zero, 28
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 WHILE_6:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4641,8 +4620,8 @@ lw $t0, Math.0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4661,11 +4640,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -4687,20 +4665,20 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4725,14 +4703,14 @@ add $lcl, $zero, $sp
 jal $ra, Math.multiply
 
 Math.multiply$ret.78:
-// Pop from stack to local (3)
+// Pop from stack to local (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 3($lcl)
+sw $t0, 12($lcl)
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4768,8 +4746,8 @@ addi $t0, $t0, -1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4817,8 +4795,8 @@ jalr $ra, $t0, 0
 LOOP_EXIT_14:
 jal $ra, ENDIF_7
 IF_7:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4830,14 +4808,14 @@ lw $t0, 0($sp)
 sw $t0, 0($lcl)
 
 ENDIF_7:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4856,11 +4834,11 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 jal $ra, WHILE_6
 END_WHILE_6:
@@ -4870,19 +4848,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.max:
@@ -4892,8 +4870,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4927,41 +4905,41 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_8:
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.min:
@@ -4971,8 +4949,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5006,41 +4984,41 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_9:
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Math.twoToThe:
@@ -5070,11 +5048,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -5082,19 +5059,19 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -5102,29 +5079,29 @@ jalr $ra, $ra, 0
 // ====================================
 
 Memory.init:
-// Push to stack from constant (2048)
-addi $t0, $zero, 2048
+// Push to stack from constant (8192)
+lui $t0, 8192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (4)
+// Pop from stack to static (16)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Memory.4
+sw $t0, Memory.16
 
-// Push to stack from constant (16384)
-lui $t0, 16384
+// Push to stack from constant (65536)
+lui $t0, 65536
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (3)
+// Pop from stack to static (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Memory.3
+sw $t0, Memory.12
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -5138,17 +5115,17 @@ lw $t0, 0($sp)
 
 sw $t0, Memory.0
 
-// Push to stack from static (4)
-lw $t0, Memory.4
+// Push to stack from static (16)
+lw $t0, Memory.16
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (1)
+// Pop from stack to static (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Memory.1
+sw $t0, Memory.4
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -5156,32 +5133,32 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (5)
+// Pop from stack to static (20)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Memory.5
+sw $t0, Memory.20
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (6)
+// Pop from stack to static (24)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Memory.6
+sw $t0, Memory.24
 
-// Push to stack from static (3)
-lw $t0, Memory.3
+// Push to stack from static (12)
+lw $t0, Memory.12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (4)
-lw $t0, Memory.4
+// Push to stack from static (16)
+lw $t0, Memory.16
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5200,14 +5177,14 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (1)
-lw $t0, Memory.1
+// Push to stack from static (4)
+lw $t0, Memory.4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5226,11 +5203,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -5244,14 +5220,14 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (1)
-lw $t0, Memory.1
+// Push to stack from static (4)
+lw $t0, Memory.4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5270,11 +5246,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -5282,8 +5257,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5298,11 +5273,11 @@ sub $t0, $zero, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (7)
+// Pop from stack to static (28)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Memory.7
+sw $t0, Memory.28
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -5310,19 +5285,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Memory.peek:
@@ -5352,11 +5327,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -5364,24 +5338,24 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Memory.poke:
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5412,11 +5386,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -5430,19 +5403,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Memory.bestFit:
@@ -5460,20 +5433,20 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
-// Push to stack from static (3)
-lw $t0, Memory.3
+// Push to stack from static (12)
+lw $t0, Memory.12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (4)
-lw $t0, Memory.4
+// Push to stack from static (16)
+lw $t0, Memory.16
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5492,14 +5465,14 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
-// Push to stack from static (1)
-lw $t0, Memory.1
+// Push to stack from static (4)
+lw $t0, Memory.4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5516,8 +5489,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5536,11 +5509,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -5587,19 +5559,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_0:
@@ -5669,8 +5641,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5689,11 +5661,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -5701,8 +5672,8 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5721,14 +5692,14 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (3)
+// Pop from stack to local (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 3($lcl)
+sw $t0, 12($lcl)
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5764,14 +5735,14 @@ addi $t0, $t0, -1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5819,23 +5790,23 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
 ENDIF_2:
 // Push to stack from local (0)
@@ -5844,8 +5815,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5864,11 +5835,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -5884,25 +5854,25 @@ sw $t0, 0($lcl)
 
 jal $ra, WHILE_1
 END_WHILE_1:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Memory.alloc:
@@ -5950,8 +5920,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5970,11 +5940,11 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
 // Push to stack from local (0)
 lw $t0, 0($lcl)
@@ -6032,8 +6002,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6052,11 +6022,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -6070,8 +6039,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6117,8 +6086,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6137,11 +6106,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -6149,11 +6117,11 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 // Push to stack from local (0)
 lw $t0, 0($lcl)
@@ -6161,8 +6129,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6181,11 +6149,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -6193,14 +6160,14 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (7)
-lw $t0, Memory.7
+// Push to stack from static (28)
+lw $t0, Memory.28
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6219,11 +6186,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -6259,8 +6225,8 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6279,11 +6245,11 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 // Push to stack from local (0)
 lw $t0, 0($lcl)
@@ -6291,8 +6257,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6311,11 +6277,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -6323,14 +6288,14 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6349,11 +6314,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -6367,8 +6331,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6387,11 +6351,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -6419,8 +6382,8 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6439,14 +6402,14 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6465,11 +6428,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -6483,8 +6445,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6503,14 +6465,14 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (7)
-lw $t0, Memory.7
+// Push to stack from static (28)
+lw $t0, Memory.28
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6529,11 +6491,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -6541,21 +6502,21 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (1)
+// Pop from stack to static (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Memory.1
+sw $t0, Memory.4
 
 ENDIF_4:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6567,25 +6528,25 @@ lw $t0, 0($sp)
 sw $t0, 0($lcl)
 
 ENDIF_3:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Memory.deAlloc:
@@ -6601,8 +6562,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (7)
-lw $t0, Memory.7
+// Push to stack from static (28)
+lw $t0, Memory.28
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6621,11 +6582,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -6633,11 +6593,11 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
 // Push to stack from argument (0)
 lw $t0, 0($arg)
@@ -6645,8 +6605,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6752,8 +6712,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6772,11 +6732,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -6829,8 +6788,8 @@ lui $t0, IF_6
 addi $t0, $t0, IF_6
 jalr $ra, $t0, 0
 LOOP_EXIT_23:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6841,8 +6800,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6861,11 +6820,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -6879,8 +6837,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6899,11 +6857,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -6917,8 +6874,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6937,11 +6894,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -6961,8 +6917,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6981,11 +6937,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -7001,8 +6956,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7021,11 +6976,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -7033,8 +6987,8 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7059,8 +7013,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7079,11 +7033,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -7106,8 +7059,8 @@ sw $t0, 0($arg)
 ENDIF_6:
 jal $ra, ENDIF_5
 IF_5:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7118,8 +7071,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7138,11 +7091,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -7150,8 +7102,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from static (1)
-lw $t0, Memory.1
+// Push to stack from static (4)
+lw $t0, Memory.4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7162,8 +7114,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7182,11 +7134,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -7200,11 +7151,11 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (1)
+// Pop from stack to static (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Memory.1
+sw $t0, Memory.4
 
 ENDIF_5:
 // Push to stack from argument (0)
@@ -7219,8 +7170,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7239,11 +7190,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -7271,8 +7221,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7291,11 +7241,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -7336,8 +7285,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7356,11 +7305,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -7368,11 +7316,11 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 // Push to stack from argument (0)
 lw $t0, 0($arg)
@@ -7380,8 +7328,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7400,11 +7348,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -7412,14 +7359,14 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7438,11 +7385,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -7470,8 +7416,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (5)
-lw $t0, Memory.5
+// Push to stack from static (20)
+lw $t0, Memory.20
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7490,11 +7436,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -7502,14 +7447,14 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7528,11 +7473,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -7546,8 +7490,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7566,11 +7510,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -7585,26 +7528,26 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Memory.findPreFree:
 sw $zero, 0($sp)
 addi $sp, $sp, 4
-// Push to stack from static (1)
-lw $t0, Memory.1
+// Push to stack from static (4)
+lw $t0, Memory.4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7644,24 +7587,24 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_8:
-// Push to stack from static (1)
-lw $t0, Memory.1
+// Push to stack from static (4)
+lw $t0, Memory.4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7679,8 +7622,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7699,11 +7642,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -7752,8 +7694,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7772,11 +7714,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -7842,8 +7783,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (6)
-lw $t0, Memory.6
+// Push to stack from static (24)
+lw $t0, Memory.24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7862,11 +7803,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -7888,19 +7828,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -7908,17 +7848,17 @@ jalr $ra, $ra, 0
 // ====================================
 
 Output.init:
-// Push to stack from constant (16384)
-lui $t0, 16384
+// Push to stack from constant (65536)
+lui $t0, 65536
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (3)
+// Pop from stack to static (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Output.3
+sw $t0, Output.12
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -7926,11 +7866,11 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (1)
+// Pop from stack to static (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Output.1
+sw $t0, Output.4
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -7938,11 +7878,11 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (2)
+// Pop from stack to static (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Output.2
+sw $t0, Output.8
 
 lui $t0, Output.initMap$ret.81
 addi $t0, $t0, Output.initMap$ret.81
@@ -7976,26 +7916,26 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.initMap:
 sw $zero, 0($sp)
 addi $sp, $sp, 4
-// Push to stack from constant (127)
-addi $t0, $zero, 127
+// Push to stack from constant (508)
+addi $t0, $zero, 508
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8032,56 +7972,56 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8124,8 +8064,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8222,44 +8162,44 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (33)
-addi $t0, $zero, 33
+// Push to stack from constant (132)
+addi $t0, $zero, 132
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8270,14 +8210,14 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8320,26 +8260,26 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (34)
-addi $t0, $zero, 34
+// Push to stack from constant (136)
+addi $t0, $zero, 136
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (20)
-addi $t0, $zero, 20
+// Push to stack from constant (80)
+addi $t0, $zero, 80
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8418,8 +8358,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (35)
-addi $t0, $zero, 35
+// Push to stack from constant (140)
+addi $t0, $zero, 140
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8430,50 +8370,50 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (18)
-addi $t0, $zero, 18
+// Push to stack from constant (72)
+addi $t0, $zero, 72
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (18)
-addi $t0, $zero, 18
+// Push to stack from constant (72)
+addi $t0, $zero, 72
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (18)
-addi $t0, $zero, 18
+// Push to stack from constant (72)
+addi $t0, $zero, 72
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (18)
-addi $t0, $zero, 18
+// Push to stack from constant (72)
+addi $t0, $zero, 72
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (18)
-addi $t0, $zero, 18
+// Push to stack from constant (72)
+addi $t0, $zero, 72
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (18)
-addi $t0, $zero, 18
+// Push to stack from constant (72)
+addi $t0, $zero, 72
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8516,38 +8456,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (36)
-addi $t0, $zero, 36
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (30)
-addi $t0, $zero, 30
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (51)
-addi $t0, $zero, 51
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (3)
-addi $t0, $zero, 3
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (144)
+addi $t0, $zero, 144
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8558,26 +8468,56 @@ addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Push to stack from constant (12)
 addi $t0, $zero, 12
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (120)
+addi $t0, $zero, 120
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (192)
+addi $t0, $zero, 192
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (204)
+addi $t0, $zero, 204
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (120)
+addi $t0, $zero, 120
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8614,8 +8554,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (37)
-addi $t0, $zero, 37
+// Push to stack from constant (148)
+addi $t0, $zero, 148
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8632,14 +8572,26 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (35)
-addi $t0, $zero, 35
+// Push to stack from constant (140)
+addi $t0, $zero, 140
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8650,26 +8602,14 @@ addi $t0, $zero, 24
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (51)
-addi $t0, $zero, 51
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (49)
-addi $t0, $zero, 49
+// Push to stack from constant (196)
+addi $t0, $zero, 196
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8712,62 +8652,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (38)
-addi $t0, $zero, 38
+// Push to stack from constant (152)
+addi $t0, $zero, 152
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8810,26 +8750,26 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (39)
-addi $t0, $zero, 39
+// Push to stack from constant (156)
+addi $t0, $zero, 156
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8908,8 +8848,20 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (40)
-addi $t0, $zero, 40
+// Push to stack from constant (160)
+addi $t0, $zero, 160
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8920,50 +8872,38 @@ addi $t0, $zero, 24
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Push to stack from constant (24)
 addi $t0, $zero, 24
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (24)
+addi $t0, $zero, 24
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (24)
+addi $t0, $zero, 24
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9006,20 +8946,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (41)
-addi $t0, $zero, 41
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (164)
+addi $t0, $zero, 164
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9030,38 +8958,50 @@ addi $t0, $zero, 24
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (48)
+addi $t0, $zero, 48
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Push to stack from constant (24)
 addi $t0, $zero, 24
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (24)
-addi $t0, $zero, 24
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (24)
-addi $t0, $zero, 24
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9104,8 +9044,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (42)
-addi $t0, $zero, 42
+// Push to stack from constant (168)
+addi $t0, $zero, 168
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9128,32 +9068,32 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9202,8 +9142,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (43)
-addi $t0, $zero, 43
+// Push to stack from constant (172)
+addi $t0, $zero, 172
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9226,32 +9166,32 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9300,8 +9240,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (44)
-addi $t0, $zero, 44
+// Push to stack from constant (176)
+addi $t0, $zero, 176
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9348,20 +9288,20 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9398,8 +9338,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (45)
-addi $t0, $zero, 45
+// Push to stack from constant (180)
+addi $t0, $zero, 180
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9434,8 +9374,8 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9496,8 +9436,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (46)
-addi $t0, $zero, 46
+// Push to stack from constant (184)
+addi $t0, $zero, 184
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9544,14 +9484,14 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9594,8 +9534,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (47)
-addi $t0, $zero, 47
+// Push to stack from constant (188)
+addi $t0, $zero, 188
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9612,8 +9552,20 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (192)
+addi $t0, $zero, 192
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9636,20 +9588,8 @@ addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (3)
-addi $t0, $zero, 3
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9692,62 +9632,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
+// Push to stack from constant (192)
+addi $t0, $zero, 192
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
 // Push to stack from constant (48)
 addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9790,62 +9730,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (49)
-addi $t0, $zero, 49
+// Push to stack from constant (196)
+addi $t0, $zero, 196
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (14)
-addi $t0, $zero, 14
+// Push to stack from constant (56)
+addi $t0, $zero, 56
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9888,20 +9828,32 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (50)
-addi $t0, $zero, 50
+// Push to stack from constant (200)
+addi $t0, $zero, 200
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (192)
+addi $t0, $zero, 192
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9924,26 +9876,14 @@ addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (51)
-addi $t0, $zero, 51
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9986,62 +9926,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (28)
-addi $t0, $zero, 28
+// Push to stack from constant (112)
+addi $t0, $zero, 112
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10084,62 +10024,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (52)
-addi $t0, $zero, 52
+// Push to stack from constant (208)
+addi $t0, $zero, 208
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (16)
-addi $t0, $zero, 16
+// Push to stack from constant (64)
+addi $t0, $zero, 64
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (28)
-addi $t0, $zero, 28
+// Push to stack from constant (112)
+addi $t0, $zero, 112
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (26)
-addi $t0, $zero, 26
+// Push to stack from constant (104)
+addi $t0, $zero, 104
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (25)
-addi $t0, $zero, 25
+// Push to stack from constant (100)
+addi $t0, $zero, 100
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (60)
-addi $t0, $zero, 60
+// Push to stack from constant (240)
+addi $t0, $zero, 240
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10182,62 +10122,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (53)
-addi $t0, $zero, 53
+// Push to stack from constant (212)
+addi $t0, $zero, 212
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (31)
-addi $t0, $zero, 31
+// Push to stack from constant (124)
+addi $t0, $zero, 124
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10280,62 +10220,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (28)
-addi $t0, $zero, 28
+// Push to stack from constant (112)
+addi $t0, $zero, 112
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (31)
-addi $t0, $zero, 31
+// Push to stack from constant (124)
+addi $t0, $zero, 124
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10378,20 +10318,38 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (55)
-addi $t0, $zero, 55
+// Push to stack from constant (220)
+addi $t0, $zero, 220
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (49)
-addi $t0, $zero, 49
+// Push to stack from constant (196)
+addi $t0, $zero, 196
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (192)
+addi $t0, $zero, 192
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (192)
+addi $t0, $zero, 192
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10408,32 +10366,14 @@ addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10476,62 +10416,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (56)
-addi $t0, $zero, 56
+// Push to stack from constant (224)
+addi $t0, $zero, 224
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10574,62 +10514,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (57)
-addi $t0, $zero, 57
+// Push to stack from constant (228)
+addi $t0, $zero, 228
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (62)
-addi $t0, $zero, 62
+// Push to stack from constant (248)
+addi $t0, $zero, 248
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (14)
-addi $t0, $zero, 14
+// Push to stack from constant (56)
+addi $t0, $zero, 56
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10672,8 +10612,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (58)
-addi $t0, $zero, 58
+// Push to stack from constant (232)
+addi $t0, $zero, 232
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10690,20 +10630,14 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (0)
-addi $t0, $zero, 0
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10714,14 +10648,20 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (0)
+addi $t0, $zero, 0
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10770,8 +10710,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (59)
-addi $t0, $zero, 59
+// Push to stack from constant (236)
+addi $t0, $zero, 236
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10788,20 +10728,14 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (0)
-addi $t0, $zero, 0
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10812,20 +10746,26 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (0)
+addi $t0, $zero, 0
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (48)
+addi $t0, $zero, 48
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10868,8 +10808,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (60)
-addi $t0, $zero, 60
+// Push to stack from constant (240)
+addi $t0, $zero, 240
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10886,6 +10826,18 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
+// Push to stack from constant (96)
+addi $t0, $zero, 96
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
 // Push to stack from constant (24)
 addi $t0, $zero, 24
 
@@ -10898,32 +10850,20 @@ addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (3)
-addi $t0, $zero, 3
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
 // Push to stack from constant (24)
 addi $t0, $zero, 24
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10966,8 +10906,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (61)
-addi $t0, $zero, 61
+// Push to stack from constant (244)
+addi $t0, $zero, 244
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10990,8 +10930,8 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11008,8 +10948,8 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11064,8 +11004,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (62)
-addi $t0, $zero, 62
+// Push to stack from constant (248)
+addi $t0, $zero, 248
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11078,18 +11018,6 @@ addi $sp, $sp, 4
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (3)
-addi $t0, $zero, 3
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11106,20 +11034,32 @@ addi $t0, $zero, 24
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
+// Push to stack from constant (48)
+addi $t0, $zero, 48
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (24)
+addi $t0, $zero, 24
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
 // Push to stack from constant (12)
 addi $t0, $zero, 12
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (3)
-addi $t0, $zero, 3
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11162,62 +11102,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (64)
-addi $t0, $zero, 64
+// Push to stack from constant (256)
+addi $t0, $zero, 256
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (59)
-addi $t0, $zero, 59
+// Push to stack from constant (236)
+addi $t0, $zero, 236
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (59)
-addi $t0, $zero, 59
+// Push to stack from constant (236)
+addi $t0, $zero, 236
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (59)
-addi $t0, $zero, 59
+// Push to stack from constant (236)
+addi $t0, $zero, 236
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11260,44 +11200,44 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11308,14 +11248,14 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11358,62 +11298,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (65)
-addi $t0, $zero, 65
+// Push to stack from constant (260)
+addi $t0, $zero, 260
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11456,62 +11396,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (66)
-addi $t0, $zero, 66
+// Push to stack from constant (264)
+addi $t0, $zero, 264
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (31)
-addi $t0, $zero, 31
+// Push to stack from constant (124)
+addi $t0, $zero, 124
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (31)
-addi $t0, $zero, 31
+// Push to stack from constant (124)
+addi $t0, $zero, 124
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (31)
-addi $t0, $zero, 31
+// Push to stack from constant (124)
+addi $t0, $zero, 124
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11554,62 +11494,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (67)
-addi $t0, $zero, 67
+// Push to stack from constant (268)
+addi $t0, $zero, 268
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (28)
-addi $t0, $zero, 28
+// Push to stack from constant (112)
+addi $t0, $zero, 112
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (35)
-addi $t0, $zero, 35
+// Push to stack from constant (140)
+addi $t0, $zero, 140
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (35)
-addi $t0, $zero, 35
+// Push to stack from constant (140)
+addi $t0, $zero, 140
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (28)
-addi $t0, $zero, 28
+// Push to stack from constant (112)
+addi $t0, $zero, 112
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11652,62 +11592,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (68)
-addi $t0, $zero, 68
+// Push to stack from constant (272)
+addi $t0, $zero, 272
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11750,62 +11690,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (69)
-addi $t0, $zero, 69
+// Push to stack from constant (276)
+addi $t0, $zero, 276
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (35)
-addi $t0, $zero, 35
+// Push to stack from constant (140)
+addi $t0, $zero, 140
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (11)
-addi $t0, $zero, 11
+// Push to stack from constant (44)
+addi $t0, $zero, 44
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (11)
-addi $t0, $zero, 11
+// Push to stack from constant (44)
+addi $t0, $zero, 44
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (35)
-addi $t0, $zero, 35
+// Push to stack from constant (140)
+addi $t0, $zero, 140
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11848,62 +11788,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (70)
-addi $t0, $zero, 70
+// Push to stack from constant (280)
+addi $t0, $zero, 280
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (35)
-addi $t0, $zero, 35
+// Push to stack from constant (140)
+addi $t0, $zero, 140
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (11)
-addi $t0, $zero, 11
+// Push to stack from constant (44)
+addi $t0, $zero, 44
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (11)
-addi $t0, $zero, 11
+// Push to stack from constant (44)
+addi $t0, $zero, 44
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11946,62 +11886,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (71)
-addi $t0, $zero, 71
+// Push to stack from constant (284)
+addi $t0, $zero, 284
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (28)
-addi $t0, $zero, 28
+// Push to stack from constant (112)
+addi $t0, $zero, 112
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (35)
-addi $t0, $zero, 35
+// Push to stack from constant (140)
+addi $t0, $zero, 140
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (59)
-addi $t0, $zero, 59
+// Push to stack from constant (236)
+addi $t0, $zero, 236
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (44)
-addi $t0, $zero, 44
+// Push to stack from constant (176)
+addi $t0, $zero, 176
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12044,62 +11984,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (72)
-addi $t0, $zero, 72
+// Push to stack from constant (288)
+addi $t0, $zero, 288
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12142,62 +12082,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (73)
-addi $t0, $zero, 73
+// Push to stack from constant (292)
+addi $t0, $zero, 292
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12240,62 +12180,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (74)
-addi $t0, $zero, 74
+// Push to stack from constant (296)
+addi $t0, $zero, 296
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (60)
-addi $t0, $zero, 60
+// Push to stack from constant (240)
+addi $t0, $zero, 240
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (14)
-addi $t0, $zero, 14
+// Push to stack from constant (56)
+addi $t0, $zero, 56
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12338,62 +12278,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (75)
-addi $t0, $zero, 75
+// Push to stack from constant (300)
+addi $t0, $zero, 300
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12436,62 +12376,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (76)
-addi $t0, $zero, 76
+// Push to stack from constant (304)
+addi $t0, $zero, 304
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (35)
-addi $t0, $zero, 35
+// Push to stack from constant (140)
+addi $t0, $zero, 140
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12534,62 +12474,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (77)
-addi $t0, $zero, 77
+// Push to stack from constant (308)
+addi $t0, $zero, 308
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (33)
-addi $t0, $zero, 33
+// Push to stack from constant (132)
+addi $t0, $zero, 132
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12632,62 +12572,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (78)
-addi $t0, $zero, 78
+// Push to stack from constant (312)
+addi $t0, $zero, 312
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (55)
-addi $t0, $zero, 55
+// Push to stack from constant (220)
+addi $t0, $zero, 220
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (55)
-addi $t0, $zero, 55
+// Push to stack from constant (220)
+addi $t0, $zero, 220
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (59)
-addi $t0, $zero, 59
+// Push to stack from constant (236)
+addi $t0, $zero, 236
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (59)
-addi $t0, $zero, 59
+// Push to stack from constant (236)
+addi $t0, $zero, 236
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12730,62 +12670,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (79)
-addi $t0, $zero, 79
+// Push to stack from constant (316)
+addi $t0, $zero, 316
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12828,62 +12768,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (80)
-addi $t0, $zero, 80
+// Push to stack from constant (320)
+addi $t0, $zero, 320
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (31)
-addi $t0, $zero, 31
+// Push to stack from constant (124)
+addi $t0, $zero, 124
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (31)
-addi $t0, $zero, 31
+// Push to stack from constant (124)
+addi $t0, $zero, 124
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12926,68 +12866,68 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (81)
-addi $t0, $zero, 81
+// Push to stack from constant (324)
+addi $t0, $zero, 324
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (59)
-addi $t0, $zero, 59
+// Push to stack from constant (236)
+addi $t0, $zero, 236
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13024,62 +12964,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (82)
-addi $t0, $zero, 82
+// Push to stack from constant (328)
+addi $t0, $zero, 328
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (31)
-addi $t0, $zero, 31
+// Push to stack from constant (124)
+addi $t0, $zero, 124
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (31)
-addi $t0, $zero, 31
+// Push to stack from constant (124)
+addi $t0, $zero, 124
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13122,62 +13062,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (83)
-addi $t0, $zero, 83
+// Push to stack from constant (332)
+addi $t0, $zero, 332
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (28)
-addi $t0, $zero, 28
+// Push to stack from constant (112)
+addi $t0, $zero, 112
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13220,62 +13160,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (84)
-addi $t0, $zero, 84
+// Push to stack from constant (336)
+addi $t0, $zero, 336
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (45)
-addi $t0, $zero, 45
+// Push to stack from constant (180)
+addi $t0, $zero, 180
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13318,62 +13258,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (85)
-addi $t0, $zero, 85
+// Push to stack from constant (340)
+addi $t0, $zero, 340
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13416,62 +13356,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (86)
-addi $t0, $zero, 86
+// Push to stack from constant (344)
+addi $t0, $zero, 344
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13514,62 +13454,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (87)
-addi $t0, $zero, 87
+// Push to stack from constant (348)
+addi $t0, $zero, 348
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (18)
-addi $t0, $zero, 18
+// Push to stack from constant (72)
+addi $t0, $zero, 72
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13612,62 +13552,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (88)
-addi $t0, $zero, 88
+// Push to stack from constant (352)
+addi $t0, $zero, 352
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13710,62 +13650,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (89)
-addi $t0, $zero, 89
+// Push to stack from constant (356)
+addi $t0, $zero, 356
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13808,26 +13748,38 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (90)
-addi $t0, $zero, 90
+// Push to stack from constant (360)
+addi $t0, $zero, 360
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (49)
-addi $t0, $zero, 49
+// Push to stack from constant (196)
+addi $t0, $zero, 196
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13838,32 +13790,20 @@ addi $t0, $zero, 24
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (140)
+addi $t0, $zero, 140
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (35)
-addi $t0, $zero, 35
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (51)
-addi $t0, $zero, 51
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13906,62 +13846,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (91)
-addi $t0, $zero, 91
+// Push to stack from constant (364)
+addi $t0, $zero, 364
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14004,8 +13944,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (92)
-addi $t0, $zero, 92
+// Push to stack from constant (368)
+addi $t0, $zero, 368
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14022,20 +13962,8 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (3)
-addi $t0, $zero, 3
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14058,8 +13986,20 @@ addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (96)
+addi $t0, $zero, 96
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (192)
+addi $t0, $zero, 192
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14102,62 +14042,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (93)
-addi $t0, $zero, 93
+// Push to stack from constant (372)
+addi $t0, $zero, 372
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14200,26 +14140,26 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (94)
-addi $t0, $zero, 94
+// Push to stack from constant (376)
+addi $t0, $zero, 376
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (8)
-addi $t0, $zero, 8
+// Push to stack from constant (32)
+addi $t0, $zero, 32
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (28)
-addi $t0, $zero, 28
+// Push to stack from constant (112)
+addi $t0, $zero, 112
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14298,8 +14238,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (95)
-addi $t0, $zero, 95
+// Push to stack from constant (380)
+addi $t0, $zero, 380
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14358,8 +14298,8 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14396,26 +14336,26 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (96)
-addi $t0, $zero, 96
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (384)
+addi $t0, $zero, 384
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Push to stack from constant (24)
 addi $t0, $zero, 24
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14494,8 +14434,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (97)
-addi $t0, $zero, 97
+// Push to stack from constant (388)
+addi $t0, $zero, 388
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14518,38 +14458,38 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (14)
-addi $t0, $zero, 14
+// Push to stack from constant (56)
+addi $t0, $zero, 56
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14592,62 +14532,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (98)
-addi $t0, $zero, 98
+// Push to stack from constant (392)
+addi $t0, $zero, 392
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14690,8 +14630,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (99)
-addi $t0, $zero, 99
+// Push to stack from constant (396)
+addi $t0, $zero, 396
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14714,38 +14654,38 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14788,62 +14728,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (100)
-addi $t0, $zero, 100
+// Push to stack from constant (400)
+addi $t0, $zero, 400
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (60)
-addi $t0, $zero, 60
+// Push to stack from constant (240)
+addi $t0, $zero, 240
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14886,8 +14826,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (101)
-addi $t0, $zero, 101
+// Push to stack from constant (404)
+addi $t0, $zero, 404
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14910,38 +14850,38 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14984,62 +14924,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (102)
-addi $t0, $zero, 102
+// Push to stack from constant (408)
+addi $t0, $zero, 408
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (28)
-addi $t0, $zero, 28
+// Push to stack from constant (112)
+addi $t0, $zero, 112
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (38)
-addi $t0, $zero, 38
+// Push to stack from constant (152)
+addi $t0, $zero, 152
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15082,8 +15022,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (103)
-addi $t0, $zero, 103
+// Push to stack from constant (412)
+addi $t0, $zero, 412
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15100,50 +15040,50 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (62)
-addi $t0, $zero, 62
+// Push to stack from constant (248)
+addi $t0, $zero, 248
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15180,62 +15120,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (104)
-addi $t0, $zero, 104
+// Push to stack from constant (416)
+addi $t0, $zero, 416
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (55)
-addi $t0, $zero, 55
+// Push to stack from constant (220)
+addi $t0, $zero, 220
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15278,20 +15218,20 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (105)
-addi $t0, $zero, 105
+// Push to stack from constant (420)
+addi $t0, $zero, 420
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15302,38 +15242,38 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (14)
-addi $t0, $zero, 14
+// Push to stack from constant (56)
+addi $t0, $zero, 56
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15376,20 +15316,20 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (106)
-addi $t0, $zero, 106
+// Push to stack from constant (424)
+addi $t0, $zero, 424
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15400,44 +15340,44 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (56)
-addi $t0, $zero, 56
+// Push to stack from constant (224)
+addi $t0, $zero, 224
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15474,62 +15414,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (107)
-addi $t0, $zero, 107
+// Push to stack from constant (428)
+addi $t0, $zero, 428
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15572,62 +15512,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (108)
-addi $t0, $zero, 108
+// Push to stack from constant (432)
+addi $t0, $zero, 432
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (14)
-addi $t0, $zero, 14
+// Push to stack from constant (56)
+addi $t0, $zero, 56
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15670,8 +15610,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (109)
-addi $t0, $zero, 109
+// Push to stack from constant (436)
+addi $t0, $zero, 436
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15694,38 +15634,38 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (29)
-addi $t0, $zero, 29
+// Push to stack from constant (116)
+addi $t0, $zero, 116
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (43)
-addi $t0, $zero, 43
+// Push to stack from constant (172)
+addi $t0, $zero, 172
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (43)
-addi $t0, $zero, 43
+// Push to stack from constant (172)
+addi $t0, $zero, 172
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (43)
-addi $t0, $zero, 43
+// Push to stack from constant (172)
+addi $t0, $zero, 172
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (43)
-addi $t0, $zero, 43
+// Push to stack from constant (172)
+addi $t0, $zero, 172
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15768,8 +15708,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (110)
-addi $t0, $zero, 110
+// Push to stack from constant (440)
+addi $t0, $zero, 440
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15792,38 +15732,38 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (29)
-addi $t0, $zero, 29
+// Push to stack from constant (116)
+addi $t0, $zero, 116
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15866,8 +15806,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (111)
-addi $t0, $zero, 111
+// Push to stack from constant (444)
+addi $t0, $zero, 444
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15890,38 +15830,38 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15964,8 +15904,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (112)
-addi $t0, $zero, 112
+// Push to stack from constant (448)
+addi $t0, $zero, 448
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15988,44 +15928,44 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (31)
-addi $t0, $zero, 31
+// Push to stack from constant (124)
+addi $t0, $zero, 124
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16062,8 +16002,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (113)
-addi $t0, $zero, 113
+// Push to stack from constant (452)
+addi $t0, $zero, 452
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16086,44 +16026,44 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (62)
-addi $t0, $zero, 62
+// Push to stack from constant (248)
+addi $t0, $zero, 248
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16160,8 +16100,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (114)
-addi $t0, $zero, 114
+// Push to stack from constant (456)
+addi $t0, $zero, 456
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16184,38 +16124,38 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (29)
-addi $t0, $zero, 29
+// Push to stack from constant (116)
+addi $t0, $zero, 116
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (55)
-addi $t0, $zero, 55
+// Push to stack from constant (220)
+addi $t0, $zero, 220
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (7)
-addi $t0, $zero, 7
+// Push to stack from constant (28)
+addi $t0, $zero, 28
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16258,8 +16198,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (115)
-addi $t0, $zero, 115
+// Push to stack from constant (460)
+addi $t0, $zero, 460
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16282,20 +16222,14 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16306,14 +16240,20 @@ addi $t0, $zero, 24
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (204)
+addi $t0, $zero, 204
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16356,62 +16296,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (116)
-addi $t0, $zero, 116
+// Push to stack from constant (464)
+addi $t0, $zero, 464
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (4)
-addi $t0, $zero, 4
+// Push to stack from constant (16)
+addi $t0, $zero, 16
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (28)
-addi $t0, $zero, 28
+// Push to stack from constant (112)
+addi $t0, $zero, 112
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16454,8 +16394,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (117)
-addi $t0, $zero, 117
+// Push to stack from constant (468)
+addi $t0, $zero, 468
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16478,38 +16418,38 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (54)
-addi $t0, $zero, 54
+// Push to stack from constant (216)
+addi $t0, $zero, 216
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16552,8 +16492,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (118)
-addi $t0, $zero, 118
+// Push to stack from constant (472)
+addi $t0, $zero, 472
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16576,38 +16516,38 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (30)
-addi $t0, $zero, 30
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16650,8 +16590,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (119)
-addi $t0, $zero, 119
+// Push to stack from constant (476)
+addi $t0, $zero, 476
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16674,38 +16614,38 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (18)
-addi $t0, $zero, 18
+// Push to stack from constant (72)
+addi $t0, $zero, 72
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16748,62 +16688,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
+// Push to stack from constant (480)
+addi $t0, $zero, 480
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (204)
+addi $t0, $zero, 204
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
 // Push to stack from constant (120)
 addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (0)
-addi $t0, $zero, 0
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (0)
-addi $t0, $zero, 0
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (0)
-addi $t0, $zero, 0
+// Push to stack from constant (120)
+addi $t0, $zero, 120
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (30)
-addi $t0, $zero, 30
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (12)
-addi $t0, $zero, 12
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (30)
-addi $t0, $zero, 30
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16846,8 +16786,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (121)
-addi $t0, $zero, 121
+// Push to stack from constant (484)
+addi $t0, $zero, 484
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16870,44 +16810,44 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (62)
-addi $t0, $zero, 62
+// Push to stack from constant (248)
+addi $t0, $zero, 248
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (24)
-addi $t0, $zero, 24
+// Push to stack from constant (96)
+addi $t0, $zero, 96
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16944,8 +16884,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (122)
-addi $t0, $zero, 122
+// Push to stack from constant (488)
+addi $t0, $zero, 488
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16968,38 +16908,38 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (27)
-addi $t0, $zero, 27
+// Push to stack from constant (108)
+addi $t0, $zero, 108
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (6)
-addi $t0, $zero, 6
+// Push to stack from constant (24)
+addi $t0, $zero, 24
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (51)
-addi $t0, $zero, 51
+// Push to stack from constant (204)
+addi $t0, $zero, 204
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17042,62 +16982,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (123)
-addi $t0, $zero, 123
+// Push to stack from constant (492)
+addi $t0, $zero, 492
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (56)
-addi $t0, $zero, 56
+// Push to stack from constant (224)
+addi $t0, $zero, 224
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (7)
-addi $t0, $zero, 7
+// Push to stack from constant (28)
+addi $t0, $zero, 28
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (56)
-addi $t0, $zero, 56
+// Push to stack from constant (224)
+addi $t0, $zero, 224
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17140,62 +17080,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (124)
-addi $t0, $zero, 124
+// Push to stack from constant (496)
+addi $t0, $zero, 496
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17238,62 +17178,62 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (125)
-addi $t0, $zero, 125
+// Push to stack from constant (500)
+addi $t0, $zero, 500
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (7)
-addi $t0, $zero, 7
+// Push to stack from constant (28)
+addi $t0, $zero, 28
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (56)
-addi $t0, $zero, 56
+// Push to stack from constant (224)
+addi $t0, $zero, 224
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (12)
-addi $t0, $zero, 12
+// Push to stack from constant (48)
+addi $t0, $zero, 48
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (7)
-addi $t0, $zero, 7
+// Push to stack from constant (28)
+addi $t0, $zero, 28
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17336,26 +17276,26 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (126)
-addi $t0, $zero, 126
+// Push to stack from constant (504)
+addi $t0, $zero, 504
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (38)
-addi $t0, $zero, 38
+// Push to stack from constant (152)
+addi $t0, $zero, 152
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (45)
-addi $t0, $zero, 45
+// Push to stack from constant (180)
+addi $t0, $zero, 180
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (25)
-addi $t0, $zero, 25
+// Push to stack from constant (100)
+addi $t0, $zero, 100
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17440,26 +17380,26 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.create:
 sw $zero, 0($sp)
 addi $sp, $sp, 4
-// Push to stack from constant (11)
-addi $t0, $zero, 11
+// Push to stack from constant (44)
+addi $t0, $zero, 44
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17522,11 +17462,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -17534,8 +17473,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17566,11 +17505,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -17578,140 +17516,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from argument (2)
-lw $t0, 2($arg)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (0)
-lw $t0, 0($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (1)
-addi $t0, $zero, 1
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from argument (3)
-lw $t0, 3($arg)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (0)
-lw $t0, 0($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (2)
-addi $t0, $zero, 2
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from argument (4)
-lw $t0, 4($arg)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (0)
-lw $t0, 0($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (3)
-addi $t0, $zero, 3
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from argument (5)
-lw $t0, 5($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17742,11 +17548,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -17754,140 +17559,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from argument (6)
-lw $t0, 6($arg)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (0)
-lw $t0, 0($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (5)
-addi $t0, $zero, 5
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from argument (7)
-lw $t0, 7($arg)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (0)
-lw $t0, 0($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (6)
-addi $t0, $zero, 6
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from argument (8)
-lw $t0, 8($arg)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (0)
-lw $t0, 0($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (7)
-addi $t0, $zero, 7
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($that)
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($that)
-
-// Push to stack from argument (9)
-lw $t0, 9($arg)
+// Push to stack from argument (12)
+lw $t0, 12($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17918,11 +17591,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -17930,8 +17602,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from argument (10)
-lw $t0, 10($arg)
+// Push to stack from argument (16)
+lw $t0, 16($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17942,8 +17614,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (9)
-addi $t0, $zero, 9
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17962,11 +17634,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -17974,8 +17645,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($that)
 
-// Push to stack from argument (11)
-lw $t0, 11($arg)
+// Push to stack from argument (20)
+lw $t0, 20($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17986,8 +17657,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (10)
-addi $t0, $zero, 10
+// Push to stack from constant (16)
+addi $t0, $zero, 16
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18006,11 +17677,268 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from argument (24)
+lw $t0, 24($arg)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (20)
+addi $t0, $zero, 20
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from argument (28)
+lw $t0, 28($arg)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (24)
+addi $t0, $zero, 24
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from argument (32)
+lw $t0, 32($arg)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (28)
+addi $t0, $zero, 28
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from argument (36)
+lw $t0, 36($arg)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (32)
+addi $t0, $zero, 32
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from argument (40)
+lw $t0, 40($arg)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (36)
+addi $t0, $zero, 36
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($that)
+
+// Push to stack from argument (44)
+lw $t0, 44($arg)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (40)
+addi $t0, $zero, 40
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -18024,19 +17952,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.getMap:
@@ -18046,8 +17974,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18072,8 +18000,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (126)
-addi $t0, $zero, 126
+// Push to stack from constant (504)
+addi $t0, $zero, 504
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18154,11 +18082,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -18166,33 +18093,33 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.moveCursor:
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (1)
+// Pop from stack to static (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Output.1
+sw $t0, Output.4
 
 // Push to stack from argument (0)
 lw $t0, 0($arg)
@@ -18200,11 +18127,11 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (2)
+// Pop from stack to static (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Output.2
+sw $t0, Output.8
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -18212,19 +18139,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.printChar:
@@ -18270,14 +18197,14 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-// Push to stack from static (2)
-lw $t0, Output.2
+// Push to stack from static (8)
+lw $t0, Output.8
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18302,8 +18229,8 @@ add $lcl, $zero, $sp
 jal $ra, Math.multiply
 
 Math.multiply$ret.181:
-// Push to stack from constant (11)
-addi $t0, $zero, 11
+// Push to stack from constant (44)
+addi $t0, $zero, 44
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18328,14 +18255,14 @@ add $lcl, $zero, $sp
 jal $ra, Math.multiply
 
 Math.multiply$ret.182:
-// Push to stack from static (1)
-lw $t0, Output.1
+// Push to stack from static (4)
+lw $t0, Output.4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (2)
-addi $t0, $zero, 2
+// Push to stack from constant (8)
+addi $t0, $zero, 8
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18374,20 +18301,20 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
-// Push to stack from static (1)
-lw $t0, Output.1
+// Push to stack from static (4)
+lw $t0, Output.4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18406,11 +18333,11 @@ and $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -18418,21 +18345,21 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (4)
+// Pop from stack to local (16)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 4($lcl)
+sw $t0, 16($lcl)
 
 WHILE_1:
-// Push to stack from local (4)
-lw $t0, 4($lcl)
+// Push to stack from local (16)
+lw $t0, 16($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (11)
-addi $t0, $zero, 11
+// Push to stack from constant (44)
+addi $t0, $zero, 44
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18475,8 +18402,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (4)
-lw $t0, 4($lcl)
+// Push to stack from local (16)
+lw $t0, 16($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18495,11 +18422,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -18507,20 +18433,20 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (3)
+// Pop from stack to local (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 3($lcl)
+sw $t0, 12($lcl)
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18550,14 +18476,14 @@ lui $t0, IF_2
 addi $t0, $t0, IF_2
 jalr $ra, $t0, 0
 LOOP_EXIT_29:
-// Push to stack from static (3)
-lw $t0, Output.3
+// Push to stack from static (12)
+lw $t0, Output.12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18576,11 +18502,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -18588,8 +18513,8 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (255)
-addi $t0, $zero, 255
+// Push to stack from constant (1020)
+addi $t0, $zero, 1020
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18608,8 +18533,8 @@ and $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18628,14 +18553,14 @@ or $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (3)
-lw $t0, Output.3
+// Push to stack from static (12)
+lw $t0, Output.12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18654,11 +18579,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -18668,14 +18592,14 @@ sw $t0, 0($that)
 
 jal $ra, ENDIF_2
 IF_2:
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (256)
-addi $t0, $zero, 256
+// Push to stack from constant (1024)
+addi $t0, $zero, 1024
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18700,20 +18624,20 @@ add $lcl, $zero, $sp
 jal $ra, Math.multiply
 
 Math.multiply$ret.184:
-// Pop from stack to local (3)
+// Pop from stack to local (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 3($lcl)
+sw $t0, 12($lcl)
 
-// Push to stack from static (3)
-lw $t0, Output.3
+// Push to stack from static (12)
+lw $t0, Output.12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18732,11 +18656,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -18744,8 +18667,8 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18760,8 +18683,8 @@ sub $t0, $zero, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (255)
-addi $t0, $zero, 255
+// Push to stack from constant (1020)
+addi $t0, $zero, 1020
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18794,8 +18717,8 @@ and $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18814,14 +18737,14 @@ or $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (3)
-lw $t0, Output.3
+// Push to stack from static (12)
+lw $t0, Output.12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18840,11 +18763,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -18853,46 +18775,14 @@ lw $t0, 0($sp)
 sw $t0, 0($that)
 
 ENDIF_2:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (32)
-addi $t0, $zero, 32
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to local (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 1($lcl)
-
 // Push to stack from local (4)
 lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18917,16 +18807,48 @@ lw $t0, 0($sp)
 
 sw $t0, 4($lcl)
 
-jal $ra, WHILE_1
-END_WHILE_1:
-// Push to stack from static (1)
-lw $t0, Output.1
+// Push to stack from local (16)
+lw $t0, 16($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (4)
+addi $t0, $zero, 4
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (16)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 16($lcl)
+
+jal $ra, WHILE_1
+END_WHILE_1:
+// Push to stack from static (4)
+lw $t0, Output.4
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18956,20 +18878,20 @@ lui $t0, IF_3
 addi $t0, $t0, IF_3
 jalr $ra, $t0, 0
 LOOP_EXIT_30:
-// Push to stack from static (2)
-lw $t0, Output.2
+// Push to stack from static (8)
+lw $t0, Output.8
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (1)
-lw $t0, Output.1
+// Push to stack from static (4)
+lw $t0, Output.4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19049,19 +18971,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.printString:
@@ -19208,8 +19130,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19242,26 +19164,26 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.printInt:
 sw $zero, 0($sp)
 addi $sp, $sp, 4
-// Push to stack from constant (10)
-addi $t0, $zero, 10
+// Push to stack from constant (40)
+addi $t0, $zero, 40
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19400,30 +19322,30 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.println:
-// Push to stack from static (2)
-lw $t0, Output.2
+// Push to stack from static (8)
+lw $t0, Output.8
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (22)
-addi $t0, $zero, 22
+// Push to stack from constant (88)
+addi $t0, $zero, 88
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19489,14 +19411,14 @@ sw $t0, 0($temp)
 
 jal $ra, ENDIF_5
 IF_5:
-// Push to stack from static (2)
-lw $t0, Output.2
+// Push to stack from static (8)
+lw $t0, Output.8
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19554,24 +19476,24 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Output.backSpace:
-// Push to stack from static (1)
-lw $t0, Output.1
+// Push to stack from static (4)
+lw $t0, Output.4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19607,20 +19529,20 @@ lui $t0, IF_6
 addi $t0, $t0, IF_6
 jalr $ra, $t0, 0
 LOOP_EXIT_33:
-// Push to stack from static (2)
-lw $t0, Output.2
+// Push to stack from static (8)
+lw $t0, Output.8
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (1)
-lw $t0, Output.1
+// Push to stack from static (4)
+lw $t0, Output.4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19667,8 +19589,8 @@ sw $t0, 0($temp)
 
 jal $ra, ENDIF_6
 IF_6:
-// Push to stack from static (2)
-lw $t0, Output.2
+// Push to stack from static (8)
+lw $t0, Output.8
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19717,14 +19639,14 @@ jalr $ra, $t0, 0
 LOOP_EXIT_34:
 jal $ra, ENDIF_7
 IF_7:
-// Push to stack from static (2)
-lw $t0, Output.2
+// Push to stack from static (8)
+lw $t0, Output.8
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19743,8 +19665,8 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (63)
-addi $t0, $zero, 63
+// Push to stack from constant (252)
+addi $t0, $zero, 252
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19783,19 +19705,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -19803,8 +19725,8 @@ jalr $ra, $ra, 0
 // ====================================
 
 Screen.init:
-// Push to stack from constant (16384)
-lui $t0, 16384
+// Push to stack from constant (65536)
+lui $t0, 65536
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19815,8 +19737,8 @@ lw $t0, 0($sp)
 
 sw $t0, Screen.0
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19831,11 +19753,11 @@ sub $t0, $zero, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (1)
+// Pop from stack to static (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Screen.1
+sw $t0, Screen.4
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -19843,19 +19765,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.clearScreen:
@@ -19880,8 +19802,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (8192)
-lui $t0, 8192
+// Push to stack from constant (32768)
+lui $t0, 32768
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19950,11 +19872,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -19970,19 +19891,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.setColor:
@@ -19992,11 +19913,11 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (1)
+// Pop from stack to static (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Screen.1
+sw $t0, Screen.4
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -20004,19 +19925,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.drawPixel:
@@ -20024,14 +19945,14 @@ sw $zero, 0($sp)
 addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (32)
-addi $t0, $zero, 32
+// Push to stack from constant (128)
+addi $t0, $zero, 128
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20062,8 +19983,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (16)
-addi $t0, $zero, 16
+// Push to stack from constant (64)
+addi $t0, $zero, 64
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20114,8 +20035,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (15)
-addi $t0, $zero, 15
+// Push to stack from constant (60)
+addi $t0, $zero, 60
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20154,14 +20075,14 @@ add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
 
 Math.twoToThe$ret.200:
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
-// Push to stack from static (1)
-lw $t0, Screen.1
+// Push to stack from static (4)
+lw $t0, Screen.4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20199,11 +20120,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -20211,8 +20131,8 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20268,11 +20188,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -20308,11 +20227,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -20320,8 +20238,8 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20366,11 +20284,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -20385,19 +20302,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.drawLine:
@@ -20419,8 +20336,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20454,14 +20371,14 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (4)
+// Pop from stack to local (16)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 4($lcl)
+sw $t0, 16($lcl)
 
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20472,57 +20389,57 @@ lw $t0, 0($sp)
 
 sw $t0, 0($arg)
 
-// Push to stack from local (4)
-lw $t0, 4($lcl)
+// Push to stack from local (16)
+lw $t0, 16($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to argument (2)
+// Pop from stack to argument (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($arg)
+sw $t0, 8($arg)
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (4)
+// Pop from stack to local (16)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 4($lcl)
+sw $t0, 16($lcl)
 
-// Push to stack from argument (3)
-lw $t0, 3($arg)
+// Push to stack from argument (12)
+lw $t0, 12($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to argument (1)
+// Pop from stack to argument (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($arg)
+sw $t0, 4($arg)
 
-// Push to stack from local (4)
-lw $t0, 4($lcl)
+// Push to stack from local (16)
+lw $t0, 16($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to argument (3)
+// Pop from stack to argument (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 3($arg)
+sw $t0, 12($arg)
 
 ENDIF_2:
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20553,14 +20470,14 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-// Push to stack from argument (3)
-lw $t0, 3($arg)
+// Push to stack from argument (12)
+lw $t0, 12($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20579,11 +20496,11 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -20591,11 +20508,11 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -20603,14 +20520,14 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (3)
+// Pop from stack to local (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 3($lcl)
+sw $t0, 12($lcl)
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20689,20 +20606,20 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (5)
+// Pop from stack to local (20)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 5($lcl)
+sw $t0, 20($lcl)
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (3)
-lw $t0, 3($arg)
+// Push to stack from argument (12)
+lw $t0, 12($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20729,8 +20646,8 @@ addi $t0, $t0, IF_5
 jalr $ra, $t0, 0
 LOOP_EXIT_40:
 WHILE_6:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20766,14 +20683,14 @@ addi $t0, $t0, -1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20841,8 +20758,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20861,14 +20778,14 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20913,8 +20830,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from local (5)
-lw $t0, 5($lcl)
+// Push to stack from local (20)
+lw $t0, 20($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -20946,46 +20863,14 @@ lui $t0, IF_7
 addi $t0, $t0, IF_7
 jalr $ra, $t0, 0
 LOOP_EXIT_42:
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to local (3)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 3($lcl)
-
-// Push to stack from local (5)
-lw $t0, 5($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21004,22 +20889,54 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (5)
+// Pop from stack to local (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 5($lcl)
+sw $t0, 12($lcl)
+
+// Push to stack from local (20)
+lw $t0, 20($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (4)
+lw $t0, 4($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (20)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 20($lcl)
 
 jal $ra, ENDIF_7
 IF_7:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21038,14 +20955,14 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
-// Push to stack from local (5)
-lw $t0, 5($lcl)
+// Push to stack from local (20)
+lw $t0, 20($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21070,11 +20987,11 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (5)
+// Pop from stack to local (20)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 5($lcl)
+sw $t0, 20($lcl)
 
 ENDIF_7:
 jal $ra, WHILE_6
@@ -21087,11 +21004,11 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -21099,15 +21016,15 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (3)
+// Pop from stack to local (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 3($lcl)
+sw $t0, 12($lcl)
 
 WHILE_8:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21143,14 +21060,14 @@ addi $t0, $t0, -1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21218,8 +21135,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21238,14 +21155,14 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21290,8 +21207,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from local (5)
-lw $t0, 5($lcl)
+// Push to stack from local (20)
+lw $t0, 20($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21323,46 +21240,14 @@ lui $t0, IF_9
 addi $t0, $t0, IF_9
 jalr $ra, $t0, 0
 LOOP_EXIT_44:
-// Push to stack from local (3)
-lw $t0, 3($lcl)
+// Push to stack from local (12)
+lw $t0, 12($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t0, $t1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to local (3)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 3($lcl)
-
-// Push to stack from local (5)
-lw $t0, 5($lcl)
-
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21381,22 +21266,54 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (5)
+// Pop from stack to local (12)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 5($lcl)
+sw $t0, 12($lcl)
+
+// Push to stack from local (20)
+lw $t0, 20($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (4)
+lw $t0, 4($lcl)
+
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (20)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 20($lcl)
 
 jal $ra, ENDIF_9
 IF_9:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21415,14 +21332,14 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
-// Push to stack from local (5)
-lw $t0, 5($lcl)
+// Push to stack from local (20)
+lw $t0, 20($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21447,11 +21364,11 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (5)
+// Pop from stack to local (20)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 5($lcl)
+sw $t0, 20($lcl)
 
 ENDIF_9:
 jal $ra, WHILE_8
@@ -21465,14 +21382,14 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (3)
-lw $t0, 3($arg)
+// Push to stack from argument (12)
+lw $t0, 12($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21512,14 +21429,14 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21557,19 +21474,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.drawHLine:
@@ -21581,8 +21498,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21622,8 +21539,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21640,16 +21557,16 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to argument (1)
+// Pop from stack to argument (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($arg)
+sw $t0, 4($arg)
 
 ENDIF_10:
 WHILE_11:
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21709,8 +21626,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21747,8 +21664,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21781,32 +21698,32 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.drawVLine:
 sw $zero, 0($sp)
 addi $sp, $sp, 4
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21834,8 +21751,8 @@ jalr $ra, $t0, 0
 LOOP_EXIT_47:
 jal $ra, ENDIF_12
 IF_12:
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21846,17 +21763,17 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to argument (1)
+// Pop from stack to argument (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($arg)
+sw $t0, 4($arg)
 
 // Push to stack from local (0)
 lw $t0, 0($lcl)
@@ -21864,22 +21781,22 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to argument (2)
+// Pop from stack to argument (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($arg)
+sw $t0, 8($arg)
 
 ENDIF_12:
 WHILE_13:
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21933,8 +21850,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21965,14 +21882,14 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -21991,11 +21908,11 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to argument (1)
+// Pop from stack to argument (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($arg)
+sw $t0, 4($arg)
 
 jal $ra, WHILE_13
 END_WHILE_13:
@@ -22005,31 +21922,31 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.drawRectangle:
 WHILE_14:
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (3)
-lw $t0, 3($arg)
+// Push to stack from argument (12)
+lw $t0, 12($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22083,14 +22000,14 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22121,14 +22038,14 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22147,11 +22064,11 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to argument (1)
+// Pop from stack to argument (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($arg)
+sw $t0, 4($arg)
 
 jal $ra, WHILE_14
 END_WHILE_14:
@@ -22161,19 +22078,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Screen.drawCircle:
@@ -22183,8 +22100,8 @@ sw $zero, 0($sp)
 addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22199,20 +22116,20 @@ sub $t0, $zero, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22237,21 +22154,21 @@ add $lcl, $zero, $sp
 jal $ra, Math.multiply
 
 Math.multiply$ret.208:
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
 WHILE_15:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22299,20 +22216,20 @@ lui $t0, END_WHILE_15
 addi $t0, $t0, END_WHILE_15
 jalr $ra, $t0, 0
 LOOP_EXIT_50:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22429,14 +22346,14 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22481,14 +22398,14 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22507,11 +22424,11 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 jal $ra, WHILE_15
 END_WHILE_15:
@@ -22521,19 +22438,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -22541,8 +22458,8 @@ jalr $ra, $ra, 0
 // ====================================
 
 String.new:
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22612,8 +22529,8 @@ jalr $ra, $t0, 0
 LOOP_EXIT_51:
 jal $ra, ENDIF_0
 IF_0:
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22643,11 +22560,11 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to this (1)
+// Pop from stack to this (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($this)
+sw $t0, 4($this)
 
 // Push to stack from argument (0)
 lw $t0, 0($arg)
@@ -22675,11 +22592,11 @@ add $lcl, $zero, $sp
 jal $ra, Array.new
 
 Array.new$ret.213:
-// Pop from stack to this (2)
+// Pop from stack to this (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($this)
+sw $t0, 8($this)
 
 // Push to stack from pointer (0)
 lw $t0, 0($this)
@@ -22687,19 +22604,19 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.dispose:
@@ -22715,8 +22632,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($this)
 
-// Push to stack from this (2)
-lw $t0, 2($this)
+// Push to stack from this (8)
+lw $t0, 8($this)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22753,19 +22670,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.length:
@@ -22787,19 +22704,19 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.charAt:
@@ -22815,14 +22732,14 @@ lw $t0, 0($sp)
 
 sw $t0, 0($this)
 
-// Push to stack from this (2)
-lw $t0, 2($this)
+// Push to stack from this (8)
+lw $t0, 8($this)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22841,11 +22758,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -22853,19 +22769,19 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.setCharAt:
@@ -22881,20 +22797,20 @@ lw $t0, 0($sp)
 
 sw $t0, 0($this)
 
-// Push to stack from argument (2)
-lw $t0, 2($arg)
+// Push to stack from argument (8)
+lw $t0, 8($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from this (2)
-lw $t0, 2($this)
+// Push to stack from this (8)
+lw $t0, 8($this)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22913,11 +22829,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -22931,19 +22846,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.appendChar:
@@ -22965,8 +22880,8 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from this (1)
-lw $t0, 1($this)
+// Push to stack from this (4)
+lw $t0, 4($this)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -22994,14 +22909,14 @@ jalr $ra, $t0, 0
 LOOP_EXIT_52:
 jal $ra, ENDIF_1
 IF_1:
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from this (2)
-lw $t0, 2($this)
+// Push to stack from this (8)
+lw $t0, 8($this)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23026,11 +22941,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -23044,8 +22958,8 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23077,19 +22991,19 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.eraseLastChar:
@@ -23146,8 +23060,8 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23179,19 +23093,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.intValue:
@@ -23251,8 +23165,8 @@ slt $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from this (2)
-lw $t0, 2($this)
+// Push to stack from this (8)
+lw $t0, 8($this)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23277,11 +23191,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -23289,8 +23202,8 @@ lw $t0, 0($that)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (45)
-addi $t0, $zero, 45
+// Push to stack from constant (180)
+addi $t0, $zero, 180
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23340,11 +23253,11 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -23352,16 +23265,16 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 jal $ra, ENDIF_3
 IF_3:
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23376,28 +23289,28 @@ sub $t0, $zero, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 2($lcl)
+sw $t0, 8($lcl)
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 ENDIF_3:
 WHILE_4:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23422,14 +23335,14 @@ slt $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from this (2)
-lw $t0, 2($this)
+// Push to stack from this (8)
+lw $t0, 8($this)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23448,11 +23361,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -23518,8 +23430,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (10)
-addi $t0, $zero, 10
+// Push to stack from constant (40)
+addi $t0, $zero, 40
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23544,14 +23456,14 @@ add $lcl, $zero, $sp
 jal $ra, Math.multiply
 
 Math.multiply$ret.216:
-// Push to stack from this (2)
-lw $t0, 2($this)
+// Push to stack from this (8)
+lw $t0, 8($this)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23570,11 +23482,10 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to pointer (1)
+// Pop from stack to pointer (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($that)
 
 // Push to stack from that (0)
 lw $t0, 0($that)
@@ -23622,14 +23533,14 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23648,16 +23559,16 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 jal $ra, WHILE_4
 END_WHILE_4:
-// Push to stack from local (2)
-lw $t0, 2($lcl)
+// Push to stack from local (8)
+lw $t0, 8($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23675,19 +23586,19 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 jal $ra, ENDIF_5
@@ -23708,19 +23619,19 @@ sub $t0, $zero, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 ENDIF_5:
@@ -23731,8 +23642,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23768,8 +23679,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (57)
-addi $t0, $zero, 57
+// Push to stack from constant (228)
+addi $t0, $zero, 228
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23813,19 +23724,19 @@ and $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.charToDigit:
@@ -23835,8 +23746,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23855,19 +23766,19 @@ sub $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.digitToChar:
@@ -23877,8 +23788,8 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (48)
-addi $t0, $zero, 48
+// Push to stack from constant (192)
+addi $t0, $zero, 192
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23897,19 +23808,19 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.setInt:
@@ -23937,8 +23848,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($this)
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23972,8 +23883,8 @@ jalr $ra, $t0, 0
 LOOP_EXIT_57:
 jal $ra, ENDIF_6
 IF_6:
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23988,11 +23899,11 @@ sub $t0, $zero, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to argument (1)
+// Pop from stack to argument (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($arg)
+sw $t0, 4($arg)
 
 // Push to stack from pointer (0)
 lw $t0, 0($this)
@@ -24000,8 +23911,8 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (45)
-addi $t0, $zero, 45
+// Push to stack from constant (180)
+addi $t0, $zero, 180
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24039,8 +23950,8 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24077,19 +23988,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.setIntHelper:
@@ -24107,14 +24018,14 @@ lw $t0, 0($sp)
 
 sw $t0, 0($this)
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (10)
-addi $t0, $zero, 10
+// Push to stack from constant (40)
+addi $t0, $zero, 40
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24140,14 +24051,14 @@ lui $t0, IF_7
 addi $t0, $t0, IF_7
 jalr $ra, $t0, 0
 LOOP_EXIT_58:
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (10)
-addi $t0, $zero, 10
+// Push to stack from constant (40)
+addi $t0, $zero, 40
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24222,8 +24133,8 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24234,8 +24145,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (10)
-addi $t0, $zero, 10
+// Push to stack from constant (40)
+addi $t0, $zero, 40
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24328,8 +24239,8 @@ lw $t0, 0($this)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 1($arg)
+// Push to stack from argument (4)
+lw $t0, 4($arg)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24387,85 +24298,85 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.newLine:
-// Push to stack from constant (128)
-addi $t0, $zero, 128
+// Push to stack from constant (512)
+addi $t0, $zero, 512
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.backSpace:
-// Push to stack from constant (129)
-addi $t0, $zero, 129
+// Push to stack from constant (516)
+addi $t0, $zero, 516
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 String.doubleQuote:
-// Push to stack from constant (34)
-addi $t0, $zero, 34
+// Push to stack from constant (136)
+addi $t0, $zero, 136
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 // ====================================
@@ -24661,25 +24572,25 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Sys.halt:
 WHILE_0:
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24720,19 +24631,19 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Sys.wait:
@@ -24803,21 +24714,21 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 WHILE_2:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (100)
-addi $t0, $zero, 100
+// Push to stack from constant (400)
+addi $t0, $zero, 400
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24854,14 +24765,14 @@ lui $t0, END_WHILE_2
 addi $t0, $t0, END_WHILE_2
 jalr $ra, $t0, 0
 LOOP_EXIT_61:
-// Push to stack from local (1)
-lw $t0, 1($lcl)
+// Push to stack from local (4)
+lw $t0, 4($lcl)
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24880,11 +24791,11 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (1)
+// Pop from stack to local (4)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 1($lcl)
+sw $t0, 4($lcl)
 
 jal $ra, WHILE_2
 END_WHILE_2:
@@ -24894,8 +24805,8 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (4)
+addi $t0, $zero, 4
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24928,24 +24839,24 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 Sys.error:
-// Push to stack from constant (3)
-addi $t0, $zero, 3
+// Push to stack from constant (12)
+addi $t0, $zero, 12
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24970,8 +24881,8 @@ add $lcl, $zero, $sp
 jal $ra, String.new
 
 String.new$ret.234:
-// Push to stack from constant (69)
-addi $t0, $zero, 69
+// Push to stack from constant (276)
+addi $t0, $zero, 276
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24996,8 +24907,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.235:
-// Push to stack from constant (114)
-addi $t0, $zero, 114
+// Push to stack from constant (456)
+addi $t0, $zero, 456
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -25022,8 +24933,8 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 String.appendChar$ret.236:
-// Push to stack from constant (114)
-addi $t0, $zero, 114
+// Push to stack from constant (456)
+addi $t0, $zero, 456
 
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -25138,18 +25049,18 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
 addi $sp, $sp, -4
 addi $t0, $sp, 0
 lw $t0, 0($t0)
 addi $t1, $arg, 0
 sw $t0, 0($t1)
 addi $sp, $arg, 4
-lw $that, -4($t0)
-lw $this, -8($t0)
-lw $arg, -12($t0)
-lw $lcl, -16($t0)
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
 
 jalr $ra, $ra, 0

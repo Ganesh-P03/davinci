@@ -4,7 +4,7 @@ module decoder_5x32 (addr,enable,out);
   output [31:0] out;
   wire [31:0] decoded_lines;
 
-  assign decoded_lines = (enable) ? (1 << (31 - addr)) : 32'b0;
+  assign decoded_lines = (enable) ? (1 << (addr)) : 32'b0;
   assign out = decoded_lines;
   
 endmodule

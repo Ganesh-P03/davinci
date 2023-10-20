@@ -89,7 +89,7 @@ parameter S13 = 4'b1101;
 // Define state outputs
 
 assign AddrSrc = (state == S3 || state == S5) ? 1'b1 : 1'b0;
-assign IRWrite = (state == S0) ? 1'b1 : 1'b0;
+assign IRWrite = (state == S0 || reset == 1'b1) ? 1'b1 : 1'b0;
 assign ALUSrcA = (state == S0) ? 2'b00 : 
                  (state == S2 || state == S6 || state == S8 || state == S10 || state == S11 || state == S12 || state == S13) ? 2'b10 : 
                  (state == S1 || state == S9) ? 2'b01 : ALUSrcA ;

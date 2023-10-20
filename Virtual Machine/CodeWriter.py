@@ -181,8 +181,10 @@ class CodeWriter:
     # Eq/Gt/Lt
     elif command == 'eq':
       self.write('slt $t2, $t0, $t1') # t2 = x < y
-      self.write('slt $t3, $t1, $t2') # t2 = y < x
+      self.write('slt $t3, $t1, $t0') # t3 = y < x
+      
       self.write('add $t0, $t2, $t3') # t0 = (x < y) + (y < x)
+      
       self.write('addi $t0, $t0, 1')  # t0 = (x < y) | (y < x) + 1
       self.write('andi $t0, $t0, 1')  # t0 = ((x < y) | (y < x) + 1) & 1
     elif command == 'gt':
@@ -206,22 +208,24 @@ class CodeWriter:
   def writePushPop(self, command: str, segment: str, index: int) -> None:
     parser = self.p
     command_type = parser.commandType()
+    index *= 4
     
     if command_type == 'C_PUSH':
-      self.writeMessage('Push to stack from ' + str(segment) + ' (' +str(index) + ')')
+      self.writeMessage('Push to stack from ' + str(segment) + ' (' +str(index//4) + ')')
       if segment == 'argument':
         self.write('lw $t0, ' + str(index) + '($arg)') # t0 = *(arg + index)
       elif segment == 'local':
         self.write('lw $t0, ' + str(index) + '($lcl)') # t0 = *(lcl + index)
       elif segment == 'this' or (segment == 'pointer' and index == 0):
         self.write('lw $t0, ' + str(index) + '($this)') # t0 = *(this + index)
-      elif segment == 'that' or (segment == 'pointer' and index == 1):
+      elif segment == 'that' or (segment == 'pointer' and index == 4):
         self.write('lw $t0, ' + str(index) + '($that)') # t0 = *(that + index)
       elif segment == 'temp':
         self.write('lw $t0, ' + str(index) + '($temp)') # t0 = *(temp + index)
       elif segment == 'static':
-        self.write('lw $t0, ' + str(self.__file_name) + '.' + str(index)) # t0 = *(filename.index)
+        self.write('lw $t0, ' + str(self.__file_name) + '.' + str(index//4)) # t0 = *(filename.index)
       elif segment == 'constant':
+        index = int(index//4)
         if index == 0:
           self.write('addi $t0, $zero, 0')
         else:
@@ -244,7 +248,7 @@ class CodeWriter:
     
     
     elif command_type == 'C_POP':
-      self.writeMessage('Pop from stack to ' + str(segment) + ' (' +str(index) + ')')
+      self.writeMessage('Pop from stack to ' + str(segment) + ' (' +str(index//4) + ')')
       
       self.write('addi $sp, $sp, -4') # SP = SP - 1
       self.write('lw $t0, 0($sp)')    # t0 = *SP (x)
@@ -256,12 +260,12 @@ class CodeWriter:
         self.write('sw $t0, ' + str(index) + '($lcl)') # t0 = *(lcl + index)
       elif segment == 'this' or (segment == 'pointer' and index == 0):
         self.write('sw $t0, ' + str(index) + '($this)') # t0 = *(this + index)
-      elif segment == 'that' or (segment == 'pointer' and index == 1):
+      elif segment == 'that' or (segment == 'pointer' and index == 4):
         self.write('sw $t0, ' + str(index) + '($that)') # t0 = *(that + index)
       elif segment == 'temp':
         self.write('sw $t0, ' + str(index) + '($temp)') # t0 = *(temp + index)
       elif segment == 'static':
-        self.write('sw $t0, ' + str(self.__file_name) + '.' + str(index)) # t0 = *(filename.index)
+        self.write('sw $t0, ' + str(self.__file_name) + '.' + str(index//4)) # t0 = *(filename.index)
       self.writeMessage('')
 
   
@@ -295,6 +299,7 @@ class CodeWriter:
     return_label = self.genReturnLabel(function_name)
     self.write('lui $t0, ' + str(return_label)) # t0 = return_label
     self.write('addi $t0, $t0, ' + str(return_label)) # t0 = return_label
+    
     self.write('sw $t0, 0($sp)')   # *SP = t0
     self.write('addi $sp, $sp, 4') # SP = SP + 1
     
@@ -336,26 +341,22 @@ class CodeWriter:
     # -2 : <THIS> : 3
     # -1 : <THAT> : 4
     
-    self.write('addi $t0, $zero, 20') # t0 = 20
-    self.write('sub $t0, $lcl, $t0') # t0 = (lcl - 5)
-    self.write('lw $ra, 0($t0)')   # $ra = RETURN ADDRESS
-    
-    #[TODO] Is this correct?
     # Reposition ARG = pop()
     self.write('addi $sp, $sp, -4') # SP = SP - 1
-    self.write('addi $t0, $sp, 0')  # t0 = val at SP
-    self.write('lw $t0, 0($t0)')  # $arg = *SP
+    self.write('lw $t0, 0($sp)')    # t0 = res
     
-    self.write('addi $t1, $arg, 0') # t1 = $arg
-    self.write('sw $t0, 0($t1)')   # *(arg) = $arg
+    self.write('sw $t0, 0($arg)')    # *(arg) = $arg
     
     # Restore SP = ARG + 1
     self.write('addi $sp, $arg, 4')
     
-    self.write('lw $that, -4($t0)') # $that = THAT
-    self.write('lw $this, -8($t0)') # $this = THIS
-    self.write('lw $arg, -12($t0)')  # $arg  = ARG
-    self.write('lw $lcl, -16($t0)')  # $lcl  = LCL
+    self.write('addi $t0, $zero, 20') # t0 = 20
+    self.write('sub $t0, $lcl, $t0')  # t0 = (lcl - 5)
+    self.write('lw $ra, 0($t0)')      # $ra = RETURN ADDRESS
+    self.write('lw $lcl, 4($t0)')     # $lcl  = LCL
+    self.write('lw $arg, 8($t0)')     # $arg  = ARG
+    self.write('lw $this, 12($t0)')   # $this = THIS
+    self.write('lw $that, 16($t0)')   # $that = THAT
     self.writeMessage('')
     
     self.write('jalr $ra, $ra, 0') # goto <return-address>

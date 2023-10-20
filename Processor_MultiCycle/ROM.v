@@ -10,10 +10,14 @@ module ROM (                    //Instruction Memory
 
     initial
         begin
-            $readmemb("os.mem", ROM, 0, 32767);
+            //$readmemb("inst.mem", ROM, 0, 3);
+            ROM[0] <= 32'b00000000001000000000000010010011;
+            ROM[1] <= 32'b00000000001100000000000100010011;
+            ROM[2] <= 32'b00000000001000001000000110110011;
+            ROM[3] <= 32'b01000000000100010000001000110011;
         end
     assign address = addr[16:2];
-    assign Inst = ROM[addr];
+    assign Inst = ROM[address];
         
 endmodule
 
