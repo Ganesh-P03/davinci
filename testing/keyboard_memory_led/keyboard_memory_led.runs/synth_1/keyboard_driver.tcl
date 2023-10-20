@@ -88,7 +88,15 @@ set_property ip_output_repo {d:/semester/7th sem/davinci/testing/keyboard_memory
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
+read_mem {
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/ram.mem}
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/os.mem}
+}
+read_verilog -library xil_defaultlib -sv {{D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/Memory.v}}
 read_verilog -library xil_defaultlib {
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/RAM.v}
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/ROM.v}
+  {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/Screen_Memory.v}
   {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/ps2_rx.v}
   {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/scanToAscii.v}
   {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.srcs/sources_1/new/keyboard_driver.v}
