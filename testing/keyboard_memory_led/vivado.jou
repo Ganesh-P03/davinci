@@ -89,3 +89,4 @@ set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
 set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/keyboard_memory_led/keyboard_memory_led.runs/impl_1/keyboard_driver.bit} [get_hw_devices xc7z010_1]
 program_hw_devices [get_hw_devices xc7z010_1]
 refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
+close_sim
