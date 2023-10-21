@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Sat Oct 21 21:36:56 2023
+| Date         : Sat Oct 21 22:22:37 2023
 | Host         : Ganesh running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file processor_control_sets_placed.rpt
 | Design       : processor
@@ -79,37 +79,37 @@ Table of Contents
 |  clk_IBUF_BUFG | control_unit/mainDecoder/FSM_onehot_state_reg[2]_0 | control_unit/mainDecoder/FSM_onehot_state_reg[2]_2     |                5 |             19 |         3.80 |
 |  clk_IBUF_BUFG |                                                    | control_unit/mainDecoder/FSM_onehot_state_reg[10]_0[0] |               16 |             31 |         1.94 |
 |  clk_IBUF_BUFG | control_unit/mainDecoder/E[0]                      |                                                        |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_10               |                                                        |               14 |             32 |         2.29 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_12               |                                                        |               11 |             32 |         2.91 |
 |  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_13               |                                                        |               12 |             32 |         2.67 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_18               |                                                        |                9 |             32 |         3.56 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_19               |                                                        |               13 |             32 |         2.46 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_2                |                                                        |               16 |             32 |         2.00 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_20               |                                                        |               11 |             32 |         2.91 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_21               |                                                        |                9 |             32 |         3.56 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_22               |                                                        |               12 |             32 |         2.67 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_23               |                                                        |               19 |             32 |         1.68 |
 |  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_16               |                                                        |               17 |             32 |         1.88 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_1                |                                                        |               22 |             32 |         1.45 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_15               |                                                        |               16 |             32 |         2.00 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_11               |                                                        |               11 |             32 |         2.91 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_14               |                                                        |               11 |             32 |         2.91 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_17               |                                                        |               15 |             32 |         2.13 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_18               |                                                        |                9 |             32 |         3.56 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_8                |                                                        |               19 |             32 |         1.68 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_31               |                                                        |               16 |             32 |         2.00 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_6                |                                                        |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_9                |                                                        |               21 |             32 |         1.52 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_2                |                                                        |               16 |             32 |         2.00 |
 |  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_24               |                                                        |               17 |             32 |         1.88 |
 |  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_25               |                                                        |               21 |             32 |         1.52 |
 |  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_28               |                                                        |               11 |             32 |         2.91 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_29               |                                                        |               10 |             32 |         3.20 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_3                |                                                        |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_31               |                                                        |               16 |             32 |         2.00 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_12               |                                                        |               11 |             32 |         2.91 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_27               |                                                        |               10 |             32 |         3.20 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_30               |                                                        |                9 |             32 |         3.56 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_4                |                                                        |               12 |             32 |         2.67 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_5                |                                                        |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_26               |                                                        |               13 |             32 |         2.46 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_1                |                                                        |               22 |             32 |         1.45 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_6                |                                                        |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_14               |                                                        |               11 |             32 |         2.91 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_15               |                                                        |               16 |             32 |         2.00 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_10               |                                                        |               14 |             32 |         2.29 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_17               |                                                        |               15 |             32 |         2.13 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_11               |                                                        |               11 |             32 |         2.91 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_9                |                                                        |               21 |             32 |         1.52 |
 |  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_7                |                                                        |               13 |             32 |         2.46 |
-|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_8                |                                                        |               19 |             32 |         1.68 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_30               |                                                        |                9 |             32 |         3.56 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_29               |                                                        |               10 |             32 |         3.20 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_27               |                                                        |               10 |             32 |         3.20 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_20               |                                                        |               11 |             32 |         2.91 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_5                |                                                        |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_3                |                                                        |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_22               |                                                        |               12 |             32 |         2.67 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_4                |                                                        |               12 |             32 |         2.67 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_21               |                                                        |                9 |             32 |         3.56 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_26               |                                                        |               13 |             32 |         2.46 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_19               |                                                        |               13 |             32 |         2.46 |
+|  clk_IBUF_BUFG | buf_reg_3/genblk1[9].reg1/d/Q_reg_23               |                                                        |               19 |             32 |         1.68 |
 |  clk_IBUF_BUFG | control_unit/mainDecoder/FSM_onehot_state_reg[2]_0 |                                                        |               22 |             48 |         2.18 |
 |  clk_IBUF_BUFG |                                                    |                                                        |               36 |             91 |         2.53 |
 +----------------+----------------------------------------------------+--------------------------------------------------------+------------------+----------------+--------------+
