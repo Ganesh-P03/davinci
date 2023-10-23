@@ -1,6 +1,7 @@
 Virtual_Machine/VMTranslator
 Virtual_Machine/org
-Compiler_github/
-Virtual Machine/__pycache__
+Compiler/__pycache__
+Compiler/*.py[cod]
+Virtual Machine/
 Processor_MultiCycle/work
 Processor_MultiCycle/vsim.wlf
