@@ -1,10 +1,31 @@
-module processor (clk,led);
+module processor (clk,led,TMDSp,TMDSn,TMDSp_clock,TMDSn_clock);
 
 wire reset;
 input clk;
 output reg [3:0] led;
 reg [31:0] Result;
 
+//-----------Screen-------------------------//
+output [2:0] TMDSp;
+output [2:0] TMDSn;
+output TMDSp_clock;
+output TMDSn_clock;
+
+
+wire [31:0] display_address;
+wire [31:0] display_dataOut;
+
+//Screen_Memory screen_mem (.clock(clk),.address(display_address[15:0]),.displayAddr(display_address[15:0]),.isWrite(1'b0),.writeData(32'b0),.displayData(dataOut));
+
+DisplayDriver dispDriver (.clk(clk),.displayData(display_dataOut),.TMDSp(TMDSp),.TMDSn(TMDSn),
+                        .pointer(display_address),.TMDSp_clock(TMDSp_clock),.TMDSn_clock(TMDSn_clock));
+//-----------Screen-------------------------//
+
+
+
+//-----------Keyboard----------------------//
+
+//-----------Keyboard----------------------//
 wire [31:0] ResultWire;
 wire [31:0] ReadData;
 wire [31:0] WriteData;
@@ -49,7 +70,7 @@ wire [7:0] key_reg;
 //register_32bit buf_reg_1 (.D(ResultWire), .clk(clk), .regwrite(PCWrite), .Q(PC));   //Program Counter
 // assign PC = Result;
 MUX2x1_32bit mux_1 (.a(PC1), .b(Result), .s(AddrSrc), .y(Addr));
-Memory mem (.clock(clk), .isWrite(MemWrite), .byteWrite(Zero), .byteRead(Zero), .address(Addr), .writeData(WriteData), .RD(ReadData), .displayAddr(SrcA), .displayData(PC), .sample(Zero), .key_reg(key_reg));
+Memory mem (.clock(clk), .isWrite(MemWrite), .byteWrite(Zero), .byteRead(Zero), .address(Addr), .writeData(WriteData), .RD(ReadData), .displayAddr(display_address), .displayData(display_dataOut), .sample(Zero), .key_reg(key_reg));
 //Memory instr_data_mem (.addr(Addr), .WD(WriteData), .clk(clk), .MemWrite(MemWrite), .RD(ReadData));
 register_32bit buf_reg_2 (.D(ReadData), .clk(clk), .regwrite(1'b1), .Q(Data));  //To store the data that is from memory 
   //To store PC value of currently executing Insttuction

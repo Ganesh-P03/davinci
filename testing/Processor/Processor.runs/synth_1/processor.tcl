@@ -70,10 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 2
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
 
@@ -90,6 +88,7 @@ set_property ip_output_repo {d:/semester/7th sem/davinci/testing/Processor/Proce
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
+read_mem {{D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/display.mem}}
 read_verilog -library xil_defaultlib -sv {
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_Decoder.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Instr_Decoder.v}
@@ -106,6 +105,7 @@ read_verilog -library xil_defaultlib -sv {
 read_verilog -library xil_defaultlib {
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_RISCv.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/DFlipFlop.v}
+  {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/DisplayDriver.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Extender.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Gates.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_1bit.v}
@@ -114,6 +114,7 @@ read_verilog -library xil_defaultlib {
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/RAM.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ROM.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Screen_Memory.v}
+  {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/TMDS_encoder.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/bitwiseAND.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/decoder_5x32.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/fulladder.v}

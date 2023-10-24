@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1697907007">
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1698137722">
   <File Type="ROUTE-PWR" Name="processor_power_routed.rpt"/>
   <File Type="PA-TCL" Name="processor.tcl"/>
   <File Type="ROUTE-PWR-SUM" Name="processor_power_summary_routed.pb"/>
@@ -104,6 +104,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/DisplayDriver.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/Extender.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/Extender.v"/>
@@ -171,6 +178,13 @@
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/Screen_Memory.v"/>
         <Attr Name="ImportTime" Val="1697779493"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/TMDS_encoder.v">
+      <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -326,6 +340,12 @@
         <Attr Name="ImportTime" Val="1697779754"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/display.mem">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>

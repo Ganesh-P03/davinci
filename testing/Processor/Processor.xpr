@@ -109,6 +109,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/new/DisplayDriver.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/Extender.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/Extender.v"/>
@@ -176,6 +183,13 @@
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/Screen_Memory.v"/>
           <Attr Name="ImportTime" Val="1697779493"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/TMDS_encoder.v">
+        <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -331,6 +345,12 @@
           <Attr Name="ImportTime" Val="1697779754"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/display.mem">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
