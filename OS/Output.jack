@@ -279,18 +279,22 @@ class Output {
                 // screen[address] & 16777215 => clears the most significant 8 bits (left most) of the 32 bit screen word
 
                 let screen[address] = screen[address] & 16777215 | bitmap;  // 16777215 = b'00000000 11111111 11111111 11111111
-            }else if( mask = 2 ){
-                let bitmap = bitmap * 65536; // 65536 = b'00000000 00000001 00000000 00000000
-                let bitmap = bitmap & 16711680; // 16711680 = b'00000000 11111111 00000000 00000000
-                let screen[address] = screen[address] & -16711681 | bitmap; // -16711681 = b'11111111 00000000 11111111 11111111 (4278255615 un-signed int) 
-            }
-            else if( mask = 1 ){
-                let bitmap = bitmap * 256; // 256 = b'00000000 00000000 00000001 00000000
-                let bitmap = bitmap & 65280; // 65280 = b'00000000 00000000 11111111 00000000
-                let screen[address] = screen[address] & -65281 | bitmap; // -65281 = b'11111111 11111111 00000000 11111111 (4294902015 un-signed int) 
-            }
-            else {
-               let screen[address] = screen[address] & -256 | bitmap; // -256 = b'11111111 11111111 11111111 00000000
+            }else {
+                if( mask = 2 ){
+                    let bitmap = bitmap * 65536; // 65536 = b'00000000 00000001 00000000 00000000
+                    let bitmap = bitmap & 16711680; // 16711680 = b'00000000 11111111 00000000 00000000
+                    let screen[address] = screen[address] & -16711681 | bitmap; // -16711681 = b'11111111 00000000 11111111 11111111 (4278255615 un-signed int) 
+                }
+                else {
+                    if( mask = 1 ){
+                        let bitmap = bitmap * 256; // 256 = b'00000000 00000000 00000001 00000000
+                        let bitmap = bitmap & 65280; // 65280 = b'00000000 00000000 11111111 00000000
+                        let screen[address] = screen[address] & -65281 | bitmap; // -65281 = b'11111111 11111111 00000000 11111111 (4294902015 un-signed int) 
+                    }
+                    else {
+                        let screen[address] = screen[address] & -256 | bitmap; // -256 = b'11111111 11111111 11111111 00000000
+                    }
+                }
             }
             
             
