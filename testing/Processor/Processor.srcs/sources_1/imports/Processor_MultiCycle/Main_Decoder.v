@@ -88,18 +88,90 @@ parameter S13 = 4'b1101;
 
 // Define state outputs
 
+reg [1:0] ALUSrcA_reg, ALUSrcB_reg, ALUOp_reg, ResultSrc_reg;
+
+always @(posedge clk or posedge reset) begin
+    if (reset) begin
+        ALUSrcA_reg <= 2'b00;
+        ALUSrcB_reg <= 2'b00;
+        ALUOp_reg <= 2'b00;
+        ResultSrc_reg <= 2'b00;
+    end else begin
+        case (state)
+            S0: begin
+                ALUSrcA_reg <= 2'b00;
+                ALUSrcB_reg <= 2'b10;
+                ALUOp_reg <= 2'b00;
+                ResultSrc_reg <= 2'b10;
+            end
+            S1: begin
+                ALUSrcA_reg <= 2'b01;
+                ALUSrcB_reg <= 2'b10;
+                ALUOp_reg <= 2'b00;
+            end
+            S2: begin
+                ALUSrcA_reg <= 2'b10;
+                ALUSrcB_reg <= 2'b01;
+                ALUOp_reg <= 2'b00;
+            end
+            S6: begin
+                ALUSrcA_reg <= 2'b10;
+                ALUSrcB_reg <= 2'b00;
+                ALUOp_reg <= 2'b10;
+    
+            end
+            S8: begin
+                ALUSrcA_reg <= 2'b10;
+                ALUSrcB_reg <= 2'b01;
+                ALUOp_reg <= 2'b10;
+            end
+            S9: begin
+                ALUSrcA_reg <= 2'b01;
+                ALUSrcB_reg <= 2'b10;
+                ALUOp_reg <= 2'b00;
+                ResultSrc_reg <= 2'b00;
+            end
+            S10, S11, S12, S13: begin
+                ALUSrcA_reg <= 2'b10;
+                ALUSrcB_reg <= 2'b00;
+                ALUOp_reg <= 2'b01;
+                ResultSrc_reg <= 2'b00;
+            end
+            S3, S5: begin
+                ResultSrc_reg <= 2'b00;
+            end
+            S7: begin
+                ResultSrc_reg <= 2'b00;
+            end
+            S4: begin
+                ResultSrc_reg <= 2'b01;
+            end
+            default: begin
+                // No change for other states
+            end
+        endcase
+    end
+end
+
+assign ALUSrcA = ALUSrcA_reg;
+assign ALUSrcB = ALUSrcB_reg;
+assign ALUOp = ALUOp_reg;
+assign ResultSrc = ResultSrc_reg;
+
+
+
 assign AddrSrc = (state == S3 || state == S5) ? 1'b1 : 1'b0;
 assign IRWrite = (state == S0 || reset == 1'b1) ? 1'b1 : 1'b0;
-assign ALUSrcA = (state == S0) ? 2'b00 : 
-                 (state == S2 || state == S6 || state == S8 || state == S10 || state == S11 || state == S12 || state == S13) ? 2'b10 : 
-                 2'b01;
-assign ALUSrcB = (state == S0 || state == S9) ? 2'b10 : 
-                 (state == S1 || state == S2 || state == S8) ? 2'b01 :
-                 2'b00;
-assign ALUOp = (state == S0 || state == S1 || state == S2 || state == S9) ? 2'b00 :
-               (state == S6 || state == S8) ? 2'b10 :
-                 2'b01;
-assign ResultSrc = (state == S4) ? 2'b01 : (state == S0)? 2'b10 :  2'b00;
+// assign ALUSrcA = (state == S0) ? 2'b00 : 
+//                  (state == S2 || state == S6 || state == S8 || state == S10 || state == S11 || state == S12 || state == S13) ? 2'b10 : 
+//                  (state == S1 || state == S9) ? 2'b01 : ALUSrcA ;
+// assign ALUSrcB = (state == S0 || state == S9) ? 2'b10 : 
+//                  (state == S1 || state == S2 || state == S8) ? 2'b01 :
+//                  (state == S6 || state == S10 || state == S11 || state == S12 || state == S13 )? 2'b00 : ALUSrcB;
+// assign ALUOp = (state == S0 || state == S1 || state == S2 || state == S9) ? 2'b00 :
+//                (state == S6 || state == S8) ? 2'b10 :
+//                (state == S10 || state == S11 || state == S12 || state == S13)?  2'b01 : ALUOp;
+// assign ResultSrc = (state == S4) ? 2'b01 : (state == S0)? 2'b10 : (state == S3 || state == S5 || state ==S7 || state == S9 || state ==S10 || state ==S11 || state ==S12 || state == S13 )? 2'b00 : ResultSrc;
 assign RegWrite = (state == S4 || state == S7) ? 1'b1 : 1'b0;
 assign PCUpdate = (state == S0 || state == S9) ? 1'b1 : 1'b0;
 assign MemWrite = (state == S5) ? 1'b1 : 1'b0;
@@ -109,3 +181,5 @@ assign bge = (state == S13) ? 1'b1 : 1'b0;
 assign blt = (state == S12) ? 1'b1 : 1'b0;
 
 endmodule
+
+

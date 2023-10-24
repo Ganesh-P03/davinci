@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date             : Tue Oct 24 14:30:11 2023
+| Date             : Tue Oct 24 15:11:10 2023
 | Host             : Ganesh running 64-bit major release  (build 9200)
 | Command          : report_power -file processor_power_routed.rpt -pb processor_power_summary_routed.pb -rpx processor_power_routed.rpx
 | Design           : processor
@@ -53,15 +53,14 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |    <0.001 |        6 |       --- |             --- |
-| Slice Logic              |    <0.001 |     8217 |       --- |             --- |
+| Slice Logic              |    <0.001 |     8209 |       --- |             --- |
 |   LUT as Distributed RAM |    <0.001 |     2400 |      6000 |           40.00 |
-|   LUT as Logic           |    <0.001 |     1454 |     17600 |            8.26 |
-|   F7/F8 Muxes            |    <0.001 |     1547 |     17600 |            8.79 |
+|   LUT as Logic           |    <0.001 |     1535 |     17600 |            8.72 |
+|   F7/F8 Muxes            |    <0.001 |     1544 |     17600 |            8.77 |
 |   Register               |    <0.001 |     1350 |     35200 |            3.84 |
 |   CARRY4                 |    <0.001 |        9 |      4400 |            0.20 |
-|   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
 |   Others                 |     0.000 |     1263 |       --- |             --- |
-| Signals                  |    <0.001 |     3588 |       --- |             --- |
+| Signals                  |    <0.001 |     3593 |       --- |             --- |
 | Block RAM                |    <0.001 |       16 |        60 |           26.67 |
 | MMCM                     |     0.052 |        1 |         2 |           50.00 |
 | I/O                      |     0.131 |       13 |       100 |           13.00 |

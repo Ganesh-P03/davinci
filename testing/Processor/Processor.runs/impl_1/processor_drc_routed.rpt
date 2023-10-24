@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Tue Oct 24 14:30:01 2023
+| Date         : Tue Oct 24 15:10:53 2023
 | Host         : Ganesh running 64-bit major release  (build 9200)
 | Command      : report_drc -file processor_drc_routed.rpt -pb processor_drc_routed.pb -rpx processor_drc_routed.rpx
 | Design       : processor
@@ -24,15 +24,28 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 1
-+--------+----------+--------------------+------------+
-| Rule   | Severity | Description        | Violations |
-+--------+----------+--------------------+------------+
-| ZPS7-1 | Warning  | PS7 block required | 1          |
-+--------+----------+--------------------+------------+
+             Violations found: 3
++-------------+----------+-------------------------------------------------------------+------------+
+| Rule        | Severity | Description                                                 | Violations |
++-------------+----------+-------------------------------------------------------------+------------+
+| PDRC-153    | Warning  | Gated clock check                                           | 1          |
+| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 1          |
+| ZPS7-1      | Warning  | PS7 block required                                          | 1          |
++-------------+----------+-------------------------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+PDRC-153#1 Warning
+Gated clock check  
+Net control_unit/mainDecoder/PC1_reg[17] is a gated clock net sourced by a combinational pin control_unit/mainDecoder/byte_write[1].RAM_mux_sel_b_pos_3_i_1/O, cell control_unit/mainDecoder/byte_write[1].RAM_mux_sel_b_pos_3_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PLHOLDVIO-2#1 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT control_unit/mainDecoder/byte_write[1].RAM_mux_sel_b_pos_3_i_1 is driving clock pin of 1 cells. This could lead to large hold time violations. Involved cells are:
+mem/readKeyboard_reg
+Related violations: <none>
+
 ZPS7-1#1 Warning
 PS7 block required  
 The PS7 cell must be used in this Zynq design in order to enable correct default configuration.
