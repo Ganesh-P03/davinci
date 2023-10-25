@@ -1,4 +1,4 @@
-module reg_file ( rs1, rs2, rd, regwrite, wd3, clk, rd1, rd2 ,led);
+module reg_file ( rs1, rs2, rd, regwrite, wd3, clk, rd1, rd2,led);
 
 input [4:0] rs1;
 input [4:0] rs2;
@@ -13,7 +13,12 @@ output [3:0] led;
 reg [31:0] register[31:0];
 
 //initialize all registers to 0
-
+integer i;
+initial
+begin
+    for(i=0; i<32; i=i+1)
+        register[i] = 0;
+end
 
 always @(posedge clk)
 begin
