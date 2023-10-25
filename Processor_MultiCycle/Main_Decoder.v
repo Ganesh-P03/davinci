@@ -36,6 +36,7 @@ parameter S11 = 4'b1011;
 parameter S12 = 4'b1100;
 parameter S13 = 4'b1101;
 parameter S14 = 4'b1110;
+parameter S15 = 4'b1111;
 
   always @(posedge clk or posedge reset)
   begin
@@ -54,7 +55,7 @@ parameter S14 = 4'b1110;
                 ALUSrcB <= 2'b10;
                 ALUOp <= 2'b00;
                 ResultSrc <= 2'b10;
-            nextstate = S1;
+                nextstate = S1;
             end
       S1:begin
                 ALUSrcA <= 2'b01;
@@ -67,6 +68,7 @@ parameter S14 = 4'b1110;
           7'b0010011: nextstate = S8;
           7'b1101111: nextstate = S9;
           7'b0110111: nextstate = S14;
+          7'b1100111: nextstate = S15;
           7'b1100011:
             case (funct3)
               3'b000: nextstate = S10;
@@ -137,6 +139,13 @@ parameter S14 = 4'b1110;
                 ALUSrcB <= 2'b01;
                 ALUOp <= 2'b00;
                 nextstate = S7;
+      end
+      S15: begin
+        ALUSrcA <= 2'b10;
+        ALUSrcB <= 2'b01;
+        ALUOp <= 2'b00;
+
+        nextstate = S9;
       end
       default: nextstate = S0;
     endcase
