@@ -88,12 +88,14 @@ set_property ip_output_repo {d:/semester/7th sem/davinci/testing/Processor/Proce
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_mem {{D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/display.mem}}
+read_mem {
+  {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/display.mem}
+  {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/inst.mem}
+}
 read_verilog -library xil_defaultlib -sv {
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_Decoder.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Instr_Decoder.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_32bit.v}
-  {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX32x1.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX4x1_32bit.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX8x1.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Main_Decoder.v}
@@ -116,7 +118,6 @@ read_verilog -library xil_defaultlib {
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Screen_Memory.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/TMDS_encoder.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/bitwiseAND.v}
-  {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/decoder_5x32.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/fulladder.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_1bit.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_32bit.v}

@@ -1,8 +1,8 @@
-module processor (clk,led,TMDSp,TMDSn,TMDSp_clock,TMDSn_clock);
+module processor (clk,reset,led,TMDSp,TMDSn,TMDSp_clock,TMDSn_clock);
 
-wire reset;
+input reset;
 input clk;
-output reg [3:0] led;
+output [3:0] led;
 reg [31:0] Result;
 
 //-----------Screen-------------------------//
@@ -59,7 +59,11 @@ initial begin
   end
 
 always @(posedge clk) begin
-  if (PCWrite)
+  if(reset)
+    begin
+      PC1 <= 32'd9600;
+    end
+  else if (PCWrite)
     begin
       PC1<=ResultWire;
     end
@@ -86,7 +90,7 @@ wire [4:0] Rs2 = Instr[24:20];
 wire [4:0] Rd = Instr[11:7];
 wire [24:0] Ext = Instr[31:7];
 
-reg_file register_file (.rs1(Rs1), .rs2(Rs2), .rd(Rd), .regwrite(RegWrite), .wd3(Result), .clk(clk), .rd1(rd1), .rd2(rd2));
+reg_file register_file (.rs1(Rs1), .rs2(Rs2), .rd(Rd), .regwrite(RegWrite), .wd3(Result), .clk(clk), .rd1(rd1), .rd2(rd2),.led(led));
 register_32bit buf_reg_5 (.D(rd1), .clk(clk), .regwrite(1'b1), .Q(A)); //To store value read from RS1
 register_32bit buf_reg_6 (.D(rd2), .clk(clk), .regwrite(1'b1), .Q(WriteData)); //To store value read from RS2
 Extender extender_1 (.Inst(Ext), .ImmSrc(ImmSrc), .Imm(ImmExt));
@@ -102,7 +106,8 @@ register_32bit buf_reg_7 (.D(ALUResult), .clk(clk), .regwrite(1'b1), .Q(ALUOut))
 MUX4x1_32bit mux_4 (.i0(ALUOut), .i1(Data), .i2(ALUResult), .i3(32'b0), .sel(ResultSrc), .o(ResultWire));
 
 assign Result = ResultWire;
-assign led = Result[3:0];
+
+
 // assign PC1 = PCWrite ? ResultWire : PC1;
 
 endmodule

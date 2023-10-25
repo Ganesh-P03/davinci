@@ -49,8 +49,18 @@ parameter S14 = 4'b1110;
   always @*
   begin
     case (state)
-      S0: nextstate = S1;
-      S1:
+      S0:  begin
+                ALUSrcA <= 2'b00;
+                ALUSrcB <= 2'b10;
+                ALUOp <= 2'b00;
+                ResultSrc <= 2'b10;
+            nextstate = S1;
+            end
+      S1:begin
+                ALUSrcA <= 2'b01;
+                ALUSrcB <= 2'b01;
+                ALUOp <= 2'b00;
+          
         case (opcode)
           7'b0000011, 7'b0100011: nextstate = S2;
           7'b0110011: nextstate = S6;
@@ -67,23 +77,61 @@ parameter S14 = 4'b1110;
             endcase
           default: nextstate = S0;
         endcase
-      S2:
+      end
+      S2: begin
+                ALUSrcA <= 2'b10;
+                ALUSrcB <= 2'b01;
+                ALUOp <= 2'b00;
+          
         case (opcode)
           7'b0000011: nextstate = S3;
           7'b0100011: nextstate = S5;
           default: nextstate = S0;
         endcase
-      S3: nextstate = S4;
-      S4: nextstate = S0;
-      S5: nextstate = S0;
-      S6: nextstate = S7;
-      S7: nextstate = S0;
-      S8: nextstate = S7;
-      S9: nextstate = S7;
-      S10: nextstate = S0;
-      S11: nextstate = S0;
-      S12: nextstate = S0;
-      S13: nextstate = S0;
+          end
+      S3:  begin
+                ResultSrc <= 2'b00;
+            nextstate = S4;
+            end
+      S4: begin
+                ResultSrc <= 2'b01;
+            nextstate = S0;
+      end
+      S5:  begin
+                ResultSrc <= 2'b00;
+            nextstate = S0;
+            end
+      S6: begin
+                ALUSrcA <= 2'b10;
+                ALUSrcB <= 2'b00;
+                ALUOp <= 2'b10;
+    
+            nextstate = S7;
+            end
+      S7: begin
+                ResultSrc <= 2'b00;
+           nextstate = S0;
+      end
+      S8:  begin
+                ALUSrcA <= 2'b10;
+                ALUSrcB <= 2'b01;
+                ALUOp <= 2'b10;
+           nextstate = S7;
+            end
+      S9: begin
+                ALUSrcA <= 2'b01;
+                ALUSrcB <= 2'b10;
+                ALUOp <= 2'b00;
+                ResultSrc <= 2'b00;
+            nextstate = S7;
+      end
+      S10, S11, S12, S13: begin
+                ALUSrcA <= 2'b10;
+                ALUSrcB <= 2'b00;
+                ALUOp <= 2'b01;
+                ResultSrc <= 2'b00;
+                nextstate = S0;
+            end
       S14: nextstate = S7;
       default: nextstate = S0;
     endcase
@@ -91,75 +139,7 @@ parameter S14 = 4'b1110;
 
 // Define state outputs
 
-// reg [1:0] ALUSrcA_reg, ALUSrcB_reg, ALUOp_reg, ResultSrc_reg;
 
-// always @(posedge clk or posedge reset) begin
-//     if (reset) begin
-//                 ALUSrcA_reg <= 2'b00;
-//                 ALUSrcB_reg <= 2'b10;
-//                 ALUOp_reg <= 2'b00;
-//                 ResultSrc_reg <= 2'b10;
-//     end else begin
-//         case (state)
-//             S0: begin
-//                 ALUSrcA_reg <= 2'b00;
-//                 ALUSrcB_reg <= 2'b10;
-//                 ALUOp_reg <= 2'b00;
-//                 ResultSrc_reg <= 2'b10;
-//             end
-//             S1: begin
-//                 ALUSrcA_reg <= 2'b01;
-//                 ALUSrcB_reg <= 2'b10;
-//                 ALUOp_reg <= 2'b00;
-//             end
-//             S2: begin
-//                 ALUSrcA_reg <= 2'b10;
-//                 ALUSrcB_reg <= 2'b01;
-//                 ALUOp_reg <= 2'b00;
-//             end
-//             S6: begin
-//                 ALUSrcA_reg <= 2'b10;
-//                 ALUSrcB_reg <= 2'b00;
-//                 ALUOp_reg <= 2'b10;
-    
-//             end
-//             S8: begin
-//                 ALUSrcA_reg <= 2'b10;
-//                 ALUSrcB_reg <= 2'b01;
-//                 ALUOp_reg <= 2'b10;
-//             end
-//             S9: begin
-//                 ALUSrcA_reg <= 2'b01;
-//                 ALUSrcB_reg <= 2'b10;
-//                 ALUOp_reg <= 2'b00;
-//                 ResultSrc_reg <= 2'b00;
-//             end
-//             S10, S11, S12, S13: begin
-//                 ALUSrcA_reg <= 2'b10;
-//                 ALUSrcB_reg <= 2'b00;
-//                 ALUOp_reg <= 2'b01;
-//                 ResultSrc_reg <= 2'b00;
-//             end
-//             S3, S5: begin
-//                 ResultSrc_reg <= 2'b00;
-//             end
-//             S7: begin
-//                 ResultSrc_reg <= 2'b00;
-//             end
-//             S4: begin
-//                 ResultSrc_reg <= 2'b01;
-//             end
-//             default: begin
-//                 // No change for other states
-//             end
-//         endcase
-//     end
-// end
-
-// assign ALUSrcA = ALUSrcA_reg;
-// assign ALUSrcB = ALUSrcB_reg;
-// assign ALUOp = ALUOp_reg;
-// assign ResultSrc = ResultSrc_reg;
 
 
 

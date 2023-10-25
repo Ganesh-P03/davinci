@@ -10,6 +10,7 @@ def getFilesInfo(path):
     filePaths = []
     fileNames = []
 
+    print(path)
     if (os.path.isfile(path)):
         # Add a function that returns filepath,filename 
         # getFileInfo
@@ -43,11 +44,15 @@ def getFilesInfo(path):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('inPath', action="store")
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument('inPath', action="store")
 
-    args = parser.parse_args()
-    filePaths, fileNames = getFilesInfo(args.inPath)
+    # args = parser.parse_args()
+    # filePaths, fileNames = getFilesInfo(args.inPath)
+    
+    base_path = os.path.dirname(os.path.realpath(__file__))
+    folder = os.path.join(base_path, "Testing")
+    filePaths, fileNames = getFilesInfo(folder)
 
     for fpath, fname in zip(filePaths, fileNames):
         with open(fpath, 'r') as f:
