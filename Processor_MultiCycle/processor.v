@@ -59,11 +59,16 @@ initial begin
   end
 
 always @(posedge clk) begin
-  if (PCWrite)
+  if(reset)
+    begin
+      PC1 <= 32'd9600;
+    end
+  else if (PCWrite)
     begin
       PC1<=ResultWire;
     end
 end
+
 
 wire [7:0] key_reg;
 

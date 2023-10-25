@@ -10,19 +10,29 @@ module ROM (                    //Instruction Memory
 
     initial
         begin
-            //$readmemb("inst.mem", ROM, 0, 3);
-            ROM[0] <= 32'b00000000001000000000000010010011;
-            ROM[1] <= 32'b00000000001100000000000100010011;
-            ROM[2] <= 32'b00000000001000001000000110110011;
-            ROM[3] <= 32'b01000000000100010000001000110011;
+            $readmemh("inst.mem", ROM);
         end
     assign address = addr[16:2];
     assign Inst = ROM[address];
         
 endmodule
 
+// addi x2,x0,2  x2=2 x1=0
+// addi x1,x0,0  x2=2 x1=0
+// add x1,x1,x2  x2=2 x1=2
+// add x1,x1,x2  x2=2 x1=4
+// add x1,x1,x1  x2=2 x1=8
+// add x1,x1,x2  x2=2 x1=10
+// add x1,x1,x2  x2=2 x1=12
+// add x1,x1,x2  x2=2 x1=14
 
-						
+// addi x1,x0,1023
+// sw x1,0(x0)
+// sw x1,10(x0)
+// sw x1,30(x0)
+// sw x1,20(x0)
+// sw x1,40(x0)
+// sw x1,50(x0)			
 						
 
 // module ROM ( //Instruction Memory
