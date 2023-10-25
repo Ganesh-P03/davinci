@@ -44,7 +44,7 @@
 (172): addi $sp $sp -4
 (176): lw $t0 0 $sp
 (180): beq $t0 $zero 16
-(184): lui $t0 200
+(184): lui $t0 0
 (188): addi $t0 $t0 200
 (192): jalr $ra $t0 0
 (196): jal $ra 68
@@ -86,7 +86,7 @@
 (340): addi $sp $sp -4
 (344): lw $t0 0 $sp
 (348): beq $t0 $zero 16
-(352): lui $t0 544
+(352): lui $t0 0
 (356): addi $t0 $t0 544
 (360): jalr $ra $t0 0
 (364): lw $t0 0 $lcl
@@ -154,7 +154,7 @@
 (612): addi $sp $sp -4
 (616): lw $t0 0 $sp
 (620): beq $t0 $zero 16
-(624): lui $t0 640
+(624): lui $t0 0
 (628): addi $t0 $t0 640
 (632): jalr $ra $t0 0
 (636): jal $ra 184
@@ -223,7 +223,7 @@
 (888): addi $t0 $zero 10
 (892): sw $t0 0 $sp
 (896): addi $sp $sp 4
-(900): lui $t0 972
+(900): lui $t0 0
 (904): addi $t0 $t0 972
 (908): sw $t0 0 $sp
 (912): addi $sp $sp 4

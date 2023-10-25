@@ -399,7 +399,7 @@ class Assembler:
                         label = self.getLabel(line[-1])
 
                         line.pop()
-                        line.append(str(label + self.__dbase))
+                        line.append(str((label + self.__dbase) >> 12))
                 else:
                     if cmd != "jalr":
                         label = line[-1]
