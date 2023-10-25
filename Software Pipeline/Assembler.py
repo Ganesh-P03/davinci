@@ -60,31 +60,36 @@ class Assembler:
             print("Error: Input file not found.")
             exit(1)
 
-        # Create output directory
-        output_path = os.path.join(bin_base, "dump")
-        if not os.path.exists(output_path):
-            os.makedirs(output_path)
+        try:
+            # Create output directory
+            output_path = os.path.join(bin_base, "dump")
+            if not os.path.exists(output_path):
+                os.makedirs(output_path)
 
-        tables_path = os.path.join(output_path, "tables")
-        pass_path = os.path.join(output_path, "pass")
+            tables_path = os.path.join(output_path, "tables")
+            pass_path = os.path.join(output_path, "pass")
 
-        # Create tables directory
-        if not os.path.exists(tables_path):
-            os.makedirs(tables_path)
-            
-        # Create pass directory
-        if not os.path.exists(pass_path):
-            os.makedirs(pass_path)
+            # Create tables directory
+            if not os.path.exists(tables_path):
+                os.makedirs(tables_path)
+                
+            # Create pass directory
+            if not os.path.exists(pass_path):
+                os.makedirs(pass_path)
 
-        self.__tables_path = tables_path
-        self.__pass_path = pass_path
+            self.__tables_path = tables_path
+            self.__pass_path = pass_path
 
-        self.__contents = self.sanitizeCode(self.__input_file.readlines())
-        self.__input_file.close()
+            self.__contents = self.sanitizeCode(self.__input_file.readlines())
+            self.__input_file.close()
 
-        self.firstPass(save=True)
-        self.secondPass(save=True)
-        self.translate(os.path.join(bin_base, "riscv.bin"))
+            self.firstPass(save=True)
+            self.secondPass(save=True)
+            self.translate(os.path.join(bin_base, "riscv.bin"))
+        except:
+            return False
+        
+        return True
 
     def getContents(self):
         return self.__contents

@@ -21,7 +21,7 @@ class VirtualMachine:
 
         # CodeWriter instance
         self.__code_writer = CodeWriter(output_file_path)
-        self.__code_writer.writeBootstrapCode()
+        # self.__code_writer.writeBootstrapCode()
 
         try:
             # Source path is a directory
