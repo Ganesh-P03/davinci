@@ -64,9 +64,6 @@ class Assembler:
         output_path = os.path.join(bin_base, "dump")
         if not os.path.exists(output_path):
             os.makedirs(output_path)
-            
-        print("If ", os.path.exists(output_path))
-        print("If ", os.path.exists(bin_base))
 
         tables_path = os.path.join(output_path, "tables")
         pass_path = os.path.join(output_path, "pass")
