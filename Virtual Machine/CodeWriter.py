@@ -232,11 +232,12 @@ class CodeWriter:
           lower_bits = index & 0xFFF
           upper_bits = (index & 0xFFF000) >> 12
           
+          if upper_bits != 0:
+            self.write('lui $t0, ' + str(upper_bits)) # t0 = upper_bits
+            
           if lower_bits != 0:
             self.write('addi $t0, $zero, ' + str(lower_bits)) # t0 = lower_bits
         
-          if upper_bits != 0:
-            self.write('lui $t0, ' + str(upper_bits << 12)) # t0 = upper_bits
            
       self.writeMessage('')
       
