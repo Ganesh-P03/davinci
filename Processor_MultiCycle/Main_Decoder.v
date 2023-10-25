@@ -35,6 +35,7 @@ parameter S10 = 4'b1010;
 parameter S11 = 4'b1011;
 parameter S12 = 4'b1100;
 parameter S13 = 4'b1101;
+parameter S14 = 4'b1110;
 
   always @(posedge clk or posedge reset)
   begin
@@ -55,6 +56,7 @@ parameter S13 = 4'b1101;
           7'b0110011: nextstate = S6;
           7'b0010011: nextstate = S8;
           7'b1101111: nextstate = S9;
+          7'b0110111: nextstate = S14;
           7'b1100011:
             case (funct3)
               3'b000: nextstate = S10;
@@ -82,6 +84,7 @@ parameter S13 = 4'b1101;
       S11: nextstate = S0;
       S12: nextstate = S0;
       S13: nextstate = S0;
+      S14: nextstate = S7;
       default: nextstate = S0;
     endcase
   end
@@ -164,11 +167,12 @@ assign AddrSrc = (state == S3 || state == S5) ? 1'b1 : 1'b0;
 assign IRWrite = (state == S0 || reset == 1'b1) ? 1'b1 : 1'b0;
 assign ALUSrcA = (state == S0) ? 2'b00 : 
                  (state == S2 || state == S6 || state == S8 || state == S10 || state == S11 || state == S12 || state == S13) ? 2'b10 : 
-                 (state == S1 || state == S9) ? 2'b01 : ALUSrcA ;
+                 (state == S1 || state == S9) ? 2'b01 :
+                 (state == S14) ? 2'b11 : ALUSrcA ;
 assign ALUSrcB = (state == S0 || state == S9) ? 2'b10 : 
-                 (state == S1 || state == S2 || state == S8) ? 2'b01 :
+                 (state == S1 || state == S2 || state == S8 || state == S14) ? 2'b01 :
                  (state == S6 || state == S10 || state == S11 || state == S12 || state == S13 )? 2'b00 : ALUSrcB;
-assign ALUOp = (state == S0 || state == S1 || state == S2 || state == S9) ? 2'b00 :
+assign ALUOp = (state == S0 || state == S1 || state == S2 || state == S9 || state == S14) ? 2'b00 :
                (state == S6 || state == S8) ? 2'b10 :
                (state == S10 || state == S11 || state == S12 || state == S13)?  2'b01 : ALUOp;
 assign ResultSrc = (state == S4) ? 2'b01 : (state == S0)? 2'b10 : (state == S3 || state == S5 || state ==S7 || state == S9 || state ==S10 || state ==S11 || state ==S12 || state == S13 )? 2'b00 : ResultSrc;

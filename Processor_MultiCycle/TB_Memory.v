@@ -68,9 +68,9 @@ module TB_Memory;
     // Wait for a few clock cycles
     #100;
     // Read from memory
-    address=18'd150000;
+    address=18'd147456;
     writeData=32'd1023; // Address to read from
-    #10; // Wait for a few clock cycles
+    #100; // Wait for a few clock cycles
     // MemWrite = 0;
     // WD = 32'hA5A5A596; 
     // addr = 32'h0000123C;
@@ -78,7 +78,8 @@ module TB_Memory;
     // MemWrite = 1;
     // #100;
     // MemWrite=0;
-    address=18'd150000;
+    // isWrite = 0;
+    // address=18'd147456;
     // #100;
     // // Check the output
     // if (RD == WD)
