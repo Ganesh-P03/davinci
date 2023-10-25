@@ -6,13 +6,15 @@ module TB_Processor;
   reg clk;
   wire [31:0] PC1;
   wire [31:0] Result;
+  wire [3:0] led;
 
   // Instantiate your processor module
   processor processor1 (
     .reset(reset),
     .clk(clk),
     .PC1(PC1),
-    .Result(Result)
+    .Result(Result),
+    .led(led)
   );
 
   // Clock generation
@@ -30,6 +32,9 @@ module TB_Processor;
 
     #1000
     reset = 1'b0;
+
+    #1000000
+    $finish;
   end
 
 endmodule
