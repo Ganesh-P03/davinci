@@ -33,8 +33,7 @@ module TB_Processor;
     #1000
     reset = 1'b0;
 
-    #1000000
-    $finish;
+
   end
 
 endmodule
