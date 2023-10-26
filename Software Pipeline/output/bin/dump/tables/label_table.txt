@@ -1,0 +1,18 @@
++----------------+-------------+
+|     Label      | Address(PC) |
++----------------+-------------+
+|    Main.fib    |      0      |
+|  LOOP_EXIT_1   |     196     |
+|    IF_TRUE0    |     200     |
+|   IF_FALSE0    |     264     |
+|    IF_END0     |     264     |
+|   WHILE_EXP0   |     264     |
+|  LOOP_EXIT_2   |     364     |
+|   WHILE_END0   |     544     |
+|  LOOP_EXIT_3   |     636     |
+|    IF_TRUE1    |     640     |
+|   IF_FALSE1    |     820     |
+|    IF_END1     |     820     |
+|   Main.main    |     880     |
+| Main.fib$ret.1 |     972     |
++----------------+-------------+
