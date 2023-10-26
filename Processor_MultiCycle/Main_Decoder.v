@@ -35,6 +35,8 @@ parameter S10 = 4'b1010;
 parameter S11 = 4'b1011;
 parameter S12 = 4'b1100;
 parameter S13 = 4'b1101;
+parameter S14 = 4'b1110;
+parameter S15 = 4'b1111;
 
   always @(posedge clk or posedge reset)
   begin
@@ -53,7 +55,7 @@ parameter S13 = 4'b1101;
                 ALUSrcB <= 2'b10;
                 ALUOp <= 2'b00;
                 ResultSrc <= 2'b10;
-            nextstate = S1;
+                nextstate = S1;
             end
       S1:begin
                 ALUSrcA <= 2'b01;
@@ -65,6 +67,8 @@ parameter S13 = 4'b1101;
           7'b0110011: nextstate = S6;
           7'b0010011: nextstate = S8;
           7'b1101111: nextstate = S9;
+          7'b0110111: nextstate = S14;
+          7'b1100111: nextstate = S15;
           7'b1100011:
             case (funct3)
               3'b000: nextstate = S10;
@@ -130,6 +134,19 @@ parameter S13 = 4'b1101;
                 ResultSrc <= 2'b00;
                 nextstate = S0;
             end
+      S14: begin
+                ALUSrcA <= 2'b11;
+                ALUSrcB <= 2'b01;
+                ALUOp <= 2'b00;
+                nextstate = S7;
+      end
+      S15: begin
+        ALUSrcA <= 2'b10;
+        ALUSrcB <= 2'b01;
+        ALUOp <= 2'b00;
+
+        nextstate = S9;
+      end
       default: nextstate = S0;
     endcase
   end
@@ -144,14 +161,15 @@ assign AddrSrc = (state == S3 || state == S5) ? 1'b1 : 1'b0;
 assign IRWrite = (state == S0 || reset == 1'b1) ? 1'b1 : 1'b0;
 // assign ALUSrcA = (state == S0) ? 2'b00 : 
 //                  (state == S2 || state == S6 || state == S8 || state == S10 || state == S11 || state == S12 || state == S13) ? 2'b10 : 
-//                  (state == S1 || state == S9) ? 2'b01 : ALUSrcA ;
+//                  (state == S1 || state == S9) ? 2'b01 :
+//                  (state == S14) ? 2'b11 : ALUSrcA ;
 // assign ALUSrcB = (state == S0 || state == S9) ? 2'b10 : 
-//                  (state == S1 || state == S2 || state == S8) ? 2'b01 :
+//                  (state == S1 || state == S2 || state == S8 || state == S14) ? 2'b01 :
 //                  (state == S6 || state == S10 || state == S11 || state == S12 || state == S13 )? 2'b00 : ALUSrcB;
-// assign ALUOp = (state == S0 || state == S1 || state == S2 || state == S9) ? 2'b00 :
+// assign ALUOp = (state == S0 || state == S1 || state == S2 || state == S9 || state == S14) ? 2'b00 :
 //                (state == S6 || state == S8) ? 2'b10 :
 //                (state == S10 || state == S11 || state == S12 || state == S13)?  2'b01 : ALUOp;
-//assign ResultSrc = (state == S4) ? 2'b01 : (state == S0)? 2'b10 : (state == S3 || state == S5 || state ==S7 || state == S9 || state ==S10 || state ==S11 || state ==S12 || state == S13 )? 2'b00 : ResultSrc;
+// assign ResultSrc = (state == S4) ? 2'b01 : (state == S0)? 2'b10 : (state == S3 || state == S5 || state ==S7 || state == S9 || state ==S10 || state ==S11 || state ==S12 || state == S13 )? 2'b00 : ResultSrc;
 assign RegWrite = (state == S4 || state == S7) ? 1'b1 : 1'b0;
 assign PCUpdate = (state == S0 || state == S9) ? 1'b1 : 1'b0;
 assign MemWrite = (state == S5) ? 1'b1 : 1'b0;

@@ -10,7 +10,7 @@ module control_unit(
   output MemWrite,
   output IRWrite,
   output [2:0] ALUControl,
-  output [1:0] ImmSrc
+  output [2:0] ImmSrc
 );
 
 wire [6:0] opcode = instr[6:0];

@@ -13,10 +13,10 @@ module RAM(
     (* ram_style="block" *)
     reg [31:0] RAM[16383:0];
     
-    initial
-        begin
-            $readmemb("ram.mem", RAM, 0, 16383);
-        end
+    // initial
+    //     begin
+    //         $readmemb("ram.mem", RAM, 0, 16383);
+    //     end
     
     wire [13:0] addr;
     assign addr = address[15:2];
@@ -24,7 +24,7 @@ module RAM(
     wire [1:0] selection;
     assign selection = address[1:0];
     
-    always @(posedge clock)
+    always @*
         begin
 //            if( isRead && byteRead == 1'b1 && selection == 2'b00 )
 //                data <= RAM[addr][31:24];
@@ -41,14 +41,19 @@ module RAM(
         end
         
 
-    generate
-        genvar i;
-        for( i = 0 ; i < 4 ; i = i+1 ) begin: byte_write
-            always @(posedge clock)
-                if( isWrite[i] )
-                    RAM[addr][(i+1)*8 - 1:i*8] <= writeData[(i+1)*8 -1 : i*8];
+    // generate
+    //     genvar i;
+    //     for( i = 0 ; i < 4 ; i = i+1 ) begin: byte_write
+    //         always @(posedge clock)
+    //             if( isWrite[i] )
+    //                 RAM[addr][(i+1)*8 - 1:i*8] <= writeData[(i+1)*8 -1 : i*8];
+    //             end
+    // endgenerate
+
+    always @(posedge clock)
+                begin if( isWrite == 4'b1111 )
+                    RAM[addr]<= writeData;
                 end
-    endgenerate
 
 endmodule				
 						

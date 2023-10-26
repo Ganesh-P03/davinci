@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Wed Oct 25 12:40:49 2023
+| Date         : Thu Oct 26 00:56:58 2023
 | Host         : Ganesh running 64-bit major release  (build 9200)
 | Command      : report_utilization -file processor_utilization_synth.rpt -pb processor_utilization_synth.pb
 | Design       : processor
@@ -31,16 +31,16 @@ Table of Contents
 +----------------------------+------+-------+------------+-----------+-------+
 |          Site Type         | Used | Fixed | Prohibited | Available | Util% |
 +----------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*                | 3986 |     0 |          0 |     17600 | 22.65 |
-|   LUT as Logic             | 1554 |     0 |          0 |     17600 |  8.83 |
+| Slice LUTs*                | 3097 |     0 |          0 |     17600 | 17.60 |
+|   LUT as Logic             |  665 |     0 |          0 |     17600 |  3.78 |
 |   LUT as Memory            | 2432 |     0 |          0 |      6000 | 40.53 |
 |     LUT as Distributed RAM | 2432 |     0 |            |           |       |
 |     LUT as Shift Register  |    0 |     0 |            |           |       |
-| Slice Registers            | 1382 |     0 |          0 |     35200 |  3.93 |
-|   Register as Flip Flop    | 1374 |     0 |          0 |     35200 |  3.90 |
-|   Register as Latch        |    8 |     0 |          0 |     35200 |  0.02 |
-| F7 Muxes                   | 1527 |     0 |          0 |      8800 | 17.35 |
-| F8 Muxes                   |   14 |     0 |          0 |      4400 |  0.32 |
+| Slice Registers            |  427 |     0 |          0 |     35200 |  1.21 |
+|   Register as Flip Flop    |  421 |     0 |          0 |     35200 |  1.20 |
+|   Register as Latch        |    6 |     0 |          0 |     35200 |  0.02 |
+| F7 Muxes                   | 1233 |     0 |          0 |      8800 | 14.01 |
+| F8 Muxes                   |    8 |     0 |          0 |      4400 |  0.18 |
 +----------------------------+------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
 Warning! LUT value is adjusted to account for LUT combining.
@@ -59,23 +59,22 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 1     |          Yes |           - |          Set |
-| 11    |          Yes |           - |        Reset |
-| 7     |          Yes |         Set |            - |
-| 1363  |          Yes |       Reset |            - |
+| 13    |          Yes |           - |        Reset |
+| 4     |          Yes |         Set |            - |
+| 409   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
 2. Memory
 ---------
 
-+-------------------+------+-------+------------+-----------+-------+
-|     Site Type     | Used | Fixed | Prohibited | Available | Util% |
-+-------------------+------+-------+------------+-----------+-------+
-| Block RAM Tile    |   16 |     0 |          0 |        60 | 26.67 |
-|   RAMB36/FIFO*    |   16 |     0 |          0 |        60 | 26.67 |
-|     RAMB36E1 only |   16 |       |            |           |       |
-|   RAMB18          |    0 |     0 |          0 |       120 |  0.00 |
-+-------------------+------+-------+------------+-----------+-------+
++----------------+------+-------+------------+-----------+-------+
+|    Site Type   | Used | Fixed | Prohibited | Available | Util% |
++----------------+------+-------+------------+-----------+-------+
+| Block RAM Tile |    0 |     0 |          0 |        60 |  0.00 |
+|   RAMB36/FIFO* |    0 |     0 |          0 |        60 |  0.00 |
+|   RAMB18       |    0 |     0 |          0 |       120 |  0.00 |
++----------------+------+-------+------------+-----------+-------+
 * Note: Each Block RAM Tile only has one FIFO logic available and therefore can accommodate only one FIFO36E1 or one FIFO18E1. However, if a FIFO18E1 occupies a Block RAM Tile, that tile can still accommodate a RAMB18E1
 
 
@@ -152,25 +151,24 @@ Warning! LUT value is adjusted to account for LUT combining.
 |  Ref Name  | Used | Functional Category |
 +------------+------+---------------------+
 | RAMD64E    | 2368 |  Distributed Memory |
-| MUXF7      | 1527 |               MuxFx |
-| FDRE       | 1363 |        Flop & Latch |
-| LUT6       | 1118 |                 LUT |
-| LUT3       |  256 |                 LUT |
-| LUT5       |  146 |                 LUT |
-| LUT4       |   66 |                 LUT |
+| MUXF7      | 1233 |               MuxFx |
+| FDRE       |  409 |        Flop & Latch |
+| LUT6       |  287 |                 LUT |
+| LUT4       |  165 |                 LUT |
+| LUT3       |  147 |                 LUT |
+| LUT5       |  121 |                 LUT |
 | RAMD32     |   64 |  Distributed Memory |
-| LUT2       |   35 |                 LUT |
-| RAMB36E1   |   16 |        Block Memory |
-| MUXF8      |   14 |               MuxFx |
-| CARRY4     |    9 |          CarryLogic |
+| LUT2       |   34 |                 LUT |
 | OBUFDS     |    8 |                  IO |
-| LDCE       |    8 |        Flop & Latch |
-| FDSE       |    7 |        Flop & Latch |
+| MUXF8      |    8 |               MuxFx |
+| FDCE       |    7 |        Flop & Latch |
+| LDCE       |    6 |        Flop & Latch |
+| CARRY4     |    6 |          CarryLogic |
 | OBUF       |    4 |                  IO |
-| LUT1       |    4 |                 LUT |
 | INV        |    4 |                 LUT |
+| FDSE       |    4 |        Flop & Latch |
 | BUFG       |    4 |               Clock |
-| FDCE       |    3 |        Flop & Latch |
+| LUT1       |    3 |                 LUT |
 | IBUF       |    2 |                  IO |
 | MMCME2_ADV |    1 |               Clock |
 | FDPE       |    1 |        Flop & Latch |

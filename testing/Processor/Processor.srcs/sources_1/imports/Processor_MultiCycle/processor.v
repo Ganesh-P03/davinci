@@ -15,10 +15,10 @@ output TMDSn_clock;
 wire [31:0] display_address;
 wire [31:0] display_dataOut;
 
-//Screen_Memory screen_mem (.clock(clk),.address(display_address[15:0]),.displayAddr(display_address[15:0]),.isWrite(1'b0),.writeData(32'b0),.displayData(dataOut));
+// //Screen_Memory screen_mem (.clock(clk),.address(display_address[15:0]),.displayAddr(display_address[15:0]),.isWrite(1'b0),.writeData(32'b0),.displayData(dataOut));
 
 DisplayDriver dispDriver (.clk(clk),.displayData(display_dataOut),.TMDSp(TMDSp),.TMDSn(TMDSn),
-                        .pointer(display_address),.TMDSp_clock(TMDSp_clock),.TMDSn_clock(TMDSn_clock));
+.pointer(display_address),.TMDSp_clock(TMDSp_clock),.TMDSn_clock(TMDSn_clock));
 //-----------Screen-------------------------//
 
 
@@ -32,7 +32,7 @@ wire [31:0] WriteData;
 wire PCWrite, AddrSrc, MemWrite, IRWrite, RegWrite;
 wire [1:0] ALUSrcA;
 wire [1:0] ALUSrcB;
-wire [1:0] ImmSrc;
+wire [2:0] ImmSrc;
 wire [2:0] ALUControl;
 wire [1:0] ResultSrc;
 
@@ -68,6 +68,7 @@ always @(posedge clk) begin
       PC1<=ResultWire;
     end
 end
+
 
 wire [7:0] key_reg;
 

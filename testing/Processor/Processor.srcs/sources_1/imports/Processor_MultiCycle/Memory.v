@@ -28,17 +28,19 @@ module Memory
     wire [3:0] ramIsWrite;
     
     assign displayIsWrite = (address < 32'd9600 && isWrite == 1'b1 ) ? 1'b1 : 1'b0; //640*480/32=9600
-    assign ramIsWrite[0] = (address >= 32'd140672 && isWrite == 1'b1 && (byteWrite == 1'b0 || address [1:0] == 2'd3 )) ? 1'b1 : 1'b0;
-    assign ramIsWrite[1] = (address >= 32'd140672 && isWrite == 1'b1 && (byteWrite == 1'b0 || address [1:0] == 2'd2 )) ? 1'b1 : 1'b0;
-    assign ramIsWrite[2] = (address >= 32'd140672 && isWrite == 1'b1 && (byteWrite == 1'b0 || address [1:0] == 2'd1 )) ? 1'b1 : 1'b0;
-    assign ramIsWrite[3] = (address >= 32'd140672 && isWrite == 1'b1 && (byteWrite == 1'b0 || address [1:0] == 2'd0 )) ? 1'b1 : 1'b0;
+    // assign ramIsWrite[0] = (address >= 32'd140672 && isWrite == 1'b1 && (byteWrite == 1'b0 || address [1:0] == 2'd3 )) ? 1'b1 : 1'b0;
+    // assign ramIsWrite[1] = (address >= 32'd140672 && isWrite == 1'b1 && (byteWrite == 1'b0 || address [1:0] == 2'd2 )) ? 1'b1 : 1'b0;
+    // assign ramIsWrite[2] = (address >= 32'd140672 && isWrite == 1'b1 && (byteWrite == 1'b0 || address [1:0] == 2'd1 )) ? 1'b1 : 1'b0;
+    // assign ramIsWrite[3] = (address >= 32'd140672 && isWrite == 1'b1 && (byteWrite == 1'b0 || address [1:0] == 2'd0 )) ? 1'b1 : 1'b0;
     
     wire [31:0] ramWriteData;
-    assign ramWriteData =   (byteWrite == 1'b0 ) ? writeData :
-                            (address[1:0] == 2'd0 ) ? (writeData << 24) :
-                            (address[1:0] == 2'd1 ) ? (writeData << 16) :
-                            (address[1:0] == 2'd2 ) ? (writeData << 8)  :
-                            writeData;
+    // assign ramWriteData =   (byteWrite == 1'b0 ) ? writeData :
+    //                         (address[1:0] == 2'd0 ) ? (writeData << 24) :
+    //                         (address[1:0] == 2'd1 ) ? (writeData << 16) :
+    //                         (address[1:0] == 2'd2 ) ? (writeData << 8)  :
+    //                         writeData;
+    assign ramWriteData = writeData;
+    assign ramIsWrite = (isWrite == 1'b1) ? 4'b1111 : 4'b0000;
     
     wire ramIsRead;
     assign ramIsRead = (address >= 18'd140672 ) ? 1'b1 : 1'b0; 
@@ -84,10 +86,10 @@ module Memory
     
     wire [31:0] ramReadData;
     assign data =   (readKeyboard == 1'b1 ) ? keyVal :
-                    (byteRead == 1'b1 && addrLatch == 2'd0) ? ramReadData[31:24] :
-                    (byteRead == 1'b1 && addrLatch == 2'd1) ? ramReadData[23:16] :
-                    (byteRead == 1'b1 && addrLatch == 2'd2) ? ramReadData[15:8] :
-                    (byteRead == 1'b1 && addrLatch == 2'd3) ? ramReadData[7:0] :
+                    // (byteRead == 1'b1 && addrLatch == 2'd0) ? ramReadData[31:24] :
+                    // (byteRead == 1'b1 && addrLatch == 2'd1) ? ramReadData[23:16] :
+                    // (byteRead == 1'b1 && addrLatch == 2'd2) ? ramReadData[15:8] :
+                    // (byteRead == 1'b1 && addrLatch == 2'd3) ? ramReadData[7:0] :
                     ramReadData;
     
     Screen_Memory disMem (

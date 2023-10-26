@@ -24,4 +24,9 @@ XOR_1bit_2inp x3 ( .i1(add[31]), .i2(Overflow), .o(xor2));
 zero_extender ze1 ( .inp(xor2), .out(extended));
 MUX8x1_32bit m3 (.i0(add),.i1(sub), .i2(or1), .i3(and1), .i4(extended), .i5(32'b0), .i6(32'b0), .i7(32'b0), .sel(sel), .o(ALUOut));
 
+//zero and negative flags
+assign Zero = (ALUOut == 32'b0);
+
+// [TODO] negative flag to be assigned by checking overflow
+assign Negative = ALUOut[31];
 endmodule
