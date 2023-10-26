@@ -21,6 +21,8 @@ class VirtualMachine:
     
     # CodeWriter instance
     self.__code_writer = CodeWriter(output_file_path)
+    self.__code_writer.writePCbase()
+    self.__code_writer.writeRAMbase()
     self.__code_writer.writeBootstrapCode()
       
     # Source path is a directory

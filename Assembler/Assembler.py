@@ -33,6 +33,10 @@ class Assembler:
         "$t4": "01011",
         "x12": "01100",
         "$temp": "01100",
+        "x13": "01101",
+        "$ram": "01101",
+        "x14": "01110",
+        "$pc": "01110",
     }
 
     __symbol_table = {}
@@ -41,8 +45,10 @@ class Assembler:
     __scounter = 0
 
     # TODO: Define where the instructions start
-    __sbase = 0x10
+    __sbase = 140672 + 15
     __dbase = 0x0
+    
+    __pcbase = 9600
 
     def __init__(self, input_path):
         try:
@@ -190,7 +196,7 @@ class Assembler:
         if cmd == "add":
             return "0000000" + rs2 + rs1 + "000" + rd + "0110011"
         elif cmd == "sub":
-            return "0010000" + rs2 + rs1 + "000" + rd + "0110011"
+            return "0100000" + rs2 + rs1 + "000" + rd + "0110011"
         elif cmd == "or":
             return "0000000" + rs2 + rs1 + "110" + rd + "0110011"
         elif cmd == "and":
@@ -348,7 +354,7 @@ class Assembler:
         if save:
             with open("output/first_pass.txt", "w") as f:
                 for i, line in enumerate(wl_contents):
-                    f.write("(" + str(i * 4) + "): " + " ".join(line) + "\n")
+                    f.write("(" + str(self.__pcbase + i * 4) + "): " + " ".join(line) + "\n")
             return
 
     # Second pass
@@ -387,7 +393,7 @@ class Assembler:
 
                 line.pop()
                 line.append(str(self.getStaticLocation(symbol)))
-                line.append("$zero")
+                line.append("$ram")
 
             pcode.append(line)
 
@@ -396,7 +402,7 @@ class Assembler:
         if save:
             with open("output/second_pass.txt", "w") as f:
                 for i, line in enumerate(pcode):
-                    f.write("(" + str(i * 4) + "): " + " ".join(line) + "\n")
+                    f.write("(" + str(self.__pcbase + i * 4) + "): " + " ".join(line) + "\n")
         return pcode
 
     # Translate to Machine Code
@@ -441,6 +447,18 @@ class Assembler:
         with open("output/bin.txt", "w") as f:
             for line in mcode:
                 f.write(line + "\n")
+        
+        with open("output/HEX.txt", "w") as f:
+            for line in mcode:
+                # convert 32 bit binary to hex
+                hex = format(int(line, 2), '08x')
+                hex = str(hex)
+                hex = hex.upper()
+                f.write(hex + "\n")
+                
+        with open("output/rom.txt", "w") as f:
+            for i, line in enumerate(mcode):
+                f.write("ROM[" + str(i) + "] <= 32'b" + line + ";\n")
 
 
 if __name__ == "__main__":

@@ -68,7 +68,22 @@ class CodeWriter:
   def write(self, assembly_code: str) -> None:
     self.__output_stream.write(assembly_code + '\n')
     
+  def writePCbase(self) -> None:
+    self.writeMessage('====================================')
+    self.writeMessage('PC BASE')
+    self.writeMessage('====================================')
+    self.write('lui $pc, 2')
+    self.write('addi $pc, $pc, 1408') # pc = 9600
+    self.writeMessage('')
     
+  def writeRAMbase(self) -> None:
+    self.writeMessage('====================================')
+    self.writeMessage('RAM BASE')
+    self.writeMessage('====================================')
+    self.write('lui $ram, 34') # ram = 34 << 12
+    self.write('addi $ram, $ram, 1408') # ram = 140672
+    self.writeMessage('')
+
   # VM Initialization code
   def writeBootstrapCode(self) -> None:
     self.writeMessage('====================================')
@@ -78,18 +93,22 @@ class CodeWriter:
     
     # Initialize SP to 256
     self.writeMessage('Initializing SP to 256')
-    self.write('addi $sp, $zero, 256')
+    self.write('addi $sp, $ram, 256')
+    self.writeMessage('')
+    
+    # Initialize LCL to $sp
+    self.write('addi $lcl, $sp, 0')
     self.writeMessage('')
     
     # Initialize TEMP to 0
     self.writeMessage('Initializing TEMP to 0')
-    self.write('addi $temp, $zero, 0')
+    self.write('addi $temp, $ram, 0')
     self.writeMessage('')
     
     # Call Sys.init
-    self.writeMessage('Call Sys.init')
-    self.writeCall('Sys.init', 0)
-    self.writeMessage('')
+    # self.writeMessage('Call Sys.init')
+    # self.writeCall('Sys.init', 0)
+    # self.writeMessage('')
   
   
   def writeASM(self, parser: Parser):
@@ -289,6 +308,9 @@ class CodeWriter:
     self.write('beq $t0, $zero, ' + str(loop_exit_label)) # if t0 == 0, goto loop_exit_label
     self.write('lui $t0, ' + label) # t0
     self.write('addi $t0, $t0, ' + label) # t0 = return_label
+    
+    self.write('add $t0, $t0, $pc') # t0 = return_label + pc
+    
     self.write('jalr $ra, $t0, 0') # goto (label)
     self.writeLabel(loop_exit_label)
     
@@ -300,6 +322,8 @@ class CodeWriter:
     return_label = self.genReturnLabel(function_name)
     self.write('lui $t0, ' + str(return_label)) # t0 = return_label
     self.write('addi $t0, $t0, ' + str(return_label)) # t0 = return_label
+    
+    self.write('add $t0, $t0, $pc') # t0 = return_label + pc
     
     self.write('sw $t0, 0($sp)')   # *SP = t0
     self.write('addi $sp, $sp, 4') # SP = SP + 1

@@ -85,7 +85,7 @@ class Assembler:
 
             self.firstPass(save=True)
             self.secondPass(save=True)
-            self.translate(os.path.join(bin_base, "riscv.bin"))
+            self.translate(bin_base)
             
             self.showTables(save=True)
         except:
@@ -465,6 +465,13 @@ class Assembler:
 
         self.__contents = mcode
 
-        with open(output_path, "w") as f:
+        bin_path = os.path.join(output_path, "riscv.bin")
+        rom_path = os.path.join(output_path, "rom.txt")
+        
+        with open(bin_path, "w") as f:
             for line in mcode:
                 f.write(line + "\n")
+        
+        with open(rom_path, "w") as f:
+            for i, line in enumerate(mcode):
+                f.write("ROM[" + str(i) + "] <= 32'b" + line + ";\n")
