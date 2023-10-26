@@ -86,6 +86,8 @@ class Assembler:
             self.firstPass(save=True)
             self.secondPass(save=True)
             self.translate(os.path.join(bin_base, "riscv.bin"))
+            
+            self.showTables(save=True)
         except:
             return False
         
