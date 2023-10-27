@@ -4,8 +4,11 @@
 |   Main.main    |      28     |
 | Main.fib$ret.1 |     124     |
 |    Main.fib    |     140     |
-|    WHILE_0     |     212     |
-|  LOOP_EXIT_1   |     316     |
-|  END_WHILE_0   |     384     |
-|      END       |     444     |
+|  LOOP_EXIT_1   |     340     |
+|      IF_0      |     344     |
+|    ENDIF_0     |     404     |
+|    WHILE_1     |     404     |
+|  LOOP_EXIT_2   |     508     |
+|  END_WHILE_1   |     688     |
+|      END       |     748     |
 +----------------+-------------+

@@ -166,7 +166,7 @@ class CodeWriter:
       else:
         # [DONES] Implement not
         self.write("sub $t0, $zero, $t0")  # t0 = 0 - x (-x)
-        self.write("addi $t0, $t0, -1")     # t0 = -x + -1 (~x)
+        self.write("addi $t0, $t0, 1")     # t0 = -x + 1
       
       self.writeMessage('')
       
@@ -199,17 +199,17 @@ class CodeWriter:
       
     # Eq/Gt/Lt
     elif command == 'eq':
-      self.write('slt $t2, $t0, $t1') # t2 = x < y
-      self.write('slt $t3, $t1, $t0') # t3 = y < x
+      self.write('slt $t2, $t1, $t0') # t2 = x < y
+      self.write('slt $t3, $t0, $t1') # t3 = y < x
       
       self.write('add $t0, $t2, $t3') # t0 = (x < y) + (y < x)
       
       self.write('addi $t0, $t0, 1')  # t0 = (x < y) | (y < x) + 1
       self.write('andi $t0, $t0, 1')  # t0 = ((x < y) | (y < x) + 1) & 1
     elif command == 'gt':
-      self.write('slt $t0, $t1, $t0') # t0 = (y < x) => x > y
+      self.write('slt $t0, $t0, $t1') # t0 = (y < x) => x > y
     elif command == 'lt':
-      self.write('slt $t0, $t0, $t1') # t0 = x < y
+      self.write('slt $t0, $t1, $t0') # t0 = x < y
     
     else:
       assert False, 'Error while parsing arithmetic command'

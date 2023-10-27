@@ -80,10 +80,12 @@ lw $t0, 0($sp)
 sw $t0, 0($lcl)
 jal x1, END
 
-// Function Main.fib 3
+// Function Main.fib 4
 Main.fib:
 
-// Pushing 3 zeros to stack
+// Pushing 4 zeros to stack
+sw $zero, 0($sp)
+addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 sw $zero, 0($sp)
@@ -91,21 +93,21 @@ addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (0)
-addi $t0, $zero, 0
+// Push to stack from constant (2)
+addi $t0, $zero, 2
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Pop from stack to local (3)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 8($lcl)
+sw $t0, 12($lcl)
 
-// Push to stack from constant (1)
-addi $t0, $zero, 1
+// Push to stack from constant (0)
+addi $t0, $zero, 0
 
 // Push to stack
 sw $t0, 0($sp)
@@ -117,9 +119,93 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-WHILE_0:
-// Push to stack from local (2)
-lw $t0, 8($lcl)
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t2, $t1, $t0
+slt $t3, $t0, $t1
+add $t0, $t2, $t3
+addi $t0, $t0, 1
+andi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_0
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_1
+lui $t0, IF_0
+addi $t0, $t0, IF_0
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_1:
+
+// Jump to ENDIF_0
+jal $ra, ENDIF_0
+
+IF_0:
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+ENDIF_0:
+WHILE_1:
+// Push to stack from local (3)
+lw $t0, 12($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -140,7 +226,7 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 
-slt $t0, $t0, $t1
+slt $t0, $t1, $t0
 
 // Push to stack
 sw $t0, 0($sp)
@@ -151,24 +237,84 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 
 sub $t0, $zero, $t0
-addi $t0, $t0, -1
+addi $t0, $t0, 1
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto END_WHILE_0
+// If-goto END_WHILE_1
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_1
-lui $t0, END_WHILE_0
-addi $t0, $t0, END_WHILE_0
+beq $t0, $zero, LOOP_EXIT_2
+lui $t0, END_WHILE_1
+addi $t0, $t0, END_WHILE_1
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_1:
+LOOP_EXIT_2:
 
 // Push to stack from local (0)
 lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
+
+// Push to stack from local (3)
+lw $t0, 12($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -195,18 +341,18 @@ add $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (0)
+// Pop from stack to local (3)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 0($lcl)
+sw $t0, 12($lcl)
 
-// Jump to WHILE_0
-jal $ra, WHILE_0
+// Jump to WHILE_1
+jal $ra, WHILE_1
 
-END_WHILE_0:
-// Push to stack from local (0)
-lw $t0, 0($lcl)
+END_WHILE_1:
+// Push to stack from local (1)
+lw $t0, 4($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
