@@ -1,32 +1,14 @@
 class Main{
 
     function int fib(int n) {
-        var int a;
-        var int b;
-        var int c;
-        var int i;
-        let a = 0;
-        let b = 1;
-        let i = 2;
-
-        if (n = 0){
-            return a;
-        }
+        var int i = 0;
+        var int a = 0;
 
         while(i < n){
-            let c  = a + b;
-            let a = b;
-            let b = c;
-            let i = i + 1;
+            let a = a + 4;
         }
-        if(i = n){
-            let c  = a + b;
-            let a = b;
-            let b = c;
-            let i = i + 1;
 
-        }
-        return b;
+        return a;
     }
 
     function void main() {

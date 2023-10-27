@@ -1,0 +1,33 @@
+class Main{
+
+    function int fib(int n) {
+        var int a;
+        var int b;
+        var int c;
+        var int i;
+
+        let a = 0;
+        let b = 1;
+        let i = 2;
+
+        if(n == 1){
+            return a;
+        }
+
+        while(i < n){
+            let c = a + b;
+            let a = b;
+            let b = c;
+
+            let i = i + 1;
+        }
+        
+        return b;
+    }
+
+    function void main() {
+        var int ans;
+        let ans = Main.fib(10);
+
+    }
+}

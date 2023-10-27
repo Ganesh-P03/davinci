@@ -9,10 +9,6 @@
 |   WHILE_EXP0   |     264     |
 |  LOOP_EXIT_2   |     364     |
 |   WHILE_END0   |     544     |
-|  LOOP_EXIT_3   |     636     |
-|    IF_TRUE1    |     640     |
-|   IF_FALSE1    |     820     |
-|    IF_END1     |     820     |
-|   Main.main    |     880     |
-| Main.fib$ret.1 |     972     |
+|   Main.main    |     604     |
+| Main.fib$ret.1 |     696     |
 +----------------+-------------+

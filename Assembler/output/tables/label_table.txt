@@ -1,18 +1,11 @@
 +----------------+-------------+
 |     Label      | Address(PC) |
 +----------------+-------------+
-|    Main.fib    |      28     |
-|  LOOP_EXIT_1   |     228     |
-|    IF_TRUE0    |     232     |
-|   IF_FALSE0    |     296     |
-|    IF_END0     |     296     |
-|   WHILE_EXP0   |     296     |
-|  LOOP_EXIT_2   |     400     |
-|   WHILE_END0   |     580     |
-|  LOOP_EXIT_3   |     676     |
-|    IF_TRUE1    |     680     |
-|   IF_FALSE1    |     860     |
-|    IF_END1     |     860     |
-|   Main.main    |     920     |
-| Main.fib$ret.1 |     1016    |
+|   Main.main    |      28     |
+| Main.fib$ret.1 |     124     |
+|    Main.fib    |     140     |
+|    WHILE_0     |     212     |
+|  LOOP_EXIT_1   |     316     |
+|  END_WHILE_0   |     384     |
+|      END       |     444     |
 +----------------+-------------+

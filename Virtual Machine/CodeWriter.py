@@ -259,6 +259,7 @@ class CodeWriter:
         
            
       self.writeMessage('')
+      self.writeMessage('Push to stack')
       
       self.write('sw $t0, 0($sp)')   # *SP = t0
       self.write('addi $sp, $sp, 4') # SP = SP + 1
@@ -296,11 +297,14 @@ class CodeWriter:
   
   # Writes assembly code that effects the goto command
   def writeGoto(self, label: str) -> None:
+    self.writeMessage('Jump to ' + str(label))
     self.write('jal $ra, ' + str(label)) # goto <label>
+    self.writeMessage('')
 
   
   # Writes assembly code that effects the if-goto command
   def writeIf(self, label: str) -> None:
+    self.writeMessage('If-goto ' + str(label))
     self.write('addi $sp, $sp, -4')  # SP = SP - 1
     self.write('lw $t0, 0($sp)')     # t0 = *SP (x)
     
@@ -313,11 +317,12 @@ class CodeWriter:
     
     self.write('jalr $ra, $t0, 0') # goto (label)
     self.writeLabel(loop_exit_label)
+    self.writeMessage('')
     
   
   # Writes assembly code that effects the call command
   def writeCall(self, function_name: str, n: int) -> None:    
-    
+    self.writeMessage('Call ' + str(function_name) + ' ' + str(n))
     # Push return-address
     return_label = self.genReturnLabel(function_name)
     self.write('lui $t0, ' + str(return_label)) # t0 = return_label
@@ -329,33 +334,42 @@ class CodeWriter:
     self.write('addi $sp, $sp, 4') # SP = SP + 1
     
     # Push $lcl
+    self.writeMessage('Pushing $lcl, $arg, $this, $that')
     self.write('sw $lcl, 0($sp)') # *SP = $lcl
     self.write('addi $sp, $sp, 4') # SP = SP + 1
+    self.writeMessage('')
     
     # Push $arg
     self.write('sw $arg, 0($sp)') # *SP = $arg
     self.write('addi $sp, $sp, 4') # SP = SP + 1
+    self.writeMessage('')
     
     # Push $this
     self.write('sw $this, 0($sp)') # *SP = $this
     self.write('addi $sp, $sp, 4') # SP = SP + 1
+    self.writeMessage('')
     
     # Push $that
     self.write('sw $that, 0($sp)') # *SP = $that
     self.write('addi $sp, $sp, 4') # SP = SP + 1
+    self.writeMessage('')
     
+    self.writeMessage('Reposition ARG, LCL')
     # Write $sp - (n+5)*4 to $arg
     self.write('addi $t0, $zero, 20') # t0 = 20
     self.write('addi $t0, $t0, ' + str(n*4)) # t1 = n*4 + 20
     self.write('sub $t0, $sp, $t0') # t0 = ($sp) - (20 + n*4)
     self.write('add $arg, $zero, $t0') # $arg = (0 + t0)
+    self.writeMessage('')
     
     # Write $sp to $lcl
     self.write('add $lcl, $zero, $sp') # $lcl = $sp
+    self.writeMessage('')
     
     self.writeGoto(function_name)
     self.writeMessage('')
     self.writeLabel(return_label)
+    self.writeMessage('')
 
   
   # Writes assembly code that effects the return command
@@ -367,11 +381,14 @@ class CodeWriter:
     # -1 : <THAT> : 4
     
     # Reposition ARG = pop()
+    self.writeMessage('ARG = pop()')
     self.write('addi $sp, $sp, -4') # SP = SP - 1
     self.write('lw $t0, 0($sp)')    # t0 = res
     
     self.write('sw $t0, 0($arg)')    # *(arg) = $arg
+    self.writeMessage('')
     
+    self.writeMessage('Change SP = ARG + 1')
     # Restore SP = ARG + 1
     self.write('addi $sp, $arg, 4')
     
@@ -385,15 +402,20 @@ class CodeWriter:
     self.writeMessage('')
     
     self.write('jalr $ra, $ra, 0') # goto <return-address>
+    self.writeMessage('')
   
   
   # Writes assembly code that effects the function command
   def writeFunction(self, function_name: str, n: int) -> None:
+    self.writeMessage('Function ' + str(function_name) + ' ' + str(n))
     self.writeLabel(function_name) # <function_name>:
+    self.writeMessage('')
     
+    self.writeMessage('Pushing ' + str(n) + ' zeros to stack')
     for _ in range(n):
       self.write('sw $zero, 0($sp)')
       self.write('addi $sp, $sp, 4')
+    self.writeMessage('')
   
   # Closes the output file
   def close(self) -> None:
