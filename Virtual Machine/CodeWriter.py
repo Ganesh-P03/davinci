@@ -83,6 +83,11 @@ class CodeWriter:
     self.write('lui $ram, 34') # ram = 34 << 12
     self.write('addi $ram, $ram, 1408') # ram = 140672
     self.writeMessage('')
+    
+    self.writeMessage('Initialize Static Segment')
+    for i in range(15, 256):
+      self.write('sw $zero, ' + str(i) + "($ram)")
+    self.writeMessage('')
 
   # VM Initialization code
   def writeBootstrapCode(self) -> None:
@@ -332,6 +337,7 @@ class CodeWriter:
     
     self.write('sw $t0, 0($sp)')   # *SP = t0
     self.write('addi $sp, $sp, 4') # SP = SP + 1
+    self.writeMessage('')
     
     # Push $lcl
     self.writeMessage('Pushing $lcl, $arg, $this, $that')

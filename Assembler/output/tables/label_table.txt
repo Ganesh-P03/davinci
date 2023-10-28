@@ -1,14 +1,52 @@
-+----------------+-------------+
-|     Label      | Address(PC) |
-+----------------+-------------+
-|   Main.main    |      28     |
-| Main.fib$ret.1 |     124     |
-|    Main.fib    |     140     |
-|  LOOP_EXIT_1   |     340     |
-|      IF_0      |     344     |
-|    ENDIF_0     |     404     |
-|    WHILE_1     |     404     |
-|  LOOP_EXIT_2   |     508     |
-|  END_WHILE_1   |     688     |
-|      END       |     748     |
-+----------------+-------------+
++--------------------------+-------------+
+|          Label           | Address(PC) |
++--------------------------+-------------+
+|        Main.main         |     992     |
+|     Main.test$ret.3      |     1088    |
+|        Main.test         |     1104    |
+|     Array.new$ret.4      |     1200    |
+|        Array.new         |     1424    |
+|    Memory.alloc$ret.1    |     1512    |
+|      Array.dispose       |     1560    |
+|   Memory.deAlloc$ret.2   |     1672    |
+|       Memory.init        |     1744    |
+|       Memory.peek        |     2208    |
+|       Memory.poke        |     2332    |
+|      Memory.bestFit      |     2480    |
+|       LOOP_EXIT_1        |     2784    |
+|           IF_0           |     2788    |
+|         ENDIF_0          |     2848    |
+|         WHILE_1          |     2848    |
+|       LOOP_EXIT_2        |     2992    |
+|       LOOP_EXIT_3        |     3304    |
+|           IF_2           |     3308    |
+|         ENDIF_2          |     3356    |
+|       END_WHILE_1        |     3448    |
+|       Memory.alloc       |     3508    |
+|   Memory.bestFit$ret.5   |     3620    |
+|       LOOP_EXIT_4        |     3816    |
+|           IF_3           |     3820    |
+|       LOOP_EXIT_5        |     4004    |
+|           IF_4           |     4248    |
+|         ENDIF_4          |     4888    |
+|         ENDIF_3          |     4912    |
+|      Memory.deAlloc      |     4972    |
+| Memory.findPreFree$ret.6 |     5236    |
+|       LOOP_EXIT_6        |     5344    |
+|       LOOP_EXIT_7        |     5544    |
+|           IF_6           |     5876    |
+|         ENDIF_6          |     6092    |
+|           IF_5           |     6096    |
+|         ENDIF_5          |     6296    |
+|       LOOP_EXIT_8        |     6560    |
+|           IF_7           |     6564    |
+|         ENDIF_7          |     7060    |
+|    Memory.findPreFree    |     7120    |
+|       LOOP_EXIT_9        |     7208    |
+|           IF_8           |     7212    |
+|         ENDIF_8          |     7272    |
+|         WHILE_9          |     7296    |
+|       LOOP_EXIT_10       |     7648    |
+|       END_WHILE_9        |     7740    |
+|           END            |     7800    |
++--------------------------+-------------+

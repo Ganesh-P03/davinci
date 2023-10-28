@@ -10,7 +10,7 @@ z2
 cModel Technology
 dC:/Users/chakr/OneDrive/Desktop/CSD Project/Processor_MultiCycle
 vadd_sub
-Z0 !s110 1698403015
+Z0 !s110 1698478274
 !i10b 1
 !s100 P[^^PKHNVPS62nRSmRACz0
 Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
@@ -20,18 +20,18 @@ Z3 dD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle
 Z4 w1695225598
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/add_sub.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/add_sub.v
-!i122 368
+!i122 434
 L0 1 31
 Z5 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1698403015.000000
+!s108 1698478273.000000
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/add_sub.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/add_sub.v|
 !i113 1
-Z7 o-work work
-Z8 tCvgOpt 0
+Z6 o-work work
+Z7 tCvgOpt 0
 vALU_Decoder
 R0
 !i10b 1
@@ -40,21 +40,21 @@ R1
 I7Uj9i3AZ5YG1n5DSKWNN43
 R2
 R3
-Z9 w1695552536
+Z8 w1695552536
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ALU_Decoder.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ALU_Decoder.v
-!i122 369
+!i122 435
 L0 1 35
 R5
 r1
 !s85 0
 31
-R6
+Z9 !s108 1698478274.000000
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ALU_Decoder.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ALU_Decoder.v|
 !i113 1
+R6
 R7
-R8
 n@a@l@u_@decoder
 vALU_RISCv
 R0
@@ -67,21 +67,21 @@ R3
 Z10 w1698336658
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ALU_RISCv.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ALU_RISCv.v
-!i122 370
+!i122 436
 Z11 L0 1 33
 R5
 r1
 !s85 0
 31
-R6
+R9
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ALU_RISCv.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ALU_RISCv.v|
 !i113 1
+R6
 R7
-R8
 n@a@l@u_@r@i@s@cv
 vAND_1bit_2inp
-Z12 !s110 1698403016
+Z12 !s110 1698478275
 !i10b 1
 !s100 WIl8GC]O`<I^O]g2K9Em31
 R1
@@ -91,18 +91,18 @@ R3
 R4
 Z13 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Gates.v
 Z14 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Gates.v
-!i122 379
+!i122 445
 L0 19 5
 R5
 r1
 !s85 0
 31
-Z15 !s108 1698403016.000000
+Z15 !s108 1698478275.000000
 Z16 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Gates.v|
 Z17 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Gates.v|
 !i113 1
+R6
 R7
-R8
 n@a@n@d_1bit_2inp
 vAND_1bit_3inp
 R12
@@ -115,7 +115,7 @@ R3
 R4
 R13
 R14
-!i122 379
+!i122 445
 L0 13 5
 R5
 r1
@@ -125,8 +125,8 @@ R15
 R16
 R17
 !i113 1
+R6
 R7
-R8
 n@a@n@d_1bit_3inp
 vbitwiseAND
 R0
@@ -139,18 +139,18 @@ R3
 R4
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/bitwiseAND.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/bitwiseAND.v
-!i122 371
+!i122 437
 Z18 L0 1 19
 R5
 r1
 !s85 0
 31
-R6
+R9
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/bitwiseAND.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/bitwiseAND.v|
 !i113 1
+R6
 R7
-R8
 nbitwise@a@n@d
 vcontrol_unit
 R0
@@ -163,18 +163,18 @@ R3
 Z19 w1698300053
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/control_unit.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/control_unit.v
-!i122 372
+!i122 438
 Z20 L0 1 72
 R5
 r1
 !s85 0
 31
-R6
+R9
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/control_unit.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/control_unit.v|
 !i113 1
+R6
 R7
-R8
 vdecoder_14x16384
 R0
 !i10b 1
@@ -186,18 +186,18 @@ R3
 R4
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/decoder_14x16384.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/decoder_14x16384.v
-!i122 374
+!i122 440
 L0 23 11
 R5
 r1
 !s85 0
 31
-R6
+R9
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/decoder_14x16384.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/decoder_14x16384.v|
 !i113 1
+R6
 R7
-R8
 vdecoder_5x32
 R0
 !i10b 1
@@ -209,44 +209,44 @@ R3
 Z21 w1698142064
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/decoder_5x32.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/decoder_5x32.v
-!i122 373
+!i122 439
 L0 1 10
 R5
 r1
 !s85 0
 31
-R6
+R9
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/decoder_5x32.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/decoder_5x32.v|
 !i113 1
+R6
 R7
-R8
 vDFlipFlop
-R12
+R0
 !i10b 1
 !s100 <7Yc1D_6VIdiG3cTHR<<M3
 R1
 I8dHFKaF=3<PQET8b?czOR3
 R2
 R3
-R9
+R8
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/DFlipFlop.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/DFlipFlop.v
-!i122 375
+!i122 441
 L0 3 12
 R5
 r1
 !s85 0
 31
-R15
+R9
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/DFlipFlop.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/DFlipFlop.v|
 !i113 1
+R6
 R7
-R8
 n@d@flip@flop
 vDisplayDriver
-R12
+R0
 !i10b 1
 !s100 nPja`IF;ETl`D5TPc^IFM2
 R1
@@ -256,21 +256,21 @@ R3
 R21
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/DisplayDriver.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/DisplayDriver.v
-!i122 376
+!i122 442
 L0 22 194
 R5
 r1
 !s85 0
 31
-R15
+R9
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/DisplayDriver.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/DisplayDriver.v|
 !i113 1
+R6
 R7
-R8
 n@display@driver
 vExtender
-R12
+R0
 !i10b 1
 !s100 dzA4][>PIfzPWm7YIDK8a0
 R1
@@ -280,18 +280,18 @@ R3
 R19
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Extender.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Extender.v
-!i122 377
+!i122 443
 Z22 L0 1 15
 R5
 r1
 !s85 0
 31
-R15
+R9
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Extender.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Extender.v|
 !i113 1
+R6
 R7
-R8
 n@extender
 vfull_adder
 !s110 1697785289
@@ -314,10 +314,10 @@ r1
 !s107 D:/semester/7th sem/davinci/Processor_MultiCycle/fulladder.v|
 !s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/Processor_MultiCycle/fulladder.v|
 !i113 1
+R6
 R7
-R8
 vfulladder
-R12
+R0
 !i10b 1
 !s100 8idW@Khk:dW5jdk7`_H_o3
 R1
@@ -327,18 +327,18 @@ R3
 R21
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/fulladder.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/fulladder.v
-!i122 378
+!i122 444
 R23
 R5
 r1
 !s85 0
 31
-R15
+R9
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/fulladder.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/fulladder.v|
 !i113 1
+R6
 R7
-R8
 vInstr_Decoder
 R12
 !i10b 1
@@ -350,7 +350,7 @@ R3
 R19
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Instr_Decoder.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Instr_Decoder.v
-!i122 380
+!i122 446
 L0 1 16
 R5
 r1
@@ -360,8 +360,8 @@ R15
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Instr_Decoder.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Instr_Decoder.v|
 !i113 1
+R6
 R7
-R8
 n@instr_@decoder
 vkeyboard_driver
 R12
@@ -374,7 +374,7 @@ R3
 R21
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/keyboard_driver.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/keyboard_driver.v
-!i122 381
+!i122 447
 L0 23 41
 R5
 r1
@@ -384,10 +384,10 @@ R15
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/keyboard_driver.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/keyboard_driver.v|
 !i113 1
+R6
 R7
-R8
 vMain_Decoder
-Z24 !s110 1698403017
+R12
 !i10b 1
 !s100 zMOiIL9N:4lQdkSeZP:EN2
 R1
@@ -397,7 +397,7 @@ R3
 R19
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Main_Decoder.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Main_Decoder.v
-!i122 383
+!i122 449
 L0 1 181
 R5
 r1
@@ -407,11 +407,11 @@ R15
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Main_Decoder.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Main_Decoder.v|
 !i113 1
+R6
 R7
-R8
 n@main_@decoder
 vMemory
-R24
+R12
 !i10b 1
 !s100 FZ6EhhZHA2=mjgBd4Td1K2
 R1
@@ -421,21 +421,21 @@ R3
 R19
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Memory.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Memory.v
-!i122 384
+!i122 450
 L0 2 122
 R5
 r1
 !s85 0
 31
-Z25 !s108 1698403017.000000
+R15
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Memory.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Memory.v|
 !i113 1
+R6
 R7
-R8
 n@memory
 vMUX16384x1
-R24
+Z24 !s110 1698478276
 !i10b 1
 !s100 0NBajG7nXJHPD=I0Ez]Q50
 R1
@@ -445,21 +445,21 @@ R3
 R4
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX16384x1.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX16384x1.v
-!i122 390
+!i122 456
 R22
 R5
 r1
 !s85 0
 31
-R25
+Z25 !s108 1698478276.000000
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX16384x1.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX16384x1.v|
 !i113 1
+R6
 R7
-R8
 n@m@u@x16384x1
 vMUX2x1_1bit
-R24
+R12
 !i10b 1
 !s100 ]8cmfhP:aI0e5Zz?@gJRN2
 R1
@@ -469,21 +469,21 @@ R3
 R4
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX2x1_1bit.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX2x1_1bit.v
-!i122 385
+!i122 451
 Z26 L0 1 7
 R5
 r1
 !s85 0
 31
-R25
+R15
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX2x1_1bit.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX2x1_1bit.v|
 !i113 1
+R6
 R7
-R8
 n@m@u@x2x1_1bit
 vMUX2x1_32bit
-R24
+R12
 !i10b 1
 !s100 Am`PiQVh1kWRRITI[WzXT1
 R1
@@ -493,18 +493,18 @@ R3
 R4
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX2x1_32bit.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX2x1_32bit.v
-!i122 386
+!i122 452
 R26
 R5
 r1
 !s85 0
 31
-R25
+R15
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX2x1_32bit.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX2x1_32bit.v|
 !i113 1
+R6
 R7
-R8
 n@m@u@x2x1_32bit
 vMUX32x1
 R24
@@ -517,7 +517,7 @@ R3
 R21
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX32x1.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX32x1.v
-!i122 389
+!i122 455
 L0 1 43
 R5
 r1
@@ -527,35 +527,35 @@ R25
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX32x1.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX32x1.v|
 !i113 1
+R6
 R7
-R8
 n@m@u@x32x1
 vMUX4x1_32bit
-R24
+R12
 !i10b 1
 !s100 EH<54Uo>zT:bbLA28aTN43
 R1
 IROKFDRLWU=82IKL`XDEo42
 R2
 R3
-R9
+R8
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX4x1_32bit.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX4x1_32bit.v
-!i122 387
+!i122 453
 Z27 L0 1 18
 R5
 r1
 !s85 0
 31
-R25
+R15
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX4x1_32bit.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX4x1_32bit.v|
 !i113 1
+R6
 R7
-R8
 n@m@u@x4x1_32bit
 vMUX8x1_32bit
-R24
+R12
 !i10b 1
 !s100 a;<WRz[59VBF>=]6e[iG81
 R1
@@ -565,18 +565,18 @@ R3
 R4
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX8x1.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX8x1.v
-!i122 388
+!i122 454
 L0 1 22
 R5
 r1
 !s85 0
 31
-R25
+R15
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX8x1.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/MUX8x1.v|
 !i113 1
+R6
 R7
-R8
 n@m@u@x8x1_32bit
 vNOT_32bit
 R24
@@ -589,7 +589,7 @@ R3
 R4
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/NOT_32bit.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/NOT_32bit.v
-!i122 391
+!i122 457
 Z28 L0 1 8
 R5
 r1
@@ -599,11 +599,11 @@ R25
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/NOT_32bit.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/NOT_32bit.v|
 !i113 1
+R6
 R7
-R8
 n@n@o@t_32bit
 vprocessor
-Z29 !s110 1698403018
+R24
 !i10b 1
 !s100 LPO]bDc9k=DhXn_TGL1?P0
 R1
@@ -613,7 +613,7 @@ R3
 R19
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/processor.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/processor.v
-!i122 392
+!i122 458
 L0 1 113
 R5
 r1
@@ -623,10 +623,10 @@ R25
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/processor.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/processor.v|
 !i113 1
+R6
 R7
-R8
 vps2_rx
-R29
+R24
 !i10b 1
 !s100 BEicQgF6oH3NUm5^mmAjo0
 R1
@@ -636,20 +636,20 @@ R3
 R21
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ps2_rx.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ps2_rx.v
-!i122 393
+!i122 459
 L0 23 36
 R5
 r1
 !s85 0
 31
-Z30 !s108 1698403018.000000
+R25
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ps2_rx.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ps2_rx.v|
 !i113 1
+R6
 R7
-R8
 vRAM
-R29
+R24
 !i10b 1
 !s100 8[Z9h24iNod;LXZj9IeeN1
 R1
@@ -659,21 +659,21 @@ R3
 R19
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/RAM.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/RAM.v
-!i122 394
+!i122 460
 L0 2 57
 R5
 r1
 !s85 0
 31
-R30
+R25
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/RAM.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/RAM.v|
 !i113 1
+R6
 R7
-R8
 n@r@a@m
 vreg_file
-R29
+R24
 !i10b 1
 !s100 O6XhRk2ABSc8eme?d:6?[1
 R1
@@ -683,43 +683,43 @@ R3
 R19
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/reg_file.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/reg_file.v
-!i122 395
+!i122 461
 L0 1 34
 R5
 r1
 !s85 0
 31
-R30
+R25
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/reg_file.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/reg_file.v|
 !i113 1
+R6
 R7
-R8
 vregister_1bit
-R29
+R24
 !i10b 1
 !s100 V7=NA4;7]o6[Wa^7:oaiz3
 R1
 I4;:YDEj3l]bU5f05LaNGn1
 R2
 R3
-R9
+R8
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_1bit.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_1bit.v
-!i122 396
+!i122 462
 L0 1 12
 R5
 r1
 !s85 0
 31
-R30
+R25
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_1bit.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_1bit.v|
 !i113 1
+R6
 R7
-R8
 vregister_32bit
-R29
+Z29 !s110 1698478277
 !i10b 1
 !s100 5]U:fOL`hRKBEQN_3:NQ@3
 R1
@@ -729,18 +729,18 @@ R3
 R4
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_32bit.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_32bit.v
-!i122 399
+!i122 465
 R18
 R5
 r1
 !s85 0
 31
-R30
+Z30 !s108 1698478277.000000
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_32bit.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_32bit.v|
 !i113 1
+R6
 R7
-R8
 vregister_32bit_tb
 R29
 !i10b 1
@@ -752,7 +752,7 @@ R3
 R4
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_32bit_tb.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_32bit_tb.v
-!i122 400
+!i122 466
 R27
 R5
 r1
@@ -762,31 +762,31 @@ R30
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_32bit_tb.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_32bit_tb.v|
 !i113 1
+R6
 R7
-R8
 vregister_4bit
-R29
+R24
 !i10b 1
 !s100 ?W6YN3U`flGKc4PXI<5ZE1
 R1
 Ik[Dnn4RXLaY?ag5]nHXRi0
 R2
 R3
-R9
+R8
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_4bit.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_4bit.v
-!i122 397
+!i122 463
 L0 1 20
 R5
 r1
 !s85 0
 31
-R30
+R25
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_4bit.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_4bit.v|
 !i113 1
+R6
 R7
-R8
 vregister_4bit_tb
 R29
 !i10b 1
@@ -798,44 +798,44 @@ R3
 R4
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_4bit_tb.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_4bit_tb.v
-!i122 398
+!i122 464
 R27
 R5
 r1
 !s85 0
 31
-R30
+R25
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_4bit_tb.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/register_4bit_tb.v|
 !i113 1
+R6
 R7
-R8
 vROM
-!s110 1698414314
+R29
 !i10b 1
-!s100 ]YLBN[DElID9Zc^7eEz3c3
+!s100 RL9DTFBIf:RF[z<?3RZ5j3
 R1
-IGk2XPl5Z1EC5Y=VEC?gW;3
+I@B8M>YDWP0bLb7OZK9V>e0
 R2
 R3
-w1698414262
+w1698423103
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ROM.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ROM.v
-!i122 431
-L0 1 206
+!i122 467
+L0 1 1969
 R5
 r1
 !s85 0
 31
-!s108 1698414314.000000
+R30
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ROM.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/ROM.v|
 !i113 1
+R6
 R7
-R8
 n@r@o@m
 vscanToAscii
-Z31 !s110 1698403019
+R29
 !i10b 1
 !s100 E?8ncPc?Cjgo=T[6j]XI10
 R1
@@ -845,21 +845,21 @@ R3
 R21
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/scanToAscii.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/scanToAscii.v
-!i122 402
+!i122 468
 L0 23 126
 R5
 r1
 !s85 0
 31
-Z32 !s108 1698403019.000000
+R30
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/scanToAscii.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/scanToAscii.v|
 !i113 1
+R6
 R7
-R8
 nscan@to@ascii
 vScreen_Memory
-R31
+R29
 !i10b 1
 !s100 `Vio2@h^1JP=NiOknHWLG2
 R1
@@ -869,69 +869,69 @@ R3
 R21
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Screen_Memory.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Screen_Memory.v
-!i122 403
-Z33 L0 1 42
+!i122 469
+Z31 L0 1 42
 R5
 r1
 !s85 0
 31
-R32
+R30
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Screen_Memory.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/Screen_Memory.v|
 !i113 1
+R6
 R7
-R8
 n@screen_@memory
 vTB_add_sub
-R31
+R29
 !i10b 1
 !s100 LaHH:NZn3lWG[Z<;_X0aY3
 R1
 I[e>I6dRB9<eAC:2S>0WHU3
 R2
 R3
-Z34 w1695989797
+Z32 w1695989797
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_add_sub.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_add_sub.v
-!i122 404
+!i122 470
 L0 1 40
 R5
 r1
 !s85 0
 31
-R32
+R30
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_add_sub.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_add_sub.v|
 !i113 1
+R6
 R7
-R8
 n@t@b_add_sub
 vTB_ALU_Decoder
-R31
+R29
 !i10b 1
 !s100 JmS>F4l?<5k5eTYF0M<e72
 R1
 I;LcLV;La5757=6i;IQH7G0
 R2
 R3
-R9
+R8
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_ALU_Decoder.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_ALU_Decoder.v
-!i122 405
+!i122 471
 L0 1 100
 R5
 r1
 !s85 0
 31
-R32
+R30
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_ALU_Decoder.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_ALU_Decoder.v|
 !i113 1
+R6
 R7
-R8
 n@t@b_@a@l@u_@decoder
 vTB_ALU_RISCv
-R31
+R29
 !i10b 1
 !s100 6_YT2OGedK=Z3gQ]lUUIL2
 R1
@@ -941,45 +941,45 @@ R3
 R10
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_ALU_RISCv.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_ALU_RISCv.v
-!i122 406
+!i122 472
 L0 1 93
 R5
 r1
 !s85 0
 31
-R32
+R30
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_ALU_RISCv.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_ALU_RISCv.v|
 !i113 1
+R6
 R7
-R8
 n@t@b_@a@l@u_@r@i@s@cv
 vTB_bitwiseAND
-R31
+Z33 !s110 1698478278
 !i10b 1
 !s100 bT^8EiGVX<U4ZO^^KXGTX0
 R1
 InU<>?GojimdeRQ_[EogFh2
 R2
 R3
-R34
+R32
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_bitwiseAND.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_bitwiseAND.v
-!i122 407
+!i122 473
 R11
 R5
 r1
 !s85 0
 31
-R32
+Z34 !s108 1698478278.000000
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_bitwiseAND.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_bitwiseAND.v|
 !i113 1
+R6
 R7
-R8
 n@t@b_bitwise@a@n@d
 vTB_Control_Unit
-R31
+R33
 !i10b 1
 !s100 e>W7KA:^XUZFMk:cR<I:=2
 R1
@@ -989,45 +989,45 @@ R3
 R21
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Control_Unit.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Control_Unit.v
-!i122 408
+!i122 474
 R20
 R5
 r1
 !s85 0
 31
-R32
+R34
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Control_Unit.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Control_Unit.v|
 !i113 1
+R6
 R7
-R8
 n@t@b_@control_@unit
 vTB_DFlipFlop
-R31
+R33
 !i10b 1
 !s100 <3kZFOCJdTfF@`h<I1=i]2
 R1
 IQXnK4^fd]VdhRD2HI62cN3
 R2
 R3
-R9
+R8
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_DFlipFlop.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_DFlipFlop.v
-!i122 409
+!i122 475
 L0 1 23
 R5
 r1
 !s85 0
 31
-R32
+R34
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_DFlipFlop.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_DFlipFlop.v|
 !i113 1
+R6
 R7
-R8
 n@t@b_@d@flip@flop
 vTB_Extender
-Z35 !s110 1698403020
+R33
 !i10b 1
 !s100 ]kW5<lM[fUgYU^XE[XA6g2
 R1
@@ -1037,69 +1037,69 @@ R3
 R4
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Extender.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Extender.v
-!i122 410
+!i122 476
 L0 1 45
 R5
 r1
 !s85 0
 31
-R32
+R34
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Extender.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Extender.v|
 !i113 1
+R6
 R7
-R8
 n@t@b_@extender
 vTB_Instr_Decoder
-R35
+R33
 !i10b 1
 !s100 hn6zK@DCgodm6k8U_3?UH2
 R1
 I4T`BoC24LNTU[Ve;@=m>22
 R2
 R3
-R9
+R8
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Instr_Decoder.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Instr_Decoder.v
-!i122 411
-R33
+!i122 477
+R31
 R5
 r1
 !s85 0
 31
-Z36 !s108 1698403020.000000
+R34
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Instr_Decoder.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Instr_Decoder.v|
 !i113 1
+R6
 R7
-R8
 n@t@b_@instr_@decoder
 vTB_Main_Decoder
-R35
+R33
 !i10b 1
 !s100 G7h]P9T1Q4Pn``UbBin??0
 R1
 ImIU2_I>;GWo[laPE42Fz;1
 R2
 R3
-R34
+R32
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Main_Decoder.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Main_Decoder.v
-!i122 412
+!i122 478
 L0 1 65
 R5
 r1
 !s85 0
 31
-R36
+R34
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Main_Decoder.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Main_Decoder.v|
 !i113 1
+R6
 R7
-R8
 n@t@b_@main_@decoder
 vTB_Memory
-R35
+R33
 !i10b 1
 !s100 oEzYU5FHo5ikDSF=UZEaE1
 R1
@@ -1109,21 +1109,21 @@ R3
 R19
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Memory.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Memory.v
-!i122 413
+!i122 479
 L0 2 92
 R5
 r1
 !s85 0
 31
-R36
+R34
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Memory.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Memory.v|
 !i113 1
+R6
 R7
-R8
 n@t@b_@memory
 vTB_Processor
-R35
+R33
 !i10b 1
 !s100 9n0U6fdz]_Gn`4<>LSShX1
 R1
@@ -1133,21 +1133,21 @@ R3
 R10
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Processor.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Processor.v
-!i122 414
+!i122 480
 L0 2 38
 R5
 r1
 !s85 0
 31
-R36
+R34
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Processor.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_Processor.v|
 !i113 1
+R6
 R7
-R8
 n@t@b_@processor
 vTB_reg_file
-R35
+R33
 !i10b 1
 !s100 3hi?_E<KT6R>`hH>O;><G0
 R1
@@ -1157,21 +1157,21 @@ R3
 R21
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_reg_file.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_reg_file.v
-!i122 415
+!i122 481
 L0 1 69
 R5
 r1
 !s85 0
 31
-R36
+R34
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_reg_file.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TB_reg_file.v|
 !i113 1
+R6
 R7
-R8
 n@t@b_reg_file
 vTMDS_encoder
-R35
+R33
 !i10b 1
 !s100 Ve0>PDR9oY`?BnMMz[Y=C2
 R1
@@ -1181,18 +1181,18 @@ R3
 R21
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TMDS_encoder.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TMDS_encoder.v
-!i122 416
+!i122 482
 L0 22 24
 R5
 r1
 !s85 0
 31
-R36
+R34
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TMDS_encoder.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/TMDS_encoder.v|
 !i113 1
+R6
 R7
-R8
 n@t@m@d@s_encoder
 vXNOR_1bit_3inp
 R12
@@ -1205,7 +1205,7 @@ R3
 R4
 R13
 R14
-!i122 379
+!i122 445
 L0 7 5
 R5
 r1
@@ -1215,8 +1215,8 @@ R15
 R16
 R17
 !i113 1
+R6
 R7
-R8
 n@x@n@o@r_1bit_3inp
 vXOR_1bit_2inp
 R12
@@ -1229,7 +1229,7 @@ R3
 R4
 R13
 R14
-!i122 379
+!i122 445
 L0 1 5
 R5
 r1
@@ -1239,11 +1239,11 @@ R15
 R16
 R17
 !i113 1
+R6
 R7
-R8
 n@x@o@r_1bit_2inp
 vzero_extender
-R35
+!s110 1698478279
 !i10b 1
 !s100 A4cUh?[n4nA^DfS9WzZV;1
 R1
@@ -1253,15 +1253,15 @@ R3
 R4
 8D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/zero_extender.v
 FD:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/zero_extender.v
-!i122 417
+!i122 483
 R28
 R5
 r1
 !s85 0
 31
-R36
+!s108 1698478279.000000
 !s107 D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/zero_extender.v|
 !s90 -reportprogress|300|-work|work|D:/semester/semester_7/Computer System Design/davinci/Processor_MultiCycle/zero_extender.v|
 !i113 1
+R6
 R7
-R8

@@ -45,10 +45,12 @@ class Assembler:
     __scounter = 0
 
     # TODO: Define where the instructions start
-    __sbase = 140672 + 15
+    __sbase = 15
     __dbase = 0x0
     
     __pcbase = 9600
+    
+    __nstatic = 0
 
     def __init__(self, input_path):
         try:
@@ -345,6 +347,7 @@ class Assembler:
             # Symbols
             elif (command == "lw" or command == "sw") and (line[-1].find(".") != -1):
                 self.setSymbol(line[-1])
+                self.__nstatic += 1
 
             address += 1
             wl_contents.append(line)
