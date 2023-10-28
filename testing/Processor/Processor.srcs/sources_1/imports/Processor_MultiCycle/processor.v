@@ -1,4 +1,4 @@
-module processor (clk,reset,led,TMDSp,TMDSn,TMDSp_clock,TMDSn_clock);
+module processor (clk,reset,led);//TMDSp,TMDSn,TMDSp_clock,TMDSn_clock);
 
 input reset;
 input clk;
@@ -6,19 +6,20 @@ output [3:0] led;
 reg [31:0] Result;
 
 //-----------Screen-------------------------//
-output [2:0] TMDSp;
-output [2:0] TMDSn;
-output TMDSp_clock;
-output TMDSn_clock;
+// output [2:0] TMDSp;
+// output [2:0] TMDSn;
+// output TMDSp_clock;
+// output TMDSn_clock;
 
 
 wire [31:0] display_address;
+assign display_address = 32'h5;
 wire [31:0] display_dataOut;
 
 // //Screen_Memory screen_mem (.clock(clk),.address(display_address[15:0]),.displayAddr(display_address[15:0]),.isWrite(1'b0),.writeData(32'b0),.displayData(dataOut));
 
-DisplayDriver dispDriver (.clk(clk),.displayData(display_dataOut),.TMDSp(TMDSp),.TMDSn(TMDSn),
-.pointer(display_address),.TMDSp_clock(TMDSp_clock),.TMDSn_clock(TMDSn_clock));
+//DisplayDriver dispDriver (.clk(clk),.displayData(display_dataOut),.TMDSp(TMDSp),.TMDSn(TMDSn),
+//.pointer(display_address),.TMDSp_clock(TMDSp_clock),.TMDSn_clock(TMDSn_clock));
 //-----------Screen-------------------------//
 
 
@@ -71,6 +72,7 @@ end
 
 
 wire [7:0] key_reg;
+assign key_reg = 8'h00;
 
 //register_32bit buf_reg_1 (.D(ResultWire), .clk(clk), .regwrite(PCWrite), .Q(PC));   //Program Counter
 // assign PC = Result;
@@ -91,7 +93,7 @@ wire [4:0] Rs2 = Instr[24:20];
 wire [4:0] Rd = Instr[11:7];
 wire [24:0] Ext = Instr[31:7];
 
-reg_file register_file (.rs1(Rs1), .rs2(Rs2), .rd(Rd), .regwrite(RegWrite), .wd3(Result), .clk(clk), .rd1(rd1), .rd2(rd2),.led(led));
+reg_file register_file (.rs1(Rs1), .rs2(Rs2), .rd(Rd), .regwrite(RegWrite),.reset(reset), .wd3(Result), .clk(clk), .rd1(rd1), .rd2(rd2),.led(led));
 register_32bit buf_reg_5 (.D(rd1), .clk(clk), .regwrite(1'b1), .Q(A)); //To store value read from RS1
 register_32bit buf_reg_6 (.D(rd2), .clk(clk), .regwrite(1'b1), .Q(WriteData)); //To store value read from RS2
 Extender extender_1 (.Inst(Ext), .ImmSrc(ImmSrc), .Imm(ImmExt));

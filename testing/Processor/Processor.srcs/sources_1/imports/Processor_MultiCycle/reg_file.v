@@ -1,4 +1,4 @@
-module reg_file ( rs1, rs2, rd, regwrite, wd3, clk, rd1, rd2,led);
+module reg_file ( rs1, rs2, rd, reset,regwrite, wd3, clk, rd1, rd2,led);
 
 input [4:0] rs1;
 input [4:0] rs2;
@@ -6,6 +6,7 @@ input [4:0] rd;
 input regwrite;
 input [31:0] wd3;
 input clk;
+input reset;
 output [31:0] rd1;
 output [31:0] rd2;
 output [3:0] led;
@@ -20,9 +21,15 @@ begin
         register[i] = 0;
 end
 
+integer j;
 always @(posedge clk)
 begin
-    if(regwrite)
+    if(reset)
+        begin
+            for(j=0; j<32; j=j+1)
+                register[i] <= 0;
+        end
+    else if(regwrite)
         register[rd] <= wd3;
 end
 

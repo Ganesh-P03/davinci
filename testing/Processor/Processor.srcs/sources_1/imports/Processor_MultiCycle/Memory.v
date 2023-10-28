@@ -45,24 +45,24 @@ module Memory
     wire ramIsRead;
     assign ramIsRead = (address >= 18'd140672 ) ? 1'b1 : 1'b0; 
     
-    reg [1:0] addrLatch;
+    // reg [1:0] addrLatch;
     reg [7:0] keyVal;  //***
     reg dample;
     reg readKeyboard;   ///****
     
     initial
         begin
-            addrLatch <= 2'd0;
+            // addrLatch <= 2'd0;
             keyVal <= 8'd0;
             dample <= 1'b1;
             readKeyboard <= 1'b0;
         end
     
-    always @(posedge clock)
-        begin
-            if( ramIsRead )
-                addrLatch <= address[1:0];
-        end
+    // always @(posedge clock)
+    //     begin
+    //         if( ramIsRead )
+    //             addrLatch <= address[1:0];
+    //     end
     
 
     

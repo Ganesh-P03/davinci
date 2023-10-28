@@ -3,10 +3,10 @@ module Main_Decoder(
   input reset,
   input [6:0] opcode,
   input [2:0] funct3,
-  output reg [1:0] ResultSrc,
-  output reg [1:0] ALUOp,
-  output reg [1:0] ALUSrcA,
-  output reg [1:0] ALUSrcB,
+  output [1:0] ResultSrc,
+  output [1:0] ALUOp,
+  output [1:0] ALUSrcA,
+  output [1:0] ALUSrcB,
   output RegWrite,
   output PCUpdate,
   output AddrSrc,
@@ -50,17 +50,12 @@ parameter S15 = 4'b1111;
   always @*
   begin
     case (state)
-      S0:  begin
-                ALUSrcA <= 2'b00;
-                ALUSrcB <= 2'b10;
-                ALUOp <= 2'b00;
-                ResultSrc <= 2'b10;
+      S0: 
                 nextstate = S1;
-            end
       S1:begin
-                ALUSrcA <= 2'b01;
-                ALUSrcB <= 2'b01;
-                ALUOp <= 2'b00;
+                // ALUSrcA <= 2'b01;
+                // ALUSrcB <= 2'b01;
+                // ALUOp <= 2'b00;
           
         case (opcode)
           7'b0000011, 7'b0100011: nextstate = S2;
@@ -81,9 +76,9 @@ parameter S15 = 4'b1111;
         endcase
       end
       S2: begin
-                ALUSrcA <= 2'b10;
-                ALUSrcB <= 2'b01;
-                ALUOp <= 2'b00;
+                // ALUSrcA <= 2'b10;
+                // ALUSrcB <= 2'b01;
+                // ALUOp <= 2'b00;
           
         case (opcode)
           7'b0000011: nextstate = S3;
@@ -92,58 +87,58 @@ parameter S15 = 4'b1111;
         endcase
           end
       S3:  begin
-                ResultSrc <= 2'b00;
+               // ResultSrc <= 2'b00;
             nextstate = S4;
             end
       S4: begin
-                ResultSrc <= 2'b01;
+               // ResultSrc <= 2'b01;
             nextstate = S0;
       end
       S5:  begin
-                ResultSrc <= 2'b00;
+               // ResultSrc <= 2'b00;
             nextstate = S0;
             end
       S6: begin
-                ALUSrcA <= 2'b10;
-                ALUSrcB <= 2'b00;
-                ALUOp <= 2'b10;
+                // ALUSrcA <= 2'b10;
+                // ALUSrcB <= 2'b00;
+                // ALUOp <= 2'b10;
     
             nextstate = S7;
             end
       S7: begin
-                ResultSrc <= 2'b00;
+                // ResultSrc <= 2'b00;
            nextstate = S0;
       end
       S8:  begin
-                ALUSrcA <= 2'b10;
-                ALUSrcB <= 2'b01;
-                ALUOp <= 2'b10;
+                // ALUSrcA <= 2'b10;
+                // ALUSrcB <= 2'b01;
+                // ALUOp <= 2'b10;
            nextstate = S7;
             end
       S9: begin
-                ALUSrcA <= 2'b01;
-                ALUSrcB <= 2'b10;
-                ALUOp <= 2'b00;
-                ResultSrc <= 2'b00;
+                // ALUSrcA <= 2'b01;
+                // ALUSrcB <= 2'b10;
+                // ALUOp <= 2'b00;
+                // ResultSrc <= 2'b00;
             nextstate = S7;
       end
       S10, S11, S12, S13: begin
-                ALUSrcA <= 2'b10;
-                ALUSrcB <= 2'b00;
-                ALUOp <= 2'b01;
-                ResultSrc <= 2'b00;
+                // ALUSrcA <= 2'b10;
+                // ALUSrcB <= 2'b00;
+                // ALUOp <= 2'b01;
+                // ResultSrc <= 2'b00;
                 nextstate = S0;
             end
       S14: begin
-                ALUSrcA <= 2'b11;
-                ALUSrcB <= 2'b01;
-                ALUOp <= 2'b00;
+                // ALUSrcA <= 2'b11;
+                // ALUSrcB <= 2'b01;
+                // ALUOp <= 2'b00;
                 nextstate = S7;
       end
       S15: begin
-        ALUSrcA <= 2'b10;
-        ALUSrcB <= 2'b01;
-        ALUOp <= 2'b00;
+        // ALUSrcA <= 2'b10;
+        // ALUSrcB <= 2'b01;
+        // ALUOp <= 2'b00;
 
         nextstate = S9;
       end
@@ -159,17 +154,38 @@ parameter S15 = 4'b1111;
 
 assign AddrSrc = (state == S3 || state == S5) ? 1'b1 : 1'b0;
 assign IRWrite = (state == S0 || reset == 1'b1) ? 1'b1 : 1'b0;
-// assign ALUSrcA = (state == S0) ? 2'b00 : 
-//                  (state == S2 || state == S6 || state == S8 || state == S10 || state == S11 || state == S12 || state == S13) ? 2'b10 : 
-//                  (state == S1 || state == S9) ? 2'b01 :
-//                  (state == S14) ? 2'b11 : ALUSrcA ;
-// assign ALUSrcB = (state == S0 || state == S9) ? 2'b10 : 
-//                  (state == S1 || state == S2 || state == S8 || state == S14) ? 2'b01 :
-//                  (state == S6 || state == S10 || state == S11 || state == S12 || state == S13 )? 2'b00 : ALUSrcB;
-// assign ALUOp = (state == S0 || state == S1 || state == S2 || state == S9 || state == S14) ? 2'b00 :
-//                (state == S6 || state == S8) ? 2'b10 :
-//                (state == S10 || state == S11 || state == S12 || state == S13)?  2'b01 : ALUOp;
-// assign ResultSrc = (state == S4) ? 2'b01 : (state == S0)? 2'b10 : (state == S3 || state == S5 || state ==S7 || state == S9 || state ==S10 || state ==S11 || state ==S12 || state == S13 )? 2'b00 : ResultSrc;
+assign ALUSrcA = (state == S0) ? 2'b00 : 
+                 (state == S2 || state == S6 || state == S8 || state == S10 || state == S11 || state == S12 || state == S13) ? 2'b10 : 
+                 (state == S1 || state == S9) ? 2'b01 :
+                 (state == S14) ? 2'b11 :
+                 (state == S3 || state == S5 || state == S4) ? 2'b10 :
+                 (state == S15) ? 2'b10:
+                 (state == S7 && opcode == 7'b0110011) ? 2'b10 : 
+                 (state == S7 && opcode == 7'b1101111) ? 2'b01 : 
+                 (state == S7 && opcode == 7'b0010011) ? 2'b10 : 2'b00;
+
+assign ALUSrcB = (state == S0 || state == S9) ? 2'b10 : 
+                 (state == S1 || state == S2 || state == S8 || state == S14) ? 2'b01 :
+                 (state == S6 || state == S10 || state == S11 || state == S12 || state == S13 )? 2'b00 : 
+                 (state == S3 || state == S5 || state == S4) ? 2'b01 :
+                 (state == S15) ? 2'b01:
+                 (state == S7 && opcode == 7'b0110011) ? 2'b00 : 
+                 (state == S7 && opcode == 7'b1101111) ? 2'b10 : 
+                 (state == S7 && opcode == 7'b0010011) ? 2'b01 : 2'b10;
+                 
+assign ALUOp = (state == S0 || state == S1 || state == S2 || state == S9 || state == S14) ? 2'b00 :
+               (state == S6 || state == S8) ? 2'b10 :
+               (state == S10 || state == S11 || state == S12 || state == S13)?  2'b01 : 
+               (state == S3 || state == S5 || state == S4) ? 2'b00 :
+                 (state == S15) ? 2'b00:
+                 (state == S7 && opcode == 7'b0110011) ? 2'b10 : 
+                 (state == S7 && opcode == 7'b1101111) ? 2'b00 : 
+                 (state == S7 && opcode == 7'b0010011) ? 2'b10 : 2'b00;
+                 
+assign ResultSrc = (state == S4) ? 2'b01 : 
+                    (state == S0)? 2'b10 : 
+                    (state == S3 || state == S5 || state ==S7 || state == S9 || state ==S10 || state ==S11 || state ==S12 || state == S13 )? 2'b00 : 
+                    2'b10;
 assign RegWrite = (state == S4 || state == S7) ? 1'b1 : 1'b0;
 assign PCUpdate = (state == S0 || state == S9) ? 1'b1 : 1'b0;
 assign MemWrite = (state == S5) ? 1'b1 : 1'b0;

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Sat Oct 14 01:06:43 2023
+| Date         : Fri Oct 27 17:41:28 2023
 | Host         : Ganesh running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -60,8 +60,8 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |              57 |           16 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              21 |            8 |
-| Yes          | No                    | No                     |              19 |            5 |
+| No           | Yes                   | No                     |              21 |            7 |
+| Yes          | No                    | No                     |              19 |            7 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -74,12 +74,12 @@ Table of Contents
 |     Clock Signal     |    Enable Signal    |        Set/Reset Signal        | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------------+---------------------+--------------------------------+------------------+----------------+--------------+
 |  dispDriver/clk_TMDS |                     | dispDriver/_inferred__0/i__n_0 |                1 |              4 |         4.00 |
-|  dispDriver/pixclk   |                     | dispDriver/encode_G/SR[0]      |                2 |              7 |         3.50 |
+|  dispDriver/pixclk   |                     | dispDriver/encode_G/SR[0]      |                1 |              7 |         7.00 |
 |  dispDriver/pixclk   |                     | dispDriver/CounterY            |                5 |             10 |         2.00 |
-|  dispDriver/pixclk   | dispDriver/CounterY |                                |                5 |             19 |         3.80 |
-|  dispDriver/pixclk   |                     |                                |                9 |             26 |         2.89 |
-|  dispDriver/clk_TMDS |                     |                                |                7 |             31 |         4.43 |
-|  clk_IBUF_BUFG       |                     |                                |               14 |             56 |         4.00 |
+|  dispDriver/pixclk   | dispDriver/CounterY |                                |                7 |             19 |         2.71 |
+|  clk_IBUF_BUFG       |                     |                                |                6 |             24 |         4.00 |
+|  dispDriver/pixclk   |                     |                                |               10 |             26 |         2.60 |
+|  dispDriver/clk_TMDS |                     |                                |                6 |             31 |         5.17 |
 +----------------------+---------------------+--------------------------------+------------------+----------------+--------------+
 
 

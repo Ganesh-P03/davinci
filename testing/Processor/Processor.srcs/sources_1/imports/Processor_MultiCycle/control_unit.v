@@ -15,7 +15,7 @@ module control_unit(
 
 wire [6:0] opcode = instr[6:0];
 wire [2:0] funct3 = instr[14:12];
-wire [7:0] funct7 = instr[31:25];
+wire [6:0] funct7 = instr[31:25]; // use instr directly in the instantiation
 wire opcode_5 = opcode[5];
 wire funct7_5 = funct7[5];
 wire AddrSrc_MainDecoder;
@@ -37,7 +37,7 @@ Main_Decoder mainDecoder (
   .RegWrite(RegWrite),
   .PCUpdate(PCUpdate),
   .AddrSrc(AddrSrc_MainDecoder),
-  .MemWrite(MemWrite),
+  .MemWrite(MemWrite_MainDecoder),
   .IRWrite(IRWrite),
   .beq(beq),
   .bne(bne),

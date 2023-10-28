@@ -1,0 +1,7 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"TB_Processor_func_synth.v" \
+"../../../../../Processor.srcs/sources_1/new/TB_Processor.v" \
+
+# Do not sort compile order
+nosort

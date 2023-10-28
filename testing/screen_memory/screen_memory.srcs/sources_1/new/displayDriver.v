@@ -21,7 +21,7 @@
 
 module DisplayDriver(
 	input clk,
-    input [31:0] displayData,
+    input [0:31] displayData,
  
 	output [2:0] TMDSp, TMDSn,
 	output TMDSp_clock, TMDSn_clock,
