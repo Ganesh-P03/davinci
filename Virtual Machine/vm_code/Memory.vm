@@ -12,18 +12,22 @@ pop static 5
 push constant 1
 neg
 pop static 6
+push static 5
+push static 1
+add
+pop temp 0
 push static 4
 push static 3
 sub
-push static 1
-push static 5
-add
+push temp 0
 pop pointer 1
 pop that 0
-push constant 0
-push static 1
 push static 6
+push static 1
 add
+pop temp 0
+push constant 0
+push temp 0
 pop pointer 1
 pop that 0
 push constant 1
@@ -31,17 +35,19 @@ pop static 7
 push constant 0
 return
 function Memory.peek 0
-push static 0
 push argument 0
+push static 0
 add
 pop pointer 1
 push that 0
 return
 function Memory.poke 0
-push argument 1
-push static 0
 push argument 0
+push static 0
 add
+pop temp 0
+push argument 1
+push temp 0
 pop pointer 1
 pop that 0
 push constant 0
@@ -55,28 +61,30 @@ sub
 pop local 2
 push static 1
 pop local 0
-push local 0
 push static 6
+push local 0
 add
 pop pointer 1
 push that 0
 push constant 0
 eq
-if-goto IF_0
-goto ENDIF_0
-label IF_0
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
 push local 0
 return
-label ENDIF_0
-label WHILE_1
+goto IF_END0
+label IF_FALSE0
+label IF_END0
+label WHILE_EXP0
 push local 0
 push constant 0
 eq
 not
 not
-if-goto END_WHILE_1
-push local 0
+if-goto WHILE_END0
 push static 5
+push local 0
 add
 pop pointer 1
 push that 0
@@ -91,22 +99,24 @@ push local 3
 push local 2
 lt
 and
-if-goto IF_2
-goto ENDIF_2
-label IF_2
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
 push local 0
 pop local 1
 push local 3
 pop local 2
-label ENDIF_2
-push local 0
+goto IF_END1
+label IF_FALSE1
+label IF_END1
 push static 6
+push local 0
 add
 pop pointer 1
 push that 0
 pop local 0
-goto WHILE_1
-label END_WHILE_1
+goto WHILE_EXP0
+label WHILE_END0
 push local 1
 return
 function Memory.alloc 3
@@ -121,11 +131,11 @@ push local 0
 push constant 0
 eq
 not
-if-goto IF_3
-goto ENDIF_3
-label IF_3
-push local 0
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
 push static 5
+push local 0
 add
 pop pointer 1
 push that 0
@@ -133,43 +143,33 @@ push argument 0
 push constant 3
 add
 gt
-if-goto IF_4
-push local 0
-push static 6
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 0
-push static 5
-add
-pop pointer 1
-push that 0
-push local 2
-push static 7
-add
-pop pointer 1
-pop that 0
-goto ENDIF_4
-label IF_4
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
 push local 0
 push argument 0
 sub
 push constant 1
 sub
 pop local 1
-push local 0
 push static 6
+push local 1
+add
+pop temp 0
+push static 6
+push local 0
 add
 pop pointer 1
 push that 0
-push local 1
-push static 6
-add
+push temp 0
 pop pointer 1
 pop that 0
-push local 0
 push static 5
+push local 1
+add
+pop temp 0
+push static 5
+push local 0
 add
 pop pointer 1
 push that 0
@@ -177,30 +177,52 @@ push argument 0
 sub
 push constant 1
 sub
-push local 1
-push static 5
-add
+push temp 0
 pop pointer 1
 pop that 0
-push argument 0
-push constant 1
-add
-push local 2
 push static 7
+push local 2
 add
+pop temp 0
+push argument 0
+push constant 1
+add
+push temp 0
 pop pointer 1
 pop that 0
 push local 1
 pop static 1
-label ENDIF_4
+goto IF_END3
+label IF_FALSE3
+push static 6
+push local 0
+add
+pop pointer 1
+push that 0
+pop local 1
+push static 7
+push local 2
+add
+pop temp 0
+push static 5
+push local 0
+add
+pop pointer 1
+push that 0
+push temp 0
+pop pointer 1
+pop that 0
+label IF_END3
 push local 1
 pop local 0
-label ENDIF_3
+goto IF_END2
+label IF_FALSE2
+label IF_END2
 push local 2
 return
 function Memory.deAlloc 3
-push argument 0
 push static 7
+push argument 0
 add
 pop pointer 1
 push that 0
@@ -215,147 +237,171 @@ pop local 0
 push local 0
 push constant 0
 eq
-if-goto IF_5
-push local 0
-push local 0
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
 push static 5
-add
-pop pointer 1
-push that 0
-sub
 push argument 0
-eq
-if-goto IF_6
+add
+pop temp 0
 push local 2
-push argument 0
-push static 5
-add
+push temp 0
 pop pointer 1
 pop that 0
-push local 0
 push static 6
-add
-pop pointer 1
-push that 0
 push argument 0
-push static 6
 add
-pop pointer 1
-pop that 0
-push argument 0
-push local 0
-push static 6
-add
-pop pointer 1
-pop that 0
-goto ENDIF_6
-label IF_6
-push local 0
-push static 5
-add
-pop pointer 1
-push that 0
-push local 2
-add
-push local 0
-push static 5
-add
-pop pointer 1
-pop that 0
-push local 0
-pop argument 0
-label ENDIF_6
-goto ENDIF_5
-label IF_5
-push local 2
-push argument 0
-push static 5
-add
-pop pointer 1
-pop that 0
+pop temp 0
 push static 1
-push argument 0
-push static 6
-add
+push temp 0
 pop pointer 1
 pop that 0
 push argument 0
 pop static 1
-label ENDIF_5
-push argument 0
-push argument 0
+goto IF_END4
+label IF_FALSE4
+push local 0
 push static 5
+push local 0
 add
 pop pointer 1
 push that 0
 sub
 push argument 0
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push static 5
+push local 0
+add
+pop temp 0
+push static 5
+push local 0
+add
+pop pointer 1
+push that 0
+push local 2
+add
+push temp 0
+pop pointer 1
+pop that 0
+push local 0
+pop argument 0
+goto IF_END5
+label IF_FALSE5
+push static 5
+push argument 0
+add
+pop temp 0
+push local 2
+push temp 0
+pop pointer 1
+pop that 0
 push static 6
+push argument 0
+add
+pop temp 0
+push static 6
+push local 0
+add
+pop pointer 1
+push that 0
+push temp 0
+pop pointer 1
+pop that 0
+push static 6
+push local 0
+add
+pop temp 0
+push argument 0
+push temp 0
+pop pointer 1
+pop that 0
+label IF_END5
+label IF_END4
+push argument 0
+push static 5
+push argument 0
+add
+pop pointer 1
+push that 0
+sub
+push static 6
+push argument 0
 add
 pop pointer 1
 push that 0
 eq
-if-goto IF_7
-goto ENDIF_7
-label IF_7
-push argument 0
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
 push static 6
+push argument 0
 add
 pop pointer 1
 push that 0
 pop local 1
-push argument 0
 push static 5
+push argument 0
+add
+pop temp 0
+push static 5
+push argument 0
 add
 pop pointer 1
 push that 0
+push static 5
 push local 1
-push static 5
 add
 pop pointer 1
 push that 0
 add
-push argument 0
-push static 5
-add
+push temp 0
 pop pointer 1
 pop that 0
-push local 1
 push static 6
+push argument 0
+add
+pop temp 0
+push static 6
+push local 1
 add
 pop pointer 1
 push that 0
-push argument 0
-push static 6
-add
+push temp 0
 pop pointer 1
 pop that 0
-label ENDIF_7
+goto IF_END6
+label IF_FALSE6
+label IF_END6
 push constant 0
 return
 function Memory.findPreFree 1
 push static 1
 push argument 0
 lt
-if-goto IF_8
-goto ENDIF_8
-label IF_8
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
 push constant 0
 return
-label ENDIF_8
+goto IF_END7
+label IF_FALSE7
+label IF_END7
 push static 1
 pop local 0
-label WHILE_9
-push local 0
+label WHILE_EXP1
 push static 6
+push local 0
 add
 pop pointer 1
 push that 0
 push constant 0
 eq
 not
-push local 0
 push static 6
+push local 0
 add
 pop pointer 1
 push that 0
@@ -363,14 +409,14 @@ push argument 0
 gt
 and
 not
-if-goto END_WHILE_9
-push local 0
+if-goto WHILE_END1
 push static 6
+push local 0
 add
 pop pointer 1
 push that 0
 pop local 0
-goto WHILE_9
-label END_WHILE_9
+goto WHILE_EXP1
+label WHILE_END1
 push local 0
 return

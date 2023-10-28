@@ -1,19 +1,15 @@
 class Main{
+  function void main() {
+    var int ans;
+    let ans = Main.test(10);
+  }
 
-    function int fib(int n) {
-        var int i = 0;
-        var int a = 0;
+  function int test(int n) {
+	  var Array a;
+    let a= Array.new(5);
+    let a[2] = n;
 
-        while(i < n){
-            let a = a + 4;
-        }
+    return a[2];
+  }
 
-        return a;
-    }
-
-    function void main() {
-        var int ans;
-        let ans = Main.fib(10);
-
-    }
 }

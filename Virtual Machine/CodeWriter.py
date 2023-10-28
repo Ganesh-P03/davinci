@@ -111,9 +111,9 @@ class CodeWriter:
     self.writeMessage('')
     
     # Call Sys.init
-    # self.writeMessage('Call Sys.init')
-    # self.writeCall('Sys.init', 0)
-    # self.writeMessage('')
+    self.writeMessage('*** Call Sys.init ***')
+    self.writeCall('Sys.init', 0)
+    self.writeMessage('')
   
   
   def writeASM(self, parser: Parser):

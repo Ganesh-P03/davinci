@@ -1,9 +1,7 @@
 class Main{
-  
   function void main() {
-      var int ans;
-      let ans = Main.test(10);
-
+    var int ans;
+    let ans = Main.test(10);
   }
 
   function int test(int n) {

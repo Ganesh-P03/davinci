@@ -1,0 +1,15 @@
+class Main{
+  function void main() {
+    var int ans;
+    let ans = Main.test(10);
+  }
+
+  function int test(int n) {
+	  var Array a;
+    let a= Array.new(5);
+    let a[2] = n;
+
+    return a[2];
+  }
+
+}
