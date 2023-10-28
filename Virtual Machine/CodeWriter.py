@@ -98,21 +98,18 @@ class CodeWriter:
     
     # Initialize SP to 256
     self.writeMessage('Initializing SP to 256')
-    self.write('addi $sp, $ram, 256')
-    self.writeMessage('')
-    
-    # Initialize LCL to $sp
-    self.write('addi $lcl, $sp, 0')
-    self.writeMessage('')
-    
-    # Initialize TEMP to 0
-    self.writeMessage('Initializing TEMP to 0')
     self.write('addi $temp, $ram, 0')
+    self.write('addi $sp, $ram, 256')
+    self.write('addi $lcl, $sp, 0')
+    self.write('addi $arg, $sp, 0')
+    self.write('addi $this, $sp, 0')
+    self.write('addi $that, $sp, 0')
     self.writeMessage('')
     
     # Call Sys.init
     self.writeMessage('*** Call Sys.init ***')
-    self.writeCall('Sys.init', 0)
+    # self.writeCall('Sys.init', 0)
+    self.writeCall('Memory.main', 0)
     self.writeMessage('')
   
   
@@ -191,16 +188,16 @@ class CodeWriter:
     
     # Add/Sub
     if command == 'add':
-      self.write('add $t0, $t0, $t1')  # t0 = x + y
+      self.write('add $t0, $t1, $t0')  # t0 = x + y
     elif command == 'sub':
       # [DONE] Is $t0 = x - y or $t0 = y - x? In terms of regs
-      self.write('sub $t0, $t0, $t1')  # t0 = x - y
+      self.write('sub $t0, $t1, $t0')  # t0 = x - y
     
     # And/Or
     elif command == 'and':
-      self.write('and $t0, $t0, $t1') # t0 = x & y
+      self.write('and $t0, $t1, $t0') # t0 = x & y
     elif command == 'or':
-      self.write('or $t0, $t0, $t1')  # t0 = x | y
+      self.write('or $t0, $t1, $t0')  # t0 = x | y
       
     # Eq/Gt/Lt
     elif command == 'eq':
@@ -240,14 +237,26 @@ class CodeWriter:
         self.write('lw $t0, ' + str(index) + '($arg)') # t0 = *(arg + index)
       elif segment == 'local':
         self.write('lw $t0, ' + str(index) + '($lcl)') # t0 = *(lcl + index)
-      elif segment == 'this' or (segment == 'pointer' and index == 0):
-        self.write('lw $t0, ' + str(index) + '($this)') # t0 = *(this + index)
-      elif segment == 'that' or (segment == 'pointer' and index == 4):
-        self.write('lw $t0, ' + str(index) + '($that)') # t0 = *(that + index)
+      elif segment == 'this':
+        self.write('add $t1, $this, $ram')
+        self.write('lw $t0, ' + str(index) + '($t1)') # t0 = *(this + index)
+      elif segment == 'that':
+        self.write('add $t1, $that, $ram')
+        self.write('lw $t0, ' + str(index) + '($t1)') # t0 = *(that + index)
       elif segment == 'temp':
         self.write('lw $t0, ' + str(index) + '($temp)') # t0 = *(temp + index)
       elif segment == 'static':
         self.write('lw $t0, ' + str(self.__file_name) + '.' + str(index//4)) # t0 = *(filename.index)
+      elif segment == "pointer" and index == 0:
+        self.write('lw $this, 0($sp)')
+        self.write('addi $sp, $sp, 4') # SP = SP + 1
+        self.writeMessage('')        
+        return
+      elif segment == "pointer" and index == 4:
+        self.write('lw $that, 0($sp)')
+        self.write('addi $sp, $sp, 4') # SP = SP + 1
+        self.writeMessage('')
+        return
       elif segment == 'constant':
         index = int(index//4)
         if index == 0:
@@ -284,14 +293,20 @@ class CodeWriter:
         self.write('sw $t0, ' + str(index) + '($arg)') # t0 = *(arg + index)
       elif segment == 'local':
         self.write('sw $t0, ' + str(index) + '($lcl)') # t0 = *(lcl + index)
-      elif segment == 'this' or (segment == 'pointer' and index == 0):
-        self.write('sw $t0, ' + str(index) + '($this)') # t0 = *(this + index)
-      elif segment == 'that' or (segment == 'pointer' and index == 4):
-        self.write('sw $t0, ' + str(index) + '($that)') # t0 = *(that + index)
+      elif segment == 'this':
+        self.write('add $t1, $this, $ram')
+        self.write('sw $t0, ' + str(index) + '($t1)') # t0 = *(this + index)
+      elif segment == 'that':
+        self.write('add $t1, $that, $ram')
+        self.write('sw $t0, ' + str(index) + '($t1)') # t0 = *(that + index)
       elif segment == 'temp':
         self.write('sw $t0, ' + str(index) + '($temp)') # t0 = *(temp + index)
       elif segment == 'static':
         self.write('sw $t0, ' + str(self.__file_name) + '.' + str(index//4)) # t0 = *(filename.index)
+      elif segment == "pointer" and index == 0:
+        self.write('addi $this, $t0, 0')
+      elif segment == "pointer" and index == 4:
+        self.write('addi $that, $t0, 0')
       self.writeMessage('')
 
   
@@ -317,16 +332,14 @@ class CodeWriter:
     self.write('beq $t0, $zero, ' + str(loop_exit_label)) # if t0 == 0, goto loop_exit_label
     self.write('lui $t0, ' + label) # t0
     self.write('addi $t0, $t0, ' + label) # t0 = return_label
-    
     self.write('add $t0, $t0, $pc') # t0 = return_label + pc
-    
     self.write('jalr $ra, $t0, 0') # goto (label)
     self.writeLabel(loop_exit_label)
     self.writeMessage('')
     
   
   # Writes assembly code that effects the call command
-  def writeCall(self, function_name: str, n: int) -> None:    
+  def writeCall(self, function_name: str, n: int) -> None:
     self.writeMessage('Call ' + str(function_name) + ' ' + str(n))
     # Push return-address
     return_label = self.genReturnLabel(function_name)
@@ -385,22 +398,26 @@ class CodeWriter:
     # -3 :  <ARG> : 2
     # -2 : <THIS> : 3
     # -1 : <THAT> : 4
-    
+
+    self.writeMessage('Get return address')
+    self.write('addi $t0, $zero, 20') # t0 = 20
+    self.write('sub $t0, $lcl, $t0')  # t0 = (lcl - 5)
+    self.write('lw $ra, 0($t0)')      # $ra = RETURN ADDRESS
+    self.writeMessage('')
+
     # Reposition ARG = pop()
     self.writeMessage('ARG = pop()')
     self.write('addi $sp, $sp, -4') # SP = SP - 1
     self.write('lw $t0, 0($sp)')    # t0 = res
-    
     self.write('sw $t0, 0($arg)')    # *(arg) = $arg
     self.writeMessage('')
     
     self.writeMessage('Change SP = ARG + 1')
-    # Restore SP = ARG + 1
     self.write('addi $sp, $arg, 4')
-    
+
+    self.writeMessage('Get Segments')
     self.write('addi $t0, $zero, 20') # t0 = 20
     self.write('sub $t0, $lcl, $t0')  # t0 = (lcl - 5)
-    self.write('lw $ra, 0($t0)')      # $ra = RETURN ADDRESS
     self.write('lw $lcl, 4($t0)')     # $lcl  = LCL
     self.write('lw $arg, 8($t0)')     # $arg  = ARG
     self.write('lw $this, 12($t0)')   # $this = THIS
