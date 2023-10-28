@@ -12447,3 +12447,29 @@ selectTree(RDIResource.WaveformNameTree_WAVEFORM_NAME_TREE, "[true, \\register_r
 // Elapsed Time for: 'L.f': 01h:36m:10s
 // Elapsed Time for: 'L.f': 01h:36m:12s
 // HMemoryUtils.trashcanNow. Engine heap size: 1,759 MB. GUI used memory: 176 MB. Current time: 10/28/23, 5:04:22 PM IST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,759 MB. GUI used memory: 114 MB. Current time: 10/28/23, 5:07:23 PM IST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,759 MB. GUI used memory: 114 MB. Current time: 10/28/23, 5:07:28 PM IST
+// Elapsed time: 1540 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager]", 0, true); // f - Node
+// Run Command: PAResourceCommand.PACommandNames_GOTO_PROJECT_MANAGER
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 15, false); // f
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// Tcl Message: INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/processor.dcp 
+// TclEventType: FILE_SET_CHANGE
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // f
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs synth_1 -jobs 4 
+// Tcl Message: [Sat Oct 28 17:07:36 2023] Launched synth_1... Run output will be captured here: D:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/runme.log 
+dismissDialog("Starting Design Runs"); // bq
+// TclEventType: RUN_STATUS_CHANGE

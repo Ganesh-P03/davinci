@@ -3734,3 +3734,11 @@ run 500 ns
 run 500 ns
 run 500 ns
 run 500 ns
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/processor.dcp
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1
+
+launch_runs synth_1 -jobs 4
+[Sat Oct 28 17:07:36 2023] Launched synth_1...
+Run output will be captured here: D:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/runme.log
