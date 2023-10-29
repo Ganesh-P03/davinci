@@ -1,0 +1,12 @@
+class Sys {
+    static Array a;
+    function void init() {
+        let a=100;
+        return Sys.main(1, 2);
+    }
+
+    function int main(int c, int b){
+        let a[11]=c-b;
+        return a[11];
+    }
+}

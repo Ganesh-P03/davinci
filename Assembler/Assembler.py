@@ -2,7 +2,7 @@ import sys
 import os
 
 # Pretty table
-from prettytable import PrettyTable
+#from prettytable import PrettyTable
 
 
 class Assembler:
@@ -45,10 +45,12 @@ class Assembler:
     __scounter = 0
 
     # TODO: Define where the instructions start
-    __sbase = 140672 + 15
+    __sbase = 15
     __dbase = 0x0
     
     __pcbase = 9600
+    
+    __nstatic = 0
 
     def __init__(self, input_path):
         try:
@@ -80,45 +82,45 @@ class Assembler:
         return self.__sbase + size
 
     # Show tables
-    def showTables(self, save: bool = False):
-        # Register table
-        register_table = PrettyTable()
-        register_table.field_names = ["Register", "Binary"]
-        for key, value in self.__register_table.items():
-            register_table.add_row([key, value])
+    # def showTables(self, save: bool = False):
+    #     # Register table
+    #     register_table = PrettyTable()
+    #     register_table.field_names = ["Register", "Binary"]
+    #     for key, value in self.__register_table.items():
+    #         register_table.add_row([key, value])
 
-        # Symbol table
-        symbol_table = PrettyTable()
-        symbol_table.field_names = ["Symbol", "Reference"]
-        for key, value in self.__symbol_table.items():
-            symbol_table.add_row([key, value])
+    #     # Symbol table
+    #     symbol_table = PrettyTable()
+    #     symbol_table.field_names = ["Symbol", "Reference"]
+    #     for key, value in self.__symbol_table.items():
+    #         symbol_table.add_row([key, value])
 
-        # Label table
-        label_table = PrettyTable()
-        label_table.field_names = ["Label", "Address(PC)"]
-        for key, value in self.__label_table.items():
-            label_table.add_row([key, value])
+    #     # Label table
+    #     label_table = PrettyTable()
+    #     label_table.field_names = ["Label", "Address(PC)"]
+    #     for key, value in self.__label_table.items():
+    #         label_table.add_row([key, value])
 
-        if save:
-            with open("output/tables/register_table.txt", "w") as f:
-                f.write(str(register_table))
-            with open("output/tables/symbol_table.txt", "w") as f:
-                f.write(str(symbol_table))
-            with open("output/tables/label_table.txt", "w") as f:
-                f.write(str(label_table))
-            return
+    #     if save:
+    #         with open("output/tables/register_table.txt", "w") as f:
+    #             f.write(str(register_table))
+    #         with open("output/tables/symbol_table.txt", "w") as f:
+    #             f.write(str(symbol_table))
+    #         with open("output/tables/label_table.txt", "w") as f:
+    #             f.write(str(label_table))
+    #         return
 
-        print("Register Table")
-        print(register_table)
-        print()
+    #     print("Register Table")
+    #     print(register_table)
+    #     print()
 
-        print("Symbol Table")
-        print(symbol_table)
-        print()
+    #     print("Symbol Table")
+    #     print(symbol_table)
+    #     print()
 
-        print("Label Table")
-        print(label_table)
-        print()
+    #     print("Label Table")
+    #     print(label_table)
+    #     print()
 
     # Register table
     def getRegister(self, register: str) -> str:
@@ -345,6 +347,7 @@ class Assembler:
             # Symbols
             elif (command == "lw" or command == "sw") and (line[-1].find(".") != -1):
                 self.setSymbol(line[-1])
+                self.__nstatic += 1
 
             address += 1
             wl_contents.append(line)
@@ -461,9 +464,11 @@ class Assembler:
                 f.write("ROM[" + str(i) + "] <= 32'b" + line + ";\n")
 
 
+
+
 if __name__ == "__main__":
     base_path = os.path.dirname(os.path.realpath(__file__))
     file_path = os.path.join(base_path, "riscv_code.asm")
 
     assembler = Assembler(file_path)
-    assembler.showTables(save=True)
+   # assembler.showTables(save=True)

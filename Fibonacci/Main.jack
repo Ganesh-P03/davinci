@@ -9,15 +9,26 @@ class Main{
   function int fib(int n) {
 	  var int a;
     var int b;
+    var int c;
     var int i;
 
-    let i = 0;
-    let a = 1;
-    while(i < n){
-      let a = a + 1;
+    let i = 2;
+    let a = 0;
+    let b = 1;
+
+    if(n = 1){
+      return 0;
     }
 
-    return a;
+    while(i < n){
+      let c = a + b;
+      let a = b;
+      let b = c;
+
+      let i = i + 1;
+    }
+
+    return b;
   }
 
 }

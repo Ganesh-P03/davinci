@@ -1,44 +1,22 @@
-function Main.fib 4
-push constant 0
-pop local 0
-push constant 1
-pop local 1
-push constant 2
-pop local 3
-push argument 0
-push constant 1
-eq
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push local 0
-return
-goto IF_END0
-label IF_FALSE0
-label IF_END0
-label WHILE_EXP0
-push local 3
-push argument 0
-lt
-not
-if-goto WHILE_END0
-push local 0
-push local 1
-add
-pop local 2
-push local 1
-pop local 0
-push local 2
-pop local 1
-push local 3
-push constant 1
-add
-pop local 3
-goto WHILE_EXP0
-label WHILE_END0
-push local 1
-return
 function Main.main 1
 push constant 10
-call Main.fib 1
+call Main.test 1
 pop local 0
+function Main.test 1
+push constant 5
+call Array.new 1
+pop local 0
+push constant 2
+push local 0
+add
+pop temp 0
+push argument 0
+push temp 0
+pop pointer 1
+pop that 0
+push constant 2
+push local 0
+add
+pop pointer 1
+push that 0
+return

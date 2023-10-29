@@ -37,7 +37,7 @@ class Output {
     
     static Array screen;
 
-    /** Initializes the screen and locates the cursor at the screen's top-left. */
+    // Initializes the screen and locates the cursor at the screen's top-left. 
     function void init() {
         let screen = 16384; // starting memory address of the screen array
         let cursorX = 0;
@@ -258,20 +258,20 @@ class Output {
             
             
             /** if( mask = 1 ) {
-                let bitmap = bitmap * 256; // left 8 bits would be filled i.e. binary is shifted 8 bits to the left => yyyyyyyy00000000
-
-                // -1 & 255 = 1111111111111111 & 0000000011111111 = 0000000011111111 = 255
-                // screen[address] & 255 = screen[address] & 0000000011111111 = 00000000xxxxxxxx (left 8 bits are made 0 and right 8 bits are preserved)
-                // 00000000xxxxxxxx | bitmap  = yyyyyyyyxxxxxxxx (left 8 bits are filled with the character bitmap and right 8 bits are preserved)
-                let screen[address] = screen[address] & (-1 & 255) | bitmap;
-            }else{
-
-                // if the mask is 0, the character should be printed on the right 8 bits of the 16bit screen word
-                // !!!!! IMPNOTE: here screen[address] = screen[address] & (-256) might need to be used !!!!!
-                // screen[address] & -256 = screen[address] & 1111111100000000 = xxxxxxxx00000000 (right 8 bits are made 0 and left 8 bits are preserved)
-                // xxxxxxxx00000000 | bitmap = xxxxxxxxyyyyyyyy (right 8 bits are filled with the character bitmap and left 8 bits are preserved)
-                let screen[address] = screen[address] & 255 | bitmap;
-            }*/
+            *   let bitmap = bitmap * 256; // left 8 bits would be filled i.e. binary is shifted 8 bits to the left => yyyyyyyy00000000
+            *
+            *    // -1 & 255 = 1111111111111111 & 0000000011111111 = 0000000011111111 = 255
+            *    // screen[address] & 255 = screen[address] & 0000000011111111 = 00000000xxxxxxxx (left 8 bits are made 0 and right 8 bits are preserved)
+            *    // 00000000xxxxxxxx | bitmap  = yyyyyyyyxxxxxxxx (left 8 bits are filled with the character bitmap and right 8 bits are preserved)
+            *    let screen[address] = screen[address] & (-1 & 255) | bitmap;
+            *}else{
+            *
+            *   // if the mask is 0, the character should be printed on the right 8 bits of the 16bit screen word
+            *   // !!!!! IMPNOTE: here screen[address] = screen[address] & (-256) might need to be used !!!!!
+            *    // screen[address] & -256 = screen[address] & 1111111100000000 = xxxxxxxx00000000 (right 8 bits are made 0 and left 8 bits are preserved)
+            *    // xxxxxxxx00000000 | bitmap = xxxxxxxxyyyyyyyy (right 8 bits are filled with the character bitmap and left 8 bits are preserved)
+             *   let screen[address] = screen[address] & 255 | bitmap;
+            *}*/
             
             if( mask = 3) {
                 let bitmap = bitmap * 16777216; //  16777216 = b'00000001 00000000 00000000 00000000
@@ -332,7 +332,7 @@ class Output {
         return;
     }
 
-    /** Advances the cursor to the beginning of the next line. */
+    // Advances the cursor to the beginning of the next line. 
     function void println() {
 
         if( cursorY < 29 ) {
@@ -348,7 +348,7 @@ class Output {
     }
 
     
-    /** Moves the cursor one column back. */
+    // Moves the cursor one column back. 
     function void backSpace() {
         if( cursorX = 0 ) {
 
