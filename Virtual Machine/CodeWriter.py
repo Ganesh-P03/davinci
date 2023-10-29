@@ -108,8 +108,8 @@ class CodeWriter:
     
     # Call Sys.init
     self.writeMessage('*** Call Sys.init ***')
-    # self.writeCall('Sys.init', 0)
-    self.writeCall('Memory.main', 0)
+    self.writeCall('Sys.init', 0)
+    # self.writeCall('Memory.main', 0)
     self.writeMessage('')
   
   

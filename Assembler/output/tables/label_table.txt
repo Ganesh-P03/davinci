@@ -1,23 +1,54 @@
-+----------------------+-------------+
-|        Label         | Address(PC) |
-+----------------------+-------------+
-|  Memory.main$ret.1   |     1080    |
-|     Memory.main      |     1092    |
-|  Memory.alloc$ret.2  |     1996    |
-|    Memory.bestFit    |     2260    |
-|     LOOP_EXIT_1      |     2568    |
-|       IF_TRUE0       |     3628    |
-|      IF_FALSE0       |     4856    |
-|      WHILE_EXP0      |     2640    |
-|     LOOP_EXIT_2      |     2784    |
-|     LOOP_EXIT_3      |     3100    |
-|       IF_TRUE1       |     3820    |
-|      IF_FALSE1       |     4556    |
-|      WHILE_END0      |     3248    |
-|     Memory.alloc     |     3316    |
-| Memory.bestFit$ret.3 |     3428    |
-|     LOOP_EXIT_4      |     3624    |
-|     LOOP_EXIT_5      |     3816    |
-|       IF_END1        |     4832    |
-|         END          |     4924    |
-+----------------------+-------------+
++--------------------------+-------------+
+|          Label           | Address(PC) |
++--------------------------+-------------+
+|      Sys.init$ret.1      |     1080    |
+|        Array.new         |     1092    |
+|    Memory.alloc$ret.2    |     1180    |
+|      Array.dispose       |     1236    |
+|   Memory.deAlloc$ret.3   |     1344    |
+|        Main.main         |     1424    |
+|     Array.new$ret.4      |     1528    |
+|       Memory.init        |     2192    |
+|       Memory.peek        |     2680    |
+|       Memory.poke        |     2816    |
+|      Memory.bestFit      |     2976    |
+|       LOOP_EXIT_1        |     3284    |
+|           IF_0           |     3288    |
+|         ENDIF_0          |     3356    |
+|         WHILE_1          |     3356    |
+|       LOOP_EXIT_2        |     3500    |
+|       LOOP_EXIT_3        |     3816    |
+|           IF_2           |     3820    |
+|         ENDIF_2          |     3868    |
+|       END_WHILE_1        |     3964    |
+|       Memory.alloc       |     4032    |
+|   Memory.bestFit$ret.5   |     4144    |
+|       LOOP_EXIT_4        |     4340    |
+|           IF_3           |     4344    |
+|       LOOP_EXIT_5        |     4532    |
+|           IF_4           |     4788    |
+|         ENDIF_4          |     5448    |
+|         ENDIF_3          |     5472    |
+|      Memory.deAlloc      |     5540    |
+| Memory.findPreFree$ret.6 |     5808    |
+|       LOOP_EXIT_6        |     5916    |
+|       LOOP_EXIT_7        |     6120    |
+|           IF_6           |     6468    |
+|         ENDIF_6          |     6692    |
+|           IF_5           |     6696    |
+|         ENDIF_5          |     6904    |
+|       LOOP_EXIT_8        |     7176    |
+|           IF_7           |     7180    |
+|         ENDIF_7          |     7700    |
+|    Memory.findPreFree    |     7768    |
+|       LOOP_EXIT_9        |     7856    |
+|           IF_8           |     7860    |
+|         ENDIF_8          |     7928    |
+|         WHILE_9          |     7952    |
+|       LOOP_EXIT_10       |     8312    |
+|       END_WHILE_9        |     8408    |
+|         Sys.init         |     8476    |
+|    Memory.init$ret.7     |     8552    |
+|     Main.main$ret.8      |     8640    |
+|           END            |     8696    |
++--------------------------+-------------+
