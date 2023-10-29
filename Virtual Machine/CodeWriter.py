@@ -86,7 +86,7 @@ class CodeWriter:
     
     self.writeMessage('Initialize Static Segment')
     for i in range(15, 256):
-      self.write('sw $zero, ' + str(i) + "($ram)")
+      self.write('sw $zero, ' + str(i*4) + "($ram)")
     self.writeMessage('')
 
   # VM Initialization code
@@ -97,9 +97,9 @@ class CodeWriter:
     self.writeMessage('')
     
     # Initialize SP to 256
-    self.writeMessage('Initializing SP to 256')
+    self.writeMessage('Initializing SP to 256th location')
     self.write('addi $temp, $ram, 0')
-    self.write('addi $sp, $ram, 256')
+    self.write('addi $sp, $ram, 1024')
     self.write('addi $lcl, $sp, 0')
     self.write('addi $arg, $sp, 0')
     self.write('addi $this, $sp, 0')
@@ -259,17 +259,17 @@ class CodeWriter:
         return
       elif segment == 'constant':
         index = int(index//4)
-        if index == 0:
-          self.write('addi $t0, $zero, 0')
+        lower_bits = index & 0xFFF
+        upper_bits = (index & 0xFFF000) >> 12
+        
+        is_upper_set = ((lower_bits & 2048) != 0)
+        upper_bits += is_upper_set
+        
+        if upper_bits != 0:
+          self.write('lui $t0, ' + str(upper_bits)) # t0 = upper_bits
+          self.write('addi $t0, $t0, ' + str(lower_bits)) # t0 = lower_bits
         else:
-          lower_bits = index & 0xFFF
-          upper_bits = (index & 0xFFF000) >> 12
-          
-          if upper_bits != 0:
-            self.write('lui $t0, ' + str(upper_bits)) # t0 = upper_bits
-            
-          if lower_bits != 0:
-            self.write('addi $t0, $zero, ' + str(lower_bits)) # t0 = lower_bits
+          self.write('addi $t0, $zero, ' + str(lower_bits)) # t0 = lower_bits
         
            
       self.writeMessage('')

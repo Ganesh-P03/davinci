@@ -2,7 +2,7 @@ import sys
 import os
 
 # Pretty table
-#from prettytable import PrettyTable
+from prettytable import PrettyTable
 
 
 class Assembler:
@@ -45,7 +45,7 @@ class Assembler:
     __scounter = 0
 
     # TODO: Define where the instructions start
-    __sbase = 15
+    __sbase = 16*4
     __dbase = 0x0
     
     __pcbase = 9600
@@ -74,53 +74,55 @@ class Assembler:
         self.secondPass(save=True)
 
         self.translate()
+        
+        self.showTables(save=True)
 
     def getContents(self):
         return self.__contents
 
     def getStaticLocation(self, size: int):
-        return self.__sbase + size
+        return self.__sbase + size*4
 
-    # Show tables
-    # def showTables(self, save: bool = False):
-    #     # Register table
-    #     register_table = PrettyTable()
-    #     register_table.field_names = ["Register", "Binary"]
-    #     for key, value in self.__register_table.items():
-    #         register_table.add_row([key, value])
+    #Show tables
+    def showTables(self, save: bool = False):
+        # Register table
+        register_table = PrettyTable()
+        register_table.field_names = ["Register", "Binary"]
+        for key, value in self.__register_table.items():
+            register_table.add_row([key, value])
 
-    #     # Symbol table
-    #     symbol_table = PrettyTable()
-    #     symbol_table.field_names = ["Symbol", "Reference"]
-    #     for key, value in self.__symbol_table.items():
-    #         symbol_table.add_row([key, value])
+        # Symbol table
+        symbol_table = PrettyTable()
+        symbol_table.field_names = ["Symbol", "Reference"]
+        for key, value in self.__symbol_table.items():
+            symbol_table.add_row([key, value])
 
-    #     # Label table
-    #     label_table = PrettyTable()
-    #     label_table.field_names = ["Label", "Address(PC)"]
-    #     for key, value in self.__label_table.items():
-    #         label_table.add_row([key, value])
+        # Label table
+        label_table = PrettyTable()
+        label_table.field_names = ["Label", "Address(PC)"]
+        for key, value in self.__label_table.items():
+            label_table.add_row([key, value])
 
-    #     if save:
-    #         with open("output/tables/register_table.txt", "w") as f:
-    #             f.write(str(register_table))
-    #         with open("output/tables/symbol_table.txt", "w") as f:
-    #             f.write(str(symbol_table))
-    #         with open("output/tables/label_table.txt", "w") as f:
-    #             f.write(str(label_table))
-    #         return
+        if save:
+            with open("output/tables/register_table.txt", "w") as f:
+                f.write(str(register_table))
+            with open("output/tables/symbol_table.txt", "w") as f:
+                f.write(str(symbol_table))
+            with open("output/tables/label_table.txt", "w") as f:
+                f.write(str(label_table))
+            return
 
-    #     print("Register Table")
-    #     print(register_table)
-    #     print()
+        print("Register Table")
+        print(register_table)
+        print()
 
-    #     print("Symbol Table")
-    #     print(symbol_table)
-    #     print()
+        print("Symbol Table")
+        print(symbol_table)
+        print()
 
-    #     print("Label Table")
-    #     print(label_table)
-    #     print()
+        print("Label Table")
+        print(label_table)
+        print()
 
     # Register table
     def getRegister(self, register: str) -> str:
@@ -338,7 +340,7 @@ class Assembler:
         address = 0
         wl_contents = []
 
-        for line in self.__contents:
+        for idx, line in enumerate(self.__contents):
             command = line[0]
             # Labels
             if command[-1] == ":":
@@ -384,7 +386,8 @@ class Assembler:
                         label = self.getLabel(line[-1])
 
                         line.pop()
-                        line.append(str((label + self.__dbase) >> 12))
+                        temp = ((label + self.__dbase) & 2048 !=0 )
+                        line.append(str(((label + self.__dbase) >> 12) + temp))
                 else:
                     if cmd != "jalr":
                         label = line[-1]
