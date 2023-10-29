@@ -24,10 +24,11 @@ module TB_Processor;
 
   initial begin  
     clk=0;
-    reset = 1'b1;
+    reset=1'b0;
+    // reset = 1'b1;
 
-    #510
-    reset = 1'b0;
+    // #510
+    // reset = 1'b0;
 
 
   end

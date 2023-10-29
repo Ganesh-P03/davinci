@@ -1,207 +1,0 @@
-Data_For_RDAFlowver5.0
-	top level∂O
-	processor
-LinkDesign_Blackboxes°1
-synthFileNamesJ
-10DD:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/BRAM_SINGLE_MACRO.vhdG
-11AD:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/BRAM_TDP_MACRO.vhdK
-12ED:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/COUNTER_LOAD_MACRO.vhdI
-13CD:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/COUNTER_TC_MACRO.vhdI
-14CD:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/EQ_COMPARE_MACRO.vhdF
-20@D:/Xilinx/Vivado/2023.1/data/verilog/src/unimacro/ADDSUB_MACRO.vM
-15GD:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/FIFO_DUALCLOCK_MACRO.vhdH
-21BD:/Xilinx/Vivado/2023.1/data/verilog/src/unimacro/BRAM_SDP_MACRO.vH
-16BD:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/FIFO_SYNC_MACRO.vhdK
-22ED:/Xilinx/Vivado/2023.1/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.vC
-17=D:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/MACC_MACRO.vhdC
-18=D:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/MULT_MACRO.vhdH
-23BD:/Xilinx/Vivado/2023.1/data/verilog/src/unimacro/BRAM_TDP_MACRO.vG
-19AD:/Xilinx/Vivado/2023.1/data/verilog/src/unimacro/ADDMACC_MACRO.vL
-24FD:/Xilinx/Vivado/2023.1/data/verilog/src/unimacro/COUNTER_LOAD_MACRO.vJ
-25DD:/Xilinx/Vivado/2023.1/data/verilog/src/unimacro/COUNTER_TC_MACRO.vD
-30>D:/Xilinx/Vivado/2023.1/data/verilog/src/unimacro/MULT_MACRO.v
-NumFileNames68J
-26DD:/Xilinx/Vivado/2023.1/data/verilog/src/unimacro/EQ_COMPARE_MACRO.vJ
-31DD:/Xilinx/Vivado/2023.1/data/vhdl/src/unisims/retarget/MULT18X18.vhd=
-18D:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_VCOMP.vhdN
-27HD:/Xilinx/Vivado/2023.1/data/verilog/src/unimacro/FIFO_DUALCLOCK_MACRO.vK
-32ED:/Xilinx/Vivado/2023.1/data/vhdl/src/unisims/retarget/MULT18X18S.vhd<
-27D:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_VPKG.vhdI
-28CD:/Xilinx/Vivado/2023.1/data/verilog/src/unimacro/FIFO_SYNC_MACRO.vw
-33qD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_Decoder.v:
-35D:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.vD
-29>D:/Xilinx/Vivado/2023.1/data/verilog/src/unimacro/MACC_MACRO.vy
-34sD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Instr_Decoder.v=
-48D:/Xilinx/Vivado/2023.1/scripts/rt/data/internal_cells.vx
-35rD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_32bit.vx
-40rD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/control_unit.v3
-5.D:/Xilinx/Vivado/2023.1/scripts/rt/data/BUFT.vx
-36rD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX4x1_32bit.vt
-41nD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/reg_file.vF
-6AD:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/unimacro_VCOMP.vhdr
-37lD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX8x1.vu
-42oD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/processor.vE
-7@D:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/ADDMACC_MACRO.vhdx
-38rD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Main_Decoder.vu
-43oD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_RISCv.vD
-8?D:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/ADDSUB_MACRO.vhds
-39mD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/add_sub.vu
-44oD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/DFlipFlop.vo
-50iD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/RAM.vF
-9AD:/Xilinx/Vivado/2023.1/data/vhdl/src/unimacro/BRAM_SDP_MACRO.vhdt
-45nD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Extender.vo
-51iD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ROM.vq
-46kD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Gates.vy
-52sD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Screen_Memory.vw
-47qD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_1bit.vv
-53pD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/bitwiseAND.vr
-48lD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Memory.vu
-54oD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/fulladder.vu
-49oD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/NOT_32bit.vc
-60]D:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/1993/src/numeric_std.vhdy
-55sD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_1bit.v^
-61XD:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/1993/src/textio.vhdz
-56tD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_32bit.v`
-62ZD:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/1993/src/timing_p.vhdy
-57sD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/zero_extender.v`
-63ZD:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/1993/src/timing_b.vhd`
-58ZD:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/1993/src/std_1164.vhd`
-64ZD:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/1993/src/prmtvs_p.vhd`
-59ZD:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/1993/src/standard.vhd`
-65ZD:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/1993/src/prmtvs_b.vhd`
-66ZD:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/1993/src/syn_arit.vhd`
-67ZD:/semester/7th sem/davinci/testing/Processor/Processor.runs/synth_1/1993/src/syn_unsi.vhd§
-
-synthStatsN
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_0 N
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_1 N
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_2 N
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_3 N
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_4 N
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_5 N
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_6 N
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_7 N
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_8 N
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_9 O
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_10 O
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_11 O
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_12 O
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_13 O
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_14 O
-BRAMNoOutReg
-L25
-Mnullname
-F50
-O\mem/ram/RAM_reg_bram_15 G
-BRAMNoOutReg
-L9
-Mnullname
-F51
-O\mem/rom/Inst_reg G
-BRAMNoOutReg
-L9
-Mnullname
-F51
-O\mem/rom/Inst_reg ß
-ElaboratedNamesForRQSç
-DSP_RAM5
-339980+ {control_unit/mainDecoder/nextstate_i__1} 
-98306 {mem/ramAddress_i} ,
-786444" {control_unit/mainDecoder/beq_i} #
-184323 {mem/disMem/memory_reg} ,
-794636" {control_unit/mainDecoder/bge_i} 
-118789 {mem/ram/RAM_i} ,
-798732" {control_unit/mainDecoder/blt_i} 
-102402 {mem/romAddress_i} #
-102403 {mem/disMem/memory_reg} 0
-49166' {control_unit/instrDecoder/ImmSrc5_i} 
-102405 {mem/ram/RAM_reg} 2
-290818( {mem/keyVal_i__0} {mem/readKeyboard_i} 2
-278540( {control_unit/mainDecoder/nextstate_i} 1
-782348' {control_unit/mainDecoder/MemWrite_i} 
-36870 {mem/rom/Inst0_i} ,
-790540" {control_unit/mainDecoder/bne_i} ‚
-135183◊ {register_file/register_reg[0]_i} {register_file/register_reg[10]_i} {register_file/register_reg[11]_i} {register_file/register_reg[12]_i} {register_file/register_reg[13]_i} {register_file/register_reg[14]_i} {register_file/register_reg[15]_i} {register_file/register_reg[16]_i} {register_file/register_reg[17]_i} {register_file/register_reg[18]_i} {register_file/register_reg[19]_i} {register_file/register_reg[1]_i} {register_file/register_reg[20]_i} {register_file/register_reg[21]_i} {register_file/register_reg[22]_i} {register_file/register_reg[23]_i} {register_file/register_reg[24]_i} {register_file/register_reg[25]_i} {register_file/register_reg[26]_i} {register_file/register_reg[27]_i} {register_file/register_reg[28]_i} {register_file/register_reg[29]_i} {register_file/register_reg[2]_i} {register_file/register_reg[30]_i} {register_file/register_reg[31]_i} {register_file/register_reg[3]_i} {register_file/register_reg[4]_i} {register_file/register_reg[5]_i} {register_file/register_reg[6]_i} {register_file/register_reg[7]_i} {register_file/register_reg[8]_i} {register_file/register_reg[9]_i} 
-blackBoxInfoä
-synth_design
-isIncremental0
-Runtime1
-Threads used2X
-argsP-verilog_define default::[not_specified] -top  processor -part  xc7z010clg400-1 
-resynthPerc0.00
-Cputime1
-blackBoxPerc	-nan(ind)
-	directive ù
-synth_design_metrics$
-mismatchedAddSubOperatorWidths-1
-lowMaxFanout-1
-NumUnregisteredPorts0
-caseNotFullNoDefault-1
-	smallSrls-1
-srlsWithResetLogic-1
-shallowRAMWithAttribute-1
-hierMFO0
-bigRAMs-1
-NetsWithMixedFanouts-1
-DSPsWithKeep0
-RQS_Results

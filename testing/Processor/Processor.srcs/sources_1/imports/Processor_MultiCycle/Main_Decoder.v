@@ -38,6 +38,10 @@ parameter S13 = 4'b1101;
 parameter S14 = 4'b1110;
 parameter S15 = 4'b1111;
 
+initial begin
+  state = S0;
+end
+
   always @(posedge clk or posedge reset)
   begin
     if (reset)

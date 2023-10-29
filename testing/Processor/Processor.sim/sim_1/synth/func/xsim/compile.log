@@ -194,7 +194,6 @@ INFO: [VRFC 10-311] analyzing module DFlipFlop_99
 INFO: [VRFC 10-311] analyzing module Main_Decoder
 INFO: [VRFC 10-311] analyzing module Memory
 INFO: [VRFC 10-311] analyzing module RAM
-INFO: [VRFC 10-311] analyzing module ROM
 INFO: [VRFC 10-311] analyzing module control_unit
 INFO: [VRFC 10-311] analyzing module processor
 INFO: [VRFC 10-311] analyzing module reg_file
