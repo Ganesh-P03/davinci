@@ -1,16 +1,29 @@
-// This file is part of www.nand2tetris.org
-// and the book "The Elements of Computing Systems"
-// by Nisan and Schocken, MIT Press.
-// File name: projects/12/Sys.jack
-
-/**
- * A library of basic system services.
- */
-class Sys {
-
-    function int init() {
+class Sys{
+    static int a;
+    static Array b;
+    static Array c;
+    static Array d;
+    function int init(){
         do Memory.init();
-        return Main.main(); // executable the user program
+        let a=10;
+        let c=3000;
+        let c[20]=Memory.val();
+        let b=Memory.alloc(10);
+        let b[4]=1;
+        let b[8]=2;
+        let b[12]=3;
+        let c[4]=b;
+        let c[8]=Memory.tval();
+        let c[12]=Memory.bval();
+        let c[16]=Memory.val();
+        let c[24]=Memory.tval1();
+        let d=3200;
+        let d[0]=b;
+        
+        return b[2];
     }
+
+
+
 
 }

@@ -85,7 +85,7 @@ class CodeWriter:
     self.writeMessage('')
     
     self.writeMessage('Initialize Static Segment')
-    for i in range(15, 256):
+    for i in range(16, 256):
       self.write('sw $zero, ' + str(i*4) + "($ram)")
     self.writeMessage('')
 
