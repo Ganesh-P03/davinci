@@ -1,39 +1,17 @@
-+----------------------+-------------+
-|        Label         | Address(PC) |
-+----------------------+-------------+
-|    Sys.init$ret.1    |     1076    |
-|     Memory.init      |     1088    |
-|     Memory.peek      |     1632    |
-|     Memory.poke      |     1896    |
-|      Memory.val      |     2184    |
-|     Memory.tval      |     2252    |
-|     Memory.tval1     |     2320    |
-|     Memory.bval      |     2388    |
-|    Memory.bestFit    |     2456    |
-|     LOOP_EXIT_1      |     2764    |
-|         IF_0         |     2768    |
-|       ENDIF_0        |     2836    |
-|       WHILE_1        |     2836    |
-|     LOOP_EXIT_2      |     2980    |
-|     LOOP_EXIT_3      |     3296    |
-|         IF_2         |     3300    |
-|       ENDIF_2        |     3348    |
-|     END_WHILE_1      |     3444    |
-|     Memory.alloc     |     3512    |
-| Memory.bestFit$ret.2 |     3624    |
-|     LOOP_EXIT_4      |     3844    |
-|         IF_3         |     3848    |
-|     LOOP_EXIT_5      |     4036    |
-|         IF_4         |     4316    |
-|       ENDIF_4        |     5144    |
-|       ENDIF_3        |     5144    |
-|       Sys.init       |     5212    |
-|  Memory.init$ret.3   |     5288    |
-|   Memory.val$ret.4   |     5428    |
-|  Memory.alloc$ret.5  |     5596    |
-|  Memory.tval$ret.6   |     6052    |
-|  Memory.bval$ret.7   |     6208    |
-|   Memory.val$ret.8   |     6364    |
-|  Memory.tval1$ret.9  |     6520    |
-|         END          |     6856    |
-+----------------------+-------------+
++-----------------+-------------+
+|      Label      | Address(PC) |
++-----------------+-------------+
+|  Sys.init$ret.1 |     1076    |
+|    Main.main    |     1088    |
+|  Main.fib$ret.2 |     1176    |
+|     Main.fib    |     1232    |
+|   LOOP_EXIT_1   |     1432    |
+|       IF_0      |     1436    |
+|     ENDIF_0     |     1504    |
+|     WHILE_1     |     1504    |
+|   LOOP_EXIT_2   |     1608    |
+|   END_WHILE_1   |     1788    |
+|     Sys.init    |     1856    |
+| Main.main$ret.3 |     1932    |
+|       END       |     1988    |
++-----------------+-------------+
