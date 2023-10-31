@@ -1,77 +1,19 @@
 # **Language Specification Document**
 
-- Complete list of features 
-
-- Principle and paradign followed 
-
-- Alternative way of implementing the operation not supported by processor 
-
-- Library built to support the features and functionlity 
-
-- Machine/assembly code of these library. they should be in a object file format. 
-
-- Demonstration: 
-
-- the programs which are completely supported by the entire stack of systems 
-
-- Easy1, Easy2, Easy3, Easy4, Moder1, Moder2, Compl1, Compl2 
-
-Language specification: 
-
-- Language specification to be completed 
-
-- Compare your language with C/C++
-
- - Give reasoning on Why have you added the features 
-
-- What are the new features or innovations in your language?
-
- Rules: 
-
-- Grammar rules for 80% -100% of the features to be completed 
-
-- Catalogue of error messages 
-
-- Error message to be echoed during each phase of the from preprocessing to loading Library 
-
-preparation: 
-
-- Demonstration: 
-
-Example code1 to code10:
-
- Prepare at least 10 programs demonstrating each and every features of your programming language 
-
-- Demonstration: 
-
-Example complex code: Write two complex programs to demonstrate the capabilities of your language 
-
-- the program should finally run on your processor 
-
-- Write program to find out Inverse of given nxm matrix 
-
-- Implement Height Balance search tree with all the basic operations 
-
-- adding element, deleting, searching, adding subtree etc, in your language 
-
-Final demonstration: Prepare of library of set of functions
-
-------------------------------------------
-
-
-
-* Support procedural programming paradigm allowing you to write functions or methods to perform specific tasks.
-
-
 ## Language Description:
 
 
 
 1. Procedural and Object-based Programming language
 2. The program is a collection of 1 or more classes, one of which must be named `Main. `Main.main is the entry point for the program.
-3. 
-
-
+3. It is a weakly typed language and has liberal type-casting
+4. Similar to popular languages with similar features like variables, arrays, lists, and sub-routines in procedural languages.
+5. It also allows for constructing and manipulating objects.
+6. Issues: Only 3 primitive types, 2 control structures - if and else and while
+7. Also features null inheritance
+8. Garbage collection:
+    1. It has no garbage collection
+    2. Objects must be disposed of explicitly by the programmer
 
 **List of Features:**
 
@@ -220,38 +162,6 @@ Class Types:
 </ul>
    </td>
   </tr>
-  <tr>
-   <td>9
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>10
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
 </table>
 
 
@@ -262,81 +172,89 @@ Class Types:
   <tr>
    <td><strong>S.No</strong>
    </td>
-   <td>
+   <td><strong>Feature</strong>
    </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
+   <td><strong>Syntax</strong>
    </td>
   </tr>
   <tr>
-   <td>
+   <td>1
    </td>
    <td>
    </td>
    <td>
    </td>
   </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-</table>  
+</table>
+
+
+
+
+
+## Grammar:
+
+&lt;program> ::= &lt;class> ( &lt;class> )*
+
+&lt;class> ::= "class" &lt;identifier> "{" &lt;classVarDec>* &lt;subroutineDec>* "}"
+
+&lt;classVarDec> ::= ( "static" | "field" ) &lt;type> &lt;varName> ( "," &lt;varName> )* ";"
+
+&lt;type> ::= "int" | "char" | "boolean" | &lt;className>
+
+&lt;subroutineDec> ::= ( "constructor" | "function" | "method" ) ( "void" | &lt;type> ) &lt;subroutineName> "(" &lt;parameterList> ")" &lt;subroutineBody>
+
+&lt;parameterList> ::= ( &lt;type> &lt;varName> ( "," &lt;type> &lt;varName> )* )?
+
+&lt;subroutineBody> ::= "{" &lt;varDec>* &lt;statements> "}"
+
+&lt;varDec> ::= "var" &lt;type> &lt;varName> ( "," &lt;varName> )* ";"
+
+&lt;className> ::= &lt;identifier>
+
+&lt;subroutineName> ::= &lt;identifier>
+
+&lt;varName> ::= &lt;identifier>
+
+&lt;statements> ::= ( &lt;statement> )*
+
+&lt;statement> ::= &lt;letStatement> | &lt;ifStatement> | &lt;whileStatement> | &lt;doStatement> | &lt;returnStatement>
+
+&lt;letStatement> ::= "let" &lt;varName> ( "[" &lt;expression> "]" )? "=" &lt;expression> ";"
+
+&lt;ifStatement> ::= "if" "(" &lt;expression> ")" "{" &lt;statements> "}" ( "else" "{" &lt;statements> "}" )?
+
+&lt;whileStatement> ::= "while" "(" &lt;expression> ")" "{" &lt;statements> "}"
+
+&lt;doStatement> ::= "do" &lt;subroutineCall> ";"
+
+&lt;returnStatement> ::= "return" &lt;expression>? ";"
+
+&lt;subroutineCall> ::= &lt;subroutineName> "(" &lt;expressionList> ")" | &lt;className> "." &lt;subroutineName> "(" &lt;expressionList> )
+
+&lt;expressionList> ::= ( &lt;expression> ( "," &lt;expression> )* )?
+
+&lt;expression> ::= &lt;term> ( &lt;op> &lt;term> )*
+
+&lt;term> ::= &lt;integerConstant> | &lt;stringConstant> | &lt;keywordConstant> | &lt;varName> | &lt;varName> "[" &lt;expression> "]" | &lt;subroutineCall> | "(" &lt;expression> ")" | &lt;unop> &lt;term>
+
+&lt;op> ::= "+" | "-" | "*" | "/" | "&" | "|" | "&lt;" | ">" | "="
+
+&lt;unop> ::= "-" | "~"
+
+&lt;integerConstant> ::= &lt;integer>
+
+&lt;stringConstant> ::= &lt;string>
+
+&lt;keywordConstant> ::= "true" | "false" | "null" | "this"
+
+&lt;identifier> ::= ( letter | "_" ) ( letter | digit | "_" )*
+
+&lt;integer> ::= ( digit )+
+
+&lt;string> ::= """ ( any-char* ) """
+
+&lt;any-char> ::= any printable ASCII character except double quotes (escaped as \" in a string)
+
+&lt;letter> ::= lowercase letter | uppercase letter
+
+&lt;digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
