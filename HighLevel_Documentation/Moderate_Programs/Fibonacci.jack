@@ -1,0 +1,35 @@
+// convert file name as Main during execution
+class Main{
+  
+  function void main() {
+      var int ans;
+      let ans = Main.fib(10);
+
+  }
+
+  function int fib(int n) {
+	  var int a;
+    var int b;
+    var int c;
+    var int i;
+
+    let i = 2;
+    let a = 0;
+    let b = 1;
+
+    if(n = 1){
+      return 0;
+    }
+
+    while(i < n){
+      let c = a + b;
+      let a = b;
+      let b = c;
+
+      let i = i + 1;
+    }
+
+    return b;
+  }
+
+}
