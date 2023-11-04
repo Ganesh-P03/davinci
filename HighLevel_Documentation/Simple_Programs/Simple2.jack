@@ -1,0 +1,13 @@
+class Main {
+
+    function void main() {
+        var int sum;
+        let sum = 0;
+
+    	
+        if(sum = 0){
+            let sum = sum + 1;
+        }
+        return;
+    }
+}

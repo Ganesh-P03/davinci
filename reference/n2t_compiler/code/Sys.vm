@@ -1,0 +1,3 @@
+function Sys.init 0
+call Main.init 0
+return

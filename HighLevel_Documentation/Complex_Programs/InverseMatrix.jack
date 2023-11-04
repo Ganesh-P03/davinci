@@ -1,0 +1,109 @@
+class InverseMatrix {
+    field int n, m;  // Dimensions of the matrix
+
+    function void main() {
+        // Initialize n and m (matrix dimensions)
+        let n = 3;  // Set 'n' to the number of rows
+        let m = 3;  // Set 'm' to the number of columns
+
+        // Create the matrix
+        var Array matrix;
+        let matrix = Array.new(n * m);  // Initialize the matrix
+
+        // Input the matrix elements
+        do inputMatrix(matrix);
+
+        // Find the inverse of the matrix
+        var Array inverseMatrix;
+        let inverseMatrix = do findInverse(matrix, n, m);
+
+        // Output the inverse matrix
+        do outputMatrix(inverseMatrix, n, m);
+    }
+
+    method void inputMatrix(Array matrix) {
+        // Input matrix elements
+        var int i, j;
+        let i = 0;
+        while (i < n) {
+            let j = 0;
+            while (j < m) {
+                let matrix[i * m + j] = Keyboard.readInt("Enter element at row " + i + " and column " + j + ": ");
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+    }
+
+    method Array findInverse(Array matrix, int n, int m) {
+        // Find the inverse of the matrix using Gauss-Jordan elimination
+        // This is a simplified implementation and may not work for all matrices
+
+        var Array augmentedMatrix;
+        let augmentedMatrix = Array.new(n * (2 * m));  // Augmented matrix of size n x (2 * m)
+
+        // Copy the original matrix into the left half of the augmented matrix
+        var int i, j;
+        let i = 0;
+        while (i < n) {
+            let j = 0;
+            while (j < m) {
+                let augmentedMatrix[i * (2 * m) + j] = matrix[i * m + j];
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+
+        // Initialize the right half of the augmented matrix as the identity matrix
+        let i = 0;
+        while (i < n) {
+            let j = 0;
+            while (j < m) {
+                if (i == j) {
+                    let augmentedMatrix[i * (2 * m) + m + j] = 1;
+                } else {
+                    let augmentedMatrix[i * (2 * m) + m + j] = 0;
+                }
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+
+        // Implement the Gauss-Jordan elimination algorithm here
+
+        // Return the inverse matrix (right half of the augmented matrix)
+        var Array inverseMatrix;
+        let inverseMatrix = Array.new(n * m);
+
+        // Copy the right half of the augmented matrix into the inverse matrix
+        let i = 0;
+        while (i < n) {
+            let j = 0;
+            while (j < m) {
+                let inverseMatrix[i * m + j] = augmentedMatrix[i * (2 * m) + m + j];
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+
+        return inverseMatrix;
+    }
+
+    method void outputMatrix(Array matrix, int n, int m) {
+        // Output the matrix
+        var int i, j;
+        let i = 0;
+        while (i < n) {
+            let j = 0;
+            while (j < m) {
+                do Output.printInt(matrix[i * m + j]);
+                if (j < m - 1) {
+                    do Output.printChar(32);  // Space
+                }
+                let j = j + 1;
+            }
+            do Output.println();  // New line
+            let i = i + 1;
+        }
+    }
+}

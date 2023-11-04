@@ -1,0 +1,19 @@
+// Computes the sum of 2/3 and 1/5.
+class Main {
+   function void main() {
+
+    var Fraction f1, f2;
+    let f1 = Fraction.new(3, 6); // 3/6
+    let f2 = Fraction.new(2, 4); //2/4
+
+    f1.add(f2); // 3/6 + 2/4 = 10/12
+    f1.simplify(); // 10/12 -> 5/6
+
+    do Output.printString("Result: ");
+    do Output.printInt(f1.getNumerator()); // 5
+    do Output.printString("/");
+    do Output.printInt(f1.getDenominator()); // 6
+    do Output.printChar('\n');
+
+   }
+}

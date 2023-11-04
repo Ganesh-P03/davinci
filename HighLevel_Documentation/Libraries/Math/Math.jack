@@ -1,8 +1,3 @@
-// This file is part of www.nand2tetris.org
-// and the book "The Elements of Computing Systems"
-// by Nisan and Schocken, MIT Press.
-// File name: projects/12/Math.jack
-
 /**
  * A basic math library.
  */
@@ -123,7 +118,7 @@ class Math {
 
         // j = 7 for 16 bit system
         // NEED TO BE MODIFIED TO 32 BIT SYSTEM WHERE j = 15
-        let j = 15;
+        let j = 7;
 
 
         while(~(j < 0)){ // while j >= 0

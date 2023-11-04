@@ -1,0 +1,12 @@
+class Main {
+
+   
+    function void main() {
+        var Box box;
+
+        let box = Box.new();
+        do game.add()
+
+        return;
+    }
+}

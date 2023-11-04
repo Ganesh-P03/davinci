@@ -1,0 +1,58 @@
+class Fraction {
+    field int numerator;
+    field int denominator;
+
+    constructor Fraction new(int num, int den) {
+        let this.numerator = num;
+        let this.denominator = den;
+        return this;
+    }
+
+    method int getNumerator() {
+        return this.numerator;
+    }
+
+    method int getDenominator() {
+        return this.denominator;
+    }
+
+    method void simplify() {
+        var int gcd;
+        let gcd = gcd(this.numerator, this.denominator);
+        let this.numerator = this.numerator / gcd;
+        let this.denominator = this.denominator / gcd;
+    }
+
+    function int gcd(int a, int b) {
+        if (b = 0) {
+            return a;
+        }
+        else {
+            return call gcd(b, a % b);
+        }
+    }
+
+    method void add(Fraction other) {
+        let this.numerator = this.numerator * other.getDenominator() + other.getNumerator() * this.denominator;
+        let this.denominator = this.denominator * other.getDenominator();
+        this.simplify();
+    }
+
+    method void subtract(Fraction other) {
+        let this.numerator = this.numerator * other.getDenominator() - other.getNumerator() * this.denominator;
+        let this.denominator = this.denominator * other.getDenominator();
+        this.simplify();
+    }
+
+    method void multiply(Fraction other) {
+        let this.numerator = this.numerator * other.getNumerator();
+        let this.denominator = this.denominator * other.getDenominator();
+        this.simplify();
+    }
+
+    method void divide(Fraction other) {
+        let this.numerator = this.numerator * other.getDenominator();
+        let this.denominator = this.denominator * other.getNumerator();
+        this.simplify();
+    }
+}
