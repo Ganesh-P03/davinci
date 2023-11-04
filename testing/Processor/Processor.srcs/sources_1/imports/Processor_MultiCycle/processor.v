@@ -1,9 +1,14 @@
-module processor (clk,reset,led);//TMDSp,TMDSn,TMDSp_clock,TMDSn_clock);
+module processor (sysclk,reset,led);//TMDSp,TMDSn,TMDSp_clock,TMDSn_clock);
 
 input reset;
-input clk;
+input sysclk;
 output [3:0] led;
 reg [31:0] Result;
+
+reg [24:0] count = 0;
+always @ (posedge(sysclk)) count <= count + 1;
+wire clk;
+assign clk = count[4];
 
 //-----------Screen-------------------------//
 // output [2:0] TMDSp;
@@ -40,6 +45,7 @@ wire [1:0] ResultSrc;
 wire [31:0] PC;
 wire [31:0] Addr;
 wire [31:0] Data;
+(*DONT_TOUCH = "true"*)
 wire [31:0] Instr;
 wire [31:0] OldPC;
 wire [31:0] rd1;
@@ -77,12 +83,16 @@ assign key_reg = 8'h00;
 //register_32bit buf_reg_1 (.D(ResultWire), .clk(clk), .regwrite(PCWrite), .Q(PC));   //Program Counter
 // assign PC = Result;
 MUX2x1_32bit mux_1 (.a(PC1), .b(Result), .s(AddrSrc), .y(Addr));
-Memory mem (.clock(clk), .isWrite(MemWrite), .byteWrite(Zero), .byteRead(Zero), .address(Addr), .writeData(WriteData), .RD(ReadData), .displayAddr(display_address), .displayData(display_dataOut), .sample(Zero), .key_reg(key_reg));
+Memory mem (.clock(clk), .isWrite(MemWrite), .byteWrite(Zero),.address(Addr), .writeData(WriteData), .RD(ReadData), .displayAddr(display_address[15:0]), .displayData(display_dataOut), .sample(Zero), .key_reg(key_reg));
 //Memory instr_data_mem (.addr(Addr), .WD(WriteData), .clk(clk), .MemWrite(MemWrite), .RD(ReadData));
 register_32bit buf_reg_2 (.D(ReadData), .clk(clk), .regwrite(1'b1), .Q(Data));  //To store the data that is from memory 
   //To store PC value of currently executing Insttuction
 register_32bit buf_reg_3 (.D(ReadData), .clk(clk), .regwrite(IRWrite), .Q(Instr));  //To store Instruction
-control_unit control_unit (.instr(Instr), .reset(reset), .zero(Zero), .overflow(Overflow), .carry(Carry), 
+wire [6:0] opcode = Instr[6:0];
+wire [2:0] funct3 = Instr[14:12];
+wire [6:0] funct7 = Instr[31:25];
+wire funct7_5 = funct7[5];
+control_unit control_unit (.opcode(opcode),.funct3(funct3),.funct7_5(funct7_5), .reset(reset), .zero(Zero), .overflow(Overflow),
 .negative(Negative), .clk(clk), .PCWrite(PCWrite), .ResultSrc(ResultSrc), .ALUSrcA(ALUSrcA), .ALUSrcB(ALUSrcB), 
 .RegWrite(RegWrite), .AddrSrc(AddrSrc), .MemWrite(MemWrite), .IRWrite(IRWrite), .ALUControl(ALUControl), .ImmSrc(ImmSrc));
 

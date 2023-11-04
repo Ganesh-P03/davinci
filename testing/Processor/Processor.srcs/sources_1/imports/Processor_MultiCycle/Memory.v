@@ -4,17 +4,17 @@ module Memory
     input clock,
     input isWrite,
     input byteWrite,
-    input byteRead,
+    //input byteRead,
     input [31:0] address, //memory is 2^18
     input [31:0] writeData, 
-    input [31:0] displayAddr,
+    input [15:0] displayAddr,
     output [31:0] displayData,
     output [31:0]RD,
     input sample,
     input [7:0] key_reg //8 bit ascii code ///***
     );
     
-    wire [31:0] data;
+    //wire [31:0] data;
     wire [31:0] IR;
     wire [15:0] displayAddress;
     wire [15:0] ramAddress;
@@ -66,7 +66,7 @@ module Memory
     
 
     
-    always @(posedge ramIsRead)
+    always @(posedge clock)
         begin
             if( address == 18'd206204 )
                 begin
@@ -84,41 +84,41 @@ module Memory
         end
         
     
-    wire [31:0] ramReadData;
-    assign data =   (readKeyboard == 1'b1 ) ? keyVal :
-                    // (byteRead == 1'b1 && addrLatch == 2'd0) ? ramReadData[31:24] :
-                    // (byteRead == 1'b1 && addrLatch == 2'd1) ? ramReadData[23:16] :
-                    // (byteRead == 1'b1 && addrLatch == 2'd2) ? ramReadData[15:8] :
-                    // (byteRead == 1'b1 && addrLatch == 2'd3) ? ramReadData[7:0] :
-                    ramReadData;
+    //wire [31:0] ramReadData;
+    // assign data =   (readKeyboard == 1'b1 ) ? keyVal :
+    //                 // (byteRead == 1'b1 && addrLatch == 2'd0) ? ramReadData[31:24] :
+    //                 // (byteRead == 1'b1 && addrLatch == 2'd1) ? ramReadData[23:16] :
+    //                 // (byteRead == 1'b1 && addrLatch == 2'd2) ? ramReadData[15:8] :
+    //                 // (byteRead == 1'b1 && addrLatch == 2'd3) ? ramReadData[7:0] :
+    //                 ramReadData;
     
-    Screen_Memory disMem (
-        .clock(clock),  //correct
-        .address(displayAddress),   
-        .displayAddr(displayAddr[15:0]),  //corrrect
-        .byteWrite(byteWrite),      //correct
-        .isWrite(displayIsWrite),              
-        .writeData(writeData),      //correct
-        .displayData(displayData)   //correct
-    );
+    // Screen_Memory disMem (
+    //     .clock(clock),  //correct
+    //     .address(displayAddress),   
+    //     .displayAddr(displayAddr),  //corrrect
+    //     .byteWrite(byteWrite),      //correct
+    //     .isWrite(displayIsWrite),              
+    //     .writeData(writeData),      //correct
+    //     .displayData(displayData)   //correct
+    // );
     
-    RAM ram(
-        .clock(clock),          //correct
-        .isWrite(ramIsWrite),      
-        .writeData(ramWriteData),  //correct
-        .address(ramAddress),    
-        .data(ramReadData),             //correct
-        .isRead(ramIsRead),
-        .byteRead(byteRead)
-    );
+    // RAM ram(
+    //     .clock(clock),          //correct
+    //     .isWrite(ramIsWrite),      
+    //     .writeData(ramWriteData),  //correct
+    //     .address(ramAddress),    
+    //     .data(ramReadData),             //correct
+    //     .isRead(ramIsRead)
+    // );
     
     ROM rom(
         .addr(romAddress[16:0]),     
-        .clock(clock),          //correct
+        //.clock(clock),          //correct
         .Inst(IR)                 //correct
     );
 
-    assign RD = (address >= 32'd9600 && address < 32'd140672 ) ? IR : data;
+    //assign RD = (address >= 32'd9600 && address < 32'd140672 ) ? IR : data;
+    assign RD = IR;
  
  endmodule
 

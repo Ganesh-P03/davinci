@@ -9,7 +9,7 @@ module TB_Processor;
   // Instantiate your processor module
   processor processor1 (
     .reset(reset),
-    .clk(clk),
+    .sysclk(clk),
     .led(led)
   );
 

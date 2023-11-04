@@ -1,0 +1,33 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_RISCv.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/DFlipFlop.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/Extender.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/Gates.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_1bit.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/Memory.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/NOT_32bit.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/ROM.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/bitwiseAND.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/fulladder.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/register_1bit.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/register_32bit.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/zero_extender.v" \
+
+sv xil_defaultlib  \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_Decoder.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/Instr_Decoder.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_32bit.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX4x1_32bit.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX8x1.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/Main_Decoder.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/add_sub.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/control_unit.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/reg_file.v" \
+"../../../../Processor.srcs/sources_1/imports/Processor_MultiCycle/processor.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -70,7 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
 
@@ -111,9 +110,7 @@ read_verilog -library xil_defaultlib {
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_1bit.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Memory.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/NOT_32bit.v}
-  {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/RAM.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ROM.v}
-  {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Screen_Memory.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/bitwiseAND.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/fulladder.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_1bit.v}

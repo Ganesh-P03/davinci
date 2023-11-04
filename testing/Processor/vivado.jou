@@ -3,10 +3,10 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Sat Oct 28 17:31:05 2023
-# Process ID: 9200
+# Start of session at: Tue Oct 31 12:20:00 2023
+# Process ID: 14792
 # Current directory: D:/semester/7th sem/davinci/testing/Processor
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent18476 D:\semester\7th sem\davinci\testing\Processor\Processor.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent160 D:\semester\7th sem\davinci\testing\Processor\Processor.xpr
 # Log file: D:/semester/7th sem/davinci/testing/Processor/vivado.log
 # Journal file: D:/semester/7th sem/davinci/testing/Processor\vivado.jou
 # Running On: Ganesh, OS: Windows, CPU Frequency: 1190 MHz, CPU Physical cores: 4, Host memory: 8341 MB
@@ -14,6 +14,10 @@
 start_gui
 open_project {D:/semester/7th sem/davinci/testing/Processor/Processor.xpr}
 update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+open_run impl_1
 open_hw_manager
 connect_hw_server -allow_non_jtag
 open_hw_target
@@ -25,121 +29,5 @@ set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
 set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/Processor/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
 program_hw_devices [get_hw_devices xc7z010_1]
 refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-launch_simulation -mode post-synthesis -type functional
-open_wave_config {D:/semester/7th sem/davinci/testing/Processor/TB_Processor_func_synth.wcfg}
-source TB_Processor.tcl
-restart
-run 28000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-launch_simulation -mode post-implementation -type functional
-open_wave_config {D:/semester/7th sem/davinci/testing/Processor/TB_Processor_func_synth.wcfg}
-source TB_Processor.tcl
-restart
-run 28000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/Processor/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-launch_simulation -mode post-synthesis -type timing
-open_wave_config {D:/semester/7th sem/davinci/testing/Processor/TB_Processor_func_synth.wcfg}
-source TB_Processor.tcl
-run 28000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-launch_simulation -mode post-implementation -type timing
-open_wave_config {D:/semester/7th sem/davinci/testing/Processor/TB_Processor_func_synth.wcfg}
-source TB_Processor.tcl
-run 28000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-current_sim simulation_1
-close_sim
-close_sim
-close_sim
-close_sim
-report_methodology -name ultrafast_methodology_1
-reset_run synth_1
-launch_runs synth_1 -jobs 4
-wait_on_run synth_1
-current_design synth_1
-close_design
-launch_simulation -mode post-synthesis -type timing
-open_wave_config {D:/semester/7th sem/davinci/testing/Processor/TB_Processor_func_synth.wcfg}
-source TB_Processor.tcl
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-close_sim
-launch_simulation -mode post-synthesis -type timing
-open_wave_config {D:/semester/7th sem/davinci/testing/Processor/TB_Processor_func_synth.wcfg}
-source TB_Processor.tcl
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 28000 ns
-reset_run synth_1
-launch_runs impl_1 -jobs 4
-wait_on_run impl_1
-report_utilization -name utilization_1
-current_design impl_1
-close_design
-launch_simulation -mode post-implementation -type timing
-open_wave_config {D:/semester/7th sem/davinci/testing/Processor/TB_Processor_func_synth.wcfg}
-source TB_Processor.tcl
-run 28000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-run 1000 ns
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-wait_on_run impl_1
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/Processor/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-close_sim
-close_sim
+open_run synth_1 -name synth_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
