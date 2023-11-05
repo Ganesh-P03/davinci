@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date             : Tue Oct 31 12:26:33 2023
+| Date             : Sun Nov  5 11:28:10 2023
 | Host             : Ganesh running 64-bit major release  (build 9200)
 | Command          : report_power -file processor_power_routed.rpt -pb processor_power_summary_routed.pb -rpx processor_power_routed.rpx
 | Design           : processor
@@ -53,14 +53,14 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |     3676 |       --- |             --- |
-|   LUT as Logic |    <0.001 |     1923 |     17600 |           10.93 |
-|   Register     |    <0.001 |     1201 |     35200 |            3.41 |
+| Slice Logic    |    <0.001 |     3727 |       --- |             --- |
+|   LUT as Logic |    <0.001 |     1915 |     17600 |           10.88 |
+|   Register     |    <0.001 |     1237 |     35200 |            3.51 |
 |   F7/F8 Muxes  |    <0.001 |      256 |     17600 |            1.45 |
+|   CARRY4       |    <0.001 |        6 |      4400 |            0.14 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
-|   CARRY4       |    <0.001 |        2 |      4400 |            0.05 |
-|   Others       |     0.000 |      240 |       --- |             --- |
-| Signals        |    <0.001 |     1831 |       --- |             --- |
+|   Others       |     0.000 |      267 |       --- |             --- |
+| Signals        |    <0.001 |     1855 |       --- |             --- |
 | I/O            |    <0.001 |        6 |       100 |            6.00 |
 | Static Power   |     0.093 |          |           |                 |
 | Total          |     0.093 |          |           |                 |
@@ -136,7 +136,7 @@ Table of Contents
 +---------+--------+-----------------+
 | Clock   | Domain | Constraint (ns) |
 +---------+--------+-----------------+
-| clk_pin | sysclk |          2000.0 |
+| clk_pin | sysclk |          1000.0 |
 +---------+--------+-----------------+
 
 

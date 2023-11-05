@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Tue Oct 31 12:25:14 2023
+| Date         : Sun Nov  5 11:27:36 2023
 | Host         : Ganesh running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file processor_control_sets_placed.rpt
 | Design       : processor
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |     6 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    15 |
+| Unused register locations in slices containing registers |    11 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -41,13 +41,13 @@ Table of Contents
 +--------------------+-------+
 | Total control sets |     6 |
 | >= 0 to < 4        |     0 |
-| >= 4 to < 6        |     2 |
+| >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     0 |
 | >= 8 to < 10       |     0 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     4 |
+| >= 16              |     5 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             105 |           61 |
+| No           | No                    | No                     |             132 |           64 |
 | No           | No                    | Yes                    |               4 |            3 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |            1060 |          356 |
+| Yes          | No                    | No                     |            1069 |          363 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              32 |           20 |
+| Yes          | Yes                   | No                     |              32 |           13 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,11 +74,11 @@ Table of Contents
 |    Clock Signal   |              Enable Signal              | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
 +-------------------+-----------------------------------------+------------------+------------------+----------------+--------------+
 | ~clk_BUFG         |                                         | reset_IBUF       |                3 |              4 |         1.33 |
-|  sysclk_IBUF_BUFG |                                         |                  |                2 |              5 |         2.50 |
-|  clk_BUFG         | control_unit/mainDecoder/E[0]           | reset_IBUF       |               20 |             32 |         1.60 |
-|  clk_BUFG         | control_unit/mainDecoder/state_reg[3]_0 |                  |               21 |             36 |         1.71 |
-|  clk_BUFG         |                                         |                  |               59 |            100 |         1.69 |
-|  clk_BUFG         | register_file/register                  |                  |              335 |           1024 |         3.06 |
+|  sysclk_IBUF_BUFG |                                         |                  |                6 |             23 |         3.83 |
+|  clk_BUFG         | control_unit/mainDecoder/E[0]           | reset_IBUF       |               13 |             32 |         2.46 |
+|  clk_BUFG         | control_unit/mainDecoder/state_reg[0]_0 |                  |               20 |             45 |         2.25 |
+|  clk_BUFG         |                                         |                  |               58 |            109 |         1.88 |
+|  clk_BUFG         | register_file/register                  |                  |              343 |           1024 |         2.99 |
 +-------------------+-----------------------------------------+------------------+------------------+----------------+--------------+
 
 

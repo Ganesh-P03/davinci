@@ -8,7 +8,7 @@ reg [31:0] Result;
 reg [24:0] count = 0;
 always @ (posedge(sysclk)) count <= count + 1;
 wire clk;
-assign clk = count[4];
+assign clk = count[22];
 
 //-----------Screen-------------------------//
 // output [2:0] TMDSp;
@@ -64,6 +64,7 @@ initial begin
     Result <= 32'd9600;
     PC1 <= 32'd9600;
   end
+// assign ResultWire = 32'd9600;
 
 always @(posedge clk) begin
   if(reset)
@@ -115,8 +116,13 @@ ALU_RISCv ALU (.A(SrcA), .B(SrcB), .sel(ALUControl), .ALUOut(ALUResult), .Zero(Z
 
 
 register_32bit buf_reg_7 (.D(ALUResult), .clk(clk), .regwrite(1'b1), .Q(ALUOut));   //To store result computed by ALU
+ 
 
-MUX4x1_32bit mux_4 (.i0(ALUOut), .i1(Data), .i2(ALUResult), .i3(32'b0), .sel(ResultSrc), .o(ResultWire));
+assign ResultWire = (ResultSrc==2'b00)?ALUOut:
+           (ResultSrc==2'b01)?Data:
+           (ResultSrc==2'b10)?ALUResult:
+           (ResultSrc==2'b11)?ResultSrc:32'b0;
+// MUX4x1_32bit mux_4 (.i0(ALUOut), .i1(Data), .i2(ALUResult), .i3(32'b0), .sel(ResultSrc), .o(ResultWire));
 
 assign Result = ResultWire;
 
