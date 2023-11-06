@@ -86,7 +86,7 @@ assign key_reg = 8'h00;
 MUX2x1_32bit mux_1 (.a(PC1), .b(Result), .s(AddrSrc), .y(Addr));
 Memory mem (.clock(clk), .isWrite(MemWrite), .byteWrite(Zero),.address(Addr), .writeData(WriteData), .RD(ReadData), .displayAddr(display_address[15:0]), .displayData(display_dataOut), .sample(Zero), .key_reg(key_reg));
 //Memory instr_data_mem (.addr(Addr), .WD(WriteData), .clk(clk), .MemWrite(MemWrite), .RD(ReadData));
-register_32bit buf_reg_2 (.D(ReadData), .clk(clk), .regwrite(1'b1), .Q(Data));  //To store the data that is from memory 
+register_32bit_neg buf_reg_2 (.D(ReadData), .clk(clk), .Q(Data));  //To store the data that is from memory 
   //To store PC value of currently executing Insttuction
 register_32bit buf_reg_3 (.D(ReadData), .clk(clk), .regwrite(IRWrite), .Q(Instr));  //To store Instruction
 wire [6:0] opcode = Instr[6:0];

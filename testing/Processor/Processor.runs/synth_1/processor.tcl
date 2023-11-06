@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 2
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
 
@@ -116,6 +118,8 @@ read_verilog -library xil_defaultlib {
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_1bit.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_32bit.v}
   {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/zero_extender.v}
+  {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/RAM.v}
+  {D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_32bit_neg.v}
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
