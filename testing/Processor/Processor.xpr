@@ -320,6 +320,9 @@
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/Screen_Memory.v"/>
           <Attr Name="ImportTime" Val="1697779493"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/RAM.v">
@@ -333,6 +336,24 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/register_32bit_neg.v">
         <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/DisplayDriver.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/DisplayDriver.v"/>
+          <Attr Name="ImportTime" Val="1697945427"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Processor_MultiCycle/TMDS_encoder.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Processor_MultiCycle/TMDS_encoder.v"/>
+          <Attr Name="ImportTime" Val="1697945456"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
