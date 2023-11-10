@@ -1,0 +1,22 @@
+
+// while loop 
+
+
+class Main{
+
+    function void main() {
+        var int sum;
+        var int i;
+        
+        let sum = 0;
+        let i = 1;
+
+	
+        while(sum < 5){
+        
+            let sum = sum + i;
+            let i = i + 1;
+        }
+        return;
+    }
+}

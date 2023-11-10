@@ -5,7 +5,7 @@ module Screen_Memory(
     input byteWrite,
     input isWrite,
     input [31:0] writeData,
-    output reg [31:0] displayData
+    output [31:0] displayData
     );
     
     (* ram_style = "block" *)
@@ -37,13 +37,7 @@ module Screen_Memory(
 			end
 	end
 
-// assign displayData = (displayAddr < 16'd2400 ) ? memory[displayAddr] : 32'd0;
-
-//need to remove reg for displayData
-always @(posedge clock)
-        begin
-            displayData <= (displayAddr < 16'd2400 ) ? memory[displayAddr] : 32'd0;
-        end
+assign displayData = (displayAddr < 16'd2400 ) ? memory[displayAddr] : 32'd0;
 
 endmodule
 

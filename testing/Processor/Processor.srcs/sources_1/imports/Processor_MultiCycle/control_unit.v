@@ -1,6 +1,9 @@
 module control_unit(
-  input [31:0] instr,
-  input reset, zero, overflow, carry, negative, clk,
+   (*DONT_TOUCH = "true"*)
+  input [6:0] opcode,
+  input [2:0] funct3,
+  input  funct7_5,
+  input reset, zero, overflow,negative, clk,
   output PCWrite,
   output [1:0] ResultSrc,
   output [1:0] ALUSrcA,
@@ -13,11 +16,9 @@ module control_unit(
   output [2:0] ImmSrc
 );
 
-wire [6:0] opcode = instr[6:0];
-wire [2:0] funct3 = instr[14:12];
-wire [6:0] funct7 = instr[31:25]; // use instr directly in the instantiation
+
 wire opcode_5 = opcode[5];
-wire funct7_5 = funct7[5];
+
 wire AddrSrc_MainDecoder;
 wire MemWrite_MainDecoder;
 

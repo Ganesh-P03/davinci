@@ -1,0 +1,22 @@
+
+
+
+class Box {
+
+    field int a;
+    field int b;
+
+    constructor Box new() {
+        let a = 5;
+        let b = 6;
+        return this;
+    }
+
+    method int add() {
+        var int sum;
+        let sum = a + b;
+        return sum ;
+    }
+}
+
+

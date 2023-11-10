@@ -1,4 +1,6 @@
 `timescale 1ns / 1ps
+
+(*DONT_TOUCH = "true"*)
 module Memory
 (
     input clock,
@@ -7,7 +9,7 @@ module Memory
     input byteRead,
     input [31:0] address, //memory is 2^18
     input [31:0] writeData, 
-    input [31:0] displayAddr,
+    input [15:0] displayAddr,
     output [31:0] displayData,
     output [31:0]RD,
     input sample,
@@ -66,7 +68,7 @@ module Memory
     
 
     
-    always @(posedge ramIsRead)
+    always @(posedge clock)
         begin
             if( address == 18'd206204 )
                 begin
@@ -91,34 +93,34 @@ module Memory
                     // (byteRead == 1'b1 && addrLatch == 2'd2) ? ramReadData[15:8] :
                     // (byteRead == 1'b1 && addrLatch == 2'd3) ? ramReadData[7:0] :
                     ramReadData;
-    
-    Screen_Memory disMem (
-        .clock(clock),  //correct
-        .address(displayAddress),   
-        .displayAddr(displayAddr[15:0]),  //corrrect
-        .byteWrite(byteWrite),      //correct
-        .isWrite(displayIsWrite),              
-        .writeData(writeData),      //correct
-        .displayData(displayData)   //correct
-    );
-    
+//      (*DONT_TOUCH = "true"*)
+//    Screen_Memory disMem (
+//        .clock(clock),  //correct
+//        .address(displayAddress),   
+//        .displayAddr(displayAddr),  //corrrect
+//        .byteWrite(byteWrite),      //correct
+//        .isWrite(displayIsWrite),              
+//        .writeData(writeData),      //correct
+//        .displayData(displayData)   //correct
+//    );
+    (*DONT_TOUCH = "true"*)
     RAM ram(
         .clock(clock),          //correct
         .isWrite(ramIsWrite),      
         .writeData(ramWriteData),  //correct
         .address(ramAddress),    
         .data(ramReadData),             //correct
-        .isRead(ramIsRead),
-        .byteRead(byteRead)
+        .isRead(ramIsRead)
     );
     
     ROM rom(
         .addr(romAddress[16:0]),     
-        .clock(clock),          //correct
+        //.clock(clock),          //correct
         .Inst(IR)                 //correct
     );
 
     assign RD = (address >= 32'd9600 && address < 32'd140672 ) ? IR : data;
+    //assign RD = IR;
  
  endmodule
 

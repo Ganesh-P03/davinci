@@ -123,7 +123,7 @@ class Math {
 
         // j = 7 for 16 bit system
         // NEED TO BE MODIFIED TO 32 BIT SYSTEM WHERE j = 15
-        let j = 7;
+        let j = 15;
 
 
         while(~(j < 0)){ // while j >= 0

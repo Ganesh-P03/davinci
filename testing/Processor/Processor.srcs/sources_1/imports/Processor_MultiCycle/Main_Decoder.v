@@ -18,7 +18,10 @@ module Main_Decoder(
   output blt);
 
 // Declare state register and states
-reg [3:0] state, nextstate;
+reg [3:0] state;
+wire [3:0] nextstate;
+
+// assign nextstate = S1;
 
 // Define state constants
 parameter S0 = 4'b0000;
@@ -42,117 +45,116 @@ initial begin
   state = S0;
 end
 
-  always @(posedge clk or posedge reset)
+  always @(negedge clk or posedge reset)
   begin
     if (reset)
-      state <= S0;
+      state = S0;
     else
-      state <= nextstate;
-  end
+      state = nextstate;
+  // end
 
-  // Next state logic
-  always @*
-  begin
-    case (state)
-      S0: 
-                nextstate = S1;
-      S1:begin
-                // ALUSrcA <= 2'b01;
-                // ALUSrcB <= 2'b01;
-                // ALUOp <= 2'b00;
-          
-        case (opcode)
-          7'b0000011, 7'b0100011: nextstate = S2;
-          7'b0110011: nextstate = S6;
-          7'b0010011: nextstate = S8;
-          7'b1101111: nextstate = S9;
-          7'b0110111: nextstate = S14;
-          7'b1100111: nextstate = S15;
-          7'b1100011:
-            case (funct3)
-              3'b000: nextstate = S10;
-              3'b001: nextstate = S11;
-              3'b100: nextstate = S12;
-              3'b101: nextstate = S13;
-              default: nextstate = S0;
-            endcase
-          default: nextstate = S0;
-        endcase
-      end
-      S2: begin
-                // ALUSrcA <= 2'b10;
-                // ALUSrcB <= 2'b01;
-                // ALUOp <= 2'b00;
-          
-        case (opcode)
-          7'b0000011: nextstate = S3;
-          7'b0100011: nextstate = S5;
-          default: nextstate = S0;
-        endcase
-          end
-      S3:  begin
-               // ResultSrc <= 2'b00;
-            nextstate = S4;
-            end
-      S4: begin
-               // ResultSrc <= 2'b01;
-            nextstate = S0;
-      end
-      S5:  begin
-               // ResultSrc <= 2'b00;
-            nextstate = S0;
-            end
-      S6: begin
-                // ALUSrcA <= 2'b10;
-                // ALUSrcB <= 2'b00;
-                // ALUOp <= 2'b10;
+  // // Next state logic
+  // always @(posedge clk )
+  // begin
     
-            nextstate = S7;
-            end
-      S7: begin
-                // ResultSrc <= 2'b00;
-           nextstate = S0;
-      end
-      S8:  begin
-                // ALUSrcA <= 2'b10;
-                // ALUSrcB <= 2'b01;
-                // ALUOp <= 2'b10;
-           nextstate = S7;
-            end
-      S9: begin
-                // ALUSrcA <= 2'b01;
-                // ALUSrcB <= 2'b10;
-                // ALUOp <= 2'b00;
-                // ResultSrc <= 2'b00;
-            nextstate = S7;
-      end
-      S10, S11, S12, S13: begin
-                // ALUSrcA <= 2'b10;
-                // ALUSrcB <= 2'b00;
-                // ALUOp <= 2'b01;
-                // ResultSrc <= 2'b00;
-                nextstate = S0;
-            end
-      S14: begin
-                // ALUSrcA <= 2'b11;
-                // ALUSrcB <= 2'b01;
-                // ALUOp <= 2'b00;
-                nextstate = S7;
-      end
-      S15: begin
-        // ALUSrcA <= 2'b10;
-        // ALUSrcB <= 2'b01;
-        // ALUOp <= 2'b00;
-
-        nextstate = S9;
-      end
-      default: nextstate = S0;
-    endcase
   end
 
 // Define state outputs
 
+assign nextstate = (state==S0)?S1:
+                    (state==S1 && opcode== 7'b0000011)?S2: 
+                    (state==S1 && opcode== 7'b0100011)?S2:  
+                    (state==S1 && opcode== 7'b0110011)?S6:
+                    (state==S1 && opcode== 7'b0010011)?S8:
+                    (state==S1 && opcode== 7'b1101111)?S9:
+                    (state==S1 && opcode== 7'b0110111)?S14:
+                    (state==S1 && opcode== 7'b1100111)?S15:
+                    (state==S1 && opcode== 7'b1100011 && funct3==3'b000)?S10:
+                    (state==S1 && opcode== 7'b1100011 && funct3==3'b001)?S11:
+                    (state==S1 && opcode== 7'b1100011 && funct3==3'b100)?S12:
+                    (state==S1 && opcode== 7'b1100011 && funct3==3'b101)?S13:
+                    (state==S1 && opcode== 7'b1100011)?S0:
+                    (state==S1)?S0:
+                    (state==S2 && opcode== 7'b0000011)?S3:
+                    (state==S2 && opcode== 7'b0100011)?S5:
+                    (state==S2)?S0:
+                    (state==S2)?S3:
+                    (state==S3)?S4:
+                    (state==S4)?S0:
+                    (state==S5)?S0:
+                    (state==S6)?S7:
+                    (state==S7)?S0:
+                    (state==S8)?S7:
+                    (state==S9)?S7:
+                    (state==S10)?S0:
+                    (state==S11)?S0:
+                    (state==S12)?S0:
+                    (state==S13)?S0:
+                    (state==S14)?S7:
+                    (state==S15)?S9:
+                    S0;
 
+// case (state)
+//       S0: 
+//          assign nextstate = S1;
+//       S1:begin
+//         case (opcode)
+//           7'b0000011, 7'b0100011: assign nextstate = S2;
+//           7'b0110011: assign nextstate = S6;
+//           7'b0010011: assign nextstate = S8;
+//           7'b1101111: assign nextstate = S9;
+//           7'b0110111: assign nextstate = S14;
+//           7'b1100111: assign nextstate = S15;
+//           7'b1100011:
+//             case (funct3)
+//               3'b000: assign nextstate = S10;
+//               3'b001: assign nextstate = S11;
+//               3'b100: assign nextstate = S12;
+//               3'b101: assign nextstate = S13;
+//               default: assign nextstate = S0;
+//             endcase
+//           default: nextstate = S0;
+//         endcase
+//       end
+//       S2: begin
+//         case (opcode)
+//           7'b0000011: nextstate = S3;
+//           7'b0100011: nextstate = S5;
+//           default: nextstate = S0;
+//         endcase
+//           end
+//       S3:  begin
+//             nextstate = S4;
+//             end
+//       S4: begin
+//             nextstate = S0;
+//       end
+//       S5:  begin
+//             nextstate = S0;
+//             end
+//       S6: begin
+//             nextstate = S7;
+//             end
+//       S7: begin
+//            nextstate = S0;
+//       end
+//       S8:  begin
+//            nextstate = S7;
+//             end
+//       S9: begin
+//             nextstate = S7;
+//       end
+//       S10, S11, S12, S13: begin
+//                 nextstate = S0;
+//             end
+//       S14: begin
+//                 nextstate = S7;
+//       end
+//       S15: begin
+//         nextstate = S9;
+//       end
+//       default: nextstate = S0;
+//     endcase
 
 
 

@@ -396,5 +396,3 @@ INFO: [VRFC 10-311] analyzing module register_32bit_2
 INFO: [VRFC 10-311] analyzing module register_32bit_3
 INFO: [VRFC 10-311] analyzing module register_32bit_4
 INFO: [VRFC 10-311] analyzing module glbl
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/TB_Processor.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module TB_Processor
