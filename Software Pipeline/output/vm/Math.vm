@@ -2,423 +2,359 @@ function Math.init 0
 push constant 128
 call Array.new 1
 pop static 0
-push constant 0
-push static 0
-add
 push constant 1
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 4
 push static 0
+push constant 0
 add
+pop pointer 1
+pop that 0
 push constant 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 8
 push static 0
-add
 push constant 4
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 12
-push static 0
 add
+pop pointer 1
+pop that 0
+push constant 4
+push static 0
 push constant 8
-pop temp 0
+add
 pop pointer 1
-push temp 0
+pop that 0
+push constant 8
+push static 0
+push constant 12
+add
+pop pointer 1
 pop that 0
 push constant 16
 push static 0
-add
 push constant 16
-pop temp 0
+add
 pop pointer 1
-push temp 0
 pop that 0
+push constant 32
+push static 0
 push constant 20
-push static 0
 add
-push constant 32
-pop temp 0
 pop pointer 1
-push temp 0
 pop that 0
+push constant 64
+push static 0
 push constant 24
-push static 0
 add
-push constant 64
-pop temp 0
 pop pointer 1
-push temp 0
 pop that 0
-push constant 28
-push static 0
-add
 push constant 128
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 32
 push static 0
+push constant 28
 add
+pop pointer 1
+pop that 0
 push constant 256
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 36
 push static 0
+push constant 32
 add
+pop pointer 1
+pop that 0
 push constant 512
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 40
 push static 0
+push constant 36
 add
+pop pointer 1
+pop that 0
 push constant 1024
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 44
 push static 0
+push constant 40
 add
+pop pointer 1
+pop that 0
 push constant 2048
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 48
 push static 0
+push constant 44
 add
+pop pointer 1
+pop that 0
 push constant 4096
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 52
 push static 0
+push constant 48
 add
+pop pointer 1
+pop that 0
 push constant 8192
-pop temp 0
+push static 0
+push constant 52
+add
 pop pointer 1
-push temp 0
 pop that 0
+push constant 16384
+push static 0
 push constant 56
-push static 0
 add
-push constant 16384
-pop temp 0
 pop pointer 1
-push temp 0
 pop that 0
+push constant 16384
+push constant 16384
+add
+push static 0
 push constant 60
-push static 0
 add
-push constant 16384
-push constant 16384
-add
-pop temp 0
 pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 60
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 60
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 64
-push static 0
-add
-push constant 60
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 60
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 64
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 64
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 68
-push static 0
-add
-push constant 64
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 64
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 68
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 68
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 72
-push static 0
-add
-push constant 68
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 68
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 72
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 72
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 76
-push static 0
-add
-push constant 72
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 72
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 76
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 76
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 80
-push static 0
-add
-push constant 76
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 76
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 80
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 80
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 84
-push static 0
-add
-push constant 80
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 80
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 84
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 84
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 88
-push static 0
-add
-push constant 84
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 84
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 88
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 88
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 92
-push static 0
-add
-push constant 88
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 88
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 92
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 92
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 96
-push static 0
-add
-push constant 92
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 92
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 96
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 96
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 100
-push static 0
-add
-push constant 96
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 96
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 100
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 100
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 104
-push static 0
-add
-push constant 100
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 100
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 104
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 104
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 108
-push static 0
-add
-push constant 104
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 104
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 108
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 108
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 112
-push static 0
-add
-push constant 108
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 108
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 112
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 112
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 116
-push static 0
-add
-push constant 112
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 112
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 116
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 116
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 120
-push static 0
-add
-push constant 116
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 116
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
+push static 0
+push constant 120
+add
+pop pointer 1
+push that 0
+push static 0
+push constant 120
+add
+pop pointer 1
+push that 0
+add
+push static 0
 push constant 124
-push static 0
-add
-push constant 120
-push static 0
 add
 pop pointer 1
-push that 0
-push constant 120
-push static 0
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
 pop that 0
 push constant 0
 return
@@ -429,15 +365,15 @@ push argument 0
 pop local 1
 push constant 0
 pop local 2
-label WHILE_EXP0
+label WHILE_0
 push local 2
 push constant 124
 lt
 not
-if-goto WHILE_END0
+if-goto END_WHILE_0
 push argument 1
-push local 2
 push static 0
+push local 2
 add
 pop pointer 1
 push that 0
@@ -445,16 +381,14 @@ and
 push constant 0
 eq
 not
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+if-goto IF_1
+goto ENDIF_1
+label IF_1
 push local 0
 push local 1
 add
 pop local 0
-goto IF_END0
-label IF_FALSE0
-label IF_END0
+label ENDIF_1
 push local 1
 push local 1
 add
@@ -463,8 +397,8 @@ push local 2
 push constant 4
 add
 pop local 2
-goto WHILE_EXP0
-label WHILE_END0
+goto WHILE_0
+label END_WHILE_0
 push local 0
 return
 function Math.divide 3
@@ -485,14 +419,12 @@ pop argument 1
 push argument 1
 push argument 0
 gt
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+if-goto IF_2
+goto ENDIF_2
+label IF_2
 push constant 0
 return
-goto IF_END1
-label IF_FALSE1
-label IF_END1
+label ENDIF_2
 push argument 0
 push argument 1
 push argument 1
@@ -508,46 +440,40 @@ call Math.multiply 2
 sub
 push argument 1
 lt
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
-push local 0
-push local 0
-add
-pop local 1
-goto IF_END2
-label IF_FALSE2
+if-goto IF_3
 push local 0
 push local 0
 add
 push constant 1
 add
 pop local 1
-label IF_END2
+goto ENDIF_3
+label IF_3
+push local 0
+push local 0
+add
+pop local 1
+label ENDIF_3
 push local 2
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
-push local 1
-return
-goto IF_END3
-label IF_FALSE3
+if-goto IF_4
 push local 1
 neg
 return
-label IF_END3
+goto ENDIF_4
+label IF_4
+push local 1
+return
+label ENDIF_4
 function Math.abs 0
 push argument 0
 push constant 0
 lt
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
+if-goto IF_5
+goto ENDIF_5
+label IF_5
 push argument 0
 neg
 pop argument 0
-goto IF_END4
-label IF_FALSE4
-label IF_END4
+label ENDIF_5
 push argument 0
 return

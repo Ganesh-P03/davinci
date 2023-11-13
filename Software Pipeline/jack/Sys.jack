@@ -3,7 +3,7 @@ class Sys {
     function int init(){
         do Memory.init();
         do Math.init();
-        return Main.main();
+        return 2 * 3;
     }
 
 }

@@ -18,6 +18,7 @@ def main():
                 os.remove(os.path.join(root, file))
 
     if compile.CompileJACK(basePath):
+    # if True:
         print("Compilation Success : VM code generated")
 
         vm = VirtualMachine.VirtualMachine()

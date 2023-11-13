@@ -3,5 +3,7 @@ call Memory.init 0
 pop temp 0
 call Math.init 0
 pop temp 0
-call Main.main 0
+push constant 2
+push constant 3
+call Math.multiply 2
 return

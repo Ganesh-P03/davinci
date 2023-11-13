@@ -1,28 +1,31 @@
 function Memory.init 0
+push constant 8192
+pop static 6
 push constant 16384
-pop static 4
+pop static 5
 push constant 2048
+pop static 4
+push constant 16384
 pop static 3
 push constant 0
 pop static 0
-push static 4
+push static 6
 pop static 1
 push constant 0
-pop static 5
-push constant 1
-neg
-pop static 6
-push static 5
+pop static 7
+push constant 4
+pop static 8
+push static 7
 push static 1
 add
-push static 4
 push static 3
+push static 4
 sub
 pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push static 6
+push static 8
 push static 1
 add
 push constant 0
@@ -30,11 +33,20 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push constant 1
-pop static 7
+push constant 4
+neg
+pop static 9
 push constant 0
 return
 function Memory.peek 0
+push argument 0
+push argument 0
+add
+pop argument 0
+push argument 0
+push argument 0
+add
+pop argument 0
 push argument 0
 push static 0
 add
@@ -42,6 +54,14 @@ pop pointer 1
 push that 0
 return
 function Memory.poke 0
+push argument 0
+push argument 0
+add
+pop argument 0
+push argument 0
+push argument 0
+add
+pop argument 0
 push argument 0
 push static 0
 add
@@ -52,16 +72,25 @@ push temp 0
 pop that 0
 push constant 0
 return
+function Memory.val 0
+push static 1
+return
+function Memory.Tval 0
+push static 10
+return
+function Memory.Bval 0
+push static 11
+return
 function Memory.bestFit 4
 push constant 0
 pop local 1
-push static 4
 push static 3
+push static 4
 sub
 pop local 2
 push static 1
 pop local 0
-push static 6
+push static 8
 push local 0
 add
 pop pointer 1
@@ -83,7 +112,7 @@ eq
 not
 not
 if-goto WHILE_END0
-push static 5
+push static 7
 push local 0
 add
 pop pointer 1
@@ -109,7 +138,7 @@ pop local 2
 goto IF_END1
 label IF_FALSE1
 label IF_END1
-push static 6
+push static 8
 push local 0
 add
 pop pointer 1
@@ -124,9 +153,11 @@ push argument 0
 call Memory.bestFit 1
 pop local 0
 push local 0
-push constant 1
-sub
+push constant 4
+add
 pop local 2
+push local 2
+pop static 10
 push local 0
 push constant 0
 eq
@@ -134,7 +165,7 @@ not
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
-push static 5
+push static 7
 push local 0
 add
 pop pointer 1
@@ -148,14 +179,20 @@ goto IF_FALSE3
 label IF_TRUE3
 push local 0
 push argument 0
-sub
-push constant 1
-sub
+add
+push argument 0
+add
+push argument 0
+add
+push argument 0
+add
+push constant 4
+add
 pop local 1
-push static 6
+push static 8
 push local 1
 add
-push static 6
+push static 8
 push local 0
 add
 pop pointer 1
@@ -164,10 +201,10 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push static 5
+push static 7
 push local 1
 add
-push static 5
+push static 7
 push local 0
 add
 pop pointer 1
@@ -180,7 +217,7 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push static 7
+push static 9
 push local 2
 add
 push argument 0
@@ -192,18 +229,20 @@ push temp 0
 pop that 0
 push local 1
 pop static 1
+push constant 1
+pop static 11
 goto IF_END3
 label IF_FALSE3
-push static 6
+push static 8
 push local 0
 add
 pop pointer 1
 push that 0
 pop local 1
-push static 7
+push static 9
 push local 2
 add
-push static 5
+push static 7
 push local 0
 add
 pop pointer 1
@@ -212,211 +251,11 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push constant 2
+pop static 11
 label IF_END3
-push local 1
-pop local 0
 goto IF_END2
 label IF_FALSE2
 label IF_END2
 push local 2
-return
-function Memory.deAlloc 3
-push static 7
-push argument 0
-add
-pop pointer 1
-push that 0
-pop local 2
-push argument 0
-push constant 1
-add
-pop argument 0
-push argument 0
-call Memory.findPreFree 1
-pop local 0
-push local 0
-push constant 0
-eq
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
-push static 5
-push argument 0
-add
-push local 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push static 6
-push argument 0
-add
-push static 1
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push argument 0
-pop static 1
-goto IF_END4
-label IF_FALSE4
-push local 0
-push static 5
-push local 0
-add
-pop pointer 1
-push that 0
-sub
-push argument 0
-eq
-if-goto IF_TRUE5
-goto IF_FALSE5
-label IF_TRUE5
-push static 5
-push local 0
-add
-push static 5
-push local 0
-add
-pop pointer 1
-push that 0
-push local 2
-add
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push local 0
-pop argument 0
-goto IF_END5
-label IF_FALSE5
-push static 5
-push argument 0
-add
-push local 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push static 6
-push argument 0
-add
-push static 6
-push local 0
-add
-pop pointer 1
-push that 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push static 6
-push local 0
-add
-push argument 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-label IF_END5
-label IF_END4
-push argument 0
-push static 5
-push argument 0
-add
-pop pointer 1
-push that 0
-sub
-push static 6
-push argument 0
-add
-pop pointer 1
-push that 0
-eq
-if-goto IF_TRUE6
-goto IF_FALSE6
-label IF_TRUE6
-push static 6
-push argument 0
-add
-pop pointer 1
-push that 0
-pop local 1
-push static 5
-push argument 0
-add
-push static 5
-push argument 0
-add
-pop pointer 1
-push that 0
-push static 5
-push local 1
-add
-pop pointer 1
-push that 0
-add
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push static 6
-push argument 0
-add
-push static 6
-push local 1
-add
-pop pointer 1
-push that 0
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-goto IF_END6
-label IF_FALSE6
-label IF_END6
-push constant 0
-return
-function Memory.findPreFree 1
-push static 1
-push argument 0
-lt
-if-goto IF_TRUE7
-goto IF_FALSE7
-label IF_TRUE7
-push constant 0
-return
-goto IF_END7
-label IF_FALSE7
-label IF_END7
-push static 1
-pop local 0
-label WHILE_EXP1
-push static 6
-push local 0
-add
-pop pointer 1
-push that 0
-push constant 0
-eq
-not
-push static 6
-push local 0
-add
-pop pointer 1
-push that 0
-push argument 0
-gt
-and
-not
-if-goto WHILE_END1
-push static 6
-push local 0
-add
-pop pointer 1
-push that 0
-pop local 0
-goto WHILE_EXP1
-label WHILE_END1
-push local 0
 return
