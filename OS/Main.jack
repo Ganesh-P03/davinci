@@ -18,7 +18,7 @@ class Main{
     let one = 1;
     while(zero<one){ 
         let input = Keyboard.readLine(arrow);
-        if(input==ls){
+        if(input=ls){
             do Output.printString(fibo);
             do Output.printString(space);
             do Output.printString(tree);
@@ -30,16 +30,21 @@ class Main{
             do Output.printString(rev)
             do Output.printString(space);
         }
-        else if(input==clear){
-            do Screen.clearScreen();
-        }
-        else if(input==exit){
-            zero = 2;
-        }
         else{
-            do Output.printString(error);
+            if(input=clear){
+                do Screen.clearScreen();
+            }
+            else{
+                if(input=exit){
+                    zero=2;
+                }
+                else{
+                    do Output.printString(error);
+                }
+            }
         }
         do Output.println();
     }
+    return;
   }
 }
