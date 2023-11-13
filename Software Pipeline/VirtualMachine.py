@@ -21,7 +21,9 @@ class VirtualMachine:
 
         # CodeWriter instance
         self.__code_writer = CodeWriter(output_file_path)
-        # self.__code_writer.writeBootstrapCode()
+        self.__code_writer.writePCbase()
+        self.__code_writer.writeRAMbase()
+        self.__code_writer.writeBootstrapCode()
 
         try:
             # Source path is a directory
@@ -40,7 +42,8 @@ class VirtualMachine:
                 self.appendASM(vm_file_path)
         except:
             return False
-
+        
+        # Close output file
         self.__code_writer.close()
         return True
 
@@ -62,3 +65,9 @@ class VirtualMachine:
         while self.__parser.hasMoreCommands():
             self.__code_writer.writeASM(self.__parser)
             self.__parser.advance()
+            
+        # Write file footer
+        self.__code_writer.writeMessage("")
+        self.__code_writer.writeMessage("====================================")
+        self.__code_writer.writeMessage("End of File: " + base_file)
+        self.__code_writer.writeMessage("====================================")

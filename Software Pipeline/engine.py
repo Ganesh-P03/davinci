@@ -196,18 +196,20 @@ class CompilationEngine:
 
         if tk.curr_token == "[":  # array assignment
             tk.advance()  # [
-            self.compile_expression()
+            self.compile_expression_Array()
             tk.advance()  # ]
 
             self.generator.write_push_pop("push", cat, i)
             self.generator.write_arithmetic("ADD")
-            self.generator.write_push_pop("pop", "TEMP", 0)
+            # self.generator.write_push_pop('pop', 'TEMP', 0)
 
             tk.advance()  # =
             self.compile_expression()
 
-            self.generator.write_push_pop("push", "TEMP", 0)
+            # self.generator.write_push_pop('push', 'TEMP', 0)
+            self.generator.write_push_pop("pop", "TEMP", 0)
             self.generator.write_push_pop("pop", "POINTER", 1)
+            self.generator.write_push_pop("push", "TEMP", 0)
             self.generator.write_push_pop("pop", "THAT", 0)
         else:
             tk.advance()  # =
@@ -368,7 +370,7 @@ class CompilationEngine:
             tk.advance()
             if tk.curr_token == "[":
                 tk.advance()  # "["
-                self.compile_expression()
+                self.compile_expression_Array()
                 tk.advance()  # "]"
 
                 _type, cat, i = self.symbol_table.get(var_name)
@@ -427,3 +429,23 @@ class CompilationEngine:
             self.generator.write_call("String.appendChar", 2)
 
         tk.advance()
+
+    def compile_expression_Array(self):
+        tk = self.tokenizer
+        self.compile_term()
+
+        while tk.curr_token in ("+", "-", "*", "/", "&", "|", "<", ">", "="):
+            op = tk.curr_token
+            tk.advance()
+
+            self.compile_term()
+            if op in self.op_table:
+                self.generator.write_arithmetic(self.op_table.get(op))
+            elif op == "*":
+                self.generator.write_call("Math.multiply", 2)
+            elif op == "/":
+                self.generator.write_call("Math.divide", 2)
+            else:
+                raise ValueError("{} not supported op.".format(op))
+
+        # self.generator.write_call('VmMath.mult', 2)

@@ -15,20 +15,20 @@ pop static 6
 push static 5
 push static 1
 add
-pop temp 0
 push static 4
 push static 3
 sub
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push static 6
 push static 1
 add
-pop temp 0
 push constant 0
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push constant 1
 pop static 7
@@ -45,10 +45,10 @@ function Memory.poke 0
 push argument 0
 push static 0
 add
-pop temp 0
 push argument 1
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push constant 0
 return
@@ -155,19 +155,18 @@ pop local 1
 push static 6
 push local 1
 add
-pop temp 0
 push static 6
 push local 0
 add
 pop pointer 1
 push that 0
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push static 5
 push local 1
 add
-pop temp 0
 push static 5
 push local 0
 add
@@ -177,18 +176,19 @@ push argument 0
 sub
 push constant 1
 sub
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push static 7
 push local 2
 add
-pop temp 0
 push argument 0
 push constant 1
 add
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push local 1
 pop static 1
@@ -203,14 +203,14 @@ pop local 1
 push static 7
 push local 2
 add
-pop temp 0
 push static 5
 push local 0
 add
 pop pointer 1
 push that 0
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 label IF_END3
 push local 1
@@ -243,18 +243,18 @@ label IF_TRUE4
 push static 5
 push argument 0
 add
-pop temp 0
 push local 2
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push static 6
 push argument 0
 add
-pop temp 0
 push static 1
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push argument 0
 pop static 1
@@ -275,7 +275,6 @@ label IF_TRUE5
 push static 5
 push local 0
 add
-pop temp 0
 push static 5
 push local 0
 add
@@ -283,8 +282,9 @@ pop pointer 1
 push that 0
 push local 2
 add
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push local 0
 pop argument 0
@@ -293,30 +293,30 @@ label IF_FALSE5
 push static 5
 push argument 0
 add
-pop temp 0
 push local 2
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push static 6
 push argument 0
 add
-pop temp 0
 push static 6
 push local 0
 add
 pop pointer 1
 push that 0
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push static 6
 push local 0
 add
-pop temp 0
 push argument 0
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 label IF_END5
 label IF_END4
@@ -345,7 +345,6 @@ pop local 1
 push static 5
 push argument 0
 add
-pop temp 0
 push static 5
 push argument 0
 add
@@ -357,20 +356,21 @@ add
 pop pointer 1
 push that 0
 add
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push static 6
 push argument 0
 add
-pop temp 0
 push static 6
 push local 1
 add
 pop pointer 1
 push that 0
-push temp 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 goto IF_END6
 label IF_FALSE6

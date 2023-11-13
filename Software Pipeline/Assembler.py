@@ -33,6 +33,10 @@ class Assembler:
         "$t4": "01011",
         "x12": "01100",
         "$temp": "01100",
+        "x13": "01101",
+        "$ram": "01101",
+        "x14": "01110",
+        "$pc": "01110",
     }
 
     __symbol_table = {}
@@ -41,11 +45,12 @@ class Assembler:
     __scounter = 0
 
     # TODO: Define where the instructions start
-    __sbase = 0x10
+    __sbase = 16 * 4
     __dbase = 0x0
 
-    __tables_path = None
-    __pass_path = None
+    __pcbase = 9600
+
+    __nstatic = 0
 
     def __init__(self):
         self.__contents = None
@@ -72,7 +77,7 @@ class Assembler:
             # Create tables directory
             if not os.path.exists(tables_path):
                 os.makedirs(tables_path)
-                
+
             # Create pass directory
             if not os.path.exists(pass_path):
                 os.makedirs(pass_path)
@@ -86,18 +91,18 @@ class Assembler:
             self.firstPass(save=True)
             self.secondPass(save=True)
             self.translate(bin_base)
-            
+
             self.showTables(save=True)
         except:
             return False
-        
+
         return True
 
     def getContents(self):
         return self.__contents
 
     def getStaticLocation(self, size: int):
-        return self.__sbase + size
+        return self.__sbase + size * 4
 
     # Show tables
     def showTables(self, save: bool = False):
@@ -216,7 +221,7 @@ class Assembler:
         if cmd == "add":
             return "0000000" + rs2 + rs1 + "000" + rd + "0110011"
         elif cmd == "sub":
-            return "0010000" + rs2 + rs1 + "000" + rd + "0110011"
+            return "0100000" + rs2 + rs1 + "000" + rd + "0110011"
         elif cmd == "or":
             return "0000000" + rs2 + rs1 + "110" + rd + "0110011"
         elif cmd == "and":
@@ -356,7 +361,7 @@ class Assembler:
         address = 0
         wl_contents = []
 
-        for line in self.__contents:
+        for idx, line in enumerate(self.__contents):
             command = line[0]
             # Labels
             if command[-1] == ":":
@@ -365,6 +370,7 @@ class Assembler:
             # Symbols
             elif (command == "lw" or command == "sw") and (line[-1].find(".") != -1):
                 self.setSymbol(line[-1])
+                self.__nstatic += 1
 
             address += 1
             wl_contents.append(line)
@@ -401,20 +407,20 @@ class Assembler:
                         label = self.getLabel(line[-1])
 
                         line.pop()
-                        line.append(str((label + self.__dbase) >> 12))
+                        temp = (label + self.__dbase) & 2048 != 0
+                        line.append(str(((label + self.__dbase) >> 12) + temp))
                 else:
                     if cmd != "jalr":
                         label = line[-1]
                         line.pop()
                         line.append(str(self.getLabel(label) - pc * 4))
-
             # Replacing symbols
             elif (cmd == "lw" or cmd == "sw") and (self.isSymbol(line[-1])):
                 symbol = self.getSymbol(line[-1])
 
                 line.pop()
                 line.append(str(self.getStaticLocation(symbol)))
-                line.append("$zero")
+                line.append("$ram")
 
             pcode.append(line)
 
@@ -466,12 +472,43 @@ class Assembler:
         self.__contents = mcode
 
         bin_path = os.path.join(output_path, "riscv.bin")
-        rom_path = os.path.join(output_path, "rom.txt")
-        
+        rom_path = os.path.join(output_path, "rom.v")
+        hex_path = os.path.join(output_path, "HEX.txt")
+
         with open(bin_path, "w") as f:
             for line in mcode:
                 f.write(line + "\n")
-        
+
         with open(rom_path, "w") as f:
+            # Begin code
+            begin_code = """module ROM ( //Instruction Memory
+    input [16:0] addr,
+    input clock,
+    output [31:0] Inst
+    );
+    wire [14:0] address;
+    
+    (* ram_style="block" *)
+    reg [31:0] ROM[32767:0];
+
+    initial
+        begin
+    """
+            f.write(begin_code)
             for i, line in enumerate(mcode):
                 f.write("ROM[" + str(i) + "] <= 32'b" + line + ";\n")
+
+            # End code
+            end_code = """        end
+    assign address = addr[16:2];
+    assign Inst = ROM[address];
+        
+endmodule"""
+            f.write(end_code)
+
+        with open(hex_path, "w") as f:
+            for line in mcode:
+                hex = format(int(line, 2), "08x")
+                hex = str(hex)
+                hex = hex.upper()
+                f.write(hex + "\n")
