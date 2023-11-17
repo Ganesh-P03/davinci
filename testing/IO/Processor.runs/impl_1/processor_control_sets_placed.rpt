@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Fri Nov 17 17:59:50 2023
+| Date         : Fri Nov 17 18:34:17 2023
 | Host         : Ganesh running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file processor_control_sets_placed.rpt
 | Design       : processor
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |   125 |
-|    Minimum number of control sets                        |   125 |
+| Total control sets                                       |    94 |
+|    Minimum number of control sets                        |    94 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    52 |
+| Unused register locations in slices containing registers |    39 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |   125 |
+| Total control sets |    94 |
 | >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     3 |
-| >= 6 to < 8        |     1 |
-| >= 8 to < 10       |     0 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     1 |
 | >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |   120 |
+| >= 16              |    89 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,146 +58,115 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             217 |          123 |
-| No           | No                    | Yes                    |               4 |            3 |
-| No           | Yes                   | No                     |              44 |           13 |
-| Yes          | No                    | No                     |            1092 |          682 |
+| No           | No                    | No                     |             227 |          125 |
+| No           | No                    | Yes                    |               4 |            2 |
+| No           | Yes                   | No                     |              22 |            8 |
+| Yes          | No                    | No                     |              61 |           43 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              55 |           24 |
+| Yes          | Yes                   | No                     |            1079 |          377 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------------+-----------------------------------------+-----------------------------------------+------------------+----------------+--------------+
-|     Clock Signal     |              Enable Signal              |             Set/Reset Signal            | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------------+-----------------------------------------+-----------------------------------------+------------------+----------------+--------------+
-|  dispDriver/clk_TMDS |                                         | dispDriver/TMDS_mod10[3]_i_1_n_0        |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/ramIsRead      |                                         |                2 |              4 |         2.00 |
-| ~clk_IBUF_BUFG       |                                         | reset_IBUF                              |                3 |              4 |         1.33 |
-|  dispDriver/pixclk   |                                         | dispDriver/encode_G/SR[0]               |                2 |              7 |         3.50 |
-|  dispDriver/pixclk   |                                         | dispDriver/CounterY                     |                2 |             10 |         5.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_6  |                                         |                5 |             16 |         3.20 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_0  |                                         |                5 |             16 |         3.20 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_10  |                                         |                5 |             16 |         3.20 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_18 |                                         |                5 |             16 |         3.20 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_4  |                                         |                5 |             16 |         3.20 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_12 |                                         |                5 |             16 |         3.20 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_6   |                                         |                5 |             16 |         3.20 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[1]_2   |                                         |                5 |             16 |         3.20 |
-|  dispDriver/pixclk   | dispDriver/CounterY                     |                                         |                8 |             19 |         2.38 |
-|  clk_IBUF_BUFG       |                                         | control_unit/mainDecoder/PC1_reg[17]_15 |                8 |             23 |         2.88 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/IRWrite        | control_unit/mainDecoder/PC1_reg[17]_16 |               11 |             23 |         2.09 |
-|  dispDriver/clk_TMDS |                                         |                                         |                6 |             31 |         5.17 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_9  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[10]    |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[11]_1  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_5   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_1  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_10 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_11 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_11 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_9   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_18 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_19 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_3  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[10]_2  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_7  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_2   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_2  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_3   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_19 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_17 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[11]    |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[11]_2  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_13 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_17 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_8  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_23 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_4   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[10]_1  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_16 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_21 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[11]_5  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_14 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_22 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]    |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_20 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_3  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_13 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_7  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_7   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_1  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_10 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_12 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_16 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_2  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[11]_4  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_15 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_8  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_15 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[11]_0  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[11]_3  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_8   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_0  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_5  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_6  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_14 |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[10]_0  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_4  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_5  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_9  |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_4   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[1]_0   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_1   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[1]     |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_0   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_0   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_5   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[1]_1   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]     |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_2   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[1]_3   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_3   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_1   |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/E[0]           | reset_IBUF                              |               13 |             32 |         2.46 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_15[0]    |                                         |               19 |             32 |         1.68 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_14[0]    |                                         |               21 |             32 |         1.52 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]     |                                         |                8 |             32 |         4.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_29[0]    |                                         |               20 |             32 |         1.60 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_25[0]    |                                         |               17 |             32 |         1.88 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_28[0]    |                                         |               20 |             32 |         1.60 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_13[0]    |                                         |               18 |             32 |         1.78 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_33[0]    |                                         |               21 |             32 |         1.52 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_16[0]    |                                         |               18 |             32 |         1.78 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_21[0]    |                                         |               21 |             32 |         1.52 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_34[0]    |                                         |               20 |             32 |         1.60 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_4[0]     |                                         |               22 |             32 |         1.45 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_11[0]    |                                         |               19 |             32 |         1.68 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_18[0]    |                                         |               21 |             32 |         1.52 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_17[0]    |                                         |               17 |             32 |         1.88 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_10[0]    |                                         |               22 |             32 |         1.45 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_30[0]    |                                         |               22 |             32 |         1.45 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_27[0]    |                                         |               25 |             32 |         1.28 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_24[0]    |                                         |               18 |             32 |         1.78 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_26[0]    |                                         |               22 |             32 |         1.45 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_19[0]    |                                         |               21 |             32 |         1.52 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_20[0]    |                                         |               17 |             32 |         1.88 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_23[0]    |                                         |               21 |             32 |         1.52 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_12[0]    |                                         |               17 |             32 |         1.88 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_22[0]    |                                         |               21 |             32 |         1.52 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_32[0]    |                                         |               22 |             32 |         1.45 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_8[0]     |                                         |               20 |             32 |         1.60 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_9[0]     |                                         |               16 |             32 |         2.00 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_7[0]     |                                         |               23 |             32 |         1.39 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_5[0]     |                                         |               21 |             32 |         1.52 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_6[0]     |                                         |               21 |             32 |         1.52 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_31[0]    |                                         |               21 |             32 |         1.52 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg_3[0]     |                                         |               21 |             36 |         1.71 |
-|  clk_IBUF_BUFG       | control_unit/mainDecoder/IRWrite        |                                         |               27 |             41 |         1.52 |
-|  dispDriver/pixclk   |                                         |                                         |               18 |             41 |         2.28 |
-|  clk_IBUF_BUFG       |                                         |                                         |               99 |            145 |         1.46 |
-+----------------------+-----------------------------------------+-----------------------------------------+------------------+----------------+--------------+
++----------------------+-----------------------------------------+---------------------------------------+------------------+----------------+--------------+
+|     Clock Signal     |              Enable Signal              |            Set/Reset Signal           | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------------+-----------------------------------------+---------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/ramIsRead      |                                       |                2 |              4 |         2.00 |
+| ~clk_IBUF_BUFG       |                                         | reset_IBUF                            |                2 |              4 |         2.00 |
+|  dispDriver/clk_TMDS |                                         | dispDriver/p_0_out_inferred__0/i__n_0 |                1 |              4 |         4.00 |
+|  dispDriver/pixclk   |                                         | dispDriver/encode_R/SR[0]             |                2 |              8 |         4.00 |
+|  dispDriver/pixclk   |                                         | dispDriver/CounterY                   |                5 |             10 |         2.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_2   |                                       |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_8   |                                       |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[1]_1   |                                       |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_5   |                                       |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]     |                                       |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg[0]_7     |                                       |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg[0]_1     |                                       |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg[0]_4     |                                       |                5 |             16 |         3.20 |
+|  dispDriver/pixclk   | dispDriver/CounterY                     |                                       |                8 |             19 |         2.38 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/state_reg[3]_0 | control_unit/mainDecoder/PC1_reg[17]  |                9 |             23 |         2.56 |
+|  dispDriver/clk_TMDS |                                         |                                       |                5 |             31 |         6.20 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_0   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]    |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_1   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_10  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_3   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_9   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[10]_1  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[10]_2  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[10]    |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_3  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_0  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[10]_0  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[11]_2  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_1  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_10 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_11 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_7   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[11]    |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_4   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_0   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_8  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_17 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_14 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_23 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_3  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_18 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_24 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_9  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[1]     |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_4  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_1   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_15 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_20 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_26 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_28 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_21 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_7  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[1]_0   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_2  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_29 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_27 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]     |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_5  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_16 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_30 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_19 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_25 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_6  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_2   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_5   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_22 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_12 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_6   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[13]_13 |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_6  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_4   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]    |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg[0]_3     |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg[0]_0     |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg[0]_5     |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg[0]_6     |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg[0]       |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/Q_reg[0]_2     |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_0  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[11]_0  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[9]_3   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[11]_1  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/E[0]           | reset_IBUF                            |               16 |             32 |         2.00 |
+| ~clk_IBUF_BUFG       |                                         |                                       |               15 |             32 |         2.13 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_2  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_4  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_5  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[12]_1  |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/PC1_reg[0]_6   |                                       |                8 |             32 |         4.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/state_reg[3]_0 |                                       |               33 |             38 |         1.15 |
+|  dispDriver/pixclk   |                                         |                                       |               17 |             41 |         2.41 |
+|  clk_IBUF_BUFG       |                                         |                                       |               88 |            123 |         1.40 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/regwrite       | reset_IBUF                            |              352 |           1024 |         2.91 |
++----------------------+-----------------------------------------+---------------------------------------+------------------+----------------+--------------+
 
 

@@ -119,6 +119,7 @@ read_verilog -library xil_defaultlib {
   {D:/semester/7th sem/davinci/testing/IO/Processor.srcs/sources_1/imports/Processor_MultiCycle/fulladder.v}
   {D:/semester/7th sem/davinci/testing/IO/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_1bit.v}
   {D:/semester/7th sem/davinci/testing/IO/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_32bit.v}
+  {D:/semester/7th sem/davinci/testing/IO/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_32bit_neg.v}
   {D:/semester/7th sem/davinci/testing/IO/Processor.srcs/sources_1/imports/Processor_MultiCycle/zero_extender.v}
 }
 OPTRACE "Adding files" END { }

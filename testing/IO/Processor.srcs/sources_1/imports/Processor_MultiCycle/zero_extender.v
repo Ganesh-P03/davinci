@@ -6,4 +6,3 @@ module zero_extender (
 assign out = {{31{1'b0}}, inp};
 
 endmodule
-
