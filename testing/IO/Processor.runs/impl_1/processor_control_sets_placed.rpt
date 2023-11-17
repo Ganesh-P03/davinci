@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Fri Nov 17 16:49:03 2023
+| Date         : Fri Nov 17 17:25:07 2023
 | Host         : Ganesh running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file processor_control_sets_placed.rpt
 | Design       : processor
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |    16 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    44 |
+| Unused register locations in slices containing registers |    52 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -40,8 +40,8 @@ Table of Contents
 |       Fanout       | Count |
 +--------------------+-------+
 | Total control sets |    16 |
-| >= 0 to < 4        |     1 |
-| >= 4 to < 6        |     3 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     4 |
 | >= 6 to < 8        |     1 |
 | >= 8 to < 10       |     0 |
 | >= 10 to < 12      |     1 |
@@ -58,37 +58,37 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             173 |           52 |
-| No           | No                    | Yes                    |               5 |            2 |
-| No           | Yes                   | No                     |              21 |            7 |
-| Yes          | No                    | No                     |             189 |           72 |
+| No           | No                    | No                     |             169 |           67 |
+| No           | No                    | Yes                    |               4 |            3 |
+| No           | Yes                   | No                     |              26 |           11 |
+| Yes          | No                    | No                     |             184 |          110 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              32 |           12 |
+| Yes          | Yes                   | No                     |              37 |           19 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------------------------------------------+--------------------------------------------------------+----------------------------------+------------------+----------------+--------------+
-|                    Clock Signal                    |                      Enable Signal                     |         Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------------------------------------------+--------------------------------------------------------+----------------------------------+------------------+----------------+--------------+
-|  control_unit/mainDecoder/ResultSrc_reg[1]_i_1_n_0 |                                                        |                                  |                1 |              1 |         1.00 |
-|  control_unit/mainDecoder/ALUSrcA_reg[1]_i_2_n_0   |                                                        |                                  |                1 |              4 |         4.00 |
-|  dispDriver/clk_TMDS                               |                                                        | dispDriver/TMDS_mod10[3]_i_1_n_0 |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG                                     |                                                        | reset_IBUF                       |                2 |              5 |         2.50 |
-|  dispDriver/pixclk                                 |                                                        | dispDriver/encode_G/SR[0]        |                2 |              7 |         3.50 |
-|  dispDriver/pixclk                                 |                                                        | dispDriver/CounterY              |                4 |             10 |         2.50 |
-|  dispDriver/pixclk                                 | dispDriver/CounterY                                    |                                  |                5 |             19 |         3.80 |
-|  dispDriver/clk_TMDS                               |                                                        |                                  |                8 |             31 |         3.88 |
-|  clk_IBUF_BUFG                                     | control_unit/mainDecoder/E[0]                          |                                  |               12 |             32 |         2.67 |
-|  clk_IBUF_BUFG                                     | control_unit/mainDecoder/FSM_onehot_state_reg[15]_1[0] |                                  |               12 |             32 |         2.67 |
-|  clk_IBUF_BUFG                                     | control_unit/mainDecoder/FSM_onehot_state_reg[2]_0[0]  | reset_IBUF                       |               12 |             32 |         2.67 |
-|  clk_IBUF_BUFG                                     | control_unit/mainDecoder/FSM_onehot_state_reg[15]_0[0] |                                  |               12 |             32 |         2.67 |
-|  clk_IBUF_BUFG                                     | control_unit/mainDecoder/FSM_onehot_state_reg[15]_2[0] |                                  |               16 |             36 |         2.25 |
-|  clk_IBUF_BUFG                                     | control_unit/mainDecoder/IRWrite                       |                                  |               15 |             38 |         2.53 |
-|  dispDriver/pixclk                                 |                                                        |                                  |               20 |             41 |         2.05 |
-|  clk_IBUF_BUFG                                     |                                                        |                                  |              625 |           2528 |         4.04 |
-+----------------------------------------------------+--------------------------------------------------------+----------------------------------+------------------+----------------+--------------+
++----------------------+--------------------------------------------+--------------------------------------+------------------+----------------+--------------+
+|     Clock Signal     |                Enable Signal               |           Set/Reset Signal           | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------------+--------------------------------------------+--------------------------------------+------------------+----------------+--------------+
+| ~clk_IBUF_BUFG       |                                            | reset_IBUF                           |                3 |              4 |         1.33 |
+|  dispDriver/clk_TMDS |                                            | dispDriver/TMDS_mod10[3]_i_1_n_0     |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG       |                                            | control_unit/mainDecoder/PC1_reg[18] |                4 |              5 |         1.25 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/IRWrite           | control_unit/mainDecoder/PC1_reg[14] |                3 |              5 |         1.67 |
+|  dispDriver/pixclk   |                                            | dispDriver/encode_G/SR[0]            |                2 |              7 |         3.50 |
+|  dispDriver/pixclk   |                                            | dispDriver/CounterY                  |                4 |             10 |         2.50 |
+|  dispDriver/pixclk   | dispDriver/CounterY                        |                                      |                5 |             19 |         3.80 |
+|  dispDriver/clk_TMDS |                                            |                                      |                6 |             31 |         5.17 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/E[0]              | reset_IBUF                           |               16 |             32 |         2.00 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/state_reg[2]_2[0] |                                      |               21 |             32 |         1.52 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/state_reg[2]_4[0] |                                      |               19 |             32 |         1.68 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/state_reg[2]_3[0] |                                      |               22 |             32 |         1.45 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/IRWrite           |                                      |               22 |             33 |         1.50 |
+|  clk_IBUF_BUFG       | control_unit/mainDecoder/state_reg[2]_1[0] |                                      |               21 |             36 |         1.71 |
+|  dispDriver/pixclk   |                                            |                                      |               25 |             41 |         1.64 |
+|  clk_IBUF_BUFG       |                                            |                                      |              658 |           2529 |         3.84 |
++----------------------+--------------------------------------------+--------------------------------------+------------------+----------------+--------------+
 
 

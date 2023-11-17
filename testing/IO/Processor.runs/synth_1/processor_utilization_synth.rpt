@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Fri Nov 17 16:47:26 2023
+| Date         : Fri Nov 17 17:23:57 2023
 | Host         : Ganesh running 64-bit major release  (build 9200)
 | Command      : report_utilization -file processor_utilization_synth.rpt -pb processor_utilization_synth.pb
 | Design       : processor
@@ -31,14 +31,14 @@ Table of Contents
 +----------------------------+------+-------+------------+-----------+-------+
 |          Site Type         | Used | Fixed | Prohibited | Available | Util% |
 +----------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*                | 3094 |     0 |          0 |     17600 | 17.58 |
-|   LUT as Logic             |  662 |     0 |          0 |     17600 |  3.76 |
+| Slice LUTs*                | 3133 |     0 |          0 |     17600 | 17.80 |
+|   LUT as Logic             |  701 |     0 |          0 |     17600 |  3.98 |
 |   LUT as Memory            | 2432 |     0 |          0 |      6000 | 40.53 |
 |     LUT as Distributed RAM | 2432 |     0 |            |           |       |
 |     LUT as Shift Register  |    0 |     0 |            |           |       |
-| Slice Registers            |  426 |     0 |          0 |     35200 |  1.21 |
-|   Register as Flip Flop    |  420 |     0 |          0 |     35200 |  1.19 |
-|   Register as Latch        |    6 |     0 |          0 |     35200 |  0.02 |
+| Slice Registers            |  416 |     0 |          0 |     35200 |  1.18 |
+|   Register as Flip Flop    |  416 |     0 |          0 |     35200 |  1.18 |
+|   Register as Latch        |    0 |     0 |          0 |     35200 |  0.00 |
 | F7 Muxes                   | 1233 |     0 |          0 |      8800 | 14.01 |
 | F8 Muxes                   |    8 |     0 |          0 |      4400 |  0.18 |
 +----------------------------+------+-------+------------+-----------+-------+
@@ -58,8 +58,8 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |            _ |         Set |            - |
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
-| 1     |          Yes |           - |          Set |
-| 13    |          Yes |           - |        Reset |
+| 0     |          Yes |           - |          Set |
+| 4     |          Yes |           - |        Reset |
 | 4     |          Yes |         Set |            - |
 | 408   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
@@ -152,26 +152,24 @@ Warning! LUT value is adjusted to account for LUT combining.
 +------------+------+---------------------+
 | RAMD64E    | 2368 |  Distributed Memory |
 | MUXF7      | 1233 |               MuxFx |
+| LUT6       |  422 |                 LUT |
 | FDRE       |  408 |        Flop & Latch |
-| LUT6       |  278 |                 LUT |
-| LUT4       |  168 |                 LUT |
-| LUT3       |  147 |                 LUT |
-| LUT5       |  127 |                 LUT |
+| LUT3       |  163 |                 LUT |
+| LUT5       |  126 |                 LUT |
 | RAMD32     |   64 |  Distributed Memory |
-| LUT2       |   35 |                 LUT |
+| LUT2       |   27 |                 LUT |
+| LUT4       |   20 |                 LUT |
 | OBUFDS     |    8 |                  IO |
 | MUXF8      |    8 |               MuxFx |
-| FDCE       |    7 |        Flop & Latch |
-| LDCE       |    6 |        Flop & Latch |
 | CARRY4     |    6 |          CarryLogic |
 | OBUF       |    4 |                  IO |
 | INV        |    4 |                 LUT |
 | FDSE       |    4 |        Flop & Latch |
+| FDCE       |    4 |        Flop & Latch |
 | BUFG       |    4 |               Clock |
 | LUT1       |    3 |                 LUT |
 | IBUF       |    2 |                  IO |
 | MMCME2_ADV |    1 |               Clock |
-| FDPE       |    1 |        Flop & Latch |
 +------------+------+---------------------+
 
 

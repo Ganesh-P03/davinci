@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Fri Nov 17 16:49:59 2023
+| Date         : Fri Nov 17 17:25:56 2023
 | Host         : Ganesh running 64-bit major release  (build 9200)
 | Command      : report_methodology -file processor_methodology_drc_routed.rpt -pb processor_methodology_drc_routed.pb -rpx processor_methodology_drc_routed.rpx
 | Design       : processor
@@ -23,14 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 587
+             Violations found: 581
 +-----------+----------+-----------------------------------------------------------+------------+
 | Rule      | Severity | Description                                               | Violations |
 +-----------+----------+-----------------------------------------------------------+------------+
 | SYNTH-5   | Warning  | Mapped onto distributed RAM because of timing constraints | 576        |
 | TIMING-18 | Warning  | Missing input or output delay                             | 5          |
-| TIMING-20 | Warning  | Non-clocked latch                                         | 5          |
-| LATCH-1   | Advisory | Existing latches in the design                            | 1          |
 +-----------+----------+-----------------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -2938,36 +2936,6 @@ Related violations: <none>
 TIMING-18#5 Warning
 Missing input or output delay  
 An output delay is missing on led[3] relative to the rising and/or falling clock edge(s) of clk_pin.
-Related violations: <none>
-
-TIMING-20#1 Warning
-Non-clocked latch  
-The latch control_unit/mainDecoder/ALUSrcA_reg[0] cannot be properly analyzed as its control pin control_unit/mainDecoder/ALUSrcA_reg[0]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#2 Warning
-Non-clocked latch  
-The latch control_unit/mainDecoder/ALUSrcA_reg[1] cannot be properly analyzed as its control pin control_unit/mainDecoder/ALUSrcA_reg[1]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#3 Warning
-Non-clocked latch  
-The latch control_unit/mainDecoder/ALUSrcB_reg[0] cannot be properly analyzed as its control pin control_unit/mainDecoder/ALUSrcB_reg[0]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#4 Warning
-Non-clocked latch  
-The latch control_unit/mainDecoder/ALUSrcB_reg[1] cannot be properly analyzed as its control pin control_unit/mainDecoder/ALUSrcB_reg[1]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#5 Warning
-Non-clocked latch  
-The latch control_unit/mainDecoder/ResultSrc_reg[1] cannot be properly analyzed as its control pin control_unit/mainDecoder/ResultSrc_reg[1]/G is not reached by a timing clock
-Related violations: <none>
-
-LATCH-1#1 Advisory
-Existing latches in the design  
-There are 5 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
 Related violations: <none>
 
 
