@@ -1,9 +1,14 @@
-module processor (clk,reset,led,TMDSp,TMDSn,TMDSp_clock,TMDSn_clock);
+module processor (sysclk,reset,led,TMDSp,TMDSn,TMDSp_clock,TMDSn_clock);
 
 input reset;
-input clk;
+input sysclk;
 output [3:0] led;
 reg [31:0] Result;
+
+reg [24:0] count = 0;
+always @ (posedge(sysclk)) count <= count + 1;
+wire clk;
+assign clk = count[22];
 
 //-----------Screen-------------------------//
 output [2:0] TMDSp;
@@ -17,7 +22,7 @@ wire [31:0] display_dataOut;
 
 // //Screen_Memory screen_mem (.clock(clk),.address(display_address[15:0]),.displayAddr(display_address[15:0]),.isWrite(1'b0),.writeData(32'b0),.displayData(dataOut));
 
-DisplayDriver dispDriver (.clk(clk),.displayData(display_dataOut),.TMDSp(TMDSp),.TMDSn(TMDSn),
+DisplayDriver dispDriver (.clk(sysclk),.displayData(display_dataOut),.TMDSp(TMDSp),.TMDSn(TMDSn),
 .pointer(display_address),.TMDSp_clock(TMDSp_clock),.TMDSn_clock(TMDSn_clock));
 //-----------Screen-------------------------//
 
@@ -105,11 +110,14 @@ ALU_RISCv ALU (.A(SrcA), .B(SrcB), .sel(ALUControl), .ALUOut(ALUResult), .Zero(Z
 
 
 register_32bit buf_reg_7 (.D(ALUResult), .clk(clk), .regwrite(1'b1), .Q(ALUOut));   //To store result computed by ALU
-
-MUX4x1_32bit mux_4 (.i0(ALUOut), .i1(Data), .i2(ALUResult), .i3(32'b0), .sel(ResultSrc), .o(ResultWire));
+ 
+assign ResultWire = (ResultSrc==2'b00)?ALUOut:
+           (ResultSrc==2'b01)?Data:
+           (ResultSrc==2'b10)?ALUResult:
+           (ResultSrc==2'b11)?ResultSrc:32'b0;
+// MUX4x1_32bit mux_4 (.i0(ALUOut), .i1(Data), .i2(ALUResult), .i3(32'b0), .sel(ResultSrc), .o(ResultWire));
 
 assign Result = ResultWire;
-
 
 // assign PC1 = PCWrite ? ResultWire : PC1;
 
