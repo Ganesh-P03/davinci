@@ -1,17 +1,6 @@
-// This file is part of www.nand2tetris.org
-// and the book "The Elements of Computing Systems"
-// by Nisan and Schocken, MIT Press.
-// File name: projects/12/Math.jack
-
-/**
- * A basic math library.
- */
 class Math {
-    
     static Array bitArray;
-
-    /** Initializes the library. */
-function void init() {
+    function void init() {
         let bitArray = Array.new(128);
         let bitArray[0] = 1; // 0000000000000001
         let bitArray[4] = 2; // 0000000000000010
@@ -66,92 +55,38 @@ function void init() {
         return sum;
     }
 
-    /** Returns the absolute value of x. */
+    function int divide(int x, int y) {
+        var int q,result;
+        var boolean pos;
+
+        let pos = ((x < 0) = (y < 0));
+
+        let x = Math.abs(x);
+        let y = Math.abs(y);
+
+        if(y > x){
+            return 0;
+        }
+
+        let q = Math.divide(x,y + y); // recursive call
+        
+        if((x - (2 * q * y)) < y){ // 
+            let result = q + q;
+        }else{
+            let result = q + q + 1;
+        }
+
+        if(pos){ // to assign sign to the result
+            return result;
+        }else{
+            return -result;
+        }
+
+    }
     function int abs(int x) {
         if(x < 0){
             let x = -x;
         }
         return x;
-    }
-    function int divide(int x, int y) {
-        var int result;
-        var boolean pos,less;
-        if (y=0){
-            do Sys.error("divide: argument is zero\n");
-            do Sys.halt();
-            return -1;
-        }
-
-        let pos = ~((x < 0) = (y < 0));
-
-        let x = Math.abs(x);
-        let y = Math.abs(y);
-        
-        let result = 0;
-        let less = ~(y>x);
-        while (less){
-            let x = x - y;
-            let result = result + 1;
-            let less = ~(y>x);
-        }
-        if(pos){
-            let result = -result;
-        }
-        return result;
-        
-    }
-
-    /** Returns the integer part of the square root of x. */
-    function int sqrt(int x) {
-        var int y,j,temp,tempQ;
-        if (x<0){
-            do Sys.error("sqrt: argument is negative\n");
-            do Sys.halt();
-            return -1;
-        }
-        let y = 0;
-
-        // j = 7 for 16 bit system
-        // NEED TO BE MODIFIED TO 32 BIT SYSTEM WHERE j = 15
-        let j = 124;
-
-
-        while(~(j < 0)){ // while j >= 0
-            let temp = y + bitArray[j];
-            let tempQ = temp * temp;
-            if(~(tempQ > x) & (tempQ > 0)){
-                let y = temp;
-            }
-            let j = j - 4;
-        }
-
-        return y;
-    }
-
-    /** Returns the greater number. */
-    function int max(int a, int b) {
-        if(a > b){
-            return a;
-        }
-        return b;
-    }
-
-    /** Returns the smaller number. */
-    function int min(int a, int b) {
-        if(a < b){
-            return a;
-        }
-        return b;
-    }
-
-    /** helper function: mod */
-    function int mod(int a, int b){
-        return a - (Math.divide(a,b) * b); 
-    }
-
-    /** helper function two to the power i i.e. 2^i */
-    function int twoToThe(int i){
-        let i = i*4
-        return bitArray[i];
     }
 }

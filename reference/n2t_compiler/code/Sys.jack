@@ -1,5 +1,9 @@
-class Sys{
+
+class Sys {
     function int init(){
+        do Memory.init();
+        do Math.init();
         return Main.main();
     }
+
 }
