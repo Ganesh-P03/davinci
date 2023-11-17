@@ -1,11 +1,12 @@
 module ROM (                    //Instruction Memory
     input [16:0] addr,
-    input clock,
-    output [31:0] Inst
+    //input clock,
+    output  [31:0] Inst
     );
     wire [14:0] address;
     
     (* ram_style="block" *)
+    (*DONT_TOUCH = "true"*)
     reg [31:0] ROM[32767:0];
 
     initial
@@ -13,6 +14,11 @@ module ROM (                    //Instruction Memory
             $readmemh("inst.mem", ROM);
         end
     assign address = addr[16:2];
+    
+    // always @(posedge clock)
+    //     begin
+    //         Inst <= ROM[address];
+    //     end
     assign Inst = ROM[address];
         
 endmodule

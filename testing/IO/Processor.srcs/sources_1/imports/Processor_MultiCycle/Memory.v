@@ -45,28 +45,28 @@ module Memory
     wire ramIsRead;
     assign ramIsRead = (address >= 18'd140672 ) ? 1'b1 : 1'b0; 
     
-    reg [1:0] addrLatch;
+    // reg [1:0] addrLatch;
     reg [7:0] keyVal;  //***
     reg dample;
     reg readKeyboard;   ///****
     
     initial
         begin
-            addrLatch <= 2'd0;
+            // addrLatch <= 2'd0;
             keyVal <= 8'd0;
             dample <= 1'b1;
             readKeyboard <= 1'b0;
         end
     
-    always @(posedge clock)
-        begin
-            if( ramIsRead )
-                addrLatch <= address[1:0];
-        end
+    // always @(posedge clock)
+    //     begin
+    //         if( ramIsRead )
+    //             addrLatch <= address[1:0];
+    //     end
     
 
     
-    always @(posedge ramIsRead)
+    always @(posedge clock)
         begin
             if( address == 18'd206204 )
                 begin
@@ -108,17 +108,17 @@ module Memory
         .writeData(ramWriteData),  //correct
         .address(ramAddress),    
         .data(ramReadData),             //correct
-        .isRead(ramIsRead),
-        .byteRead(byteRead)
+        .isRead(ramIsRead)
     );
     
     ROM rom(
         .addr(romAddress[16:0]),     
-        .clock(clock),          //correct
+        //.clock(clock),          //correct
         .Inst(IR)                 //correct
     );
 
     assign RD = (address >= 32'd9600 && address < 32'd140672 ) ? IR : data;
+    //assign RD = IR;
  
  endmodule
 

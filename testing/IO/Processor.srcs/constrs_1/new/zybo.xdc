@@ -1,6 +1,6 @@
 ##Clock signal
 set_property -dict { PACKAGE_PIN K17   IOSTANDARD LVCMOS33 } [get_ports { clk }]; #IO_L12P_T1_MRCC_35 Sch=sysclk
-create_clock -add -name clk_pin -period 2000 [get_ports { clk }];
+create_clock -add -name clk_pin -period 8.00 [get_ports { clk }];
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ps2c_IBUF];
 
 

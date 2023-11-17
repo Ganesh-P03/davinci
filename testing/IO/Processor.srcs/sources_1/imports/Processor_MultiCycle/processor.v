@@ -39,6 +39,7 @@ wire [1:0] ResultSrc;
 wire [31:0] PC;
 wire [31:0] Addr;
 wire [31:0] Data;
+(*DONT_TOUCH = "true"*)
 wire [31:0] Instr;
 wire [31:0] OldPC;
 wire [31:0] rd1;
@@ -57,6 +58,7 @@ initial begin
     Result <= 32'd9600;
     PC1 <= 32'd9600;
   end
+// assign ResultWire = 32'd9600;
 
 always @(posedge clk) begin
   if(reset)
@@ -75,7 +77,7 @@ wire [7:0] key_reg;
 //register_32bit buf_reg_1 (.D(ResultWire), .clk(clk), .regwrite(PCWrite), .Q(PC));   //Program Counter
 // assign PC = Result;
 MUX2x1_32bit mux_1 (.a(PC1), .b(Result), .s(AddrSrc), .y(Addr));
-Memory mem (.clock(clk), .isWrite(MemWrite), .byteWrite(Zero), .byteRead(Zero), .address(Addr), .writeData(WriteData), .RD(ReadData), .displayAddr(display_address), .displayData(display_dataOut), .sample(Zero), .key_reg(key_reg));
+Memory mem (.clock(clk), .isWrite(MemWrite), .byteWrite(Zero),.address(Addr), .writeData(WriteData), .RD(ReadData), .displayAddr(display_address), .displayData(display_dataOut), .sample(Zero), .key_reg(key_reg));
 //Memory instr_data_mem (.addr(Addr), .WD(WriteData), .clk(clk), .MemWrite(MemWrite), .RD(ReadData));
 register_32bit buf_reg_2 (.D(ReadData), .clk(clk), .regwrite(1'b1), .Q(Data));  //To store the data that is from memory 
   //To store PC value of currently executing Insttuction

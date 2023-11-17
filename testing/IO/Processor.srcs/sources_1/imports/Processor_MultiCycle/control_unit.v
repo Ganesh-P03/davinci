@@ -37,7 +37,7 @@ Main_Decoder mainDecoder (
   .RegWrite(RegWrite),
   .PCUpdate(PCUpdate),
   .AddrSrc(AddrSrc_MainDecoder),
-  .MemWrite(MemWrite),
+  .MemWrite(MemWrite_MainDecoder),
   .IRWrite(IRWrite),
   .beq(beq),
   .bne(bne),

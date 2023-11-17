@@ -1,0 +1,7 @@
++====================+===================+==================================================+
+| Launch Setup Clock | Launch Hold Clock | Pin                                              |
++====================+===================+==================================================+
+| clk_pin            | clk_pin           | mem/ram/RAM_reg_bram_8/ADDRARDADDR[8]            |
+| clk_pin            | clk_pin           | mem/ram/RAM_reg_bram_8/ADDRBWRADDR[8]            |
+| clk_pin            | MMCM_pix_clock    | dispDriver/encode_R/genblk1.balance_acc_reg[0]/D |
++--------------------+-------------------+--------------------------------------------------+
