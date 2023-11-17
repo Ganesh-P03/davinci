@@ -21,14 +21,12 @@
 
 module DisplayDriver(
 	input clk,
-    input [31:0] displayData,
+   input [0:31] displayData,
  
 	output [2:0] TMDSp, TMDSn,
 	output TMDSp_clock, TMDSn_clock,
 	output [31:0] pointer
 );
-//parameter [0:31] displayData = 32'd1023;
-
 
 ////////////////////////////////////////////////////////////////////
 // clk divider 125 MHz to 25 MHz pixclk, and multiplier 125 MHz to 250 MHz
@@ -124,11 +122,11 @@ always @(posedge pixclk)
         CounterX <= (CounterX==799) ? 0 : CounterX+1;           // horizontal counter (including off-screen horizontal 160 pixels) total of 800 pixels 
         if(CounterX==799) 
             CounterY <= (CounterY==524) ? 0 : CounterY+1;       /* vertical counter (including off-screen vertical 45 pixels) total of 525 pixels
-                                                                 only counts up 1 count after horizontal finishes. */                                                          
-
+                                                                   only counts up 1 count after horizontal finishes. */                                                          
         hSync <= (CounterX>=656) && (CounterX<752);         // hsync high for 96 counts                                                 
         vSync <= (CounterY>=490) && (CounterY<492);         // vsync high for 2 counts
     end
+
 //assign red = 8'd0;
 //assign blue = 8'd0;
 //assign green = 8'd255;

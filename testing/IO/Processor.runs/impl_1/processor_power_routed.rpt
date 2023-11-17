@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date             : Fri Nov 17 16:24:06 2023
+| Date             : Fri Nov 17 16:50:03 2023
 | Host             : Ganesh running 64-bit major release  (build 9200)
 | Command          : report_power -file processor_power_routed.rpt -pb processor_power_summary_routed.pb -rpx processor_power_routed.rpx
 | Design           : processor
@@ -54,13 +54,13 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |    <0.001 |        6 |       --- |             --- |
 | Slice Logic              |    <0.001 |     4982 |       --- |             --- |
-|   LUT as Logic           |    <0.001 |      520 |     17600 |            2.95 |
-|   LUT as Distributed RAM |    <0.001 |     2418 |      6000 |           40.30 |
+|   LUT as Logic           |    <0.001 |      517 |     17600 |            2.94 |
+|   LUT as Distributed RAM |    <0.001 |     2410 |      6000 |           40.17 |
 |   F7/F8 Muxes            |    <0.001 |     1241 |     17600 |            7.05 |
-|   Register               |    <0.001 |      421 |     35200 |            1.20 |
+|   Register               |    <0.001 |      420 |     35200 |            1.19 |
 |   CARRY4                 |    <0.001 |        6 |      4400 |            0.14 |
 |   Others                 |     0.000 |      245 |       --- |             --- |
-| Signals                  |    <0.001 |     1483 |       --- |             --- |
+| Signals                  |    <0.001 |     1486 |       --- |             --- |
 | MMCM                     |     0.052 |        1 |         2 |           50.00 |
 | I/O                      |     0.131 |       14 |       100 |           14.00 |
 | Static Power             |     0.095 |          |           |                 |
