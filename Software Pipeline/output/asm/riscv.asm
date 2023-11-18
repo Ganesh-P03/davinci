@@ -3837,6 +3837,107 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
+// Function Math.abs 0
+Math.abs:
+
+// Pushed 0 zeros to stack; No locals
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_2
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_3
+lui $t0, IF_2
+addi $t0, $t0, IF_2
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_3:
+
+// Jump to ENDIF_2
+jal $ra, ENDIF_2
+
+IF_2:
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to argument (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($arg)
+
+ENDIF_2:
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
 // Function Math.divide 3
 Math.divide:
 
@@ -3922,11 +4023,22 @@ andi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to local (2)
+// Extract variable from stack
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 8($lcl)
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
 
 // Push to stack from argument (0)
 lw $t0, 0($arg)
@@ -4022,6 +4134,19 @@ lw $t0, 0($sp)
 
 sw $t0, 4($arg)
 
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
 // Push to stack from argument (1)
 lw $t0, 4($arg)
 
@@ -4050,22 +4175,216 @@ slt $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_2
+// Extract variable from stack
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_3
-lui $t0, IF_2
-addi $t0, $t0, IF_2
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
+
+WHILE_3:
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto END_WHILE_3
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_4
+lui $t0, END_WHILE_3
+addi $t0, $t0, END_WHILE_3
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_3:
+LOOP_EXIT_4:
 
-// Jump to ENDIF_2
-jal $ra, ENDIF_2
+// Push to stack from argument (0)
+lw $t0, 0($arg)
 
-IF_2:
-// Push to stack from constant (0)
-addi $t0, $zero, 0
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (1)
+lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to argument (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($arg)
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from argument (1)
+lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
+
+// Jump to WHILE_3
+jal $ra, WHILE_3
+
+END_WHILE_3:
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_5
+lui $t0, IF_4
+addi $t0, $t0, IF_4
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_5:
+
+// Jump to ENDIF_4
+jal $ra, ENDIF_4
+
+IF_4:
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+ENDIF_4:
+// Push to stack from local (0)
+lw $t0, 0($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -4094,23 +4413,122 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
-ENDIF_2:
-// Push to stack from argument (0)
-lw $t0, 0($arg)
+// Function Math.sqrt 4
+Math.sqrt:
+
+// Push 4 zeros to stack
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 4($arg)
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from constant (124)
+addi $t0, $zero, 124
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 4($arg)
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
+
+WHILE_5:
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto END_WHILE_5
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_6
+lui $t0, END_WHILE_5
+addi $t0, $t0, END_WHILE_5
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_6:
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (0)
+lw $t0, Math.0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -4130,70 +4548,57 @@ add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Call Math.divide 2
-lui $t0, Math.divide$ret.6
-addi $t0, $t0, Math.divide$ret.6
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push $lcl, $arg, $this, $that
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-
-sw $this, 0($sp)
-addi $sp, $sp, 4
-
-sw $that, 0($sp)
-addi $sp, $sp, 4
-
-// Reposition ARG, LCL
-addi $t0, $zero, 20
-addi $t0, $t0, 8
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-
-add $lcl, $zero, $sp
-
-// Jump to Math.divide
-jal $ra, Math.divide
-
-
-Math.divide$ret.6:
-
-// Pop from stack to local (0)
+// Pop from stack to pointer (1)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 0($lcl)
+addi $that, $t0, 0
 
-// Push to stack from argument (0)
-lw $t0, 0($arg)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (2)
-addi $t0, $zero, 2
+// Push to stack from that (0)
+add $t1, $that, $ram
+lw $t0, 0($t1)
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (0)
-lw $t0, 0($lcl)
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call Math.multiply 2
-lui $t0, Math.multiply$ret.7
-addi $t0, $t0, Math.multiply$ret.7
+lui $t0, Math.multiply$ret.6
+addi $t0, $t0, Math.multiply$ret.6
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -4223,7 +4628,466 @@ add $lcl, $zero, $sp
 jal $ra, Math.multiply
 
 
-Math.multiply$ret.7:
+Math.multiply$ret.6:
+
+// Pop from stack to local (3)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 12($lcl)
+
+// Push to stack from local (3)
+lw $t0, 12($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (3)
+lw $t0, 12($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+and $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_6
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_7
+lui $t0, IF_6
+addi $t0, $t0, IF_6
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_7:
+
+// Jump to ENDIF_6
+jal $ra, ENDIF_6
+
+IF_6:
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+ENDIF_6:
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (4)
+addi $t0, $zero, 4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
+
+// Jump to WHILE_5
+jal $ra, WHILE_5
+
+END_WHILE_5:
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Math.max 0
+Math.max:
+
+// Pushed 0 zeros to stack; No locals
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (1)
+lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_7
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_8
+lui $t0, IF_7
+addi $t0, $t0, IF_7
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_8:
+
+// Jump to ENDIF_7
+jal $ra, ENDIF_7
+
+IF_7:
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+ENDIF_7:
+// Push to stack from argument (1)
+lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Math.min 0
+Math.min:
+
+// Pushed 0 zeros to stack; No locals
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (1)
+lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_8
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_9
+lui $t0, IF_8
+addi $t0, $t0, IF_8
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_9:
+
+// Jump to ENDIF_8
+jal $ra, ENDIF_8
+
+IF_8:
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+ENDIF_8:
+// Push to stack from argument (1)
+lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Math.mod 0
+Math.mod:
+
+// Pushed 0 zeros to stack; No locals
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (1)
+lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.divide 2
+lui $t0, Math.divide$ret.7
+addi $t0, $t0, Math.divide$ret.7
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.divide
+jal $ra, Math.divide
+
+
+Math.divide$ret.7:
 
 // Push to stack from argument (1)
 lw $t0, 4($arg)
@@ -4280,165 +5144,6 @@ sub $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 4($arg)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-slt $t0, $t1, $t0
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// If-goto IF_3
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_4
-lui $t0, IF_3
-addi $t0, $t0, IF_3
-add $t0, $t0, $pc
-jalr $ra, $t0, 0
-LOOP_EXIT_4:
-
-// Push to stack from local (0)
-lw $t0, 0($lcl)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (0)
-lw $t0, 0($lcl)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t1, $t0
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (1)
-addi $t0, $zero, 1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t1, $t0
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to local (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 4($lcl)
-
-// Jump to ENDIF_3
-jal $ra, ENDIF_3
-
-IF_3:
-// Push to stack from local (0)
-lw $t0, 0($lcl)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (0)
-lw $t0, 0($lcl)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t1, $t0
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to local (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 4($lcl)
-
-ENDIF_3:
-// Push to stack from local (2)
-lw $t0, 8($lcl)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// If-goto IF_4
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_5
-lui $t0, IF_4
-addi $t0, $t0, IF_4
-add $t0, $t0, $pc
-jalr $ra, $t0, 0
-LOOP_EXIT_5:
-
-// Push to stack from local (1)
-lw $t0, 4($lcl)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sub $t0, $zero, $t0
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
 // Get return address
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -4462,43 +5167,8 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
-// Jump to ENDIF_4
-jal $ra, ENDIF_4
-
-IF_4:
-// Push to stack from local (1)
-lw $t0, 4($lcl)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Get return address
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
-
-// ARG = pop()
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($arg)
-
-// Change SP = ARG + 1
-addi $sp, $arg, 4
-
-// Get Segments
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $lcl, 4($t0)
-lw $arg, 8($t0)
-lw $this, 12($t0)
-lw $that, 16($t0)
-
-jalr $ra, $ra, 0
-
-ENDIF_4:
-// Function Math.abs 0
-Math.abs:
+// Function Math.twoToThe 0
+Math.twoToThe:
 
 // Pushed 0 zeros to stack; No locals
 
@@ -4509,8 +5179,62 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (0)
-addi $t0, $zero, 0
+// Push to stack from constant (4)
+addi $t0, $zero, 4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.multiply 2
+lui $t0, Math.multiply$ret.9
+addi $t0, $t0, Math.multiply$ret.9
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.multiply
+jal $ra, Math.multiply
+
+
+Math.multiply$ret.9:
+
+// Pop from stack to argument (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($arg)
+
+// Push to stack from static (0)
+lw $t0, Math.0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -4524,52 +5248,21 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 
-slt $t0, $t1, $t0
+add $t0, $t1, $t0
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_5
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_6
-lui $t0, IF_5
-addi $t0, $t0, IF_5
-add $t0, $t0, $pc
-jalr $ra, $t0, 0
-LOOP_EXIT_6:
-
-// Jump to ENDIF_5
-jal $ra, ENDIF_5
-
-IF_5:
-// Push to stack from argument (0)
-lw $t0, 0($arg)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
+// Pop from stack to pointer (1)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sub $t0, $zero, $t0
+addi $that, $t0, 0
 
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to argument (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($arg)
-
-ENDIF_5:
-// Push to stack from argument (0)
-lw $t0, 0($arg)
+// Push to stack from that (0)
+add $t1, $that, $ram
+lw $t0, 0($t1)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -4719,34 +5412,6 @@ lw $t0, 0($sp)
 
 sw $t0, Memory.8
 
-// Push to stack from static (7)
-lw $t0, Memory.7
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from static (1)
-lw $t0, Memory.1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t1, $t0
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
 // Push to stack from static (3)
 lw $t0, Memory.3
 
@@ -4775,41 +5440,15 @@ sub $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to temp (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($temp)
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-addi $that, $t0, 0
-
-// Push to stack from temp (0)
-lw $t0, 0($temp)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-add $t1, $that, $ram
-sw $t0, 0($t1)
-
-// Push to stack from static (8)
-lw $t0, Memory.8
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
 // Push to stack from static (1)
 lw $t0, Memory.1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (7)
+lw $t0, Memory.7
 
 // Push to stack
 sw $t0, 0($sp)
@@ -4829,6 +5468,19 @@ add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
 // Push to stack from constant (0)
 addi $t0, $zero, 0
 
@@ -4836,24 +5488,39 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to temp (0)
+// Push to stack from static (1)
+lw $t0, Memory.1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (8)
+lw $t0, Memory.8
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 0($temp)
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 
 // Pop from stack to pointer (1)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
 addi $that, $t0, 0
-
-// Push to stack from temp (0)
-lw $t0, 0($temp)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -4988,15 +5655,15 @@ lw $t0, 0($sp)
 
 sw $t0, 0($arg)
 
-// Push to stack from argument (0)
-lw $t0, 0($arg)
+// Push to stack from static (0)
+lw $t0, Memory.0
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (0)
-lw $t0, Memory.0
+// Push to stack from argument (0)
+lw $t0, 0($arg)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -5126,8 +5793,8 @@ lw $t0, 0($sp)
 
 sw $t0, 0($arg)
 
-// Push to stack from argument (0)
-lw $t0, 0($arg)
+// Push to stack from argument (1)
+lw $t0, 4($arg)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -5135,6 +5802,13 @@ addi $sp, $sp, 4
 
 // Push to stack from static (0)
 lw $t0, Memory.0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -5154,31 +5828,11 @@ add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (1)
-lw $t0, 4($arg)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to temp (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($temp)
-
 // Pop from stack to pointer (1)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
 addi $that, $t0, 0
-
-// Push to stack from temp (0)
-lw $t0, 0($temp)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -5224,76 +5878,6 @@ Memory.val:
 
 // Push to stack from static (1)
 lw $t0, Memory.1
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Get return address
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
-
-// ARG = pop()
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($arg)
-
-// Change SP = ARG + 1
-addi $sp, $arg, 4
-
-// Get Segments
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $lcl, 4($t0)
-lw $arg, 8($t0)
-lw $this, 12($t0)
-lw $that, 16($t0)
-
-jalr $ra, $ra, 0
-
-// Function Memory.Tval 0
-Memory.Tval:
-
-// Pushed 0 zeros to stack; No locals
-
-// Push to stack from static (10)
-lw $t0, Memory.10
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Get return address
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
-
-// ARG = pop()
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($arg)
-
-// Change SP = ARG + 1
-addi $sp, $arg, 4
-
-// Get Segments
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $lcl, 4($t0)
-lw $arg, 8($t0)
-lw $this, 12($t0)
-lw $that, 16($t0)
-
-jalr $ra, $ra, 0
-
-// Function Memory.Bval 0
-Memory.Bval:
-
-// Pushed 0 zeros to stack; No locals
-
-// Push to stack from static (11)
-lw $t0, Memory.11
 
 // Push to stack
 sw $t0, 0($sp)
@@ -5395,15 +5979,15 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-// Push to stack from static (8)
-lw $t0, Memory.8
+// Push to stack from local (0)
+lw $t0, 0($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (0)
-lw $t0, 0($lcl)
+// Push to stack from static (8)
+lw $t0, Memory.8
 
 // Push to stack
 sw $t0, 0($sp)
@@ -5462,20 +6046,20 @@ andi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_TRUE0
+// If-goto IF_0
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_7
-lui $t0, IF_TRUE0
-addi $t0, $t0, IF_TRUE0
+beq $t0, $zero, LOOP_EXIT_10
+lui $t0, IF_0
+addi $t0, $t0, IF_0
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_7:
+LOOP_EXIT_10:
 
-// Jump to IF_FALSE0
-jal $ra, IF_FALSE0
+// Jump to ENDIF_0
+jal $ra, ENDIF_0
 
-IF_TRUE0:
+IF_0:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -5506,12 +6090,8 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
-// Jump to IF_END0
-jal $ra, IF_END0
-
-IF_FALSE0:
-IF_END0:
-WHILE_EXP0:
+ENDIF_0:
+WHILE_1:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -5566,25 +6146,25 @@ addi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto WHILE_END0
+// If-goto END_WHILE_1
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_8
-lui $t0, WHILE_END0
-addi $t0, $t0, WHILE_END0
+beq $t0, $zero, LOOP_EXIT_11
+lui $t0, END_WHILE_1
+addi $t0, $t0, END_WHILE_1
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_8:
+LOOP_EXIT_11:
 
-// Push to stack from static (7)
-lw $t0, Memory.7
+// Push to stack from local (0)
+lw $t0, 0($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (0)
-lw $t0, 0($lcl)
+// Push to stack from static (7)
+lw $t0, Memory.7
 
 // Push to stack
 sw $t0, 0($sp)
@@ -5726,20 +6306,20 @@ and $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_TRUE1
+// If-goto IF_2
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_9
-lui $t0, IF_TRUE1
-addi $t0, $t0, IF_TRUE1
+beq $t0, $zero, LOOP_EXIT_12
+lui $t0, IF_2
+addi $t0, $t0, IF_2
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_9:
+LOOP_EXIT_12:
 
-// Jump to IF_FALSE1
-jal $ra, IF_FALSE1
+// Jump to ENDIF_2
+jal $ra, ENDIF_2
 
-IF_TRUE1:
+IF_2:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -5766,20 +6346,16 @@ lw $t0, 0($sp)
 
 sw $t0, 8($lcl)
 
-// Jump to IF_END1
-jal $ra, IF_END1
-
-IF_FALSE1:
-IF_END1:
-// Push to stack from static (8)
-lw $t0, Memory.8
+ENDIF_2:
+// Push to stack from local (0)
+lw $t0, 0($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (0)
-lw $t0, 0($lcl)
+// Push to stack from static (8)
+lw $t0, Memory.8
 
 // Push to stack
 sw $t0, 0($sp)
@@ -5819,10 +6395,10 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-// Jump to WHILE_EXP0
-jal $ra, WHILE_EXP0
+// Jump to WHILE_1
+jal $ra, WHILE_1
 
-WHILE_END0:
+END_WHILE_1:
 // Push to stack from local (1)
 lw $t0, 4($lcl)
 
@@ -5872,8 +6448,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call Memory.bestFit 1
-lui $t0, Memory.bestFit$ret.9
-addi $t0, $t0, Memory.bestFit$ret.9
+lui $t0, Memory.bestFit$ret.10
+addi $t0, $t0, Memory.bestFit$ret.10
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5903,7 +6479,7 @@ add $lcl, $zero, $sp
 jal $ra, Memory.bestFit
 
 
-Memory.bestFit$ret.9:
+Memory.bestFit$ret.10:
 
 // Pop from stack to local (0)
 addi $sp, $sp, -4
@@ -6001,29 +6577,29 @@ addi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_TRUE2
+// If-goto IF_3
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_10
-lui $t0, IF_TRUE2
-addi $t0, $t0, IF_TRUE2
+beq $t0, $zero, LOOP_EXIT_13
+lui $t0, IF_3
+addi $t0, $t0, IF_3
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_10:
+LOOP_EXIT_13:
 
-// Jump to IF_FALSE2
-jal $ra, IF_FALSE2
+// Jump to ENDIF_3
+jal $ra, ENDIF_3
 
-IF_TRUE2:
-// Push to stack from static (7)
-lw $t0, Memory.7
+IF_3:
+// Push to stack from local (0)
+lw $t0, 0($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (0)
-lw $t0, 0($lcl)
+// Push to stack from static (7)
+lw $t0, Memory.7
 
 // Push to stack
 sw $t0, 0($sp)
@@ -6099,20 +6675,164 @@ slt $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_TRUE3
+// If-goto IF_4
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_11
-lui $t0, IF_TRUE3
-addi $t0, $t0, IF_TRUE3
+beq $t0, $zero, LOOP_EXIT_14
+lui $t0, IF_4
+addi $t0, $t0, IF_4
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_11:
+LOOP_EXIT_14:
 
-// Jump to IF_FALSE3
-jal $ra, IF_FALSE3
+// Push to stack from local (0)
+lw $t0, 0($lcl)
 
-IF_TRUE3:
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (8)
+lw $t0, Memory.8
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Push to stack from that (0)
+add $t1, $that, $ram
+lw $t0, 0($t1)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (7)
+lw $t0, Memory.7
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Push to stack from that (0)
+add $t1, $that, $ram
+lw $t0, 0($t1)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (9)
+lw $t0, Memory.9
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Push to stack from constant (2)
+addi $t0, $zero, 2
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (12)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Memory.12
+
+// Jump to ENDIF_4
+jal $ra, ENDIF_4
+
+IF_4:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -6231,43 +6951,15 @@ lw $t0, 0($sp)
 
 sw $t0, 4($lcl)
 
-// Push to stack from static (8)
-lw $t0, Memory.8
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from local (1)
-lw $t0, 4($lcl)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-// Extract variable from stack
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-
-add $t0, $t1, $t0
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from static (8)
-lw $t0, Memory.8
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
 // Push to stack from local (0)
 lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (8)
+lw $t0, Memory.8
 
 // Push to stack
 sw $t0, 0($sp)
@@ -6301,41 +6993,15 @@ lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to temp (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($temp)
-
-// Pop from stack to pointer (1)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-addi $that, $t0, 0
-
-// Push to stack from temp (0)
-lw $t0, 0($temp)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Pop from stack to that (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-add $t1, $that, $ram
-sw $t0, 0($t1)
-
-// Push to stack from static (7)
-lw $t0, Memory.7
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
 // Push to stack from local (1)
 lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (8)
+lw $t0, Memory.8
 
 // Push to stack
 sw $t0, 0($sp)
@@ -6355,15 +7021,28 @@ add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (7)
-lw $t0, Memory.7
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (0)
-lw $t0, 0($lcl)
+// Push to stack from static (7)
+lw $t0, Memory.7
 
 // Push to stack
 sw $t0, 0($sp)
@@ -6439,24 +7118,39 @@ sub $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to temp (0)
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (7)
+lw $t0, Memory.7
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 0($temp)
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 
 // Pop from stack to pointer (1)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
 addi $that, $t0, 0
-
-// Push to stack from temp (0)
-lw $t0, 0($temp)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
 
 // Pop from stack to that (0)
 addi $sp, $sp, -4
@@ -6465,8 +7159,2120 @@ lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
 // Push to stack from static (9)
 lw $t0, Memory.9
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (11)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Memory.11
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Memory.1
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (12)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Memory.12
+
+ENDIF_4:
+ENDIF_3:
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+
+// ====================================
+// End of File: Memory
+// ====================================
+// ====================================
+// Virtual Machine Code File: Output
+// ====================================
+
+// Function Output.init 0
+Output.init:
+
+// Pushed 0 zeros to stack; No locals
+
+// Push to stack from constant (36)
+addi $t0, $zero, 36
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Array.new 1
+lui $t0, Array.new$ret.11
+addi $t0, $t0, Array.new$ret.11
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Array.new
+jal $ra, Array.new
+
+
+Array.new$ret.11:
+
+// Pop from stack to static (6)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.6
+
+// Push to stack from static (6)
+lw $t0, Output.6
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Output.initMap 1
+Output.initMap:
+
+// Push 1 zeros to stack
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (127)
+addi $t0, $zero, 127
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Array.new 1
+lui $t0, Array.new$ret.12
+addi $t0, $t0, Array.new$ret.12
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Array.new
+jal $ra, Array.new
+
+
+Array.new$ret.12:
+
+// Pop from stack to static (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.0
+
+// Push to stack from constant (48)
+addi $t0, $zero, 48
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (62)
+addi $t0, $zero, 62
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (67)
+addi $t0, $zero, 67
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (69)
+addi $t0, $zero, 69
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (73)
+addi $t0, $zero, 73
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (81)
+addi $t0, $zero, 81
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (97)
+addi $t0, $zero, 97
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (62)
+addi $t0, $zero, 62
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.create 8
+lui $t0, Output.create$ret.13
+addi $t0, $t0, Output.create$ret.13
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 32
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.create
+jal $ra, Output.create
+
+
+Output.create$ret.13:
+
+// Pop from stack to temp (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($temp)
+
+// Push to stack from constant (49)
+addi $t0, $zero, 49
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (8)
+addi $t0, $zero, 8
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (24)
+addi $t0, $zero, 24
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (40)
+addi $t0, $zero, 40
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (8)
+addi $t0, $zero, 8
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (8)
+addi $t0, $zero, 8
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (8)
+addi $t0, $zero, 8
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (127)
+addi $t0, $zero, 127
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.create 8
+lui $t0, Output.create$ret.14
+addi $t0, $t0, Output.create$ret.14
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 32
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.create
+jal $ra, Output.create
+
+
+Output.create$ret.14:
+
+// Pop from stack to temp (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($temp)
+
+// Push to stack from constant (50)
+addi $t0, $zero, 50
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (127)
+addi $t0, $zero, 127
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (127)
+addi $t0, $zero, 127
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (64)
+addi $t0, $zero, 64
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (64)
+addi $t0, $zero, 64
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (127)
+addi $t0, $zero, 127
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.create 8
+lui $t0, Output.create$ret.15
+addi $t0, $t0, Output.create$ret.15
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 32
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.create
+jal $ra, Output.create
+
+
+Output.create$ret.15:
+
+// Pop from stack to temp (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($temp)
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (127)
+addi $t0, $zero, 127
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (127)
+addi $t0, $zero, 127
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.create 8
+lui $t0, Output.create$ret.16
+addi $t0, $t0, Output.create$ret.16
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 32
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.create
+jal $ra, Output.create
+
+
+Output.create$ret.16:
+
+// Pop from stack to temp (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($temp)
+
+// Push to stack from constant (66)
+addi $t0, $zero, 66
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (126)
+addi $t0, $zero, 126
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (126)
+addi $t0, $zero, 126
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (126)
+addi $t0, $zero, 126
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.create 8
+lui $t0, Output.create$ret.17
+addi $t0, $t0, Output.create$ret.17
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 32
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.create
+jal $ra, Output.create
+
+
+Output.create$ret.17:
+
+// Pop from stack to temp (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($temp)
+
+// Push to stack from constant (67)
+addi $t0, $zero, 67
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (127)
+addi $t0, $zero, 127
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (65)
+addi $t0, $zero, 65
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (127)
+addi $t0, $zero, 127
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.create 8
+lui $t0, Output.create$ret.18
+addi $t0, $t0, Output.create$ret.18
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 32
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.create
+jal $ra, Output.create
+
+
+Output.create$ret.18:
+
+// Pop from stack to temp (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($temp)
+
+// Push to stack from constant (68)
+addi $t0, $zero, 68
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (124)
+addi $t0, $zero, 124
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (70)
+addi $t0, $zero, 70
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (67)
+addi $t0, $zero, 67
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (67)
+addi $t0, $zero, 67
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (67)
+addi $t0, $zero, 67
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (70)
+addi $t0, $zero, 70
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (124)
+addi $t0, $zero, 124
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.create 8
+lui $t0, Output.create$ret.19
+addi $t0, $t0, Output.create$ret.19
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 32
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.create
+jal $ra, Output.create
+
+
+Output.create$ret.19:
+
+// Pop from stack to temp (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($temp)
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Output.create 2
+Output.create:
+
+// Push 2 zeros to stack
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (7)
+addi $t0, $zero, 7
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Array.new 1
+lui $t0, Array.new$ret.20
+addi $t0, $t0, Array.new$ret.20
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Array.new
+jal $ra, Array.new
+
+
+Array.new$ret.20:
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (0)
+lw $t0, Output.0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Push to stack from argument (1)
+lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Push to stack from argument (2)
+lw $t0, 8($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (4)
+addi $t0, $zero, 4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Push to stack from argument (3)
+lw $t0, 12($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (8)
+addi $t0, $zero, 8
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Push to stack from argument (4)
+lw $t0, 16($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (12)
+addi $t0, $zero, 12
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Push to stack from argument (5)
+lw $t0, 20($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (16)
+addi $t0, $zero, 16
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Push to stack from argument (6)
+lw $t0, 24($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (20)
+addi $t0, $zero, 20
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Push to stack from argument (7)
+lw $t0, 28($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (24)
+addi $t0, $zero, 24
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Output.modulo 2
+Output.modulo:
+
+// Push 2 zeros to stack
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (1)
+lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
+
+WHILE_0:
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+or $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t2, $t1, $t0
+slt $t3, $t0, $t1
+add $t0, $t2, $t3
+addi $t0, $t0, 1
+andi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto END_WHILE_0
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_15
+lui $t0, END_WHILE_0
+addi $t0, $t0, END_WHILE_0
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_15:
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (1)
+lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (1)
+lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
+
+// Jump to WHILE_0
+jal $ra, WHILE_0
+
+END_WHILE_0:
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Output.createMemoryMappings 6
+Output.createMemoryMappings:
+
+// Push 6 zeros to stack
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (3)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 12($lcl)
+
+WHILE_1:
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (310)
+addi $t0, $zero, 310
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto END_WHILE_1
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_16
+lui $t0, END_WHILE_1
+addi $t0, $t0, END_WHILE_1
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_16:
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (32)
+addi $t0, $zero, 32
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.modulo 2
+lui $t0, Output.modulo$ret.21
+addi $t0, $t0, Output.modulo$ret.21
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.modulo
+jal $ra, Output.modulo
+
+
+Output.modulo$ret.21:
+
+// Pop from stack to local (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 16($lcl)
+
+// Push to stack from local (4)
+lw $t0, 16($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (3)
+addi $t0, $zero, 3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.modulo 2
+lui $t0, Output.modulo$ret.22
+addi $t0, $t0, Output.modulo$ret.22
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.modulo
+jal $ra, Output.modulo
+
+
+Output.modulo$ret.22:
+
+// Pop from stack to local (5)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 20($lcl)
+
+// Push to stack from local (5)
+lw $t0, 20($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t2, $t1, $t0
+slt $t3, $t0, $t1
+add $t0, $t2, $t3
+addi $t0, $t0, 1
+andi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_2
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_17
+lui $t0, IF_2
+addi $t0, $t0, IF_2
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_17:
+
+// Jump to ENDIF_2
+jal $ra, ENDIF_2
+
+IF_2:
+// Push to stack from local (3)
+lw $t0, 12($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t2, $t1, $t0
+slt $t3, $t0, $t1
+add $t0, $t2, $t3
+addi $t0, $t0, 1
+andi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_3
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_18
+lui $t0, IF_3
+addi $t0, $t0, IF_3
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_18:
+
+// Jump to ENDIF_3
+jal $ra, ENDIF_3
+
+IF_3:
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (6)
+lw $t0, Output.6
 
 // Push to stack
 sw $t0, 0($sp)
@@ -6493,8 +9299,56 @@ add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from argument (0)
-lw $t0, 0($arg)
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (4)
+addi $t0, $zero, 4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
+
+ENDIF_3:
+// Push to stack from local (3)
+lw $t0, 12($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -6521,11 +9375,341 @@ add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to temp (0)
+// Pop from stack to local (3)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 0($temp)
+sw $t0, 12($lcl)
+
+// Push to stack from local (3)
+lw $t0, 12($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (3)
+addi $t0, $zero, 3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.modulo 2
+lui $t0, Output.modulo$ret.23
+addi $t0, $t0, Output.modulo$ret.23
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.modulo
+jal $ra, Output.modulo
+
+
+Output.modulo$ret.23:
+
+// Pop from stack to local (3)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 12($lcl)
+
+ENDIF_2:
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
+
+// Jump to WHILE_1
+jal $ra, WHILE_1
+
+END_WHILE_1:
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Output.getMap 0
+Output.getMap:
+
+// Pushed 0 zeros to stack; No locals
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (32)
+addi $t0, $zero, 32
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (126)
+addi $t0, $zero, 126
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+or $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_19
+lui $t0, IF_4
+addi $t0, $t0, IF_4
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_19:
+
+// Jump to ENDIF_4
+jal $ra, ENDIF_4
+
+IF_4:
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to argument (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($arg)
+
+ENDIF_4:
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to argument (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($arg)
+
+// Push to stack from static (0)
+lw $t0, Output.0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 
 // Pop from stack to pointer (1)
 addi $sp, $sp, -4
@@ -6533,22 +9717,44 @@ lw $t0, 0($sp)
 
 addi $that, $t0, 0
 
-// Push to stack from temp (0)
-lw $t0, 0($temp)
+// Push to stack from that (0)
+add $t1, $that, $ram
+lw $t0, 0($t1)
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to that (0)
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
 addi $sp, $sp, -4
 lw $t0, 0($sp)
+sw $t0, 0($arg)
 
-add $t1, $that, $ram
-sw $t0, 0($t1)
+// Change SP = ARG + 1
+addi $sp, $arg, 4
 
-// Push to stack from local (1)
-lw $t0, 4($lcl)
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Output.moveCursor 0
+Output.moveCursor:
+
+// Pushed 0 zeros to stack; No locals
+
+// Push to stack from argument (1)
+lw $t0, 4($arg)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -6558,7 +9764,87 @@ addi $sp, $sp, 4
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Memory.1
+sw $t0, Output.1
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.2
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Output.power 3
+Output.power:
+
+// Push 3 zeros to stack
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
+
+// Push to stack from argument (1)
+lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
 
 // Push to stack from constant (1)
 addi $t0, $zero, 1
@@ -6567,25 +9853,308 @@ addi $t0, $zero, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (11)
+// Pop from stack to local (0)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Memory.11
+sw $t0, 0($lcl)
 
-// Jump to IF_END3
-jal $ra, IF_END3
-
-IF_FALSE3:
-// Push to stack from static (8)
-lw $t0, Memory.8
+WHILE_5:
+// Push to stack from local (2)
+lw $t0, 8($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto END_WHILE_5
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_20
+lui $t0, END_WHILE_5
+addi $t0, $t0, END_WHILE_5
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_20:
+
 // Push to stack from local (0)
 lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.multiply 2
+lui $t0, Math.multiply$ret.24
+addi $t0, $t0, Math.multiply$ret.24
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.multiply
+jal $ra, Math.multiply
+
+
+Math.multiply$ret.24:
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
+
+// Jump to WHILE_5
+jal $ra, WHILE_5
+
+END_WHILE_5:
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Output.printChar 17
+Output.printChar:
+
+// Push 17 zeros to stack
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (3)
+lw $t0, Output.3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (3)
+lw $t0, Output.3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (3)
+lw $t0, Output.3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (3)
+lw $t0, Output.3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (5)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.5
+
+// Push to stack from static (6)
+lw $t0, Output.6
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (5)
+lw $t0, Output.5
 
 // Push to stack
 sw $t0, 0($sp)
@@ -6625,15 +10194,358 @@ lw $t0, 0($sp)
 
 sw $t0, 4($lcl)
 
-// Push to stack from static (9)
-lw $t0, Memory.9
+// Push to stack from static (4)
+lw $t0, Output.4
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (2)
-lw $t0, 8($lcl)
+// Push to stack from constant (100)
+addi $t0, $zero, 100
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.multiply 2
+lui $t0, Math.multiply$ret.25
+addi $t0, $t0, Math.multiply$ret.25
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.multiply
+jal $ra, Math.multiply
+
+
+Math.multiply$ret.25:
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (32)
+addi $t0, $zero, 32
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.divide 2
+lui $t0, Math.divide$ret.26
+addi $t0, $t0, Math.divide$ret.26
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.divide
+jal $ra, Math.divide
+
+
+Math.divide$ret.26:
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (32)
+addi $t0, $zero, 32
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.modulo 2
+lui $t0, Output.modulo$ret.27
+addi $t0, $t0, Output.modulo$ret.27
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.modulo
+jal $ra, Output.modulo
+
+
+Output.modulo$ret.27:
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (3)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 12($lcl)
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.getMap 1
+lui $t0, Output.getMap$ret.28
+addi $t0, $t0, Output.getMap$ret.28
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.getMap
+jal $ra, Output.getMap
+
+
+Output.getMap$ret.28:
+
+// Pop from stack to local (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 16($lcl)
+
+WHILE_6:
+// Push to stack from local (3)
+lw $t0, 12($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (7)
+addi $t0, $zero, 7
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto END_WHILE_6
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_21
+lui $t0, END_WHILE_6
+addi $t0, $t0, END_WHILE_6
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_21:
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (5)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 20($lcl)
+
+WHILE_7:
+// Push to stack from local (5)
+lw $t0, 20($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (7)
+addi $t0, $zero, 7
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto END_WHILE_7
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_22
+lui $t0, END_WHILE_7
+addi $t0, $t0, END_WHILE_7
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_22:
+
+// Push to stack from local (5)
+lw $t0, 20($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (5)
+lw $t0, 20($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -6653,15 +10565,63 @@ add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from static (7)
-lw $t0, Memory.7
+// Push to stack from local (5)
+lw $t0, 20($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from local (0)
-lw $t0, 0($lcl)
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (5)
+lw $t0, 20($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (15)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 60($lcl)
+
+// Push to stack from local (4)
+lw $t0, 16($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (15)
+lw $t0, 60($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -6695,11 +10655,115 @@ lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to temp (0)
+// Pop from stack to local (6)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 0($temp)
+sw $t0, 24($lcl)
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (16)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 64($lcl)
+
+// Push to stack from static (7)
+lw $t0, Output.7
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (16)
+lw $t0, 64($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 
 // Pop from stack to pointer (1)
 addi $sp, $sp, -4
@@ -6707,19 +10771,53 @@ lw $t0, 0($sp)
 
 addi $that, $t0, 0
 
-// Push to stack from temp (0)
-lw $t0, 0($temp)
+// Push to stack from that (0)
+add $t1, $that, $ram
+lw $t0, 0($t1)
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to that (0)
+// Pop from stack to local (8)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-add $t1, $that, $ram
-sw $t0, 0($t1)
+sw $t0, 32($lcl)
+
+// Push to stack from constant (31)
+addi $t0, $zero, 31
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (7)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 28($lcl)
 
 // Push to stack from constant (2)
 addi $t0, $zero, 2
@@ -6728,20 +10826,2236 @@ addi $t0, $zero, 2
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pop from stack to static (11)
+// Push to stack from local (7)
+lw $t0, 28($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.power 2
+lui $t0, Output.power$ret.29
+addi $t0, $t0, Output.power$ret.29
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.power
+jal $ra, Output.power
+
+
+Output.power$ret.29:
+
+// Pop from stack to local (9)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, Memory.11
+sw $t0, 36($lcl)
 
-IF_END3:
-// Jump to IF_END2
-jal $ra, IF_END2
+// Push to stack from local (8)
+lw $t0, 32($lcl)
 
-IF_FALSE2:
-IF_END2:
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (9)
+lw $t0, 36($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.divide 2
+lui $t0, Math.divide$ret.30
+addi $t0, $t0, Math.divide$ret.30
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.divide
+jal $ra, Math.divide
+
+
+Math.divide$ret.30:
+
+// Pop from stack to local (10)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 40($lcl)
+
+// Push to stack from local (10)
+lw $t0, 40($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+and $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (11)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 44($lcl)
+
+// Push to stack from local (11)
+lw $t0, 44($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t2, $t1, $t0
+slt $t3, $t0, $t1
+add $t0, $t2, $t3
+addi $t0, $t0, 1
+andi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_8
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_23
+lui $t0, IF_8
+addi $t0, $t0, IF_8
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_23:
+
+// Jump to ENDIF_8
+jal $ra, ENDIF_8
+
+IF_8:
+// Push to stack from local (8)
+lw $t0, 32($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (9)
+lw $t0, 36($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (8)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 32($lcl)
+
+ENDIF_8:
+// Push to stack from constant (6)
+addi $t0, $zero, 6
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (3)
+lw $t0, 12($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (12)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 48($lcl)
+
+// Push to stack from constant (2)
+addi $t0, $zero, 2
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (12)
+lw $t0, 48($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.power 2
+lui $t0, Output.power$ret.31
+addi $t0, $t0, Output.power$ret.31
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.power
+jal $ra, Output.power
+
+
+Output.power$ret.31:
+
+// Pop from stack to local (13)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 52($lcl)
+
+// Push to stack from local (6)
+lw $t0, 24($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (13)
+lw $t0, 52($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.divide 2
+lui $t0, Math.divide$ret.32
+addi $t0, $t0, Math.divide$ret.32
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.divide
+jal $ra, Math.divide
+
+
+Math.divide$ret.32:
+
+// Pop from stack to local (14)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 56($lcl)
+
+// Push to stack from local (14)
+lw $t0, 56($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+and $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (11)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 44($lcl)
+
+// Push to stack from local (11)
+lw $t0, 44($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t2, $t1, $t0
+slt $t3, $t0, $t1
+add $t0, $t2, $t3
+addi $t0, $t0, 1
+andi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_9
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_24
+lui $t0, IF_9
+addi $t0, $t0, IF_9
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_24:
+
+// Jump to ENDIF_9
+jal $ra, ENDIF_9
+
+IF_9:
+// Push to stack from local (8)
+lw $t0, 32($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (9)
+lw $t0, 36($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (8)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 32($lcl)
+
+ENDIF_9:
+// Push to stack from local (8)
+lw $t0, 32($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (7)
+lw $t0, Output.7
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (16)
+lw $t0, 64($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Jump to WHILE_7
+jal $ra, WHILE_7
+
+END_WHILE_7:
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from local (3)
+lw $t0, 12($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (3)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 12($lcl)
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (32)
+addi $t0, $zero, 32
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t2, $t1, $t0
+slt $t3, $t0, $t1
+add $t0, $t2, $t3
+addi $t0, $t0, 1
+andi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_10
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_25
+lui $t0, IF_10
+addi $t0, $t0, IF_10
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_25:
+
+// Jump to ENDIF_10
+jal $ra, ENDIF_10
+
+IF_10:
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
 // Push to stack from local (2)
 lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
+
+ENDIF_10:
+// Jump to WHILE_6
+jal $ra, WHILE_6
+
+END_WHILE_6:
+// Push to stack from static (3)
+lw $t0, Output.3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (35)
+addi $t0, $zero, 35
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t2, $t1, $t0
+slt $t3, $t0, $t1
+add $t0, $t2, $t3
+addi $t0, $t0, 1
+andi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_11
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_26
+lui $t0, IF_11
+addi $t0, $t0, IF_11
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_26:
+
+// Push to stack from static (3)
+lw $t0, Output.3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (3)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.3
+
+// Jump to ENDIF_11
+jal $ra, ENDIF_11
+
+IF_11:
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (3)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.3
+
+// Push to stack from static (4)
+lw $t0, Output.4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.4
+
+ENDIF_11:
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Output.println 0
+Output.println:
+
+// Pushed 0 zeros to stack; No locals
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (3)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.3
+
+// Push to stack from static (4)
+lw $t0, Output.4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
+// Function Output.backSpace 13
+Output.backSpace:
+
+// Push 13 zeros to stack
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (3)
+lw $t0, Output.3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (3)
+lw $t0, Output.3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (3)
+lw $t0, Output.3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (3)
+lw $t0, Output.3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (5)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.5
+
+// Push to stack from static (6)
+lw $t0, Output.6
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (5)
+lw $t0, Output.5
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Push to stack from that (0)
+add $t1, $that, $ram
+lw $t0, 0($t1)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 4($lcl)
+
+// Push to stack from static (4)
+lw $t0, Output.4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (100)
+addi $t0, $zero, 100
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.multiply 2
+lui $t0, Math.multiply$ret.33
+addi $t0, $t0, Math.multiply$ret.33
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.multiply
+jal $ra, Math.multiply
+
+
+Math.multiply$ret.33:
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (32)
+addi $t0, $zero, 32
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.divide 2
+lui $t0, Math.divide$ret.34
+addi $t0, $t0, Math.divide$ret.34
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.divide
+jal $ra, Math.divide
+
+
+Math.divide$ret.34:
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (32)
+addi $t0, $zero, 32
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.modulo 2
+lui $t0, Output.modulo$ret.35
+addi $t0, $t0, Output.modulo$ret.35
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.modulo
+jal $ra, Output.modulo
+
+
+Output.modulo$ret.35:
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (3)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 12($lcl)
+
+// Push to stack from static (3)
+lw $t0, Output.3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t2, $t1, $t0
+slt $t3, $t0, $t1
+add $t0, $t2, $t3
+addi $t0, $t0, 1
+andi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_12
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_27
+lui $t0, IF_12
+addi $t0, $t0, IF_12
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_27:
+
+// Push to stack from static (3)
+lw $t0, Output.3
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (3)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.3
+
+// Jump to ENDIF_12
+jal $ra, ENDIF_12
+
+IF_12:
+// Push to stack from static (4)
+lw $t0, Output.4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t0, $t1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_13
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_28
+lui $t0, IF_13
+addi $t0, $t0, IF_13
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_28:
+
+// Jump to ENDIF_13
+jal $ra, ENDIF_13
+
+IF_13:
+// Push to stack from static (4)
+lw $t0, Output.4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.4
+
+// Push to stack from constant (35)
+addi $t0, $zero, 35
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to static (3)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, Output.3
+
+ENDIF_13:
+ENDIF_12:
+WHILE_14:
+// Push to stack from local (3)
+lw $t0, 12($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (7)
+addi $t0, $zero, 7
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto END_WHILE_14
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_29
+lui $t0, END_WHILE_14
+addi $t0, $t0, END_WHILE_14
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_29:
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (4)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 16($lcl)
+
+WHILE_15:
+// Push to stack from local (4)
+lw $t0, 16($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (7)
+addi $t0, $zero, 7
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+addi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto END_WHILE_15
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_30
+lui $t0, END_WHILE_15
+addi $t0, $t0, END_WHILE_15
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_30:
+
+// Push to stack from local (4)
+lw $t0, 16($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (4)
+lw $t0, 16($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (4)
+lw $t0, 16($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (4)
+lw $t0, 16($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (12)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 48($lcl)
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (11)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 44($lcl)
+
+// Push to stack from static (7)
+lw $t0, Output.7
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (11)
+lw $t0, 44($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Push to stack from that (0)
+add $t1, $that, $ram
+lw $t0, 0($t1)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (7)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 28($lcl)
+
+// Push to stack from constant (31)
+addi $t0, $zero, 31
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (6)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 24($lcl)
+
+// Push to stack from constant (2)
+addi $t0, $zero, 2
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (6)
+lw $t0, 24($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Output.power 2
+lui $t0, Output.power$ret.36
+addi $t0, $t0, Output.power$ret.36
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Output.power
+jal $ra, Output.power
+
+
+Output.power$ret.36:
+
+// Pop from stack to local (8)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 32($lcl)
+
+// Push to stack from local (7)
+lw $t0, 28($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (8)
+lw $t0, 32($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.divide 2
+lui $t0, Math.divide$ret.37
+addi $t0, $t0, Math.divide$ret.37
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.divide
+jal $ra, Math.divide
+
+
+Math.divide$ret.37:
+
+// Pop from stack to local (9)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 36($lcl)
+
+// Push to stack from local (9)
+lw $t0, 36($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+and $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (10)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 40($lcl)
+
+// Push to stack from local (10)
+lw $t0, 40($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t2, $t1, $t0
+slt $t3, $t0, $t1
+add $t0, $t2, $t3
+addi $t0, $t0, 1
+andi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_16
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_31
+lui $t0, IF_16
+addi $t0, $t0, IF_16
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_31:
+
+// Jump to ENDIF_16
+jal $ra, ENDIF_16
+
+IF_16:
+// Push to stack from local (7)
+lw $t0, 28($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (8)
+lw $t0, 32($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+sub $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (7)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 28($lcl)
+
+ENDIF_16:
+// Push to stack from local (7)
+lw $t0, 28($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from static (7)
+lw $t0, Output.7
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from local (11)
+lw $t0, 44($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $that, $t0, 0
+
+// Pop from stack to that (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $that, $ram
+sw $t0, 0($t1)
+
+// Jump to WHILE_15
+jal $ra, WHILE_15
+
+END_WHILE_15:
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from local (3)
+lw $t0, 12($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (3)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 12($lcl)
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (32)
+addi $t0, $zero, 32
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+slt $t2, $t1, $t0
+slt $t3, $t0, $t1
+add $t0, $t2, $t3
+addi $t0, $t0, 1
+andi $t0, $t0, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// If-goto IF_17
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+beq $t0, $zero, LOOP_EXIT_32
+lui $t0, IF_17
+addi $t0, $t0, IF_17
+add $t0, $t0, $pc
+jalr $ra, $t0, 0
+LOOP_EXIT_32:
+
+// Jump to ENDIF_17
+jal $ra, ENDIF_17
+
+IF_17:
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from local (2)
+lw $t0, 8($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (1)
+addi $t0, $zero, 1
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+
+add $t0, $t1, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to local (2)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 8($lcl)
+
+ENDIF_17:
+// Jump to WHILE_14
+jal $ra, WHILE_14
+
+END_WHILE_14:
+// Push to stack from constant (0)
+addi $t0, $zero, 0
 
 // Push to stack
 sw $t0, 0($sp)
@@ -6772,7 +13086,7 @@ jalr $ra, $ra, 0
 
 
 // ====================================
-// End of File: Memory
+// End of File: Output
 // ====================================
 // ====================================
 // Virtual Machine Code File: Sys
@@ -6784,8 +13098,8 @@ Sys.init:
 // Pushed 0 zeros to stack; No locals
 
 // Call Memory.init 0
-lui $t0, Memory.init$ret.10
-addi $t0, $t0, Memory.init$ret.10
+lui $t0, Memory.init$ret.38
+addi $t0, $t0, Memory.init$ret.38
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6815,7 +13129,7 @@ add $lcl, $zero, $sp
 jal $ra, Memory.init
 
 
-Memory.init$ret.10:
+Memory.init$ret.38:
 
 // Pop from stack to temp (0)
 addi $sp, $sp, -4
@@ -6824,8 +13138,8 @@ lw $t0, 0($sp)
 sw $t0, 0($temp)
 
 // Call Math.init 0
-lui $t0, Math.init$ret.11
-addi $t0, $t0, Math.init$ret.11
+lui $t0, Math.init$ret.39
+addi $t0, $t0, Math.init$ret.39
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6855,7 +13169,7 @@ add $lcl, $zero, $sp
 jal $ra, Math.init
 
 
-Math.init$ret.11:
+Math.init$ret.39:
 
 // Pop from stack to temp (0)
 addi $sp, $sp, -4
@@ -6863,23 +13177,9 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
-// Push to stack from constant (2)
-addi $t0, $zero, 2
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (3)
-addi $t0, $zero, 3
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Call Math.multiply 2
-lui $t0, Math.multiply$ret.12
-addi $t0, $t0, Math.multiply$ret.12
+// Call Output.init 0
+lui $t0, Output.init$ret.40
+addi $t0, $t0, Output.init$ret.40
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6899,17 +13199,17 @@ addi $sp, $sp, 4
 
 // Reposition ARG, LCL
 addi $t0, $zero, 20
-addi $t0, $t0, 8
+addi $t0, $t0, 0
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 
 add $lcl, $zero, $sp
 
-// Jump to Math.multiply
-jal $ra, Math.multiply
+// Jump to Output.init
+jal $ra, Output.init
 
 
-Math.multiply$ret.12:
+Output.init$ret.40:
 
 // Get return address
 addi $t0, $zero, 20

@@ -12,13 +12,13 @@ def main():
     # Clear OUTPUT folder
     output_path = os.path.join(basePath, "output")
 
-    if os.path.exists(output_path):
-        for root, dirs, files in os.walk(output_path):
-            for file in files:
-                os.remove(os.path.join(root, file))
+    # if os.path.exists(output_path):
+    #     for root, dirs, files in os.walk(output_path):
+    #         for file in files:
+    #             os.remove(os.path.join(root, file))
 
-    if compile.CompileJACK(basePath):
-    # if True:
+    # if compile.CompileJACK(basePath):
+    if True:
         print("Compilation Success : VM code generated")
 
         vm = VirtualMachine.VirtualMachine()

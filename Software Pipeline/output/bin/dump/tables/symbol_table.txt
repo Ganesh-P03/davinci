@@ -12,5 +12,14 @@
 |  Memory.8 |     8     |
 |  Memory.9 |     9     |
 | Memory.10 |     10    |
-| Memory.11 |     11    |
+| Memory.12 |     11    |
+| Memory.11 |     12    |
+|  Output.6 |     13    |
+|  Output.0 |     14    |
+|  Output.1 |     15    |
+|  Output.2 |     16    |
+|  Output.3 |     17    |
+|  Output.5 |     18    |
+|  Output.4 |     19    |
+|  Output.7 |     20    |
 +-----------+-----------+

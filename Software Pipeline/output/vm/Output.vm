@@ -1,0 +1,632 @@
+function Output.init 0
+push constant 36
+call Array.new 1
+pop static 6
+push static 6
+return
+function Output.initMap 1
+push constant 127
+call Array.new 1
+pop static 0
+push constant 48
+push constant 62
+push constant 67
+push constant 69
+push constant 73
+push constant 81
+push constant 97
+push constant 62
+call Output.create 8
+pop temp 0
+push constant 49
+push constant 8
+push constant 24
+push constant 40
+push constant 8
+push constant 8
+push constant 8
+push constant 127
+call Output.create 8
+pop temp 0
+push constant 50
+push constant 127
+push constant 1
+push constant 1
+push constant 127
+push constant 64
+push constant 64
+push constant 127
+call Output.create 8
+pop temp 0
+push constant 65
+push constant 127
+push constant 65
+push constant 65
+push constant 65
+push constant 127
+push constant 65
+push constant 65
+call Output.create 8
+pop temp 0
+push constant 66
+push constant 126
+push constant 65
+push constant 65
+push constant 126
+push constant 65
+push constant 65
+push constant 126
+call Output.create 8
+pop temp 0
+push constant 67
+push constant 127
+push constant 65
+push constant 65
+push constant 65
+push constant 65
+push constant 65
+push constant 127
+call Output.create 8
+pop temp 0
+push constant 68
+push constant 124
+push constant 70
+push constant 67
+push constant 67
+push constant 67
+push constant 70
+push constant 124
+call Output.create 8
+pop temp 0
+push constant 0
+return
+function Output.create 2
+push constant 7
+call Array.new 1
+pop local 0
+push argument 0
+push argument 0
+add
+push argument 0
+add
+push argument 0
+add
+pop local 1
+push local 0
+push static 0
+push local 1
+add
+pop pointer 1
+pop that 0
+push argument 1
+push local 0
+push constant 0
+add
+pop pointer 1
+pop that 0
+push argument 2
+push local 0
+push constant 4
+add
+pop pointer 1
+pop that 0
+push argument 3
+push local 0
+push constant 8
+add
+pop pointer 1
+pop that 0
+push argument 4
+push local 0
+push constant 12
+add
+pop pointer 1
+pop that 0
+push argument 5
+push local 0
+push constant 16
+add
+pop pointer 1
+pop that 0
+push argument 6
+push local 0
+push constant 20
+add
+pop pointer 1
+pop that 0
+push argument 7
+push local 0
+push constant 24
+add
+pop pointer 1
+pop that 0
+push constant 0
+return
+function Output.modulo 2
+push argument 0
+pop local 0
+push local 0
+push argument 1
+sub
+pop local 1
+label WHILE_0
+push local 1
+push constant 0
+gt
+push local 1
+or
+push constant 0
+eq
+not
+if-goto END_WHILE_0
+push local 0
+push argument 1
+sub
+pop local 0
+push local 1
+push argument 1
+sub
+pop local 1
+goto WHILE_0
+label END_WHILE_0
+push local 0
+return
+function Output.createMemoryMappings 6
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+push constant 0
+pop local 2
+push constant 0
+pop local 3
+label WHILE_1
+push local 1
+push constant 310
+lt
+not
+if-goto END_WHILE_1
+push local 1
+push constant 32
+call Output.modulo 2
+pop local 4
+push local 4
+push constant 3
+call Output.modulo 2
+pop local 5
+push local 5
+push constant 1
+eq
+if-goto IF_2
+goto ENDIF_2
+label IF_2
+push local 3
+push constant 0
+eq
+if-goto IF_3
+goto ENDIF_3
+label IF_3
+push local 1
+push static 6
+push local 2
+add
+pop pointer 1
+pop that 0
+push local 2
+push constant 4
+add
+pop local 2
+label ENDIF_3
+push local 3
+push constant 1
+add
+pop local 3
+push local 3
+push constant 3
+call Output.modulo 2
+pop local 3
+label ENDIF_2
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_1
+label END_WHILE_1
+push constant 0
+return
+function Output.getMap 0
+push argument 0
+push constant 32
+lt
+push argument 0
+push constant 126
+gt
+or
+if-goto IF_4
+goto ENDIF_4
+label IF_4
+push constant 0
+pop argument 0
+label ENDIF_4
+push argument 0
+push argument 0
+add
+push argument 0
+add
+push argument 0
+add
+pop argument 0
+push static 0
+push argument 0
+add
+pop pointer 1
+push that 0
+return
+function Output.moveCursor 0
+push argument 1
+pop static 1
+push argument 0
+pop static 2
+push constant 0
+return
+function Output.power 3
+push argument 0
+pop local 1
+push argument 1
+pop local 2
+push constant 1
+pop local 0
+label WHILE_5
+push local 2
+push constant 0
+gt
+not
+if-goto END_WHILE_5
+push local 0
+push local 1
+call Math.multiply 2
+pop local 0
+push local 2
+push constant 1
+sub
+pop local 2
+goto WHILE_5
+label END_WHILE_5
+push local 0
+return
+function Output.printChar 17
+push static 3
+push static 3
+add
+push static 3
+add
+push static 3
+add
+pop static 5
+push static 6
+push static 5
+add
+pop pointer 1
+push that 0
+pop local 1
+push static 4
+push constant 100
+call Math.multiply 2
+push local 1
+push constant 32
+call Math.divide 2
+add
+pop local 2
+push local 1
+push constant 32
+call Output.modulo 2
+pop local 0
+push constant 0
+pop local 3
+push argument 0
+call Output.getMap 1
+pop local 4
+label WHILE_6
+push local 3
+push constant 7
+lt
+not
+if-goto END_WHILE_6
+push constant 0
+pop local 5
+label WHILE_7
+push local 5
+push constant 7
+lt
+not
+if-goto END_WHILE_7
+push local 5
+push local 5
+add
+push local 5
+add
+push local 5
+add
+pop local 15
+push local 4
+push local 15
+add
+pop pointer 1
+push that 0
+pop local 6
+push local 2
+push local 2
+add
+push local 2
+add
+push local 2
+add
+pop local 16
+push static 7
+push local 16
+add
+pop pointer 1
+push that 0
+pop local 8
+push constant 31
+push local 0
+sub
+pop local 7
+push constant 2
+push local 7
+call Output.power 2
+pop local 9
+push local 8
+push local 9
+call Math.divide 2
+pop local 10
+push local 10
+push constant 1
+and
+pop local 11
+push local 11
+push constant 1
+eq
+if-goto IF_8
+goto ENDIF_8
+label IF_8
+push local 8
+push local 9
+sub
+pop local 8
+label ENDIF_8
+push constant 6
+push local 3
+sub
+pop local 12
+push constant 2
+push local 12
+call Output.power 2
+pop local 13
+push local 6
+push local 13
+call Math.divide 2
+pop local 14
+push local 14
+push constant 1
+and
+pop local 11
+push local 11
+push constant 1
+eq
+if-goto IF_9
+goto ENDIF_9
+label IF_9
+push local 8
+push local 9
+add
+pop local 8
+label ENDIF_9
+push local 8
+push static 7
+push local 16
+add
+pop pointer 1
+pop that 0
+goto WHILE_7
+label END_WHILE_7
+push local 0
+push constant 1
+add
+pop local 0
+push local 3
+push constant 1
+add
+pop local 3
+push local 0
+push constant 32
+eq
+if-goto IF_10
+goto ENDIF_10
+label IF_10
+push constant 0
+pop local 0
+push local 2
+push constant 1
+add
+pop local 2
+label ENDIF_10
+goto WHILE_6
+label END_WHILE_6
+push static 3
+push constant 35
+eq
+if-goto IF_11
+push static 3
+push constant 1
+add
+pop static 3
+goto ENDIF_11
+label IF_11
+push constant 0
+pop static 3
+push static 4
+push constant 1
+add
+pop static 4
+label ENDIF_11
+push constant 0
+return
+function Output.println 0
+push constant 0
+pop static 3
+push static 4
+push constant 1
+add
+pop static 4
+push constant 0
+return
+function Output.backSpace 13
+push static 3
+push static 3
+add
+push static 3
+add
+push static 3
+add
+pop static 5
+push static 6
+push static 5
+add
+pop pointer 1
+push that 0
+pop local 1
+push static 4
+push constant 100
+call Math.multiply 2
+push local 1
+push constant 32
+call Math.divide 2
+add
+pop local 2
+push local 1
+push constant 32
+call Output.modulo 2
+pop local 0
+push constant 0
+pop local 3
+push static 3
+push constant 0
+eq
+if-goto IF_12
+push static 3
+push constant 1
+sub
+pop static 3
+goto ENDIF_12
+label IF_12
+push static 4
+push constant 0
+gt
+if-goto IF_13
+goto ENDIF_13
+label IF_13
+push static 4
+push constant 1
+sub
+pop static 4
+push constant 35
+pop static 3
+label ENDIF_13
+label ENDIF_12
+label WHILE_14
+push local 3
+push constant 7
+lt
+not
+if-goto END_WHILE_14
+push constant 0
+pop local 4
+label WHILE_15
+push local 4
+push constant 7
+lt
+not
+if-goto END_WHILE_15
+push local 4
+push local 4
+add
+push local 4
+add
+push local 4
+add
+pop local 12
+push local 2
+push local 2
+add
+push local 2
+add
+push local 2
+add
+pop local 11
+push static 7
+push local 11
+add
+pop pointer 1
+push that 0
+pop local 7
+push constant 31
+push local 0
+sub
+pop local 6
+push constant 2
+push local 6
+call Output.power 2
+pop local 8
+push local 7
+push local 8
+call Math.divide 2
+pop local 9
+push local 9
+push constant 1
+and
+pop local 10
+push local 10
+push constant 1
+eq
+if-goto IF_16
+goto ENDIF_16
+label IF_16
+push local 7
+push local 8
+sub
+pop local 7
+label ENDIF_16
+push local 7
+push static 7
+push local 11
+add
+pop pointer 1
+pop that 0
+goto WHILE_15
+label END_WHILE_15
+push local 0
+push constant 1
+add
+pop local 0
+push local 3
+push constant 1
+add
+pop local 3
+push local 0
+push constant 32
+eq
+if-goto IF_17
+goto ENDIF_17
+label IF_17
+push constant 0
+pop local 0
+push local 2
+push constant 1
+add
+pop local 2
+label ENDIF_17
+goto WHILE_14
+label END_WHILE_14
+push constant 0
+return

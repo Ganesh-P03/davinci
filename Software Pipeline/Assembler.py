@@ -380,7 +380,7 @@ class Assembler:
         if save:
             with open(os.path.join(self.__pass_path, "first_pass.txt"), "w") as f:
                 for i, line in enumerate(wl_contents):
-                    f.write("(" + str(i * 4) + "): " + " ".join(line) + "\n")
+                    f.write("(" + str(self.__pcbase + i * 4) + "): " + " ".join(line) + "\n")
             return
 
     # Second pass
@@ -429,7 +429,7 @@ class Assembler:
         if save:
             with open(os.path.join(self.__pass_path, "second_pass.txt"), "w") as f:
                 for i, line in enumerate(pcode):
-                    f.write("(" + str(i * 4) + "): " + " ".join(line) + "\n")
+                    f.write("(" + str(self.__pcbase + i * 4) + "): " + " ".join(line) + "\n")
         return pcode
 
     # Translate to Machine Code
