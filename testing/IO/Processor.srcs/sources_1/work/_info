@@ -1,0 +1,723 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1
+vadd_sub
+Z1 !s110 1698214512
+!i10b 1
+!s100 P[^^PKHNVPS62nRSmRACz0
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Ib52A81dV<C>ezHR75RP9?0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z4 w1693639150
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/add_sub.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/add_sub.v
+!i122 0
+L0 1 31
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1698214512.000000
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/add_sub.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/add_sub.v|
+!i113 1
+Z7 o-work work
+Z8 tCvgOpt 0
+vALU_Decoder
+R1
+!i10b 1
+!s100 j0Z9QdV2:m4hmkzI?LNkg3
+R2
+Iae>KD<0[AQh;Y:1M9[@gP2
+R3
+R0
+w1695452192
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_Decoder.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_Decoder.v
+!i122 1
+L0 1 35
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_Decoder.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_Decoder.v|
+!i113 1
+R7
+R8
+n@a@l@u_@decoder
+vALU_RISCv
+Z9 !s110 1698214513
+!i10b 1
+!s100 CJ>U_kzTim[oFc]BlAo:_3
+R2
+I[V1Yd@a]OCAL9mBIALQeG0
+R3
+R0
+Z10 w1697779754
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_RISCv.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_RISCv.v
+!i122 2
+L0 1 27
+R5
+r1
+!s85 0
+31
+Z11 !s108 1698214513.000000
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_RISCv.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_RISCv.v|
+!i113 1
+R7
+R8
+n@a@l@u_@r@i@s@cv
+vAND_1bit_2inp
+Z12 !s110 1698214515
+!i10b 1
+!s100 WIl8GC]O`<I^O]g2K9Em31
+R2
+Il=<TkFP`0MF>D0?B2zVMP0
+R3
+R0
+R4
+Z13 8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Gates.v
+Z14 FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Gates.v
+!i122 8
+L0 19 5
+R5
+r1
+!s85 0
+31
+Z15 !s108 1698214515.000000
+Z16 !s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Gates.v|
+Z17 !s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Gates.v|
+!i113 1
+R7
+R8
+n@a@n@d_1bit_2inp
+vAND_1bit_3inp
+R12
+!i10b 1
+!s100 l:>Tn8PFXo_K_e?@V<KFn1
+R2
+IPI;l<DV?=SVT9Kfi::OOn0
+R3
+R0
+R4
+R13
+R14
+!i122 8
+L0 13 5
+R5
+r1
+!s85 0
+31
+R15
+R16
+R17
+!i113 1
+R7
+R8
+n@a@n@d_1bit_3inp
+vbitwiseAND
+R9
+!i10b 1
+!s100 TH2kcQ;WU[^=554nE3Aif2
+R2
+I4dX49VciVB?RHQXB_jUI<3
+R3
+R0
+R4
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/bitwiseAND.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/bitwiseAND.v
+!i122 3
+Z18 L0 1 19
+R5
+r1
+!s85 0
+31
+R11
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/bitwiseAND.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/bitwiseAND.v|
+!i113 1
+R7
+R8
+nbitwise@a@n@d
+vcontrol_unit
+Z19 !s110 1698214514
+!i10b 1
+!s100 VBjAIJW0Naf7aRQ=1K_ol2
+R2
+Ia6HO8[W`7bTYJm4998zYJ0
+R3
+R0
+w1697900757
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/control_unit.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/control_unit.v
+!i122 4
+L0 1 72
+R5
+r1
+!s85 0
+31
+Z20 !s108 1698214514.000000
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/control_unit.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/control_unit.v|
+!i113 1
+R7
+R8
+vDFlipFlop
+R19
+!i10b 1
+!s100 <7Yc1D_6VIdiG3cTHR<<M3
+R2
+IXWH_l<H0HO;PZ8HRXflkM1
+R3
+R0
+w1695403362
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/DFlipFlop.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/DFlipFlop.v
+!i122 5
+L0 3 12
+R5
+r1
+!s85 0
+31
+R20
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/DFlipFlop.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/DFlipFlop.v|
+!i113 1
+R7
+R8
+n@d@flip@flop
+vDisplayDriver
+Z21 !s110 1698214538
+!i10b 1
+!s100 nPja`IF;ETl`D5TPc^IFM2
+R2
+In>]kA[CYOdfZlHnWm3hQ10
+R3
+R0
+w1697945427
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/DisplayDriver.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/DisplayDriver.v
+!i122 25
+L0 22 194
+R5
+r1
+!s85 0
+31
+Z22 !s108 1698214538.000000
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/DisplayDriver.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/DisplayDriver.v|
+!i113 1
+R7
+R8
+n@display@driver
+vExtender
+R19
+!i10b 1
+!s100 [zLk?z35=K:JC1cSOVPeE1
+R2
+IHJJM[I2R?>7j7m@W964g:3
+R3
+R0
+w1695451350
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Extender.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Extender.v
+!i122 6
+L0 1 14
+R5
+r1
+!s85 0
+31
+R20
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Extender.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Extender.v|
+!i113 1
+R7
+R8
+n@extender
+vfulladder
+R12
+!i10b 1
+!s100 8idW@Khk:dW5jdk7`_H_o3
+R2
+IZ7kTiAbcFUd4iI<=^cWUC0
+R3
+R0
+w1697785318
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/fulladder.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/fulladder.v
+!i122 7
+L0 1 4
+R5
+r1
+!s85 0
+31
+R15
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/fulladder.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/fulladder.v|
+!i113 1
+R7
+R8
+vInstr_Decoder
+Z23 !s110 1698214516
+!i10b 1
+!s100 zKi5;CO@_MQP[aZN:OG<41
+R2
+IQK0VjgmOaOW44B[a1@H:J0
+R3
+R0
+R10
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Instr_Decoder.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Instr_Decoder.v
+!i122 9
+L0 1 15
+R5
+r1
+!s85 0
+31
+Z24 !s108 1698214516.000000
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Instr_Decoder.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Instr_Decoder.v|
+!i113 1
+R7
+R8
+n@instr_@decoder
+vMain_Decoder
+R23
+!i10b 1
+!s100 ;G7id<77@_GeOe2MjJ>Y_3
+R2
+IzCB;2LWlbN]W>VGX46D`n3
+R3
+R0
+w1698152299
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Main_Decoder.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Main_Decoder.v
+!i122 10
+L0 1 163
+R5
+r1
+!s85 0
+31
+R24
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Main_Decoder.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Main_Decoder.v|
+!i113 1
+R7
+R8
+n@main_@decoder
+vMemory
+R23
+!i10b 1
+!s100 XSV1TXGA:UHPcmHVU]@KD2
+R2
+I:HGj8knX[82k2PJAKH_0E2
+R3
+R0
+w1697779981
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Memory.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Memory.v
+!i122 11
+L0 2 120
+R5
+r1
+!s85 0
+31
+R24
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Memory.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Memory.v|
+!i113 1
+R7
+R8
+n@memory
+vMUX2x1_1bit
+Z25 !s110 1698214517
+!i10b 1
+!s100 ]8cmfhP:aI0e5Zz?@gJRN2
+R2
+I<FeX::CVfkDdHo<a3T9G=3
+R3
+R0
+Z26 w1695398609
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_1bit.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_1bit.v
+!i122 12
+Z27 L0 1 7
+R5
+r1
+!s85 0
+31
+Z28 !s108 1698214517.000000
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_1bit.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_1bit.v|
+!i113 1
+R7
+R8
+n@m@u@x2x1_1bit
+vMUX2x1_32bit
+R25
+!i10b 1
+!s100 Am`PiQVh1kWRRITI[WzXT1
+R2
+IOZ5eBa:k3bEG>7[lzX[;k0
+R3
+R0
+R26
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_32bit.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_32bit.v
+!i122 13
+R27
+R5
+r1
+!s85 0
+31
+R28
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_32bit.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX2x1_32bit.v|
+!i113 1
+R7
+R8
+n@m@u@x2x1_32bit
+vMUX4x1_32bit
+Z29 !s110 1698214518
+!i10b 1
+!s100 EH<54Uo>zT:bbLA28aTN43
+R2
+IaBLBO1HDETkh@U@`0`nfC2
+R3
+R0
+w1695399414
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX4x1_32bit.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX4x1_32bit.v
+!i122 14
+L0 1 18
+R5
+r1
+!s85 0
+31
+R28
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX4x1_32bit.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX4x1_32bit.v|
+!i113 1
+R7
+R8
+n@m@u@x4x1_32bit
+vMUX8x1_32bit
+R29
+!i10b 1
+!s100 a;<WRz[59VBF>=]6e[iG81
+R2
+IK7aE^Z9:`d;N8h22?Bjjg0
+R3
+R0
+R26
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX8x1.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX8x1.v
+!i122 15
+L0 1 22
+R5
+r1
+!s85 0
+31
+Z30 !s108 1698214518.000000
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX8x1.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/MUX8x1.v|
+!i113 1
+R7
+R8
+n@m@u@x8x1_32bit
+vNOT_32bit
+R29
+!i10b 1
+!s100 YQ]fW?zP49XPcz3C>AkHj3
+R2
+IQ;c=JUnSkV4FRaf3`3NMO3
+R3
+R0
+R4
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/NOT_32bit.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/NOT_32bit.v
+!i122 16
+Z31 L0 1 8
+R5
+r1
+!s85 0
+31
+R30
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/NOT_32bit.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/NOT_32bit.v|
+!i113 1
+R7
+R8
+n@n@o@t_32bit
+vprocessor
+Z32 !s110 1698214519
+!i10b 1
+!s100 3lQ1g9IX0H9Ai1BRF]_7;1
+R2
+I182:Pm4`<<FFRHP>aSO;21
+R3
+R0
+w1698214396
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/processor.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/processor.v
+!i122 17
+L0 1 113
+R5
+r1
+!s85 0
+31
+Z33 !s108 1698214519.000000
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/processor.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/processor.v|
+!i113 1
+R7
+R8
+vRAM
+R32
+!i10b 1
+!s100 >ifGHznFVQJE:Z;A=Na>Q3
+R2
+IzN9YGUL_ZhHFeCbO[5Jm00
+R3
+R0
+Z34 w1697779493
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/RAM.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/RAM.v
+!i122 18
+L0 2 52
+R5
+r1
+!s85 0
+31
+R33
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/RAM.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/RAM.v|
+!i113 1
+R7
+R8
+n@r@a@m
+vreg_file
+R32
+!i10b 1
+!s100 BJFLbP@JWeDe7F[<Q3bEL2
+R2
+IdFS8N9R=ETMb2BSHB6o730
+R3
+R0
+w1698214328
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/reg_file.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/reg_file.v
+!i122 19
+L0 1 26
+R5
+r1
+!s85 0
+31
+R33
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/reg_file.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/reg_file.v|
+!i113 1
+R7
+R8
+vregister_1bit
+Z35 !s110 1698214520
+!i10b 1
+!s100 V7=NA4;7]o6[Wa^7:oaiz3
+R2
+IXTj=Bf0gMH]6<=i[^mh7[2
+R3
+R0
+w1695403612
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_1bit.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_1bit.v
+!i122 20
+L0 1 12
+R5
+r1
+!s85 0
+31
+Z36 !s108 1698214520.000000
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_1bit.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_1bit.v|
+!i113 1
+R7
+R8
+vregister_32bit
+R35
+!i10b 1
+!s100 5]U:fOL`hRKBEQN_3:NQ@3
+R2
+I<3Z7W8a0z[7dnkWSngN>h2
+R3
+R0
+R26
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_32bit.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_32bit.v
+!i122 21
+R18
+R5
+r1
+!s85 0
+31
+R36
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_32bit.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/register_32bit.v|
+!i113 1
+R7
+R8
+vROM
+Z37 !s110 1698214521
+!i10b 1
+!s100 iK^oH1]RV75DYZg2jlR^Q3
+R2
+Iz_<aE_1?R4Ke87ikdBVlE3
+R3
+R0
+w1698165179
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ROM.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ROM.v
+!i122 22
+L0 1 25
+R5
+r1
+!s85 0
+31
+Z38 !s108 1698214521.000000
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ROM.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/ROM.v|
+!i113 1
+R7
+R8
+n@r@o@m
+vScreen_Memory
+R37
+!i10b 1
+!s100 `Vio2@h^1JP=NiOknHWLG2
+R2
+IEZXV41?FO`3^z6Mn1oz592
+R3
+R0
+R34
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Screen_Memory.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Screen_Memory.v
+!i122 23
+L0 1 42
+R5
+r1
+!s85 0
+31
+R38
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Screen_Memory.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/Screen_Memory.v|
+!i113 1
+R7
+R8
+n@screen_@memory
+vTMDS_encoder
+R21
+!i10b 1
+!s100 Ve0>PDR9oY`?BnMMz[Y=C2
+R2
+I]@?:6EdhiGFOWef2XL`V02
+R3
+R0
+w1697945456
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/TMDS_encoder.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/TMDS_encoder.v
+!i122 26
+L0 22 24
+R5
+r1
+!s85 0
+31
+R22
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/TMDS_encoder.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/new/TMDS_encoder.v|
+!i113 1
+R7
+R8
+n@t@m@d@s_encoder
+vXNOR_1bit_3inp
+R12
+!i10b 1
+!s100 YPLkGUgSdLn`_H3F9nB?T0
+R2
+IWCQO[OWn=eg?=9d2e:_S?2
+R3
+R0
+R4
+R13
+R14
+!i122 8
+L0 7 5
+R5
+r1
+!s85 0
+31
+R15
+R16
+R17
+!i113 1
+R7
+R8
+n@x@n@o@r_1bit_3inp
+vXOR_1bit_2inp
+R12
+!i10b 1
+!s100 NV6``F6zDBFf:hiAPVk3l1
+R2
+I6NO[4FFO1T>5NIkzE`Y`f3
+R3
+R0
+R4
+R13
+R14
+!i122 8
+L0 1 5
+R5
+r1
+!s85 0
+31
+R15
+R16
+R17
+!i113 1
+R7
+R8
+n@x@o@r_1bit_2inp
+vzero_extender
+R37
+!i10b 1
+!s100 A4cUh?[n4nA^DfS9WzZV;1
+R2
+I4QWV6;6R]<?mJ=7TnmDZj0
+R3
+R0
+R4
+8D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/zero_extender.v
+FD:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/zero_extender.v
+!i122 24
+R31
+R5
+r1
+!s85 0
+31
+R38
+!s107 D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/zero_extender.v|
+!s90 -reportprogress|300|-work|work|D:/semester/7th sem/davinci/testing/Processor/Processor.srcs/sources_1/imports/Processor_MultiCycle/zero_extender.v|
+!i113 1
+R7
+R8

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 (9600): lui $pc 2
 (9604): addi $pc $pc 1408
 (9608): lui $ram 34
@@ -8378,3 +8379,16 @@
 (43108): lw $that 16 $t0
 (43112): jalr $ra $ra 0
 (43116): addi x1 $t0 0
+=======
+(9600): addi x1 x0 15
+(9604): addi x2 x0 1
+(9608): addi x3 x0 0
+(9612): beq x1 x1 Label1
+(9616): addi x1 x0 1
+(9620): beq x1 x2 END
+(9624): sub x1 x1 x2
+(9628): sw x1 0 x3
+(9632): addi x3 x3 4
+(9636): beq x1 x1 Label1
+(9640): addi x1 x0 5
+>>>>>>> 54674f91c0dd41523da3203c18f38c191fc19020

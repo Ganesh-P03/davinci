@@ -1,4 +1,4 @@
-module processor (sysclk,reset,led);//TMDSp,TMDSn,TMDSp_clock,TMDSn_clock);
+module processor (sysclk,reset,led,TMDSp,TMDSn,TMDSp_clock,TMDSn_clock);
 
 input reset;
 input sysclk;
@@ -11,20 +11,19 @@ wire clk;
 assign clk = count[22];
 
 //-----------Screen-------------------------//
-// output [2:0] TMDSp;
-// output [2:0] TMDSn;
-// output TMDSp_clock;
-// output TMDSn_clock;
+output [2:0] TMDSp;
+output [2:0] TMDSn;
+output TMDSp_clock;
+output TMDSn_clock;
 
 
 wire [31:0] display_address;
-assign display_address = 32'h5;
 wire [31:0] display_dataOut;
 
-// //Screen_Memory screen_mem (.clock(clk),.address(display_address[15:0]),.displayAddr(display_address[15:0]),.isWrite(1'b0),.writeData(32'b0),.displayData(dataOut));
+//Screen_Memory screen_mem (.clock(clk),.address(display_address[15:0]),.displayAddr(display_address[15:0]),.isWrite(1'b0),.writeData(32'b0),.displayData(dataOut));
 
-//DisplayDriver dispDriver (.clk(clk),.displayData(display_dataOut),.TMDSp(TMDSp),.TMDSn(TMDSn),
-//.pointer(display_address),.TMDSp_clock(TMDSp_clock),.TMDSn_clock(TMDSn_clock));
+DisplayDriver dispDriver (.clk(clk),.displayData(display_dataOut),.TMDSp(TMDSp),.TMDSn(TMDSn),
+.pointer(display_address),.TMDSp_clock(TMDSp_clock),.TMDSn_clock(TMDSn_clock));
 //-----------Screen-------------------------//
 
 

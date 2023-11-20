@@ -1,0 +1,50 @@
+class Main{
+  function void main() {
+    var int zero,one;
+    var String arrow;
+    var String input,error;
+    var String clear,ls,fibo,qsort,pri,rev,exit,space;
+	let clear = "clear";
+	let ls = "ls";
+	let fibo = "fibo";
+	let qsort = "quicksort";
+	let pri = "prime";
+	let rev = "reverse";
+	let exit = "exit";
+    let space = " ";
+    let arrow = "---> ";
+    let error = "invalid command";
+    let zero = 0;
+    let one = 1;
+    while(zero<one){ 
+        let input = Keyboard.readLine(arrow);
+        if(input=ls){
+            do Output.printString(fibo);
+            do Output.printString(space);
+            do Output.printString(tree);
+            do Output.printString(space);
+            do Output.printString(qsort);
+            do Output.printString(space);
+            do Output.printString(pri);
+            do Output.printString(space);
+            do Output.printString(rev)
+            do Output.printString(space);
+        }
+        else{
+            if(input=clear){
+                do Screen.clearScreen();
+            }
+            else{
+                if(input=exit){
+                    zero=2;
+                }
+                else{
+                    do Output.printString(error);
+                }
+            }
+        }
+        do Output.println();
+    }
+    return;
+  }
+}

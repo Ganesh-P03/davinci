@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Tue Nov  7 00:18:02 2023
+| Date         : Thu Nov  9 12:40:51 2023
 | Host         : Ganesh running 64-bit major release  (build 9200)
 | Command      : report_drc -file processor_drc_opted.rpt -pb processor_drc_opted.pb -rpx processor_drc_opted.rpx
 | Design       : processor
@@ -24,20 +24,29 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 22
-+-----------+----------+----------------------------+------------+
-| Rule      | Severity | Description                | Violations |
-+-----------+----------+----------------------------+------------+
-| CHECK-3   | Warning  | Report rule limit reached  | 1          |
-| REQP-1839 | Warning  | RAMB36 async control check | 20         |
-| ZPS7-1    | Warning  | PS7 block required         | 1          |
-+-----------+----------+----------------------------+------------+
+             Violations found: 23
++-------------+----------+-------------------------------------------------------------+------------+
+| Rule        | Severity | Description                                                 | Violations |
++-------------+----------+-------------------------------------------------------------+------------+
+| CHECK-3     | Warning  | Report rule limit reached                                   | 1          |
+| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 1          |
+| REQP-1839   | Warning  | RAMB36 async control check                                  | 20         |
+| ZPS7-1      | Warning  | PS7 block required                                          | 1          |
++-------------+----------+-------------------------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
 CHECK-3#1 Warning
 Report rule limit reached  
 REQP-1839 rule limit reached: 20 violations have been found.
+Related violations: <none>
+
+PLHOLDVIO-2#1 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT mem/ram_i_4 is driving clock pin of 10 cells. This could lead to large hold time violations. Involved cells are:
+mem/dample_reg, mem/keyVal_reg[0], mem/keyVal_reg[1], mem/keyVal_reg[2],
+mem/keyVal_reg[3], mem/keyVal_reg[4], mem/keyVal_reg[5], mem/keyVal_reg[6],
+mem/keyVal_reg[7], mem/readKeyboard_reg
 Related violations: <none>
 
 REQP-1839#1 Warning

@@ -68,7 +68,7 @@ module Memory
     
 
     
-    always @(posedge clock)
+    always @(posedge ramIsRead)
         begin
             if( address == 18'd206204 )
                 begin
@@ -93,16 +93,17 @@ module Memory
                     // (byteRead == 1'b1 && addrLatch == 2'd2) ? ramReadData[15:8] :
                     // (byteRead == 1'b1 && addrLatch == 2'd3) ? ramReadData[7:0] :
                     ramReadData;
-//      (*DONT_TOUCH = "true"*)
-//    Screen_Memory disMem (
-//        .clock(clock),  //correct
-//        .address(displayAddress),   
-//        .displayAddr(displayAddr),  //corrrect
-//        .byteWrite(byteWrite),      //correct
-//        .isWrite(displayIsWrite),              
-//        .writeData(writeData),      //correct
-//        .displayData(displayData)   //correct
-//    );
+
+   (*DONT_TOUCH = "true"*)
+   Screen_Memory disMem (
+       .clock(clock),  //correct
+       .address(displayAddress),   
+       .displayAddr(displayAddr),  //corrrect
+       .byteWrite(byteWrite),      //correct
+       .isWrite(displayIsWrite),              
+       .writeData(writeData),      //correct
+       .displayData(displayData)   //correct
+   );
     (*DONT_TOUCH = "true"*)
     RAM ram(
         .clock(clock),          //correct

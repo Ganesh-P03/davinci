@@ -1,0 +1,173 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+| Date         : Fri Nov 17 19:16:49 2023
+| Host         : Ganesh running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file processor_control_sets_placed.rpt
+| Design       : processor
+| Device       : xc7z010
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    95 |
+|    Minimum number of control sets                        |    95 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    39 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    95 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     3 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     2 |
+| >= 10 to < 12      |     1 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    89 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             224 |          116 |
+| No           | No                    | Yes                    |               4 |            3 |
+| No           | Yes                   | No                     |              22 |            8 |
+| Yes          | No                    | No                     |              79 |           46 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |            1064 |          363 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------------+-----------------------------------------+-----------------------------------------+------------------+----------------+--------------+
+|     Clock Signal     |              Enable Signal              |             Set/Reset Signal            | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------------+-----------------------------------------+-----------------------------------------+------------------+----------------+--------------+
+|  clk_BUFG            | control_unit/mainDecoder/ramIsRead      |                                         |                1 |              4 |         4.00 |
+| ~clk_BUFG            |                                         | reset_IBUF                              |                3 |              4 |         1.33 |
+|  dispDriver/clk_TMDS |                                         | dispDriver/p_0_out_inferred__0/i__n_0   |                1 |              4 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/state_reg[3]_0 | control_unit/mainDecoder/PC1_reg[17]_15 |                6 |              8 |         1.33 |
+|  dispDriver/pixclk   |                                         | dispDriver/encode_R/SR[0]               |                2 |              8 |         4.00 |
+|  dispDriver/pixclk   |                                         | dispDriver/CounterY                     |                5 |             10 |         2.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[1]_1   |                                         |                5 |             16 |         3.20 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]_2  |                                         |                5 |             16 |         3.20 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_7   |                                         |                5 |             16 |         3.20 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_13  |                                         |                5 |             16 |         3.20 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]    |                                         |                5 |             16 |         3.20 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_21  |                                         |                5 |             16 |         3.20 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_14  |                                         |                5 |             16 |         3.20 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]_5  |                                         |                5 |             16 |         3.20 |
+|  dispDriver/pixclk   | dispDriver/CounterY                     |                                         |                6 |             19 |         3.17 |
+|  sysclk_IBUF_BUFG    |                                         |                                         |                6 |             23 |         3.83 |
+|  dispDriver/clk_TMDS |                                         |                                         |                6 |             31 |         5.17 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_12  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]_8  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_10  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]_9  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[11]    |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[11]_0  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_20  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[11]_1  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[11]_2  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]_10 |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_9   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]_6  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]_0  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_2   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_16  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]_1  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_0   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_11  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_17  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_3   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_5   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]     |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_4   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]_11 |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[12]    |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[13]_5  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_11  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_4   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[13]_3  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]     |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_1   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_12  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[12]_3  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[12]_7  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[12]_0  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[13]_2  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_10  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_14  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_2   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_6   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[13]_0  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_7   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[11]_4  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[11]_6  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[12]_6  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_0   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[11]_3  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[12]_2  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[13]_1  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[1]     |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[1]_0   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[11]_5  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_13  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_5   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]_4  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_3   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_8   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[12]_4  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[12]_8  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[12]_1  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[13]_4  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[12]_5  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[13]    |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_8   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[9]_9   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_1   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/E[0]           | reset_IBUF                              |               18 |             32 |         1.78 |
+| ~clk_BUFG            |                                         |                                         |               21 |             32 |         1.52 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_18  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_19  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_6   |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]_3  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[0]_15  |                                         |                8 |             32 |         4.00 |
+|  clk_BUFG            | control_unit/mainDecoder/PC1_reg[10]_7  |                                         |                8 |             32 |         4.00 |
+|  dispDriver/pixclk   |                                         |                                         |               24 |             41 |         1.71 |
+|  clk_BUFG            | control_unit/mainDecoder/state_reg[3]_0 |                                         |               39 |             56 |         1.44 |
+|  clk_BUFG            |                                         |                                         |               59 |             97 |         1.64 |
+|  clk_BUFG            | control_unit/mainDecoder/regwrite       | reset_IBUF                              |              339 |           1024 |         3.02 |
++----------------------+-----------------------------------------+-----------------------------------------+------------------+----------------+--------------+
+
+
