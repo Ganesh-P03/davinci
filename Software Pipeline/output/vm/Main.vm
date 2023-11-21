@@ -7,5 +7,4 @@ push constant 97
 call String.appendChar 2
 pop local 1
 push local 1
-push constant 111
 return

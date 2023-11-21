@@ -21,10 +21,10 @@ class VirtualMachine:
 
         # CodeWriter instance
         self.__code_writer = CodeWriter(output_file_path)
+        # self.__code_writer.setFileName("riscv")
         self.__code_writer.writePCbase()
         self.__code_writer.writeRAMbase()
         self.__code_writer.writeBootstrapCode()
-
         try:
             # Source path is a directory
             if os.path.isdir(source_path):
@@ -54,6 +54,10 @@ class VirtualMachine:
         # Set filename for CodeWriter
         base_file = os.path.basename(vm_file_path).replace(".vm", "")
         self.__code_writer.setFileName(base_file)
+        
+        print("Translating " + base_file + ".vm")
+        print("====================================")
+        print("")
 
         # Write file header
         self.__code_writer.writeMessage("====================================")

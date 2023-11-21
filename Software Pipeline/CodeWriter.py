@@ -16,6 +16,8 @@ class CodeWriter:
 
     # Inner flags
     __meaningFull = False
+    __function_name = None
+    __base_filename = None
 
     p = None  # Parser object
 
@@ -40,6 +42,7 @@ class CodeWriter:
 
     # Set the output file name
     def setFileName(self, file_name: str) -> None:
+        self.__base_filename = file_name
         self.__file_name = file_name
 
     # Generate return labels
@@ -79,7 +82,7 @@ class CodeWriter:
         self.writeMessage("RAM BASE")
         self.writeMessage("====================================")
         self.write("lui $ram, 34")  # ram = 34 << 12
-        self.write("addi $ram, $ram, 1408")  # ram = 140672
+        self.write("addi $ram, $ram, 1409")  # ram = 140673
         self.writeMessage("")
 
         self.writeMessage("Initialize Static Segment")
@@ -100,8 +103,9 @@ class CodeWriter:
         self.write("addi $sp, $ram, 1024")
         self.write("addi $lcl, $sp, 0")
         self.write("addi $arg, $sp, 0")
-        self.write("addi $this, $sp, 0")
-        self.write("addi $that, $sp, 0")
+        self.write("lui $t0, 4")
+        self.write("add $this, $sp, $t0")
+        self.write("add $that, $sp, $t0")
         self.writeMessage("")
 
         # Call Sys.init
@@ -255,12 +259,12 @@ class CodeWriter:
                     "lw $t0, " + str(self.__file_name) + "." + str(index // 4)
                 )  # t0 = *(filename.index)
             elif segment == "pointer" and index == 0:
-                self.write("lw $this, 0($sp)")
+                self.write("sw $this, 0($sp)")
                 self.write("addi $sp, $sp, 4")  # SP = SP + 1
                 self.writeMessage("")
                 return
             elif segment == "pointer" and index == 4:
-                self.write("lw $that, 0($sp)")
+                self.write("sw $that, 0($sp)")
                 self.write("addi $sp, $sp, 4")  # SP = SP + 1
                 self.writeMessage("")
                 return
@@ -321,28 +325,41 @@ class CodeWriter:
 
     # Writes assembly code that effects the label command
     def writeLabel(self, label: str) -> None:
-        self.write(label + ":")  # <label>:
-        
+        new_label = label
+        if "IF" in label or "LOOP" in label or "WHILE" in label:
+            if self.__file_name:
+                new_label = label + "$" + self.__file_name
+                
+        self.write(new_label + ":")  # <label>:
 
     # Writes assembly code that effects the goto command
     def writeGoto(self, label: str) -> None:
-        self.writeMessage("Jump to " + str(label))
-        self.write("jal $ra, " + str(label))  # goto <label>
+        new_label = label
+        if "IF" in label or "LOOP" in label or "WHILE" in label:
+            if self.__file_name:
+                new_label = label + "$" + self.__file_name
+        self.writeMessage("Jump to " + str(new_label))
+        self.write("jal $ra, " + str(new_label))  # goto <label>
         self.writeMessage("")
         
 
     # Writes assembly code that effects the if-goto command
     def writeIf(self, label: str) -> None:
-        self.writeMessage("If-goto " + str(label))
+        new_label = label
+        if "IF" in label or "LOOP" in label or "WHILE" in label:
+            if self.__file_name:
+                new_label = label + "$" + self.__file_name
+
+        self.writeMessage("If-goto " + str(new_label))
         self.write("addi $sp, $sp, -4")  # SP = SP - 1
         self.write("lw $t0, 0($sp)")  # t0 = *SP (x)
 
         loop_label, loop_exit_label = self.genLoopLabel()
         self.write(
-            "beq $t0, $zero, " + str(loop_exit_label)
+            "beq $t0, $zero, " + str(loop_exit_label + "$" + self.__file_name)
         )  # if t0 == 0, goto loop_exit_label
-        self.write("lui $t0, " + label)  # t0
-        self.write("addi $t0, $t0, " + label)  # t0 = return_label
+        self.write("lui $t0, " + new_label)  # t0
+        self.write("addi $t0, $t0, " + new_label)  # t0 = return_label
         self.write("add $t0, $t0, $pc")  # t0 = return_label + pc
         self.write("jalr $ra, $t0, 0")  # goto (label)
         self.writeLabel(loop_exit_label)
@@ -442,6 +459,8 @@ class CodeWriter:
 
     # Writes assembly code that effects the function command
     def writeFunction(self, function_name: str, n: int) -> None:
+        self.__function_name = function_name
+        self.__file_name = self.__function_name
         self.writeMessage("Function " + str(function_name) + " " + str(n))
         self.writeLabel(function_name)  # <function_name>:
         self.writeMessage("")

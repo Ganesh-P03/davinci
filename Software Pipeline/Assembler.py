@@ -472,7 +472,7 @@ class Assembler:
         self.__contents = mcode
 
         bin_path = os.path.join(output_path, "riscv.bin")
-        rom_path = os.path.join(output_path, "rom.v")
+        rom_path = os.path.join(output_path, "ROM.v")
         hex_path = os.path.join(output_path, "HEX.txt")
 
         with open(bin_path, "w") as f:

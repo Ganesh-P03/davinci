@@ -229,7 +229,7 @@ class Assembler:
 
             assert len(rs1) == 5 and len(rd) == 5, "Invalid register length " + cmd
             assert len(imm) == 12, (
-                "Invalid immediate length " + cmd + " " + str(len(imm))
+                "Invalid immediate length " + cmd + " " + str(len(imm)) + "x: " + (','.join(code))
             )
 
             if cmd == "addi":

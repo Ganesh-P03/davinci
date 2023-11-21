@@ -13,7 +13,8 @@ def main():
     if os.path.exists(output_path):
         for root, dirs, files in os.walk(output_path):
             for file in files:
-                os.remove(os.path.join(root, file))
+                if file != "Memory.vm":
+                    os.remove(os.path.join(root, file))
 
     # Move *.vm files
     vm_path = os.path.join(basePath, "reference\\n2t_compiler\\code")
