@@ -1,9 +1,15 @@
-class Sys{
-    function void main(){
-       var int n;
-       let n = 10;
-
-       do Fibonacci.main(n);
-       return;
+class Sys {
+    function int init() {
+        do Memory.init();
+        return Sys.main();
+    }
+    
+    function int main(){
+        var Array x;
+        let x = 2048;
+        let x[0] = 11;
+        let x[4] = 12;
+        let x[8] = 13;
+        return (x[0] + x[4] + x[8]);
     }
 }

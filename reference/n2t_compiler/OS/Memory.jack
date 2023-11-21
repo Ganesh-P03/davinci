@@ -1,0 +1,279 @@
+// This file is part of www.nand2tetris.org
+
+// and the book "The Elements of Computing Systems"
+
+// by Nisan and Schocken, MIT Press.
+
+// File name: projects/12/Memory.jack
+
+ 
+
+/**
+
+* Memory operations library.
+
+*/
+
+class Memory {
+
+    static Array memory;
+    static Array freeList;
+    static Array memoryBottom;
+
+ 
+
+    static int heapBottom;//16384
+    static int heapBase;//2048
+
+ 
+
+    static int heapBottomAddress;
+    static int heapBaseAddress;
+
+ 
+
+    static int LENGTH;//the segment's length
+    static int NEXT;//pointer to the next segment in the list
+
+ 
+
+    static int ALLOC_LENGTH; //the alloc block's length
+
+ 
+
+    //Change: Unnecessary
+
+    // static int TEmp;
+
+    // static int TEmp1;
+
+    // static int bra;
+
+ 
+
+    /** Initializes memory parameters. */
+
+    function void init() {
+
+        //Change:: *4
+
+        let heapBaseAddress = 8192;
+
+        let heapBottomAddress = 16384; //Change::Must be changed when large numbers are allowed
+
+ 
+
+        let heapBase = 2048;
+
+        let heapBottom = 16384;
+
+ 
+
+        let memory = 0;//memory base
+
+        let freeList = heapBaseAddress;//heap base
+
+        let LENGTH = 0;
+
+        let NEXT = 4;//Change:: *4
+
+        let freeList[LENGTH] = heapBottom - heapBase;//which is 16384 - 2048
+
+        let freeList[NEXT] = null;
+
+       
+
+        //Change:: *4
+
+        let ALLOC_LENGTH = -4;//block[-1] store the length of alloc block
+
+ 
+
+        return;
+
+    }
+
+ 
+
+    /** Returns the value of the main memory at the given address. */
+
+    function int peek(int address) {
+
+        let address=address+address; //Change:: *4
+
+        let address=address+address; //Change:: *4
+
+        return memory[address];
+
+    }
+
+ 
+
+    /** Sets the value of the main memory at this address
+
+     *  to the given value. */
+
+    function void poke(int address, int value) {
+
+        let address=address+address; //Change:: *4
+
+        let address=address+address; //Change:: *4
+
+        let memory[address] = value;
+
+        return;
+
+    }
+
+ 
+
+    //Change: Unnecessary
+
+
+
+    //Change:: Unnecessary
+
+    // function int Tval(){
+
+    //     return TEmp;
+
+    // }
+
+    // //Change:: Unnecessary
+
+    // function int Tval1(){
+
+    //     return TEmp1;
+
+    // }
+
+    // //Change:: Unnecessary
+
+    // function int Bval(){
+
+    //     return bra;
+
+    // }
+
+ 
+
+   
+
+    function Array bestFit(int size){
+
+        var Array curBlock, bestBlock;
+
+        var int bestSize,curSize;
+
+ 
+
+        let bestBlock = null;//init null
+
+        let bestSize = heapBottom - heapBase;
+
+        let curBlock = freeList;
+
+ 
+
+        if(curBlock[NEXT] = null){
+
+            return curBlock; //*** curBlock
+
+        }
+
+ 
+
+        while(~(curBlock = null)){
+
+ 
+
+            let curSize = curBlock[LENGTH] - 1; //alloced block only need one header
+
+ 
+
+            if(~(curSize < size) & (curSize < bestSize)){
+
+ 
+
+                let bestBlock = curBlock;
+
+                let bestSize = curSize;
+
+ 
+
+            }
+
+ 
+
+            let curBlock = curBlock[NEXT];
+
+        }
+
+ 
+
+        return bestBlock;
+
+    }
+
+ 
+
+    /** finds and allocates from the heap a memory block of the
+
+     *  specified size and returns a reference to its base address. */
+
+    function int alloc(int size) {
+
+ 
+
+        var Array foundBlock,nextBlock,result;
+
+ 
+
+        let foundBlock = Memory.bestFit(size);
+
+        let result = foundBlock + 4;
+
+        //Change:: Unnecessary
+
+
+ 
+
+        if(~(foundBlock = null)){
+
+            //alloc this block, check if only need to alloc part of this block or the whole block
+
+            if(foundBlock[LENGTH] > (size + 3)){
+
+                let nextBlock = foundBlock+size+size+size+size+4;//Change:: When *4 is fixed
+
+                let nextBlock[NEXT] = foundBlock[NEXT];
+
+                let nextBlock[LENGTH] = foundBlock[LENGTH] - size - 1;
+
+                let result[ALLOC_LENGTH] = size + 1;
+
+                
+
+                let freeList = nextBlock;
+
+              
+
+            }else{
+
+                //alloc the whole block
+
+                let nextBlock = foundBlock[NEXT];
+                let result[ALLOC_LENGTH] = foundBlock[LENGTH];
+
+          
+            }
+
+ 
+
+        }
+
+        return result; //*********return result
+
+    }
+
+}

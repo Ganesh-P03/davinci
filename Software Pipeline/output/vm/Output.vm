@@ -1,8 +1,24 @@
 function Output.init 0
+push constant 16384
+pop static 7
+push constant 0
+pop static 1
+push constant 0
+pop static 2
+push constant 0
+pop static 3
+push constant 0
+pop static 5
+push constant 0
+pop static 4
 push constant 36
 call Array.new 1
 pop static 6
-push static 6
+call Output.initMap 0
+pop temp 0
+call Output.createMemoryMappings 0
+pop temp 0
+push constant 0
 return
 function Output.initMap 1
 push constant 127
@@ -92,84 +108,71 @@ add
 push argument 0
 add
 pop local 1
-push local 0
+push local 1
 push static 0
-push local 1
 add
-pop pointer 1
-pop that 0
-push argument 1
 push local 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
 push constant 0
-add
-pop pointer 1
-pop that 0
-push argument 2
 push local 0
+add
+push argument 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
 push constant 4
-add
-pop pointer 1
-pop that 0
-push argument 3
 push local 0
+add
+push argument 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
 push constant 8
-add
-pop pointer 1
-pop that 0
-push argument 4
 push local 0
+add
+push argument 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
 push constant 12
-add
-pop pointer 1
-pop that 0
-push argument 5
 push local 0
+add
+push argument 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
 push constant 16
-add
-pop pointer 1
-pop that 0
-push argument 6
 push local 0
+add
+push argument 5
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
 push constant 20
-add
-pop pointer 1
-pop that 0
-push argument 7
 push local 0
+add
+push argument 6
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
 push constant 24
+push local 0
 add
+push argument 7
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push constant 0
-return
-function Output.modulo 2
-push argument 0
-pop local 0
-push local 0
-push argument 1
-sub
-pop local 1
-label WHILE_0
-push local 1
-push constant 0
-gt
-push local 1
-or
-push constant 0
-eq
-not
-if-goto END_WHILE_0
-push local 0
-push argument 1
-sub
-pop local 0
-push local 1
-push argument 1
-sub
-pop local 1
-goto WHILE_0
-label END_WHILE_0
-push local 0
 return
 function Output.createMemoryMappings 6
 push constant 0
@@ -180,58 +183,64 @@ push constant 0
 pop local 2
 push constant 0
 pop local 3
-label WHILE_1
+label WHILE_EXP0
 push local 1
 push constant 310
 lt
 not
-if-goto END_WHILE_1
+if-goto WHILE_END0
 push local 1
 push constant 32
-call Output.modulo 2
+call Math.mod 2
 pop local 4
 push local 4
 push constant 3
-call Output.modulo 2
+call Math.mod 2
 pop local 5
 push local 5
 push constant 1
 eq
-if-goto IF_2
-goto ENDIF_2
-label IF_2
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
 push local 3
 push constant 0
 eq
-if-goto IF_3
-goto ENDIF_3
-label IF_3
-push local 1
-push static 6
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
 push local 2
+push static 6
 add
+push local 1
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push local 2
 push constant 4
 add
 pop local 2
-label ENDIF_3
+goto IF_END1
+label IF_FALSE1
+label IF_END1
 push local 3
 push constant 1
 add
 pop local 3
 push local 3
 push constant 3
-call Output.modulo 2
+call Math.mod 2
 pop local 3
-label ENDIF_2
+goto IF_END0
+label IF_FALSE0
+label IF_END0
 push local 1
 push constant 1
 add
 pop local 1
-goto WHILE_1
-label END_WHILE_1
+goto WHILE_EXP0
+label WHILE_END0
 push constant 0
 return
 function Output.getMap 0
@@ -242,12 +251,14 @@ push argument 0
 push constant 126
 gt
 or
-if-goto IF_4
-goto ENDIF_4
-label IF_4
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
 push constant 0
 pop argument 0
-label ENDIF_4
+goto IF_END2
+label IF_FALSE2
+label IF_END2
 push argument 0
 push argument 0
 add
@@ -256,8 +267,8 @@ add
 push argument 0
 add
 pop argument 0
-push static 0
 push argument 0
+push static 0
 add
 pop pointer 1
 push that 0
@@ -269,29 +280,25 @@ push argument 0
 pop static 2
 push constant 0
 return
-function Output.power 3
-push argument 0
-pop local 1
-push argument 1
-pop local 2
+function Output.power 1
 push constant 1
 pop local 0
-label WHILE_5
-push local 2
+label WHILE_EXP1
+push argument 1
 push constant 0
 gt
 not
-if-goto END_WHILE_5
+if-goto WHILE_END1
 push local 0
-push local 1
+push argument 0
 call Math.multiply 2
 pop local 0
-push local 2
+push argument 1
 push constant 1
 sub
-pop local 2
-goto WHILE_5
-label END_WHILE_5
+pop argument 1
+goto WHILE_EXP1
+label WHILE_END1
 push local 0
 return
 function Output.printChar 17
@@ -303,8 +310,8 @@ add
 push static 3
 add
 pop static 5
-push static 6
 push static 5
+push static 6
 add
 pop pointer 1
 push that 0
@@ -319,27 +326,27 @@ add
 pop local 2
 push local 1
 push constant 32
-call Output.modulo 2
+call Math.mod 2
 pop local 0
 push constant 0
 pop local 3
 push argument 0
 call Output.getMap 1
 pop local 4
-label WHILE_6
+label WHILE_EXP2
 push local 3
 push constant 7
 lt
 not
-if-goto END_WHILE_6
+if-goto WHILE_END2
 push constant 0
 pop local 5
-label WHILE_7
+label WHILE_EXP3
 push local 5
 push constant 7
 lt
 not
-if-goto END_WHILE_7
+if-goto WHILE_END3
 push local 5
 push local 5
 add
@@ -348,8 +355,8 @@ add
 push local 5
 add
 pop local 15
-push local 4
 push local 15
+push local 4
 add
 pop pointer 1
 push that 0
@@ -362,8 +369,8 @@ add
 push local 2
 add
 pop local 16
-push static 7
 push local 16
+push static 7
 add
 pop pointer 1
 push that 0
@@ -387,14 +394,16 @@ pop local 11
 push local 11
 push constant 1
 eq
-if-goto IF_8
-goto ENDIF_8
-label IF_8
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
 push local 8
 push local 9
 sub
 pop local 8
-label ENDIF_8
+goto IF_END3
+label IF_FALSE3
+label IF_END3
 push constant 6
 push local 3
 sub
@@ -414,22 +423,26 @@ pop local 11
 push local 11
 push constant 1
 eq
-if-goto IF_9
-goto ENDIF_9
-label IF_9
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
 push local 8
 push local 9
 add
 pop local 8
-label ENDIF_9
-push local 8
-push static 7
+goto IF_END4
+label IF_FALSE4
+label IF_END4
 push local 16
+push static 7
 add
+push local 8
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
-goto WHILE_7
-label END_WHILE_7
+goto WHILE_EXP3
+label WHILE_END3
 push local 0
 push constant 1
 add
@@ -441,35 +454,39 @@ pop local 3
 push local 0
 push constant 32
 eq
-if-goto IF_10
-goto ENDIF_10
-label IF_10
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
 push constant 0
 pop local 0
 push local 2
 push constant 1
 add
 pop local 2
-label ENDIF_10
-goto WHILE_6
-label END_WHILE_6
+goto IF_END5
+label IF_FALSE5
+label IF_END5
+goto WHILE_EXP2
+label WHILE_END2
 push static 3
 push constant 35
 eq
-if-goto IF_11
-push static 3
-push constant 1
-add
-pop static 3
-goto ENDIF_11
-label IF_11
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
 push constant 0
 pop static 3
 push static 4
 push constant 1
 add
 pop static 4
-label ENDIF_11
+goto IF_END6
+label IF_FALSE6
+push static 3
+push constant 1
+add
+pop static 3
+label IF_END6
 push constant 0
 return
 function Output.println 0
@@ -490,8 +507,8 @@ add
 push static 3
 add
 pop static 5
-push static 6
 push static 5
+push static 6
 add
 pop pointer 1
 push that 0
@@ -506,48 +523,52 @@ add
 pop local 2
 push local 1
 push constant 32
-call Output.modulo 2
+call Math.mod 2
 pop local 0
 push constant 0
 pop local 3
 push static 3
 push constant 0
 eq
-if-goto IF_12
-push static 3
-push constant 1
-sub
-pop static 3
-goto ENDIF_12
-label IF_12
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
 push static 4
 push constant 0
 gt
-if-goto IF_13
-goto ENDIF_13
-label IF_13
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
 push static 4
 push constant 1
 sub
 pop static 4
 push constant 35
 pop static 3
-label ENDIF_13
-label ENDIF_12
-label WHILE_14
+goto IF_END8
+label IF_FALSE8
+label IF_END8
+goto IF_END7
+label IF_FALSE7
+push static 3
+push constant 1
+sub
+pop static 3
+label IF_END7
+label WHILE_EXP4
 push local 3
 push constant 7
 lt
 not
-if-goto END_WHILE_14
+if-goto WHILE_END4
 push constant 0
 pop local 4
-label WHILE_15
+label WHILE_EXP5
 push local 4
 push constant 7
 lt
 not
-if-goto END_WHILE_15
+if-goto WHILE_END5
 push local 4
 push local 4
 add
@@ -564,8 +585,8 @@ add
 push local 2
 add
 pop local 11
-push static 7
 push local 11
+push static 7
 add
 pop pointer 1
 push that 0
@@ -589,22 +610,26 @@ pop local 10
 push local 10
 push constant 1
 eq
-if-goto IF_16
-goto ENDIF_16
-label IF_16
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
 push local 7
 push local 8
 sub
 pop local 7
-label ENDIF_16
-push local 7
-push static 7
+goto IF_END9
+label IF_FALSE9
+label IF_END9
 push local 11
+push static 7
 add
+push local 7
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
-goto WHILE_15
-label END_WHILE_15
+goto WHILE_EXP5
+label WHILE_END5
 push local 0
 push constant 1
 add
@@ -616,17 +641,19 @@ pop local 3
 push local 0
 push constant 32
 eq
-if-goto IF_17
-goto ENDIF_17
-label IF_17
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
 push constant 0
 pop local 0
 push local 2
 push constant 1
 add
 pop local 2
-label ENDIF_17
-goto WHILE_14
-label END_WHILE_14
+goto IF_END10
+label IF_FALSE10
+label IF_END10
+goto WHILE_EXP4
+label WHILE_END4
 push constant 0
 return

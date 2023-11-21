@@ -15,19 +15,23 @@ push constant 0
 pop static 7
 push constant 4
 pop static 8
+push static 7
+push static 1
+add
 push static 3
 push static 4
 sub
-push static 1
-push static 7
-add
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
-push constant 0
-push static 1
 push static 8
+push static 1
 add
+push constant 0
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push constant 4
 neg
@@ -43,8 +47,8 @@ push argument 0
 push argument 0
 add
 pop argument 0
-push static 0
 push argument 0
+push static 0
 add
 pop pointer 1
 push that 0
@@ -58,16 +62,15 @@ push argument 0
 push argument 0
 add
 pop argument 0
-push argument 1
-push static 0
 push argument 0
+push static 0
 add
+push argument 1
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push constant 0
-return
-function Memory.val 0
-push static 1
 return
 function Memory.bestFit 4
 push constant 0
@@ -78,28 +81,30 @@ sub
 pop local 2
 push static 1
 pop local 0
-push local 0
 push static 8
+push local 0
 add
 pop pointer 1
 push that 0
 push constant 0
 eq
-if-goto IF_0
-goto ENDIF_0
-label IF_0
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
 push local 0
 return
-label ENDIF_0
-label WHILE_1
+goto IF_END0
+label IF_FALSE0
+label IF_END0
+label WHILE_EXP0
 push local 0
 push constant 0
 eq
 not
 not
-if-goto END_WHILE_1
-push local 0
+if-goto WHILE_END0
 push static 7
+push local 0
 add
 pop pointer 1
 push that 0
@@ -114,22 +119,24 @@ push local 3
 push local 2
 lt
 and
-if-goto IF_2
-goto ENDIF_2
-label IF_2
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
 push local 0
 pop local 1
 push local 3
 pop local 2
-label ENDIF_2
-push local 0
+goto IF_END1
+label IF_FALSE1
+label IF_END1
 push static 8
+push local 0
 add
 pop pointer 1
 push that 0
 pop local 0
-goto WHILE_1
-label END_WHILE_1
+goto WHILE_EXP0
+label WHILE_END0
 push local 1
 return
 function Memory.alloc 3
@@ -146,11 +153,11 @@ push local 0
 push constant 0
 eq
 not
-if-goto IF_3
-goto ENDIF_3
-label IF_3
-push local 0
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
 push static 7
+push local 0
 add
 pop pointer 1
 push that 0
@@ -158,27 +165,9 @@ push argument 0
 push constant 3
 add
 gt
-if-goto IF_4
-push local 0
-push static 8
-add
-pop pointer 1
-push that 0
-pop local 1
-push local 0
-push static 7
-add
-pop pointer 1
-push that 0
-push local 2
-push static 9
-add
-pop pointer 1
-pop that 0
-push constant 2
-pop static 12
-goto ENDIF_4
-label IF_4
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
 push local 0
 push argument 0
 add
@@ -191,18 +180,23 @@ add
 push constant 4
 add
 pop local 1
-push local 0
 push static 8
+push local 1
+add
+push static 8
+push local 0
 add
 pop pointer 1
 push that 0
-push local 1
-push static 8
-add
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
-push local 0
 push static 7
+push local 1
+add
+push static 7
+push local 0
 add
 pop pointer 1
 push that 0
@@ -210,18 +204,19 @@ push argument 0
 sub
 push constant 1
 sub
-push local 1
-push static 7
-add
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
-push argument 0
-push constant 1
-add
-push local 2
 push static 9
+push local 2
 add
+push argument 0
+push constant 1
+add
+pop temp 0
 pop pointer 1
+push temp 0
 pop that 0
 push local 2
 pop static 11
@@ -229,7 +224,31 @@ push local 1
 pop static 1
 push constant 1
 pop static 12
-label ENDIF_4
-label ENDIF_3
+goto IF_END3
+label IF_FALSE3
+push static 8
+push local 0
+add
+pop pointer 1
+push that 0
+pop local 1
+push static 9
+push local 2
+add
+push static 7
+push local 0
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+pop static 12
+label IF_END3
+goto IF_END2
+label IF_FALSE2
+label IF_END2
 push local 2
 return
