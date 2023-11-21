@@ -1,12 +1,5 @@
 class Main{
     function int main(){
-        var int i;
-        let i = 0;
-        while(i < 5){
-            let i = i + 1;
-        }
-
-        let i = i + 10;
-        return i;
+        return 2 * 3;
     }
 }

@@ -82,7 +82,7 @@ class CodeWriter:
         self.writeMessage("RAM BASE")
         self.writeMessage("====================================")
         self.write("lui $ram, 34")  # ram = 34 << 12
-        self.write("addi $ram, $ram, 1409")  # ram = 140673
+        self.write("addi $ram, $ram, 1408")  # ram = 140672
         self.writeMessage("")
 
         self.writeMessage("Initialize Static Segment")
@@ -103,9 +103,8 @@ class CodeWriter:
         self.write("addi $sp, $ram, 1024")
         self.write("addi $lcl, $sp, 0")
         self.write("addi $arg, $sp, 0")
-        self.write("lui $t0, 4")
-        self.write("add $this, $sp, $t0")
-        self.write("add $that, $sp, $t0")
+        self.write("addi $this, $sp, 0")
+        self.write("addi $that, $sp, 0")
         self.writeMessage("")
 
         # Call Sys.init
@@ -197,7 +196,6 @@ class CodeWriter:
         if command == "add":
             self.write("add $t0, $t1, $t0")  # t0 = x + y
         elif command == "sub":
-            # [DONE] Is $t0 = x - y or $t0 = y - x? In terms of regs
             self.write("sub $t0, $t1, $t0")  # t0 = x - y
 
         # And/Or
@@ -327,8 +325,8 @@ class CodeWriter:
     def writeLabel(self, label: str) -> None:
         new_label = label
         if "IF" in label or "LOOP" in label or "WHILE" in label:
-            if self.__file_name:
-                new_label = label + "$" + self.__file_name
+            if self.__function_name:
+                new_label = label + "$" + self.__function_name
                 
         self.write(new_label + ":")  # <label>:
 
@@ -336,8 +334,8 @@ class CodeWriter:
     def writeGoto(self, label: str) -> None:
         new_label = label
         if "IF" in label or "LOOP" in label or "WHILE" in label:
-            if self.__file_name:
-                new_label = label + "$" + self.__file_name
+            if self.__function_name:
+                new_label = label + "$" + self.__function_name
         self.writeMessage("Jump to " + str(new_label))
         self.write("jal $ra, " + str(new_label))  # goto <label>
         self.writeMessage("")
@@ -347,8 +345,8 @@ class CodeWriter:
     def writeIf(self, label: str) -> None:
         new_label = label
         if "IF" in label or "LOOP" in label or "WHILE" in label:
-            if self.__file_name:
-                new_label = label + "$" + self.__file_name
+            if self.__function_name:
+                new_label = label + "$" + self.__function_name
 
         self.writeMessage("If-goto " + str(new_label))
         self.write("addi $sp, $sp, -4")  # SP = SP - 1
@@ -356,7 +354,7 @@ class CodeWriter:
 
         loop_label, loop_exit_label = self.genLoopLabel()
         self.write(
-            "beq $t0, $zero, " + str(loop_exit_label + "$" + self.__file_name)
+            "beq $t0, $zero, " + str(loop_exit_label + "$" + self.__function_name)
         )  # if t0 == 0, goto loop_exit_label
         self.write("lui $t0, " + new_label)  # t0
         self.write("addi $t0, $t0, " + new_label)  # t0 = return_label
@@ -460,7 +458,6 @@ class CodeWriter:
     # Writes assembly code that effects the function command
     def writeFunction(self, function_name: str, n: int) -> None:
         self.__function_name = function_name
-        self.__file_name = self.__function_name
         self.writeMessage("Function " + str(function_name) + " " + str(n))
         self.writeLabel(function_name)  # <function_name>:
         self.writeMessage("")
