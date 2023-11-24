@@ -18,6 +18,8 @@ pop this 1
 push argument 0
 pop this 0
 push argument 0
+push constant 4
+call Math.multiply 2
 call Array.new 1
 pop this 2
 push pointer 0
@@ -59,6 +61,12 @@ if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
 push this 1
+push this 1
+add
+push this 1
+add
+push this 1
+add
 push this 2
 add
 push argument 1

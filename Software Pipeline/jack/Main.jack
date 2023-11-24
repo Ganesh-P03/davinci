@@ -10,6 +10,7 @@ class Main{
 
         
         let addr = s.appendChar(97);
+        let addr = s.appendChar(98);
         //do s.appendChar(98);
         //do s.appendChar(99);
         //do s.appendChar(100);

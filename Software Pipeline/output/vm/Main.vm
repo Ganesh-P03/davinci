@@ -6,5 +6,9 @@ push local 0
 push constant 97
 call String.appendChar 2
 pop local 1
+push local 0
+push constant 98
+call String.appendChar 2
+pop local 1
 push local 1
 return

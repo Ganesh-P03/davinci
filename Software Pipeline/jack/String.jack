@@ -21,7 +21,7 @@ class String {
 
         let len = 0;
         let maxLen = maxLength;
-        let chars = Array.new(maxLength);
+        let chars = Array.new(maxLength * 4);
         return this;
     }
 
@@ -48,7 +48,7 @@ class String {
     method int appendChar(int c) {
         //check if len is less than maxLen
         if(len < maxLen){
-            let chars[len] = c;
+            let chars[len + len + len + len] = c;
             let len = len + 1;
         }
         return chars ; // this ? maybe s=s.appendChar(c) ?? 
