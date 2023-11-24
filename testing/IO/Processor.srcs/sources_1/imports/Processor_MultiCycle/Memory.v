@@ -66,7 +66,7 @@ module Memory
     
 
     
-    always @(posedge clock)
+    always @(posedge ramIsRead)
         begin
             if( address == 18'd206204 )
                 begin

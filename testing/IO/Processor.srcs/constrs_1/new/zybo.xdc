@@ -13,9 +13,9 @@ set_property -dict { PACKAGE_PIN M15   IOSTANDARD LVCMOS33 } [get_ports { led[1]
 set_property -dict { PACKAGE_PIN G14   IOSTANDARD LVCMOS33 } [get_ports { led[2] }]; #IO_0_35 Sch=led[2]
 set_property -dict { PACKAGE_PIN D18   IOSTANDARD LVCMOS33 } [get_ports { led[3] }]; #IO_L3N_T0_DQS_AD1N_35 Sch=led[3]
 
-##Pmod Header JE 
-#set_property -dict { PACKAGE_PIN V12   IOSTANDARD LVCMOS33 } [get_ports { ps2d }]; #IO_L4P_T0_34 Sch=je[1]	
-#set_property -dict { PACKAGE_PIN J15   IOSTANDARD LVCMOS33 } [get_ports { ps2c }]; #IO_25_35 Sch=je[3] 
+#Pmod Header JE 
+set_property -dict { PACKAGE_PIN V12   IOSTANDARD LVCMOS33 } [get_ports { ps2d }]; #IO_L4P_T0_34 Sch=je[1]	
+set_property -dict { PACKAGE_PIN J15   IOSTANDARD LVCMOS33 } [get_ports { ps2c }]; #IO_25_35 Sch=je[3] 
 
 
 set_property -dict { PACKAGE_PIN H17   IOSTANDARD TMDS_33     } [get_ports { TMDSn_clock }]; #IO_L13N_T2_MRCC_35 Sch=hdmi_tx_clk_n
