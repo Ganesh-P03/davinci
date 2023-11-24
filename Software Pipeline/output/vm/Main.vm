@@ -3,8 +3,7 @@ push constant 6
 call String.new 1
 pop local 0
 push local 0
-push constant 97
-call String.appendChar 2
-pop local 1
-push local 1
-return
+push constant 123
+neg
+call String.setInt 2
+pop temp 0

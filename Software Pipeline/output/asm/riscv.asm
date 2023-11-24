@@ -449,16 +449,26 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (97)
-addi $t0, $zero, 97
+// Push to stack from constant (123)
+addi $t0, $zero, 123
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Call String.appendChar 2
-lui $t0, String.appendChar$ret.4
-addi $t0, $t0, String.appendChar$ret.4
+// Extract variable from stack
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sub $t0, $zero, $t0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call String.setInt 2
+lui $t0, String.setInt$ret.4
+addi $t0, $t0, String.setInt$ret.4
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -484,47 +494,17 @@ add $arg, $zero, $t0
 
 add $lcl, $zero, $sp
 
-// Jump to String.appendChar
-jal $ra, String.appendChar
+// Jump to String.setInt
+jal $ra, String.setInt
 
 
-String.appendChar$ret.4:
+String.setInt$ret.4:
 
-// Pop from stack to local (1)
+// Pop from stack to temp (0)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 
-sw $t0, 4($lcl)
-
-// Push to stack from local (1)
-lw $t0, 4($lcl)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Get return address
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $ra, 0($t0)
-
-// ARG = pop()
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($arg)
-
-// Change SP = ARG + 1
-addi $sp, $arg, 4
-
-// Get Segments
-addi $t0, $zero, 20
-sub $t0, $lcl, $t0
-lw $lcl, 4($t0)
-lw $arg, 8($t0)
-lw $this, 12($t0)
-lw $that, 16($t0)
-
-jalr $ra, $ra, 0
+sw $t0, 0($temp)
 
 
 // ====================================
@@ -13500,9 +13480,50 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
+// Push to stack from constant (4)
+addi $t0, $zero, 4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.multiply 2
+lui $t0, Math.multiply$ret.42
+addi $t0, $t0, Math.multiply$ret.42
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.multiply
+jal $ra, Math.multiply
+
+
+Math.multiply$ret.42:
+
 // Call Array.new 1
-lui $t0, Array.new$ret.42
-addi $t0, $t0, Array.new$ret.42
+lui $t0, Array.new$ret.43
+addi $t0, $t0, Array.new$ret.43
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13532,7 +13553,7 @@ add $lcl, $zero, $sp
 jal $ra, Array.new
 
 
-Array.new$ret.42:
+Array.new$ret.43:
 
 // Pop from stack to this (2)
 addi $sp, $sp, -4
@@ -13617,10 +13638,12 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
-// Function String.charAt 0
+// Function String.charAt 1
 String.charAt:
 
-// Pushed 0 zeros to stack; No locals
+// Push 1 zeros to stack
+sw $zero, 0($sp)
+addi $sp, $sp, 4
 
 // Push to stack from argument (0)
 lw $t0, 0($arg)
@@ -13637,6 +13660,60 @@ addi $this, $t0, 0
 
 // Push to stack from argument (1)
 lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (4)
+addi $t0, $zero, 4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.multiply 2
+lui $t0, Math.multiply$ret.44
+addi $t0, $t0, Math.multiply$ret.44
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.multiply
+jal $ra, Math.multiply
+
+
+Math.multiply$ret.44:
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -13701,10 +13778,12 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
-// Function String.setCharAt 0
+// Function String.setCharAt 1
 String.setCharAt:
 
-// Pushed 0 zeros to stack; No locals
+// Push 1 zeros to stack
+sw $zero, 0($sp)
+addi $sp, $sp, 4
 
 // Push to stack from argument (0)
 lw $t0, 0($arg)
@@ -13721,6 +13800,60 @@ addi $this, $t0, 0
 
 // Push to stack from argument (1)
 lw $t0, 4($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (4)
+addi $t0, $zero, 4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.multiply 2
+lui $t0, Math.multiply$ret.45
+addi $t0, $t0, Math.multiply$ret.45
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.multiply
+jal $ra, Math.multiply
+
+
+Math.multiply$ret.45:
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
+
+// Push to stack from local (0)
+lw $t0, 0($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -13811,10 +13944,12 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
-// Function String.appendChar 0
+// Function String.appendChar 1
 String.appendChar:
 
-// Pushed 0 zeros to stack; No locals
+// Push 1 zeros to stack
+sw $zero, 0($sp)
+addi $sp, $sp, 4
 
 // Push to stack from argument (0)
 lw $t0, 0($arg)
@@ -13828,6 +13963,61 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 
 addi $this, $t0, 0
+
+// Push to stack from this (1)
+add $t1, $this, $ram
+lw $t0, 4($t1)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (4)
+addi $t0, $zero, 4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Math.multiply 2
+lui $t0, Math.multiply$ret.46
+addi $t0, $t0, Math.multiply$ret.46
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.multiply
+jal $ra, Math.multiply
+
+
+Math.multiply$ret.46:
+
+// Pop from stack to local (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($lcl)
 
 // Push to stack from this (1)
 add $t1, $this, $ram
@@ -13873,9 +14063,8 @@ LOOP_EXIT_32$String.appendChar:
 jal $ra, IF_FALSE1$String.appendChar
 
 IF_TRUE1$String.appendChar:
-// Push to stack from this (1)
-add $t1, $this, $ram
-lw $t0, 4($t1)
+// Push to stack from local (0)
+lw $t0, 0($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
@@ -14400,12 +14589,53 @@ slt $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
+// Push to stack from constant (4)
+addi $t0, $zero, 4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
 // Push to stack from local (1)
 lw $t0, 4($lcl)
 
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+
+// Call Math.multiply 2
+lui $t0, Math.multiply$ret.47
+addi $t0, $t0, Math.multiply$ret.47
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.multiply
+jal $ra, Math.multiply
+
+
+Math.multiply$ret.47:
 
 // Push to stack from this (2)
 add $t1, $this, $ram
@@ -14444,8 +14674,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call String.isDigit 1
-lui $t0, String.isDigit$ret.43
-addi $t0, $t0, String.isDigit$ret.43
+lui $t0, String.isDigit$ret.48
+addi $t0, $t0, String.isDigit$ret.48
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14475,7 +14705,7 @@ add $lcl, $zero, $sp
 jal $ra, String.isDigit
 
 
-String.isDigit$ret.43:
+String.isDigit$ret.48:
 
 // Extract variable from stack
 addi $sp, $sp, -4
@@ -14527,8 +14757,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call Math.multiply 2
-lui $t0, Math.multiply$ret.44
-addi $t0, $t0, Math.multiply$ret.44
+lui $t0, Math.multiply$ret.49
+addi $t0, $t0, Math.multiply$ret.49
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14558,7 +14788,14 @@ add $lcl, $zero, $sp
 jal $ra, Math.multiply
 
 
-Math.multiply$ret.44:
+Math.multiply$ret.49:
+
+// Push to stack from constant (4)
+addi $t0, $zero, 4
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 
 // Push to stack from local (1)
 lw $t0, 4($lcl)
@@ -14566,6 +14803,40 @@ lw $t0, 4($lcl)
 // Push to stack
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+
+// Call Math.multiply 2
+lui $t0, Math.multiply$ret.50
+addi $t0, $t0, Math.multiply$ret.50
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Math.multiply
+jal $ra, Math.multiply
+
+
+Math.multiply$ret.50:
 
 // Push to stack from this (2)
 add $t1, $this, $ram
@@ -14604,8 +14875,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call String.charToDigit 1
-lui $t0, String.charToDigit$ret.45
-addi $t0, $t0, String.charToDigit$ret.45
+lui $t0, String.charToDigit$ret.51
+addi $t0, $t0, String.charToDigit$ret.51
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14635,7 +14906,7 @@ add $lcl, $zero, $sp
 jal $ra, String.charToDigit
 
 
-String.charToDigit$ret.45:
+String.charToDigit$ret.51:
 
 // Extract variable from stack
 addi $sp, $sp, -4
@@ -15023,6 +15294,68 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
+// Function String.erase 0
+String.erase:
+
+// Pushed 0 zeros to stack; No locals
+
+// Push to stack from argument (0)
+lw $t0, 0($arg)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to pointer (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+addi $this, $t0, 0
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Pop from stack to this (1)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+add $t1, $this, $ram
+sw $t0, 4($t1)
+
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Get return address
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $ra, 0($t0)
+
+// ARG = pop()
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+
+// Change SP = ARG + 1
+addi $sp, $arg, 4
+
+// Get Segments
+addi $t0, $zero, 20
+sub $t0, $lcl, $t0
+lw $lcl, 4($t0)
+lw $arg, 8($t0)
+lw $this, 12($t0)
+lw $that, 16($t0)
+
+jalr $ra, $ra, 0
+
 // Function String.setInt 0
 String.setInt:
 
@@ -15040,6 +15373,50 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 
 addi $this, $t0, 0
+
+// Push to stack from pointer (0)
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+// Call String.erase 1
+lui $t0, String.erase$ret.52
+addi $t0, $t0, String.erase$ret.52
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to String.erase
+jal $ra, String.erase
+
+
+String.erase$ret.52:
+
+// Pop from stack to temp (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($temp)
 
 // Push to stack from constant (0)
 addi $t0, $zero, 0
@@ -15132,8 +15509,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call String.appendChar 2
-lui $t0, String.appendChar$ret.46
-addi $t0, $t0, String.appendChar$ret.46
+lui $t0, String.appendChar$ret.53
+addi $t0, $t0, String.appendChar$ret.53
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15163,7 +15540,7 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 
-String.appendChar$ret.46:
+String.appendChar$ret.53:
 
 // Pop from stack to temp (0)
 addi $sp, $sp, -4
@@ -15188,8 +15565,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call String.setIntHelper 2
-lui $t0, String.setIntHelper$ret.47
-addi $t0, $t0, String.setIntHelper$ret.47
+lui $t0, String.setIntHelper$ret.54
+addi $t0, $t0, String.setIntHelper$ret.54
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15219,7 +15596,7 @@ add $lcl, $zero, $sp
 jal $ra, String.setIntHelper
 
 
-String.setIntHelper$ret.47:
+String.setIntHelper$ret.54:
 
 // Pop from stack to temp (0)
 addi $sp, $sp, -4
@@ -15331,8 +15708,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call String.digitToChar 1
-lui $t0, String.digitToChar$ret.48
-addi $t0, $t0, String.digitToChar$ret.48
+lui $t0, String.digitToChar$ret.55
+addi $t0, $t0, String.digitToChar$ret.55
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15362,11 +15739,11 @@ add $lcl, $zero, $sp
 jal $ra, String.digitToChar
 
 
-String.digitToChar$ret.48:
+String.digitToChar$ret.55:
 
 // Call String.appendChar 2
-lui $t0, String.appendChar$ret.49
-addi $t0, $t0, String.appendChar$ret.49
+lui $t0, String.appendChar$ret.56
+addi $t0, $t0, String.appendChar$ret.56
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15396,7 +15773,7 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 
-String.appendChar$ret.49:
+String.appendChar$ret.56:
 
 // Pop from stack to temp (0)
 addi $sp, $sp, -4
@@ -15423,8 +15800,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call Math.divide 2
-lui $t0, Math.divide$ret.50
-addi $t0, $t0, Math.divide$ret.50
+lui $t0, Math.divide$ret.57
+addi $t0, $t0, Math.divide$ret.57
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15454,7 +15831,7 @@ add $lcl, $zero, $sp
 jal $ra, Math.divide
 
 
-Math.divide$ret.50:
+Math.divide$ret.57:
 
 // Pop from stack to local (0)
 addi $sp, $sp, -4
@@ -15474,8 +15851,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call String.setIntHelper 2
-lui $t0, String.setIntHelper$ret.51
-addi $t0, $t0, String.setIntHelper$ret.51
+lui $t0, String.setIntHelper$ret.58
+addi $t0, $t0, String.setIntHelper$ret.58
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15505,7 +15882,7 @@ add $lcl, $zero, $sp
 jal $ra, String.setIntHelper
 
 
-String.setIntHelper$ret.51:
+String.setIntHelper$ret.58:
 
 // Pop from stack to temp (0)
 addi $sp, $sp, -4
@@ -15539,8 +15916,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call Math.multiply 2
-lui $t0, Math.multiply$ret.52
-addi $t0, $t0, Math.multiply$ret.52
+lui $t0, Math.multiply$ret.59
+addi $t0, $t0, Math.multiply$ret.59
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15570,7 +15947,7 @@ add $lcl, $zero, $sp
 jal $ra, Math.multiply
 
 
-Math.multiply$ret.52:
+Math.multiply$ret.59:
 
 // Extract variable from stack
 addi $sp, $sp, -4
@@ -15587,8 +15964,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call String.digitToChar 1
-lui $t0, String.digitToChar$ret.53
-addi $t0, $t0, String.digitToChar$ret.53
+lui $t0, String.digitToChar$ret.60
+addi $t0, $t0, String.digitToChar$ret.60
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15618,11 +15995,11 @@ add $lcl, $zero, $sp
 jal $ra, String.digitToChar
 
 
-String.digitToChar$ret.53:
+String.digitToChar$ret.60:
 
 // Call String.appendChar 2
-lui $t0, String.appendChar$ret.54
-addi $t0, $t0, String.appendChar$ret.54
+lui $t0, String.appendChar$ret.61
+addi $t0, $t0, String.appendChar$ret.61
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15652,7 +16029,7 @@ add $lcl, $zero, $sp
 jal $ra, String.appendChar
 
 
-String.appendChar$ret.54:
+String.appendChar$ret.61:
 
 // Pop from stack to temp (0)
 addi $sp, $sp, -4
@@ -15810,8 +16187,8 @@ Sys.init:
 // Pushed 0 zeros to stack; No locals
 
 // Call Memory.init 0
-lui $t0, Memory.init$ret.55
-addi $t0, $t0, Memory.init$ret.55
+lui $t0, Memory.init$ret.62
+addi $t0, $t0, Memory.init$ret.62
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15841,7 +16218,7 @@ add $lcl, $zero, $sp
 jal $ra, Memory.init
 
 
-Memory.init$ret.55:
+Memory.init$ret.62:
 
 // Pop from stack to temp (0)
 addi $sp, $sp, -4
@@ -15850,8 +16227,8 @@ lw $t0, 0($sp)
 sw $t0, 0($temp)
 
 // Call Math.init 0
-lui $t0, Math.init$ret.56
-addi $t0, $t0, Math.init$ret.56
+lui $t0, Math.init$ret.63
+addi $t0, $t0, Math.init$ret.63
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15881,7 +16258,7 @@ add $lcl, $zero, $sp
 jal $ra, Math.init
 
 
-Math.init$ret.56:
+Math.init$ret.63:
 
 // Pop from stack to temp (0)
 addi $sp, $sp, -4
@@ -15890,8 +16267,8 @@ lw $t0, 0($sp)
 sw $t0, 0($temp)
 
 // Call Main.main 0
-lui $t0, Main.main$ret.57
-addi $t0, $t0, Main.main$ret.57
+lui $t0, Main.main$ret.64
+addi $t0, $t0, Main.main$ret.64
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15921,7 +16298,7 @@ add $lcl, $zero, $sp
 jal $ra, Main.main
 
 
-Main.main$ret.57:
+Main.main$ret.64:
 
 // Get return address
 addi $t0, $zero, 20
