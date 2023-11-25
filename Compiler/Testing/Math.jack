@@ -1,0 +1,81 @@
+class Math {
+    static Array bitArray;
+    function void init() {
+        let bitArray = Array.new(128);
+        let bitArray[0] = 1; // 0000000000000001
+        let bitArray[4] = 2; // 0000000000000010
+        let bitArray[8] = 4; // 0000000000000100
+        let bitArray[12] = 8; // 0000000000001000
+        let bitArray[16] = 16; // 0000000000010000
+        let bitArray[20] = 32; // 0000000000100000
+        let bitArray[24] = 64; // 0000000001000000
+        let bitArray[28] = 128; // 0000000010000000
+        let bitArray[32] = 256; // 0000000100000000
+        let bitArray[36] = 512; // 0000001000000000
+        let bitArray[40] = 1024; // 0000010000000000
+        let bitArray[44] = 2048; // 0000100000000000
+        let bitArray[48] = 4096; // 0001000000000000
+        let bitArray[52] = 8192; // 0010000000000000
+        let bitArray[56] = 16384; // 0100000000000000
+        let bitArray[60] = 16384 + 16384; // 1000000000000000
+        let bitArray[64] = bitArray[60]+bitArray[60];
+        let bitArray[68] = bitArray[64]+bitArray[64];
+        let bitArray[72] = bitArray[68]+bitArray[68];
+        let bitArray[76] = bitArray[72]+bitArray[72];
+        let bitArray[80] = bitArray[76]+bitArray[76];
+        let bitArray[84] = bitArray[80]+bitArray[80];
+        let bitArray[88] = bitArray[84]+bitArray[84];
+        let bitArray[92] = bitArray[88]+bitArray[88];
+        let bitArray[96] = bitArray[92]+bitArray[92];
+        let bitArray[100] = bitArray[96]+bitArray[96];
+        let bitArray[104] = bitArray[100]+bitArray[100];
+        let bitArray[108] = bitArray[104]+bitArray[104];
+        let bitArray[112] = bitArray[108]+bitArray[108];
+        let bitArray[116] = bitArray[112]+bitArray[112];
+        let bitArray[120] = bitArray[116]+bitArray[116];
+        let bitArray[124] = bitArray[120]+bitArray[120];
+        return;
+    }
+
+    
+    function int multiply(int x, int y) {
+        var int sum, shiftedX,j;
+
+        let sum = 0;
+        let shiftedX = x;
+        let j = 0;
+
+        while(j < 124){
+            if(~((y&bitArray[j])=0)){ // if jth bit of y is 1
+                let sum = sum + shiftedX;
+            }
+            let shiftedX = shiftedX + shiftedX; // shiftedX = shiftedX * 2
+            let j = j + 4;
+        }
+
+        return sum;
+    }
+
+
+    function int sqrt(int x) {
+        var int y,j,temp,tempQ;
+
+        let y = 0;
+
+        // j = 7 for 16 bit system
+        // NEED TO BE MODIFIED TO 32 BIT SYSTEM WHERE j = 15
+        let j = 124;
+
+
+        while(~(j < 0)){ // while j >= 0
+            let temp = y + bitArray[j];
+            let tempQ = temp * temp;
+            if(~(tempQ > x) & (tempQ > 0)){
+                let y = temp;
+            }
+            let j = j - 4;
+        }
+
+        return y;
+    }
+}

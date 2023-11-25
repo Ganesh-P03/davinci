@@ -1,0 +1,517 @@
+function Math.init 0
+push constant 128
+call Array.new 1
+pop static 0
+push constant 0
+push static 0
+add
+pop temp 0
+push constant 1
+push temp 0
+pop pointer 1
+pop that 0
+push constant 4
+push static 0
+add
+pop temp 0
+push constant 2
+push temp 0
+pop pointer 1
+pop that 0
+push constant 8
+push static 0
+add
+pop temp 0
+push constant 4
+push temp 0
+pop pointer 1
+pop that 0
+push constant 12
+push static 0
+add
+pop temp 0
+push constant 8
+push temp 0
+pop pointer 1
+pop that 0
+push constant 16
+push static 0
+add
+pop temp 0
+push constant 16
+push temp 0
+pop pointer 1
+pop that 0
+push constant 20
+push static 0
+add
+pop temp 0
+push constant 32
+push temp 0
+pop pointer 1
+pop that 0
+push constant 24
+push static 0
+add
+pop temp 0
+push constant 64
+push temp 0
+pop pointer 1
+pop that 0
+push constant 28
+push static 0
+add
+pop temp 0
+push constant 128
+push temp 0
+pop pointer 1
+pop that 0
+push constant 32
+push static 0
+add
+pop temp 0
+push constant 256
+push temp 0
+pop pointer 1
+pop that 0
+push constant 36
+push static 0
+add
+pop temp 0
+push constant 512
+push temp 0
+pop pointer 1
+pop that 0
+push constant 40
+push static 0
+add
+pop temp 0
+push constant 1024
+push temp 0
+pop pointer 1
+pop that 0
+push constant 44
+push static 0
+add
+pop temp 0
+push constant 2048
+push temp 0
+pop pointer 1
+pop that 0
+push constant 48
+push static 0
+add
+pop temp 0
+push constant 4096
+push temp 0
+pop pointer 1
+pop that 0
+push constant 52
+push static 0
+add
+pop temp 0
+push constant 8192
+push temp 0
+pop pointer 1
+pop that 0
+push constant 56
+push static 0
+add
+pop temp 0
+push constant 16384
+push temp 0
+pop pointer 1
+pop that 0
+push constant 60
+push static 0
+add
+pop temp 0
+push constant 16384
+push constant 16384
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 64
+push static 0
+add
+pop temp 0
+push constant 60
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 60
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 68
+push static 0
+add
+pop temp 0
+push constant 64
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 64
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 72
+push static 0
+add
+pop temp 0
+push constant 68
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 68
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 76
+push static 0
+add
+pop temp 0
+push constant 72
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 72
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 80
+push static 0
+add
+pop temp 0
+push constant 76
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 76
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 84
+push static 0
+add
+pop temp 0
+push constant 80
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 80
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 88
+push static 0
+add
+pop temp 0
+push constant 84
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 84
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 92
+push static 0
+add
+pop temp 0
+push constant 88
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 88
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 96
+push static 0
+add
+pop temp 0
+push constant 92
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 92
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 100
+push static 0
+add
+pop temp 0
+push constant 96
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 96
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 104
+push static 0
+add
+pop temp 0
+push constant 100
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 100
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 108
+push static 0
+add
+pop temp 0
+push constant 104
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 104
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 112
+push static 0
+add
+pop temp 0
+push constant 108
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 108
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 116
+push static 0
+add
+pop temp 0
+push constant 112
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 112
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 120
+push static 0
+add
+pop temp 0
+push constant 116
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 116
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 124
+push static 0
+add
+pop temp 0
+push constant 120
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 120
+push static 0
+add
+pop pointer 1
+push that 0
+add
+push temp 0
+pop pointer 1
+pop that 0
+push constant 0
+return
+function Math.multiply 3
+push constant 0
+pop local 0
+push argument 0
+pop local 1
+push constant 0
+pop local 2
+label WHILE_EXP0
+push local 2
+push constant 124
+lt
+not
+if-goto WHILE_END0
+push argument 1
+push local 2
+push static 0
+add
+pop pointer 1
+push that 0
+and
+push constant 0
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push local 1
+add
+pop local 0
+goto IF_END0
+label IF_FALSE0
+label IF_END0
+push local 1
+push local 1
+add
+pop local 1
+push local 2
+push constant 4
+add
+pop local 2
+goto WHILE_EXP0
+label WHILE_END0
+push local 0
+return
+function Math.sqrt 4
+push constant 0
+pop local 0
+push constant 124
+pop local 1
+label WHILE_EXP1
+push local 1
+push constant 0
+lt
+not
+not
+if-goto WHILE_END1
+push local 0
+push local 1
+push static 0
+add
+pop pointer 1
+push that 0
+add
+pop local 2
+push local 2
+push local 2
+call Math.multiply 2
+pop local 3
+push local 3
+push argument 0
+gt
+not
+push local 3
+push constant 0
+gt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 2
+pop local 0
+goto IF_END1
+label IF_FALSE1
+label IF_END1
+push local 1
+push constant 4
+sub
+pop local 1
+goto WHILE_EXP1
+label WHILE_END1
+push local 0
+return

@@ -8,10 +8,7 @@ class Main{
         //let arr = Array.new(24);
         let s = String.new(6);
 
-        
-        let addr = s.appendChar(97);
-        //do s.appendChar(98);
-        //do s.appendChar(99);
+        do s.setInt(-123);
         //do s.appendChar(100);
         //do s.appendChar(101);
 
@@ -22,6 +19,6 @@ class Main{
         //let arr[8] = s.charAt(2); // 45
         //let arr[12] = s;
 
-        return addr;
+        // return addr;
     }
 }
