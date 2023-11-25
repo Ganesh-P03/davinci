@@ -72,3 +72,8 @@ class Tokenizer:
     def prev_token(self):
         if self.current_token_index > 0:
             return self.tokens[self.current_token_index - 1]
+
+    @property
+    def double_prev_token(self):
+        if self.current_token_index > 1:
+            return self.tokens[self.current_token_index - 2]
