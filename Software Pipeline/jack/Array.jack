@@ -12,6 +12,11 @@ class Array {
     function Array new(int size) {
     	return Memory.alloc(size); // returns the array's base address allocated in memory
     }
-
+    
+/** De-allocates the array and frees its space. */
+    method void dispose() {
+    	do Memory.deAlloc(this); // frees the array's space from memory
+    	return;
+    }
     
 }

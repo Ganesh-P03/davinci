@@ -430,6 +430,7 @@ class CompilationEngine:
 
         self.generator.write_push_pop("push", "CONST", len(string))
         self.generator.write_call("String.new", 1)
+        self.generator.write_push_pop("pop", Scat, Si)
 
         for char in string:
             self.generator.write_push_pop("push", Scat, Si)
