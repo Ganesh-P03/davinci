@@ -1,25 +1,4 @@
-+-----------+-----------+
-|   Symbol  | Reference |
-+-----------+-----------+
-|   Math.0  |     0     |
-|  Memory.6 |     1     |
-|  Memory.5 |     2     |
-|  Memory.4 |     3     |
-|  Memory.3 |     4     |
-|  Memory.0 |     5     |
-|  Memory.1 |     6     |
-|  Memory.7 |     7     |
-|  Memory.8 |     8     |
-|  Memory.9 |     9     |
-| Memory.10 |     10    |
-| Memory.11 |     11    |
-| Memory.12 |     12    |
-|  Output.7 |     13    |
-|  Output.1 |     14    |
-|  Output.2 |     15    |
-|  Output.3 |     16    |
-|  Output.5 |     17    |
-|  Output.4 |     18    |
-|  Output.6 |     19    |
-|  Output.0 |     20    |
-+-----------+-----------+
++--------+-----------+
+| Symbol | Reference |
++--------+-----------+
++--------+-----------+
