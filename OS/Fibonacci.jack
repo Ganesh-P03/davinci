@@ -1,0 +1,51 @@
+// Fibonacci.jack
+
+class Fibonacci {
+    function void calculate_fibo(){
+        var int n, a, b, c, i;
+
+        let Keyboard.init(); // Initialize Keyboard
+
+        do Output.printString("Enter the number of Fibonacci numbers to print: ");
+        let n = Keyboard.readInt(""); // Read user input for the number of Fibonacci numbers to print
+
+        let a = 0;
+        let b = 1;
+
+        do Output.printString("The first " + n + " Fibonacci numbers are: ");
+        do Output.printInt(a); // Print the first number in the sequence
+
+        if (n > 1) {
+            do Output.printString(", ");
+            do Output.printInt(b); // Print the second number in the sequence
+        }
+
+        // Print subsequent Fibonacci numbers
+        let i = 2;
+        while (i < n) {
+            let c = a + b;
+            do Output.printString(", ");
+            do Output.printInt(c);
+            let a = b;
+            let b = c;
+            let i = i + 1;
+        }
+    }
+    function void main() {
+        var boolean repeat = true;
+        var String answer;
+        do Fibonacci.calculate_fibo();
+        // Ask if the user wants to continue
+        while(repeat==true){
+            do Output.printString("\nDo you want to continue? (yes/no): ");
+            let answer = Keyboard.readLine("");
+            if (answer = "yes") {
+                do Fibonacci.calculate_fibo(); // Restart the program
+            } else {
+                repeat = false;
+                do Output.printString("Program ended."); // End the program
+            }
+        }
+
+    }
+}

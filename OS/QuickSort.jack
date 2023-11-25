@@ -1,0 +1,89 @@
+// QuickSort.jack
+class QuickSort {
+    function void calculate_quick_sort() {
+        var Array arr;
+        var int size, i;
+
+        let Keyboard.init(); // Initialize Keyboard
+        let Output.init();   // Initialize Output
+
+        do Output.printString("Enter the size of the array: ");
+        let size = Keyboard.readInt(""); // Read user input for array size
+
+        let arr = Array.new(size); // Create a new array of the specified size
+
+        // Initialize the array elements with user input
+        do Output.printString("Enter the elements of the array:\n");
+        let i = 0;
+        while (i < size) {
+            let arr[i] = Keyboard.readInt("");
+            let i = i + 1;
+        }
+
+        // Perform QuickSort on the array
+        do QuickSort.sort(arr, 0, size - 1);
+
+        // Print the sorted array
+        do Output.printString("The sorted array is: ");
+        let i = 0;
+        while (i < size) {
+            do Output.printInt(arr[i]);
+            let i = i + 1;
+            if (i < size) {
+                do Output.printString(", ");
+            } else {
+                do Output.printString("\n");
+            }
+        }
+    }
+
+    function void sort(Array arr, int low, int high) {
+        if (low < high) {
+            var int pi;
+            let pi = QuickSort.partition(arr, low, high);
+
+            // Recursively sort elements before and after partition
+            do QuickSort.sort(arr, low, pi - 1);
+            do QuickSort.sort(arr, pi + 1, high);
+        }
+    }
+
+    function int partition(Array arr, int low, int high) {
+        var int pivot, i, j, temp;
+        let pivot = arr[high];
+        let i = low - 1;
+
+        let j = low;
+        while (j < high) {
+            if (arr[j] <= pivot) {
+                let i = i + 1;
+                let temp = arr[i];
+                let arr[i] = arr[j];
+                let arr[j] = temp;
+            }
+            let j = j + 1;
+        }
+
+        let temp = arr[i + 1];
+        let arr[i + 1] = arr[high];
+        let arr[high] = temp;
+
+        return i + 1;
+    }
+    function void main(){
+        var int repeat = true;
+        var String answer;
+        do QuickSort.calculate_quick_sort();
+        while(repeat==true){
+            do Output.printString("\nDo you want to continue? (yes/no): ");
+            let answer = Keyboard.readLine("");
+                if (answer = "yes") {
+                do QuickSort.calculate_quick_sort(); // Restart the program
+            } else {
+                repeat = false;
+                do Output.printString("Program ended."); // End the program
+            }
+        }
+
+    }
+}
