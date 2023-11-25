@@ -5,6 +5,7 @@ module Screen_Memory(
     input byteWrite,
     input isWrite,
     input [31:0] writeData,
+	output reg [31:0] content,
     output [31:0] displayData
     );
     
@@ -16,9 +17,10 @@ module Screen_Memory(
     
     wire [15:0] addr;
     assign addr = 16'd0 | address[15:2];
-    
+	
     always @ (posedge clock) 
 	begin
+	    content <= memory[addr];			
 		if(isWrite) 
 			begin
 			    if( byteWrite == 1'b0 )

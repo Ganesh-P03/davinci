@@ -1,5 +1,5 @@
 (*DONT_TOUCH = "true"*)
-module reg_file ( rs1, rs2, rd, reset,regwrite, wd3, clk, rd1, rd2,led);
+module reg_file ( rs1, rs2, rd, reset,regwrite, wd3, clk, rd1, rd2);//,led);
 
 input [4:0] rs1;
 input [4:0] rs2;
@@ -10,7 +10,7 @@ input clk;
 input reset;
 output [31:0] rd1;
 output [31:0] rd2;
-output [3:0] led;
+// output [3:0] led;
 (*DONT_TOUCH = "true"*)
 reg [31:0] register[31:0];
 
@@ -37,6 +37,6 @@ end
 assign rd1 = register[rs1];
 assign rd2 = register[rs2];
 
-assign led = register[4][3:0];
+// assign led = register[1][3:0];
 
 endmodule
