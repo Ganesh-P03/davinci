@@ -39,12 +39,9 @@ class SnakeGame {
 
         // create the snake
         let snake = Snake.new(this, grid.sizeX() / 2, grid.sizeY() / 2, 10, 3);
-
         do grid.placeFood();
         do grid.drawStatus();
-
         return this;
-
     }
 
     // disposes of a SnakeGame

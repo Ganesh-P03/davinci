@@ -4,9 +4,6 @@ class QuickSort {
         var Array arr;
         var int size, i;
 
-        let Keyboard.init(); // Initialize Keyboard
-        let Output.init();   // Initialize Output
-
         do Output.printString("Enter the size of the array: ");
         let size = Keyboard.readInt(""); // Read user input for array size
 
@@ -35,17 +32,19 @@ class QuickSort {
                 do Output.printString("\n");
             }
         }
+        return;
     }
 
     function void sort(Array arr, int low, int high) {
+        var int pi;
         if (low < high) {
-            var int pi;
             let pi = QuickSort.partition(arr, low, high);
 
             // Recursively sort elements before and after partition
             do QuickSort.sort(arr, low, pi - 1);
             do QuickSort.sort(arr, pi + 1, high);
         }
+        return;
     }
 
     function int partition(Array arr, int low, int high) {
@@ -55,7 +54,7 @@ class QuickSort {
 
         let j = low;
         while (j < high) {
-            if (arr[j] <= pivot) {
+            if ( (arr[j] < pivot) & arr[j]=pivot) {
                 let i = i + 1;
                 let temp = arr[i];
                 let arr[i] = arr[j];
@@ -71,19 +70,28 @@ class QuickSort {
         return i + 1;
     }
     function void main(){
-        var int repeat = true;
+        var int repeat;
         var String answer;
+        let repeat = 1;
         do QuickSort.calculate_quick_sort();
-        while(repeat==true){
+        while(repeat=1){
             do Output.printString("\nDo you want to continue? (yes/no): ");
             let answer = Keyboard.readLine("");
-                if (answer = "yes") {
+            do Output.printString(answer);
+            if (answer="yes") {
                 do QuickSort.calculate_quick_sort(); // Restart the program
             } else {
-                repeat = false;
-                do Output.printString("Program ended."); // End the program
+                if(answer="YES"){
+                    do QuickSort.calculate_quick_sort(); // Restart the program
+                }
+                else{
+                    let repeat = 0;
+                    do Output.printString("Program ended."); // End the program
+                }
+
             }
         }
+        return;
 
     }
 }
