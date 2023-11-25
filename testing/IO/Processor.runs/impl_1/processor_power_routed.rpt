@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date             : Fri Nov 24 23:51:11 2023
+| Date             : Sat Nov 25 11:18:19 2023
 | Host             : Ganesh running 64-bit major release  (build 9200)
 | Command          : report_power -file processor_power_routed.rpt -pb processor_power_summary_routed.pb -rpx processor_power_routed.rpx
 | Design           : processor
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.497        |
+| Total On-Chip Power (W)  | 0.512        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.399        |
-| Device Static (W)        | 0.098        |
+| Dynamic (W)              | 0.413        |
+| Device Static (W)        | 0.099        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 79.3         |
-| Junction Temperature (C) | 30.7         |
+| Max Ambient (C)          | 79.1         |
+| Junction Temperature (C) | 30.9         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,21 +52,21 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.003 |        6 |       --- |             --- |
-| Slice Logic              |     0.071 |     8546 |       --- |             --- |
-|   LUT as Logic           |     0.047 |     2624 |     17600 |           14.91 |
-|   LUT as Distributed RAM |     0.020 |     2410 |      6000 |           40.17 |
-|   F7/F8 Muxes            |     0.003 |     1574 |     17600 |            8.94 |
-|   Register               |    <0.001 |     1425 |     35200 |            4.05 |
+| Clocks                   |     0.004 |        6 |       --- |             --- |
+| Slice Logic              |     0.074 |     8623 |       --- |             --- |
+|   LUT as Logic           |     0.050 |     2660 |     17600 |           15.11 |
+|   LUT as Distributed RAM |     0.020 |     2408 |      6000 |           40.13 |
+|   F7/F8 Muxes            |     0.003 |     1576 |     17600 |            8.95 |
+|   Register               |    <0.001 |     1423 |     35200 |            4.04 |
 |   CARRY4                 |    <0.001 |       15 |      4400 |            0.34 |
 |   BUFG                   |    <0.001 |        2 |        32 |            6.25 |
-|   Others                 |     0.000 |      273 |       --- |             --- |
-| Signals                  |     0.096 |     3829 |       --- |             --- |
+|   Others                 |     0.000 |      274 |       --- |             --- |
+| Signals                  |     0.106 |     3905 |       --- |             --- |
 | Block RAM                |    <0.001 |       16 |        60 |           26.67 |
 | MMCM                     |     0.094 |        1 |         2 |           50.00 |
-| I/O                      |     0.135 |       16 |       100 |           16.00 |
-| Static Power             |     0.098 |          |           |                 |
-| Total                    |     0.497 |          |           |                 |
+| I/O                      |     0.136 |       16 |       100 |           16.00 |
+| Static Power             |     0.099 |          |           |                 |
+| Total                    |     0.512 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.175 |       0.171 |      0.005 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.190 |       0.185 |      0.005 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.058 |       0.052 |      0.006 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.042 |       0.041 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -155,26 +155,24 @@ Table of Contents
 +----------------------+-----------+
 | Name                 | Power (W) |
 +----------------------+-----------+
-| processor            |     0.399 |
-|   buf_reg_3          |     0.009 |
+| processor            |     0.413 |
+|   buf_reg_3          |     0.011 |
 |     genblk1[10].reg1 |     0.002 |
 |       d              |     0.002 |
 |     genblk1[11].reg1 |     0.002 |
 |       d              |     0.002 |
-|   buf_reg_6          |     0.014 |
+|   buf_reg_6          |     0.013 |
 |     genblk1[0].reg1  |     0.001 |
 |       d              |     0.001 |
 |     genblk1[3].reg1  |     0.001 |
 |       d              |     0.001 |
-|     genblk1[5].reg1  |     0.001 |
-|       d              |     0.001 |
-|   control_unit       |     0.068 |
-|     mainDecoder      |     0.068 |
+|   control_unit       |     0.077 |
+|     mainDecoder      |     0.077 |
 |   dispDriver         |     0.233 |
-|   mem                |     0.033 |
+|   mem                |     0.034 |
 |     disMem           |     0.024 |
-|     ram              |     0.007 |
-|   register_file      |     0.038 |
+|     ram              |     0.008 |
+|   register_file      |     0.040 |
 +----------------------+-----------+
 
 

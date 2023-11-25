@@ -4,7 +4,7 @@ input reset;
 input sysclk;
 input ps2c;
 input ps2d;
-output reg [3:0] led;
+output [3:0] led;
 reg [31:0] Result;
 
 reg [24:0] count = 0;
@@ -77,10 +77,10 @@ always @(negedge scan_code_ready)
         sample <= ~sample;
     end  
 
-always @(negedge scan_code_ready)
-      begin
-      led <= ascii_code[3:0];
-      end
+// always @(negedge scan_code_ready)
+//       begin
+//       led <= ascii_code[3:0];
+//       end
 //-----------Keyboard----------------------//
 wire [31:0] ResultWire;
 wire [31:0] ReadData;
@@ -133,7 +133,7 @@ end
 //register_32bit buf_reg_1 (.D(ResultWire), .clk(clk), .regwrite(PCWrite), .Q(PC));   //Program Counter
 // assign PC = Result;
 MUX2x1_32bit mux_1 (.a(PC1), .b(Result), .s(AddrSrc), .y(Addr));
-Memory mem (.clock(clk), .isWrite(MemWrite), .byteWrite(Zero),.address(Addr), .writeData(WriteData), .RD(ReadData), .displayAddr(display_address), .displayData(display_dataOut), .sample(sample), .key_reg(key_reg));
+Memory mem (.clock(clk), .isWrite(MemWrite), .byteWrite(Zero),.address(Addr), .writeData(WriteData), .RD(ReadData), .displayAddr(display_address), .displayData(display_dataOut), .sample(sample), .key_reg(key_reg));//,.led(led));
 //Memory instr_data_mem (.addr(Addr), .WD(WriteData), .clk(clk), .MemWrite(MemWrite), .RD(ReadData));
 register_32bit_neg buf_reg_2 (.D(ReadData), .clk(clk), .Q(Data));  //To store the data that is from memory 
   //To store PC value of currently executing Insttuction
@@ -149,7 +149,7 @@ wire [4:0] Rs2 = Instr[24:20];
 wire [4:0] Rd = Instr[11:7];
 wire [24:0] Ext = Instr[31:7];
 
-reg_file register_file (.rs1(Rs1), .rs2(Rs2), .rd(Rd), .regwrite(RegWrite),.reset(reset), .wd3(Result), .clk(clk), .rd1(rd1), .rd2(rd2));//,.led(led));
+reg_file register_file (.rs1(Rs1), .rs2(Rs2), .rd(Rd), .regwrite(RegWrite),.reset(reset), .wd3(Result), .clk(clk), .rd1(rd1), .rd2(rd2),.led(led));
 register_32bit buf_reg_5 (.D(rd1), .clk(clk), .regwrite(1'b1), .Q(A)); //To store value read from RS1
 register_32bit buf_reg_6 (.D(rd2), .clk(clk), .regwrite(1'b1), .Q(WriteData)); //To store value read from RS2
 Extender extender_1 (.Inst(Ext), .ImmSrc(ImmSrc), .Imm(ImmExt));

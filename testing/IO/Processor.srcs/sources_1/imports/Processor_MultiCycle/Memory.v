@@ -12,6 +12,7 @@ module Memory
     output [31:0]RD,
     input sample,
     input [7:0] key_reg //8 bit ascii code ///***
+    // output [3:0] led
     );
     
     wire [31:0] data;
@@ -66,7 +67,7 @@ module Memory
     
 
     
-    always @(posedge ramIsRead)
+    always @(posedge clock)
         begin
             if( address == 18'd206204 )
                 begin
@@ -85,12 +86,6 @@ module Memory
         
     
     wire [31:0] ramReadData;
-    assign data =   (readKeyboard == 1'b1 ) ? keyVal :
-                    // (byteRead == 1'b1 && addrLatch == 2'd0) ? ramReadData[31:24] :
-                    // (byteRead == 1'b1 && addrLatch == 2'd1) ? ramReadData[23:16] :
-                    // (byteRead == 1'b1 && addrLatch == 2'd2) ? ramReadData[15:8] :
-                    // (byteRead == 1'b1 && addrLatch == 2'd3) ? ramReadData[7:0] :
-                    ramReadData;
     
     Screen_Memory disMem (
         .clock(clock),  //correct
@@ -117,6 +112,8 @@ module Memory
         .Inst(IR)                 //correct
     );
 
+    assign data =   (readKeyboard == 1'b1 ) ? keyVal :  ramReadData;
+    // assign led = keyVal[3:0];
     assign RD = (address >= 32'd9600 && address < 32'd140672 ) ? IR : data;
     //assign RD = IR;
  
