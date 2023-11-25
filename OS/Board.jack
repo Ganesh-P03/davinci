@@ -1,0 +1,73 @@
+class Board{
+    field int posx,posy;
+    
+    function void main(){
+        var char key;
+        var Array pointsArray;
+        var int size;
+        var int loopVariable;
+        var int pointx,pointy;
+        var int prevPointx,prevPointy;
+        var int pointIndex;
+        var int timePoint,curr;
+        let posx = 220;
+        let posy = 160;
+        let loopVariable = 0;
+        let pointIndex =0;
+        let size = 100;
+        let pointsArray = Array.new(size);
+        pointsArray = [287, 55, 217, 115, 39, 272, 134, 245, 172, 14, 103, 220, 78, 298, 96, 254, 194, 51, 161, 76, 189, 112, 265, 29, 186, 57, 209, 221, 177, 18, 283, 197, 119, 275, 133, 298, 63, 118, 23, 281, 194, 14, 201, 287, 112, 158, 45, 299, 273, 165, 12, 231, 284, 194, 52, 132, 178, 223, 15, 98, 299, 157, 110, 52, 232, 39, 156, 210, 125, 11, 294, 165, 72, 263, 84, 205, 151, 74, 116, 273, 49, 239, 85, 161, 26, 298, 97, 210, 127, 267, 18, 236, 176, 68, 285, 192, 109];
+        while(loopVariable=0){
+                while((key=0)&(loopVariable!=1))
+                {
+                    let key = Keyboard.keyPressed();
+                                    
+                let pointx = pointsArray[pointIndex];
+                let pointy = 0;
+                do Board.drawPoint(pointx,pointy);
+                let curr =0;
+                while(pointy<220){
+                    if(curr=1){
+                        do Screen.setColor(false);
+                        do Board.drawPoint(pointx,pointy-1);
+                        do Screen.setColor(true);
+                        do Board.drawPoint(pointx,pointy);
+                        let pointy = pointy +1;
+                    }
+                    if(curr=0){
+                        curr=1;
+                    }
+                    else{
+                        curr=0;
+                    }
+                }
+                let pointIndex = pointIndex +1;
+                if(pointIndex=100){
+                    pointIndex = 0;
+                }
+            }
+        do Board.draw(posx,posy);
+        }
+    }
+    function changeDirection(int direction){
+        
+        if(direction=1)
+        {
+            posx = posx - 1;
+        
+        }
+        else
+        {
+            posy = posy +1;
+            
+        }
+    }
+    function void drawPoint(int x,int y){
+        do Screen.drawPixel(x,y);
+        return;
+    }
+    function void draw(int x,int y){
+        do Screen.drawRectangle(x,y,x+5,y+5);
+        return;
+    }
+}
