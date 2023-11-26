@@ -3,15 +3,30 @@
 // by Nisan and Schocken, MIT Press.
 // File name: projects/12/Output.jack
 
+// screen is 640 x 480 pixels. 480 rows and 640 columns
+ // each bit in memory represents 4 pixels on screen
+ // memory required = 640 x 480 / 4 = 76800 bits  = 2400 memory addresses (each address of size 32 bits)
+ // each horizontal line with 640 pixels will be stored in 10 memory addresses =  320 bits
+
+
 /**
  * Handles writing characters to the screen.
-
- * The text screen (256 columns and 512 rows) is divided into 23 text rows (0..22), 
-
- * each containing 64 text columns (0..63).
- * Each row is 11 pixels high (including 1 space pixel), and 8 pixels wide
- * (including 2 space pixels).
+ * The text screen (240 rows and 320 columns) is divided into 240 text rows (0..239), 
+ * each containing  text columns (0..319).
  */
+
+ /**
+ * --------------EXPLANATION------------------------
+ * each character is 8 bits wide and 8 bits high
+ * each horizontal line can have 40 characters (320  screen width / 8 bits width per character = 40 characters)
+ * the screen can accomodate 30 horizontal lines ( 240 pixels screen height / height of 8 pixels per line  = 30 lines)
+ *
+ * each character is represented by 8 integers
+ * each integer is 8 bits wide 
+ * the first integer represents the top row of the character, and 8th integer represents the bottom row of the character
+ */
+ 
+ // Binary 8 bit on screen: [2^0th bit] [2^1 bit] [2^2 bit] [2^3 bit] [2^4 bit] [2^5 bit] [2^6 bit] [2^7 bit] from left to right on screen
 
 class Output {
 
@@ -19,418 +34,421 @@ class Output {
     static Array charMaps; 
     
     static int cursorX, cursorY;
-    static int charPositionInRow, lineNumber;
-    static int newcharPositionInRow;
-    static Array startingPositions;
     
-    static Array screen;
+    static Array screen,screen2;
 
     /** Initializes the screen and locates the cursor at the screen's top-left. */
     function void init() {
-        let screen = 16384; // Must be changed  
+        var int temp1;
+        let temp1 = Math.twoToThe(12);
+        let temp1 = 34*temp1;
+        let temp1 = temp1 + 1408;
+        let screen = 4-temp1; // starting memory address of the screen array
+        let screen2 = 16384;
         let cursorX = 0;
         let cursorY = 0;
-        let charPositionInRow = 0;
-        let newcharPositionInRow=0;
-        let lineNumber = 0;
-        let startingPositions = Array.new(36);
-        do Output.initMap();
-        do Output.createMemoryMappings();
+        let screen[400] = 767;
+        let screen[404] = 768;
+        let screen[408] = 769;
+        do Output.initMap(); // function call to initialize the character map array
         return;
     }
 
     // Initalizes the character map array
+    // ----------------------------------------- ACTUAL TESTING DONE ------------------------------------------------------
     function void initMap() {
         var int i;
     
         let charMaps = Array.new(127);
+
+        // 8 x 8 pixel bitmaps for the ASCII character set
         
         // black square (used for non printable characters)
-        // do Output.create(0,63,63,63,63,63,63,63,63,63,0,0);
-
-        // Assigns the bitmap for each character in the charachter set.
-
-        //Must be changed
-        // do Output.create(32,0,0,0,0,0,0,0,0,0,0,0);          //
-        // do Output.create(33,12,30,30,30,12,12,0,12,12,0,0);  // !
-        // do Output.create(34,54,54,20,0,0,0,0,0,0,0,0);       // "
-        // do Output.create(35,0,18,18,63,18,18,63,18,18,0,0);  // #
-        // do Output.create(36,12,30,51,3,30,48,51,30,12,12,0); // $
-        // do Output.create(37,0,0,35,51,24,12,6,51,49,0,0);    // %
-        // do Output.create(38,12,30,30,12,54,27,27,27,54,0,0); // &
-        // do Output.create(39,12,12,6,0,0,0,0,0,0,0,0);        // '
-        // do Output.create(40,24,12,6,6,6,6,6,12,24,0,0);      // (
-        // do Output.create(41,6,12,24,24,24,24,24,12,6,0,0);   // )
-        // do Output.create(42,0,0,0,51,30,63,30,51,0,0,0);     // *
-        // do Output.create(43,0,0,0,12,12,63,12,12,0,0,0);     // +
-        // do Output.create(44,0,0,0,0,0,0,0,12,12,6,0);        // ,
-        // do Output.create(45,0,0,0,0,0,63,0,0,0,0,0);         // -
-        // do Output.create(46,0,0,0,0,0,0,0,12,12,0,0);        // .    
-        // do Output.create(47,0,0,32,48,24,12,6,3,1,0,0);      // /
         
-        do Output.create(48,62,67,69,73,81,97,62); // 0
-        do Output.create(49,8,24,40,8,8,8,127); // 1
-        do Output.create(50,127,1,1,127,64,64,127);   // 2
-        // do Output.create(51,30,51,48,48,28,48,48,51,30,0,0); // 3
-        // do Output.create(52,16,24,28,26,25,63,24,24,60,0,0); // 4
-        // do Output.create(53,63,3,3,31,48,48,48,51,30,0,0);   // 5
-        // do Output.create(54,28,6,3,3,31,51,51,51,30,0,0);    // 6
-        // do Output.create(55,63,49,48,48,24,12,12,12,12,0,0); // 7
-        // do Output.create(56,30,51,51,51,30,51,51,51,30,0,0); // 8
-        // do Output.create(57,30,51,51,51,62,48,48,24,14,0,0); // 9
+        do Output.create(0,63,63,63,63,63,63,0,0);
+
+        // Assigns the bitmap for each character in the ASCII character set.
+
+        // The first 32 characters are non printable characters
+
+        // The next 95 characters are printable characters
+
+        // // space character
+        // do Output.create(32,0,0,0,0,0,0,0,0); //
+        // do Output.create(33,24, 60, 60, 24, 24, 0, 24, 0);  // !
+        // do Output.create(34,54, 54, 0, 0, 0, 0, 0, 0);       // "
+        // do Output.create(35,54, 54, 127, 54, 127, 54, 54, 0);  // #
+        // do Output.create(36,12, 62, 3, 30, 48, 31, 12, 0); // $
+        // do Output.create(37,0, 97, 98, 4, 8, 19, 19, 0);    // %
+        // do Output.create(38, 28, 34, 28, 54, 85, 85, 78, 0); // &
+        // do Output.create(39,12, 4, 8, 0, 0, 0, 0, 0);        // '
+        // do Output.create(40,24, 12, 12, 12, 12, 12, 24, 0);      // (
+        // do Output.create(41,12, 24, 24, 24, 24, 24, 12, 0);   // )
+        // do Output.create(42,0, 0, 20, 8, 62, 8, 20, 0);     // *
+        // do Output.create(43,0, 8, 8, 62, 8, 8, 0, 0);     // +
+        // do Output.create(44,0, 0, 0, 0, 24, 24, 8, 16);        // ,
+        // do Output.create(45,0, 0, 0, 62, 0, 0, 0, 0);         // -
+        // do Output.create(46, 0, 0, 0, 0, 12, 12, 0);        // .    
+        // do Output.create(47,0, 1, 2, 4, 8, 16, 0, 0);      // /
         
-        // do Output.create(58,0,0,12,12,0,0,12,12,0,0,0);      // :
-        // do Output.create(59,0,0,12,12,0,0,12,12,6,0,0);      // ;
-        // do Output.create(60,0,0,24,12,6,3,6,12,24,0,0);      // <
-        // do Output.create(61,0,0,0,63,0,0,63,0,0,0,0);        // =
-        // do Output.create(62,0,0,3,6,12,24,12,6,3,0,0);       // >
-        // do Output.create(64,30,51,51,59,59,59,27,3,30,0,0);  // @
-        // do Output.create(63,30,51,51,24,12,12,0,12,12,0,0);  // ?
-
-        do Output.create(65,127,65,65,65,127,65,65); // A
-        do Output.create(66,126,65,65,126,65,65,126); // B
-        do Output.create(67,127,65,65,65,65,65,127);    // C
-        do Output.create(68,124,70,67,67,67,70,124); // D
-        // do Output.create(69,63,51,35,11,15,11,35,51,63,0,0); // E
-        // do Output.create(70,63,51,35,11,15,11,3,3,3,0,0);    // F
-        // do Output.create(71,28,54,35,3,59,51,51,54,44,0,0);  // G
-        // do Output.create(72,51,51,51,51,63,51,51,51,51,0,0); // H
-        // do Output.create(73,30,12,12,12,12,12,12,12,30,0,0); // I
-        // do Output.create(74,60,24,24,24,24,24,27,27,14,0,0); // J
-        // do Output.create(75,51,51,51,27,15,27,51,51,51,0,0); // K
-        // do Output.create(76,3,3,3,3,3,3,35,51,63,0,0);       // L
-        // do Output.create(77,33,51,63,63,51,51,51,51,51,0,0); // M
-        // do Output.create(78,51,51,55,55,63,59,59,51,51,0,0); // N
-        // do Output.create(79,30,51,51,51,51,51,51,51,30,0,0); // O
-        // do Output.create(80,31,51,51,51,31,3,3,3,3,0,0);     // P
-        // do Output.create(81,30,51,51,51,51,51,63,59,30,48,0);// Q
-        // do Output.create(82,31,51,51,51,31,27,51,51,51,0,0); // R
-        // do Output.create(83,30,51,51,6,28,48,51,51,30,0,0);  // S
-        // do Output.create(84,63,63,45,12,12,12,12,12,30,0,0); // T
-        // do Output.create(85,51,51,51,51,51,51,51,51,30,0,0); // U
-        // do Output.create(86,51,51,51,51,51,30,30,12,12,0,0); // V
-        // do Output.create(87,51,51,51,51,51,63,63,63,18,0,0); // W
-        // do Output.create(88,51,51,30,30,12,30,30,51,51,0,0); // X
-        // do Output.create(89,51,51,51,51,30,12,12,12,30,0,0); // Y
-        // do Output.create(90,63,51,49,24,12,6,35,51,63,0,0);  // Z
-
-        // do Output.create(91,30,6,6,6,6,6,6,6,30,0,0);          // [
-        // do Output.create(92,0,0,1,3,6,12,24,48,32,0,0);        // \
-        // do Output.create(93,30,24,24,24,24,24,24,24,30,0,0);   // ]
-        // do Output.create(94,8,28,54,0,0,0,0,0,0,0,0);          // ^
-        // do Output.create(95,0,0,0,0,0,0,0,0,0,63,0);           // _
-        // do Output.create(96,6,12,24,0,0,0,0,0,0,0,0);          // `
-
-        // do Output.create(97,0,0,0,14,24,30,27,27,54,0,0);      // a
-        // do Output.create(98,3,3,3,15,27,51,51,51,30,0,0);      // b
-        // do Output.create(99,0,0,0,30,51,3,3,51,30,0,0);        // c
-        // do Output.create(100,48,48,48,60,54,51,51,51,30,0,0);  // d
-        // do Output.create(101,0,0,0,30,51,63,3,51,30,0,0);      // e
-        // do Output.create(102,28,54,38,6,15,6,6,6,15,0,0);      // f
-        // do Output.create(103,0,0,30,51,51,51,62,48,51,30,0);   // g
-        // do Output.create(104,3,3,3,27,55,51,51,51,51,0,0);     // h
-        // do Output.create(105,12,12,0,14,12,12,12,12,30,0,0);   // i
-        // do Output.create(106,48,48,0,56,48,48,48,48,51,30,0);  // j
-        // do Output.create(107,3,3,3,51,27,15,15,27,51,0,0);     // k
-        // do Output.create(108,14,12,12,12,12,12,12,12,30,0,0);  // l
-        // do Output.create(109,0,0,0,29,63,43,43,43,43,0,0);     // m
-        // do Output.create(110,0,0,0,29,51,51,51,51,51,0,0);     // n
-        // do Output.create(111,0,0,0,30,51,51,51,51,30,0,0);     // o
-        // do Output.create(112,0,0,0,30,51,51,51,31,3,3,0);      // p
-        // do Output.create(113,0,0,0,30,51,51,51,62,48,48,0);    // q
-        // do Output.create(114,0,0,0,29,55,51,3,3,7,0,0);        // r
-        // do Output.create(115,0,0,0,30,51,6,24,51,30,0,0);      // s
-        // do Output.create(116,4,6,6,15,6,6,6,54,28,0,0);        // t
-        // do Output.create(117,0,0,0,27,27,27,27,27,54,0,0);     // u
-        // do Output.create(118,0,0,0,51,51,51,51,30,12,0,0);     // v
-        // do Output.create(119,0,0,0,51,51,51,63,63,18,0,0);     // w
-        // do Output.create(120,0,0,0,51,30,12,12,30,51,0,0);     // x
-        // do Output.create(121,0,0,0,51,51,51,62,48,24,15,0);    // y
-        // do Output.create(122,0,0,0,63,27,12,6,51,63,0,0);      // z
+        // do Output.create(48,28, 34, 50, 42, 38, 34, 28, 0); // 0
+        // do Output.create(49,12, 14, 12, 12, 12, 12, 30, 0); // 1
+        // do Output.create(50,28, 34, 4, 8, 16, 32, 62, 0);   // 2
+        // do Output.create(51,28, 34, 4, 12, 4, 34, 28, 0); // 3
+        // do Output.create(52,4, 12, 20, 36, 62, 4, 4, 0); // 4
+        // do Output.create(53,62, 32, 32, 60, 2, 34, 28, 0);   // 5
+        // do Output.create(54,12, 16, 32, 60, 34, 34, 28, 0);    // 6
+        // do Output.create(55,62, 2, 4, 8, 16, 16, 16, 0); // 7
+        // do Output.create(56,28, 34, 34, 28, 34, 34, 28, 0); // 8
+        // do Output.create(57,28, 34, 34, 30, 2, 4, 24, 0); // 9
         
-        // do Output.create(123,56,12,12,12,7,12,12,12,56,0,0);   // {
-        // do Output.create(124,12,12,12,12,12,12,12,12,12,0,0);  // |
-        // do Output.create(125,7,12,12,12,56,12,12,12,7,0,0);    // }
-        // do Output.create(126,38,45,25,0,0,0,0,0,0,0,0);        // ~
+        // do Output.create(58,0, 12, 12, 0, 12, 12, 0, 0);      // :
+        // do Output.create(59,0, 12, 12, 0, 12, 24, 16, 0);      // ;
+        // do Output.create(60,0, 2, 4, 8, 16, 8, 4, 2);      // <
+        // do Output.create(61,0, 0, 0, 62, 0, 62, 0, 0);        // =
+        // do Output.create(62,0, 16, 8, 4, 2, 4, 8, 16);       // >
+        // do Output.create(63,28, 34, 4, 8, 8, 0, 8, 0);  // ?
+        // do Output.create(64,28, 34, 4, 14, 14, 14, 14, 0);  // @
+
+        do Output.create(65,0, 8, 20, 34, 62, 34, 34, 0); // A
+        do Output.create(66,30, 36, 36, 60, 36, 36, 30, 0); // B
+        do Output.create(67,12, 18, 32, 32, 32, 18, 12, 0); // C
+        do Output.create(68,28, 36, 34, 34, 34, 36, 28, 0); // D
+        do Output.create(69,62, 32, 32, 60, 32, 32, 62, 0); // E
+        do Output.create(70,62, 32, 32, 60, 32, 32, 32, 0); // F
+        // do Output.create(71,12, 18, 32, 32, 38, 18, 14, 0); // G
+        // do Output.create(72,34, 34, 34, 62, 34, 34, 34, 0); // H
+        // do Output.create(73,28, 8, 8, 8, 8, 8, 28, 0); // I
+        // do Output.create(74,14, 4, 4, 4, 4, 36, 28, 0); // J
+        // do Output.create(75,34, 36, 40, 48, 40, 36, 34, 0); // K
+        // do Output.create(76,32, 32, 32, 32, 32, 32, 62, 0);       // L
+        // do Output.create(77, 33, 55, 42, 42, 42, 42, 42, 0); // M
+        // do Output.create(78,34, 38, 38, 42, 42, 42, 42, 0); // N
+        // do Output.create(79,28, 34, 34, 34, 34, 34, 28, 0); // O
+        // do Output.create(80,30, 36, 36, 60, 32, 32, 32, 0);     // P
+        // do Output.create(81,28, 34, 34, 34, 42, 36, 30, 2);// Q
+        // do Output.create(82,30, 36, 36, 60, 40, 36, 34, 0); // R
+        // do Output.create(83,14, 16, 16, 12, 2, 2, 28, 0);  // S
+        // do Output.create(84,62, 8, 8, 8, 8, 8, 8, 0); // T
+        // do Output.create(85,34, 34, 34, 34, 34, 34, 28, 0); // U
+        // do Output.create(86,34, 34, 34, 34, 20, 20, 8, 0); // V
+        // do Output.create(87,34, 42, 42, 42, 42, 42, 28, 0); // W
+        // do Output.create(88,34, 34, 20, 8, 20, 34, 34, 0); // X
+        // do Output.create(89,34, 34, 20, 8, 8, 8, 8, 0); // Y
+        // do Output.create(90,62, 2, 4, 8, 16, 32, 62, 0);  // Z
+
+        // do Output.create(91,14, 8, 8, 8, 8, 8, 14, 0);          // [
+        // do Output.create(92,16, 8, 4, 2, 1, 1, 0, 0);        // \
+        // do Output.create(93,14, 2, 2, 2, 2, 2, 14, 0);   // ]
+        // do Output.create(94,8, 20, 34, 0, 0, 0, 0, 0);          // ^
+        // do Output.create(95,0, 0, 0, 0, 0, 0, 0, 62);           // _
+        // do Output.create(96,12, 12, 8, 4, 0, 0, 0, 0);          // `
+
+        // do Output.create(97,0, 0, 28, 2, 14, 18, 14, 0);      // a
+        // do Output.create(98,32, 32, 48, 40, 36, 36, 56, 0);      // b
+        // do Output.create(99, 0, 0, 28, 32, 32, 32, 28, 0);        // c
+        // do Output.create(100,2, 2, 14, 18, 34, 34, 14, 0);  // d
+        // do Output.create(101, 0, 0, 28, 34, 62, 32, 28, 0);      // e
+        // do Output.create(102,12, 18, 16, 56, 16, 16, 16, 0);      // f
+        // do Output.create(103,0, 0, 14, 18, 18, 14, 2, 28);   // g
+        // do Output.create(104,32, 32, 48, 40, 36, 36, 36, 0);     // h
+        // do Output.create(105, 8, 0, 8, 8, 8, 8, 8, 0);   // i
+        // do Output.create(106, 4, 0, 12, 4, 4, 4, 4, 8);  // j
+        // do Output.create(107,32, 32, 36, 40, 48, 40, 36, 0);     // k
+        // do Output.create(108,8, 8, 8, 8, 8, 8, 4, 0);  // l
+        // do Output.create(109,0, 0, 52, 42, 42, 42, 42, 0);     // m
+        // do Output.create(110, 0, 0, 48, 40, 36, 36, 36, 0);     // n
+        // do Output.create(111,0, 0, 28, 34, 34, 34, 28, 0);     // o
+        // do Output.create(112, 0, 0, 56, 36, 36, 48, 32, 32);      // p
+        // do Output.create(113, 0, 0, 14, 18, 18, 14, 2, 2);    // q
+        // do Output.create(114,0, 0, 44, 48, 32, 32, 32, 0);        // r
+        // do Output.create(115,0, 0, 28, 32, 12, 2, 60, 0);      // s
+        // do Output.create(116,16, 16, 56, 16, 16, 18, 12, 0);        // t
+        // do Output.create(117,0, 0, 36, 36, 36, 38, 26, 0);     // u
+        // do Output.create(118,0, 0, 34, 34, 34, 20, 8, 0);     // v
+        // do Output.create(119, 0, 0, 42, 42, 42, 42, 24, 0);     // w
+        // do Output.create(120,0, 0, 34, 20, 8, 20, 34, 0);     // x
+        // do Output.create(121, 0, 0, 36, 36, 36, 28, 4, 24);    // y
+        // do Output.create(122, 0, 0, 62, 4, 8, 16, 62, 0);      // z
+        
+        // do Output.create(123,24, 16, 16, 32, 16, 16, 24, 0);   // {
+        // do Output.create(124,8, 8, 8, 0, 8, 8, 8, 0);  // |
+        // do Output.create(125,6, 4, 4, 2, 4, 4, 6, 0);    // }
+        // do Output.create(126,36, 90, 0, 0, 0, 0, 0, 0);        // ~
 
         return;
     }
 
     // Creates a character map array of the given char index with the given values.
+    // index is the index of the character in the ASCII table.
+    // ----------------------------------------- ACTUAL TESTING DONE ------------------------------------------------------
     function void create(int index, int a, int b, int c, int d, int e,
-                 int f, int g) {
+                 int f, int g, int h) {
         var Array map;
-        var int newIndex;
 
-        let map = Array.new(7);
-        let newIndex=index+index+index+index;
-        let charMaps[newIndex] = map;
+        let map = Array.new(8); // creates an array of size 11
+        
+        // --------------------- Multiply with 4 ------------------- Should be changed ------------------------ 
+        let index = index*4;
 
+        let charMaps[index] = map; // assigns the array to the charMaps array at the given index
+
+        // assigns the given pixel values to the array
         let map[0] = a;
         let map[4] = b;
-        let map[8]= c;
+        let map[8] = c;
         let map[12] = d;
         let map[16] = e;
         let map[20] = f;
         let map[24] = g;
-
-        return;
-    }
-
-    // modify this function when division is working, optimize it
-
-    function void createMemoryMappings(){
-        var int position;
-        var int index;
-        var int arrayIndex;
-        var int count;
-        var int temp1;
-        var int temp2;
-        let position = 0;
-        let index = 0;
-        let arrayIndex = 0;
-        let count = 0;
-        while(index < 310){
-            let temp1 = Math.mod(index, 32);
-            let temp2 = Math.mod(temp1, 3);
-            if(temp2 = 1){
-                if(count = 0){
-                    let startingPositions [ arrayIndex ] = index;
-                    let arrayIndex = arrayIndex + 4;
-                }
-                let count = count + 1;
-                let count = Math.mod(count, 3);
-            }
-
-            let index = index + 1;
-        }
+        let map[28] = h;
         return;
     }
     
     // Returns the character map (array of size 11) for the given character
     // If an invalid character is given, returns the character map of a black square.
+    // ----------------------------------------- ACTUAL TESTING DONE ------------------------------------------------------
     function Array getMap(char c) {
-        
+        // --------------------- Multiply with 4 ------------------- Should be changed ------------------------
+        var int d;
         if ((c < 32) | (c > 126)) {
             let c = 0;
         }
-        let c=c+c+c+c;
-        return charMaps[c];
+        let d = c+c+c+c;
+        return charMaps[d];
     }
 
-    /** Moves the cursor to the jth column of the ith row,
+    /** Moves the cursor to the jth column of the ith row,
      *  and erases the character that was there. */
+    
+    // ----------------------------------------- ACTUAL TESTING DONE ------------------------------------------------------
     function void moveCursor(int i, int j) {
         let cursorX = j;
         let cursorY = i;
         return;
     }
 
-    function int power(int a, int b){
-        var int ans;
-        let ans = 1;
-        while(b > 0){
-            let ans = ans*a;
-            let b = b - 1;
-        }
-        return ans;
-    }
-
-    /** Prints c at the cursor location and advances the cursor one
+    /** Prints char c at the cursor location and advances the cursor one
      *  column forward. */
     //reference:https://github.com/havivha/Nand2Tetris/blob/master/12/Output.jack
+
+    // ----------------------------------------- ACTUAL TESTING DONE ------------------------------------------------------
     function void printChar(char c) {
-        var int startingBit;
-        var int startingPos;
-        var int address;
-        var int count;
-        var int map;
-        var int layer;
-        var int bitmap;
-        var int shifts1;
-        var int memoryValue;
-        var int powerOfShifts1;
-        var int valueAfterShift1;
-        var int bit;
-        var int shifts2;
-        var int powerOfShifts2;
-        var int valueAfterShift2;
-        var int newlayer;
-        var int newaddress;
-
-        let newcharPositionInRow=charPositionInRow+charPositionInRow+charPositionInRow+charPositionInRow;
-        let startingPos = startingPositions[newcharPositionInRow];
-        let address = (lineNumber * 100) + (startingPos / 32);
-        let startingBit = Math.mod(startingPos, 32);
-        let count = 0;
+        var Array map;
+        var int address,mask,bitmap,i,newi,newaddress,temp1,temp2,temp3,temp4;
+        
+        // Get the character bitmap
         let map = Output.getMap(c);
-        while(count < 7){
-            // marking the bits
-            let layer = 0;
-            while(layer < 7){
-                let newlayer=layer+layer+layer+layer;
-                let bitmap = map[newlayer];
-                let newaddress=address+address+address+address;
-                let memoryValue = screen[newaddress];
 
-                // Making the bits 0
-                let shifts1 = 31 - startingBit;
-                let powerOfShifts1 = Output.power(2, shifts1);
-                let valueAfterShift1 = memoryValue/powerOfShifts1;
-                let bit = valueAfterShift1 & 1;
-                if(bit = 1){
-                    let memoryValue = memoryValue - powerOfShifts1;
-                }
-                // Making the bit equal to bitmap
-                let shifts2 = (6-count);
-                let powerOfShifts2 = Output.power(2, shifts2);
-                let valueAfterShift2 = bitmap/powerOfShifts2;
-                let bit = valueAfterShift2 & 1;
-                if(bit = 1){
-                    let memoryValue = memoryValue + powerOfShifts1; 
-                }
-                let screen[newaddress] = memoryValue;
-            }
+        /** 
+         *  320 columns of horizontal line can be stored in 10 contiguous memory locations each of size 32 bit
+         *  320 = 10 *32
+         *  Number of memory locations required to store 1 horizontal line  = 10
+         *  Number of memory locations required to store 1 horizontal line if 1 character (each of height 8) = 10 * 8 = 80
+         *  Number of memory locations required to store "cursorY" horizontal lines of characters = cursorY * 10 * 8
+         *
+         *  width of each character is 8 bits, so 4 characters can be stored in 1 memory location of size 32 bits
+         *  Number of memory locations required to store cursorX number of characters = cursorX / 4
+         *
+         * 0 <= cursorX <= 39
+         * 0 <= cursorY <= 29
+         *
+         * NOTE: ALL THESE MIGHT NEED TO BE CHANGED TO 32 BIT MEMORY LOCATIONS ACCORDING TO OUR PROCESSOR
+        */
 
-            let startingBit = startingBit + 1;
-            let count = count + 1;
-            if(startingBit = 32){
-                let startingBit = 0;
-                let address = address + 1;
-            }
-        }
-
-        if(charPositionInRow = 35){
-            let charPositionInRow = 0;
-            let lineNumber = lineNumber + 1;
-        }else{
-            let charPositionInRow = charPositionInRow + 1;
-        }
-
-        // var Array map;
-        // var int address,mask,bitmap,i;
+        let address = (cursorY*10*8) + (cursorX/4); //  the memory address where the character should be printed on the screen.
         
-        // // Get the character bitmap
-        // let map = Output.getMap(c);
-        // let address = (cursorY*32*11) + (cursorX/2);
-        // let mask = cursorX & 1;
+
+        // Since the word size of the screen is 32 bits, we need to mask the character bitmap accordingly
+        // mask indicates whether the 8 bit character bit stream should be printed on the left or right of the 16 bit screen word
+
+        let mask = cursorX & 3;
+
+        // store the character bitmap in the screen memory location based on the mask
+        // | 31 - 24 | 23 - 16 | 15 - 8 | 7 - 0 |  (32 bit screen word)
+        // | mask 3  | mask 2  | mask 1 | mask 0|
         
-        // // Print the character
-        // let i = 0;
-        // while( i < 11 ) {
-        //     let bitmap = map[i];
-        //     if( mask = 1 ) {
-            //     let bitmap = bitmap * 256;
-            //     let screen[address] = screen[address] & (-1 & 255) | bitmap;
-            // }else{
-            //     let screen[address] = screen[address] & 255 | bitmap;
-            // }
+        // Print the character
+        let i = 0;
+        while( i < 8 ) {
+            let newi = i*4;
+            let bitmap = map[newi];
+            let newaddress = address*4;
             
-        //     let address = address + 32;
-        //     let i = i + 1;
-        // }
+            /** if( mask = 1 ) {
+                let bitmap = bitmap * 256; // left 8 bits would be filled i.e. binary is shifted 8 bits to the left => yyyyyyyy00000000
+
+                // -1 & 255 = 1111111111111111 & 0000000011111111 = 0000000011111111 = 255
+                // screen[address] & 255 = screen[address] & 0000000011111111 = 00000000xxxxxxxx (left 8 bits are made 0 and right 8 bits are preserved)
+                // 00000000xxxxxxxx | bitmap  = yyyyyyyyxxxxxxxx (left 8 bits are filled with the character bitmap and right 8 bits are preserved)
+                let screen[address] = screen[address] & (-1 & 255) | bitmap;
+            }else{
+
+                // if the mask is 0, the character should be printed on the right 8 bits of the 16bit screen word
+                // !!!!! IMPNOTE: here screen[address] = screen[address] & (-256) might need to be used !!!!!
+                // screen[address] & -256 = screen[address] & 1111111100000000 = xxxxxxxx00000000 (right 8 bits are made 0 and left 8 bits are preserved)
+                // xxxxxxxx00000000 | bitmap = xxxxxxxxyyyyyyyy (right 8 bits are filled with the character bitmap and left 8 bits are preserved)
+                let screen[address] = screen[address] & 255 | bitmap;
+            }*/
+            
+            if( mask = 0) {
+                let temp3 = Math.twoToThe(24);
+                let bitmap = bitmap * Math.twoToThe(24); //  16777216 = b'00000001 00000000 00000000 00000000
+                let temp3 = temp3 - 1;
+                let temp4 = (screen2[newaddress] & (temp3)) | bitmap;
+                let screen[newaddress] = temp4;  // 16777215 = b'00000000 11111111 11111111 11111111
+                let screen2[newaddress] = temp4;  // 16777215 = b'00000000 11111111 11111111 11111111
+                // do Output.create(65,0, 8, 20, 34, 62, 34, 34, 0); // A
+            }else {
+                if( mask = 1 ){
+                    let temp1 = Math.twoToThe(24) - Math.twoToThe(16); // 16711680 = b'00000000 11111111 00000000 00000000
+                    let temp3 = 0-temp1;
+                    let temp3 = temp3-1;
+                    let bitmap = bitmap * Math.twoToThe(16); // 65536 = b'00000000 00000001 00000000 00000000
+                    let bitmap = bitmap & temp1; // 16711680 = b'00000000 11111111 00000000 00000000
+                    let temp4 = (screen2[newaddress] & (temp3)) | bitmap;
+                    let screen[newaddress] = temp4; // -16711681 = b'11111111 00000000 11111111 11111111 (4278255615 un-signed int) 
+                    let screen2[newaddress] = temp4; // -16711681 = b'11111111 00000000 11111111 11111111 (4278255615 un-signed int)
+                }
+                else {
+                    if( mask = 2 ){
+                        let temp2 = Math.twoToThe(16) - Math.twoToThe(8); // 65280 = b'00000000 00000000 11111111 00000000
+                        let temp3 = 0-temp2;
+                        let temp3 = temp3-1;
+                        let bitmap = bitmap * Math.twoToThe(8); // 256 = b'00000000 00000000 00000001 00000000
+                        let bitmap = bitmap & temp2; // 65280 = b'00000000 00000000 11111111 00000000
+                        let temp4 = (screen2[newaddress] & (temp3)) | bitmap;
+                        let screen[newaddress] = temp4; // -65281 = b'11111111 11111111 00000000 11111111 (4294902015 un-signed int) 
+                        let screen2[newaddress] = temp4; // -65281 = b'11111111 11111111 00000000 11111111 (4294902015 un-signed int)
+                    }
+                    else {
+                        let temp4 = (screen2[newaddress] & (-256)) | bitmap; // -256 = b'11111111 11111111 11111111 00000000
+                        let screen[newaddress] = temp4; // -256 = b'11111111 11111111 11111111 00000000
+                        let screen2[newaddress] = temp4; // -256 = b'11111111 11111111 11111111 00000000
+                    }
+                }
+            }
+            
+            
+            let address = address + 10;
+            let i = i + 1;
+        }
         
-        // // Advance the cursor
-        // if( cursorX = 63 ) {
-        //     do Output.println();
-        // }
-        // else {
-        //     do Output.moveCursor(cursorY,cursorX+1);
-        // }
+        // Advance the cursor
+        if( cursorX = 39 ) {
+            do Output.println();
+        }
+        else {
+            do Output.moveCursor(cursorY,cursorX+1);
+        }
         
         return;
     }
 
     /** Prints s starting at the cursor location, and advances the
      *  cursor appropriately. */
-    // function void printString(String s) {
-    //     var int i;
-    //     let i = 0;
-    //     while( i < s.length() ) {
-    //         do Output.printChar(s.charAt(i));
-    //         let i = i + 1;
-    //     }
-    //     return;
-    // }
+    // ----------------------------------------- MANUAL TESTING YET TO BE DONE ------------------------------------------------------
+    function void printString(String s) {
+        var int i;
+        let i = 0;
+        while( i < s.length() ) {
+            do Output.printChar(s.charAt(i)); // prints each character of the string at the given cursor index
+            let i = i + 1;
+        }
+        return;
+    }
 
     /** Prints i starting at the cursor location, and advances the
      *  cursor appropriately. */
-    // function void printInt(int i) {
-    //     var String s;
-    //     let s = String.new(10);
-    //     do s.setInt(i);
-    //     do Output.printString(s);
-    //     do s.dispose();
-    //     return;
-    // }
+    // ----------------------------------------- MANUAL TESTING YET TO BE DONE ------------------------------------------------------
+    function void printInt(int i) {
+        var String s;
+        let s = String.new(10); // Constructs a new empty String with a maximum length of 10.
+        do s.setInt(i); // assigns the integer to the string, Sets this String to hold a representation of the given number
+        do Output.printString(s); // prints the string
+        do s.dispose(); // frees the memory allocated for the string
+        return;
+    }
 
     /** Advances the cursor to the beginning of the next line. */
+
+    // ----------------------------------------- MANUAL TESTING DONE ------------------------------------------------------
     function void println() {
-        let charPositionInRow = 0;
-        // Last line condition yet to be dealt
-        let lineNumber = lineNumber + 1;
+
+        if( cursorY < 29 ) {
+
+            // if the cursor is not at the end line of the screen, move it to the beginning of the next line
+            do Output.moveCursor(cursorY+1,0);
+        }else {
+
+            // if the cursor is at the end line of the screen, move it to the beginning of the screen
+            do Output.moveCursor(0,0);
+        }
         return;
     }
 
-    
+    // ----------------------------------------- MANUAL TESTING DONE ------------------------------------------------------
     /** Moves the cursor one column back. */
     function void backSpace() {
+        var int address, i, mask, newi, newaddress, temp1, temp2, temp3, temp4;
+        if( cursorX = 0 ) {
 
-        var int startingBit;
-        var int startingPos;
-        var int address;
-        var int count;
-        var int layer;
-        var int bitmap;
-        var int shifts1;
-        var int memoryValue;
-        var int powerOfShifts1;
-        var int valueAfterShift1;
-        var int bit;
-        var int newaddress;
-        var int newlayer;
-        let newcharPositionInRow=charPositionInRow+charPositionInRow+charPositionInRow+charPositionInRow;
-        let startingPos = startingPositions[newcharPositionInRow];
-        let address = (lineNumber * 100) + (startingPos / 32);
-        let startingBit = Math.mod(startingPos, 32);
-        let count = 0;
-
-        if(charPositionInRow = 0){
-            if(lineNumber > 0){
-                let lineNumber = lineNumber - 1;
-                let charPositionInRow = 35;
+            // if the cursor is at the beginning of the current line, move it to the end of the previous line
+            if( ~(cursorY = 0) ) {
+                do Output.moveCursor((cursorY-1),39);
             }
-        }else{
-            let charPositionInRow = charPositionInRow - 1;
+
+            // if the cursor is the beginning of the screen (top left), do nothing
         }
-
-        while(count < 7){
-            // marking the bits
-            let layer = 0;
-            while(layer < 7){
-                let newlayer=layer+layer+layer+layer;
-                let newaddress=address+address+address+address;
-                let memoryValue = screen[newaddress];
-
-                // Making the bits 0
-                let shifts1 = 31 - startingBit;
-                let powerOfShifts1 = Output.power(2, shifts1);
-                let valueAfterShift1 = memoryValue/powerOfShifts1;
-                let bit = valueAfterShift1 & 1;
-                if(bit = 1){
-                    let memoryValue = memoryValue - powerOfShifts1;
-                }
-                let screen[newaddress] = memoryValue;
-            }
-
-            let startingBit = startingBit + 1;
-            let count = count + 1;
-            if(startingBit = 32){
-                let startingBit = 0;
-                let address = address + 1;
-            }
+        else {
+            // move the cursor one column back in the same line
+            do Output.moveCursor(cursorY,(cursorX-1));
         }
         
+        let address = (cursorY*10*8) + (cursorX/4); //  the memory address where the character should be printed on the screen.
+        let mask = cursorX & 3;
+        let i = 0;
+        
+        while(i < 8){
+            let newi = i*4;
+            let newaddress = address*4;
+
+            if( mask = 0) {
+                let temp3 = Math.twoToThe(24) - 1;
+                let temp4 = (screen2[newaddress] & (temp3));
+                let screen[newaddress] = temp4;  // 16777215 = b'00000000 11111111 11111111 11111111
+                let screen2[newaddress] = temp4;  // 16777215 = b'00000000 11111111 11111111 11111111
+                // do Output.create(65,0, 8, 20, 34, 62, 34, 34, 0); // A
+            }else {
+                if( mask = 1 ){
+                    let temp1 = Math.twoToThe(24) - Math.twoToThe(16); // 16711680 = b'00000000 11111111 00000000 00000000
+                    let temp3 = 0-temp1;
+                    let temp3 = temp3-1;
+                    let temp4 = (screen2[newaddress] & (temp3));
+                    let screen[newaddress] = temp4; // -16711681 = b'11111111 00000000 11111111 11111111 (4278255615 un-signed int) 
+                    let screen2[newaddress] = temp4; // -16711681 = b'11111111 00000000 11111111 11111111 (4278255615 un-signed int)
+                }
+                else {
+                    if( mask = 2 ){
+                        let temp2 = Math.twoToThe(16) - Math.twoToThe(8); // 65280 = b'00000000 00000000 11111111 00000000
+                        let temp3 = 0-temp2;
+                        let temp3 = temp3-1;
+                        let temp4 = (screen2[newaddress] & (temp3));
+                        let screen[newaddress] = temp4; // -65281 = b'11111111 11111111 00000000 11111111 (4294902015 un-signed int) 
+                        let screen2[newaddress] = temp4; // -65281 = b'11111111 11111111 00000000 11111111 (4294902015 un-signed int)
+                    }
+                    else {
+                        let temp4 = (screen2[newaddress] & (-256)); // -256 = b'11111111 11111111 11111111 00000000
+                        let screen[newaddress] = temp4; // -256 = b'11111111 11111111 11111111 00000000
+                        let screen2[newaddress] = temp4; // -256 = b'11111111 11111111 11111111 00000000
+                    }
+                }
+            }
+
+            let i = i+1;
+        }
+
         return;
     }
+    // Can add space bar function also
 }

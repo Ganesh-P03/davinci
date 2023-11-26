@@ -9,13 +9,15 @@
 class Sys {
 
     /** Performs all the initializations required by the OS. */
-    function int init() {
+    function void init() {
         // do Screen.init();
-        // do Keyboard.init();
+        
         do Memory.init();
         do Math.init();
-
-        return Main.main();
+        do Output.init();
+        do Keyboard.init();
+        do Sys.test();
+        return;
     }
 
     /** Halts execution. */
@@ -37,7 +39,15 @@ class Sys {
         }
         return;
     }
-
+    
+    function void test(){
+      var String str;
+      var String message;
+      let message="ABCD";
+      let str = Keyboard.readLine(message);
+     // do Output.printString(str);
+      return;
+    }
     
 
     /** Prints the given error code in the form "ERR<errorCode>", and halts. */

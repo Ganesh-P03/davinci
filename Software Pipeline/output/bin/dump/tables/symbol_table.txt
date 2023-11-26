@@ -1,23 +1,25 @@
-+-----------+-----------+
-|   Symbol  | Reference |
-+-----------+-----------+
-|   Math.0  |     0     |
-|  Memory.6 |     1     |
-|  Memory.5 |     2     |
-|  Memory.4 |     3     |
-|  Memory.3 |     4     |
-|  Memory.0 |     5     |
-|  Memory.1 |     6     |
-|  Memory.7 |     7     |
-|  Memory.8 |     8     |
-|  Memory.9 |     9     |
-| Memory.10 |     10    |
-|  Output.7 |     11    |
-|  Output.1 |     12    |
-|  Output.2 |     13    |
-|  Output.3 |     14    |
-|  Output.5 |     15    |
-|  Output.4 |     16    |
-|  Output.6 |     17    |
-|  Output.0 |     18    |
-+-----------+-----------+
++------------+-----------+
+|   Symbol   | Reference |
++------------+-----------+
+| Keyboard.0 |     0     |
+|   Math.0   |     1     |
+|  Memory.6  |     2     |
+|  Memory.5  |     3     |
+|  Memory.4  |     4     |
+|  Memory.3  |     5     |
+|  Memory.0  |     6     |
+|  Memory.1  |     7     |
+|  Memory.7  |     8     |
+|  Memory.8  |     9     |
+|  Memory.9  |     10    |
+| Memory.10  |     11    |
+| Memory.11  |     12    |
+| Memory.12  |     13    |
+|  Output.3  |     14    |
+|  Output.4  |     15    |
+|  Output.1  |     16    |
+|  Output.2  |     17    |
+|  Output.0  |     18    |
+|  Screen.0  |     19    |
+|  Screen.1  |     20    |
++------------+-----------+

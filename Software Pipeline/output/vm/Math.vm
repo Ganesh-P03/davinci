@@ -1,5 +1,5 @@
 function Math.init 0
-push constant 31
+push constant 32
 call Array.new 1
 pop static 0
 push constant 0
@@ -402,6 +402,24 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push constant 124
+push static 0
+add
+push constant 120
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 120
+push static 0
+add
+pop pointer 1
+push that 0
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
 push constant 0
 return
 function Math.multiply 3
@@ -413,7 +431,7 @@ push constant 0
 pop local 2
 label WHILE_EXP0
 push local 2
-push constant 124
+push constant 128
 lt
 not
 if-goto WHILE_END0

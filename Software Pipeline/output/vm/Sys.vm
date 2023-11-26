@@ -3,7 +3,13 @@ call Memory.init 0
 pop temp 0
 call Math.init 0
 pop temp 0
-call Main.main 0
+call Output.init 0
+pop temp 0
+call Keyboard.init 0
+pop temp 0
+call Sys.test 0
+pop temp 0
+push constant 0
 return
 function Sys.halt 0
 label WHILE_EXP0
@@ -44,5 +50,27 @@ add
 pop local 0
 goto WHILE_EXP1
 label WHILE_END1
+push constant 0
+return
+function Sys.test 2
+push constant 4
+call String.new 1
+pop local 1
+push local 1
+push constant 65
+call String.appendChar 2
+push local 1
+push constant 66
+call String.appendChar 2
+push local 1
+push constant 67
+call String.appendChar 2
+push local 1
+push constant 68
+call String.appendChar 2
+pop local 1
+push local 1
+call Keyboard.readLine 1
+pop local 0
 push constant 0
 return
