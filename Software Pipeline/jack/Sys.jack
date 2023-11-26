@@ -16,7 +16,9 @@ class Sys {
         do Math.init();
         do Output.init();
         do Keyboard.init();
-        do Sys.test();
+        do Screen.init();
+        // do Sys.test();
+        do Sys.screenTest();
         return;
     }
 
@@ -47,6 +49,34 @@ class Sys {
       let str = Keyboard.readLine(message);
      // do Output.printString(str);
       return;
+    }
+
+
+    function void screenTest(){
+        // do Output.printChar(65);
+
+        // do Screen.drawPixel(0,0);
+        // do Screen.drawPixel(1,1);
+        // do Screen.drawPixel(2,2);
+        // do Screen.drawPixel(3,3);
+        // do Screen.drawPixel(4,4);
+        // do Screen.drawPixel(5,5);
+        // do Screen.drawPixel(319,0);
+        // do Screen.drawPixel(318,1);
+        // do Screen.drawPixel(317,2); 
+        // do Screen.drawPixel(316,3);
+        // do Screen.drawPixel(315,4);
+        // do Screen.drawPixel(0,239);
+        // do Screen.drawPixel(1,239);
+        // do Screen.drawPixel(2,239);
+        // do Screen.drawPixel(3,239);
+        // do Screen.drawPixel(319,239);
+        // do Screen.drawPixel(318,239);
+        // do Screen.drawPixel(317,238);
+                // do Output.printChar(66);
+        do Screen.drawPixel(319,239);
+        do Screen.drawPixel(318,239);
+        do Screen.drawPixel(317,238);
     }
     
 

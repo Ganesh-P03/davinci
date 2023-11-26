@@ -47,9 +47,9 @@ class Output {
         let screen2 = 16384;
         let cursorX = 0;
         let cursorY = 0;
-        let screen[400] = 767;
-        let screen[404] = 768;
-        let screen[408] = 769;
+        // let screen[400] = 767;
+        // let screen[404] = 768;
+        // let screen[408] = 769;
         do Output.initMap(); // function call to initialize the character map array
         return;
     }

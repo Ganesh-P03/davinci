@@ -160,12 +160,12 @@ class String {
 
     /** Returns the new line character. */
     function char newLine() {
-        return 128;
+        return 13;
     }
 
     /** Returns the backspace character. */
     function char backSpace() {
-        return 129;
+        return 8;
     }
 
     /** Returns the double quote (") character. */

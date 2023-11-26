@@ -20,30 +20,6 @@ push constant 0
 pop static 1
 push constant 0
 pop static 2
-push constant 400
-push static 3
-add
-push constant 767
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 404
-push static 3
-add
-push constant 768
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 408
-push static 3
-add
-push constant 769
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
 call Output.initMap 0
 pop temp 0
 push constant 0

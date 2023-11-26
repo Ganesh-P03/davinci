@@ -63,7 +63,12 @@ class Keyboard {
         }
        // do Output.printChar(67); //C
        // while(~(Keyboard.keyPressed() = 0)){}
-        let key=key-32;
+       if(key >96 ){
+        if(key < 123){
+            let key=key-32;
+        }
+       }
+        // let key=key-32;
         do Output.printChar(key);    
         return key;
     }
