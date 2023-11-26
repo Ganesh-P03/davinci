@@ -250,6 +250,8 @@ class Assembler:
             return "0000000" + rs2 + rs1 + "010" + rd + "0110011"
         elif cmd == "mul":
             return "0000000" + rs2 + rs1 + "100" + rd + "0110011"
+        elif cmd == "mac":
+            return "0000000" + rs2 + rs1 + "100" + rd + "0110011"
 
     def translateIType(self, code: list) -> str:
         # [0..6](opcode) [7..11](rd) [12..14](funct3) [15..19](rs1) [20..24](rs2) [25..31](funct7)
