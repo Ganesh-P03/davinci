@@ -22,26 +22,26 @@ class SnakeGrid {
         let RandomArrayX = Array.new(10);
         let RandomArrayY = Array.new(10);
         // initialize the grid
-        let RandomArrayY[0] = 57;
-        let RandomArrayY[1] = 24;
-        let RandomArrayY[2] = 83;
-        let RandomArrayY[3] = 75;
-        let RandomArrayY[4] = 36;
-        let RandomArrayY[5] = 99;
-        let RandomArrayY[6] = 68;
-        let RandomArrayY[7] = 42;
-        let RandomArrayY[8] = 90;
-        let RandomArrayY[9] = 72;
-        let RandomArrayX[0] = 54;
-        let RandomArrayX[1] = 43;
-        let RandomArrayX[2] = 88;
-        let RandomArrayX[3] = 75;
-        let RandomArrayX[4] = 87;
-        let RandomArrayX[5] = 21;
-        let RandomArrayX[6] = 09;
-        let RandomArrayX[7] = 66;
-        let RandomArrayX[8] = 56;
-        let RandomArrayX[9] = 35;
+        let RandomArrayY[0*4] = 57;
+        let RandomArrayY[1*4] = 24;
+        let RandomArrayY[2*4] = 83;
+        let RandomArrayY[3*4] = 75;
+        let RandomArrayY[4*4] = 36;
+        let RandomArrayY[5*4] = 99;
+        let RandomArrayY[6*4] = 68;
+        let RandomArrayY[7*4] = 42;
+        let RandomArrayY[8*4] = 90;
+        let RandomArrayY[9*4] = 72;
+        let RandomArrayX[0*4] = 54;
+        let RandomArrayX[1*4] = 43;
+        let RandomArrayX[2*4] = 88;
+        let RandomArrayX[3*4] = 75;
+        let RandomArrayX[4*4] = 87;
+        let RandomArrayX[5*4] = 21;
+        let RandomArrayX[6*4] = 09;
+        let RandomArrayX[7*4] = 66;
+        let RandomArrayX[8*4] = 56;
+        let RandomArrayX[9*4] = 35;
         let randomIndex = 0;
         do initGrid();
 
@@ -57,7 +57,7 @@ class SnakeGrid {
 
         let curX = 0;
         while( curX < sizeX ) {
-            let xGrid = grid[curX];
+            let xGrid = grid[curX*4];
             do xGrid.dispose();
             let curX = curX + 1;
         }
@@ -76,8 +76,8 @@ class SnakeGrid {
         // don't place the food on top of a snake piece
         let found = false;
         while( ~found ) {
-            let randX = RandomArrayX[randomIndex];
-            let randY = RandomArrayY[randomIndex];
+            let randX = RandomArrayX[randomIndex*4];
+            let randY = RandomArrayY[randomIndex*4];
             let randomIndex = randomIndex + 1;
             if(randomIndex=2){
                 let randomIndex = 0;
@@ -116,10 +116,10 @@ class SnakeGrid {
             let xGrid = Array.new(sizeY);
             let curY = 0;
             while( curY < sizeY ) {
-                let xGrid[curY] = false;
+                let xGrid[curY*4] = false;
                 let curY = curY + 1;
             }
-            let grid[curX] = xGrid;
+            let grid[curX*4] = xGrid;
             let curX = curX + 1;
         }
 
@@ -149,14 +149,14 @@ class SnakeGrid {
     // grid access methods
     method void setOccupied(int x, int y, boolean occupied) {
         var Array xGrid;
-        let xGrid = grid[x];
-        let xGrid[y] = occupied;
+        let xGrid = grid[x*4];
+        let xGrid[y*4] = occupied;
         return;
     }
     method boolean checkOccupied(int x, int y) {
         var Array xGrid;
-        let xGrid = grid[x];
-        if( xGrid[y] ) {
+        let xGrid = grid[x*4];
+        if( xGrid[y*4] ) {
             return true;
         }
         else {
@@ -203,7 +203,7 @@ class SnakeGrid {
     }
 
     // draws the status line
-    // Level: 0___ [PAUSED] #__ Score: 0_______  x__ y__  Length: 0___
+    // Level: 0___ [PAUSED*4] #__ Score: 0_______  x__ y__  Length: 0___
     // 0           12       21  25               42  46   52
     method void drawStatus() {
 
@@ -241,7 +241,7 @@ class SnakeGrid {
         var String tString;
 
         do Output.moveCursor(22, 12);
-        let tString = "[PAUSED] ";
+        let tString = "[PAUSED*4] ";
         do Output.printString(tString);
         do tString.dispose();
         return;
@@ -264,7 +264,7 @@ class SnakeGrid {
         var String tString;
 
         do Output.moveCursor(22, 12);
-        let tString = " [DONE]  ";
+        let tString = " [DONE*4]  ";
         do Output.printString(tString);
         do tString.dispose();
 

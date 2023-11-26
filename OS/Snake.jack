@@ -86,8 +86,8 @@ class Snake {
         let dst = 0;
         let src = histSize - length;
         while( i > 0 ) {
-            let histX[dst] = histX[src];
-            let histY[dst] = histY[src];
+            let histX[dst*4] = histX[src*4];
+            let histY[dst*4] = histY[src*4];
             let src = src + 1;
             let dst = dst + 1;
             let i = i - 1;
@@ -212,8 +212,8 @@ class Snake {
 
         let grid = game.getGrid();
         do grid.drawSnakeBit(posX, posY);
-        let histX[cycle] = posX;
-        let histY[cycle] = posY;
+        let histX[cycle*4] = posX;
+        let histY[cycle*4] = posY;
 
         return;
 
@@ -226,8 +226,8 @@ class Snake {
         var int tailIndex, tailX, tailY;
 
         let tailIndex = cycle - length;
-        let tailX = histX[tailIndex];
-        let tailY = histY[tailIndex];
+        let tailX = histX[tailIndex*4];
+        let tailY = histY[tailIndex*4];
         let grid = game.getGrid();
         do grid.clearSnakeBit(tailX, tailY);
 
