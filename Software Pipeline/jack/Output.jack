@@ -35,7 +35,7 @@ class Output {
     
     static int cursorX, cursorY;
     
-    static Array screen,screen2;
+    static Array screen;
 
     /** Initializes the screen and locates the cursor at the screen's top-left. */
     function void init() {
@@ -44,7 +44,6 @@ class Output {
         let temp1 = 34*temp1;
         let temp1 = temp1 + 1408;
         let screen = 0-temp1; // starting memory address of the screen array
-        let screen2 =  16384;
         let cursorX = 0;
         let cursorY = 0;
      
@@ -292,9 +291,8 @@ class Output {
                 let temp3 = Math.twoToThe(24);
                 let bitmap = bitmap * Math.twoToThe(24); //  16777216 = b'00000001 00000000 00000000 00000000
                 let temp3 = temp3 - 1;
-                let temp4 = (screen2[newaddress] & (temp3)) | bitmap;
+                let temp4 = (screen[newaddress] & (temp3)) | bitmap;
                 let screen[newaddress] = temp4;  // 16777215 = b'00000000 11111111 11111111 11111111
-                let screen2[newaddress] = temp4;  // 16777215 = b'00000000 11111111 11111111 11111111
                 // do Output.create(65,0, 8, 20, 34, 62, 34, 34, 0); // A
             }else {
                 if( mask = 1 ){
@@ -303,9 +301,8 @@ class Output {
                     let temp3 = temp3-1;
                     let bitmap = bitmap * Math.twoToThe(16); // 65536 = b'00000000 00000001 00000000 00000000
                     let bitmap = bitmap & temp1; // 16711680 = b'00000000 11111111 00000000 00000000
-                    let temp4 = (screen2[newaddress] & (temp3)) | bitmap;
+                    let temp4 = (screen[newaddress] & (temp3)) | bitmap;
                     let screen[newaddress] = temp4; // -16711681 = b'11111111 00000000 11111111 11111111 (4278255615 un-signed int) 
-                    let screen2[newaddress] = temp4; // -16711681 = b'11111111 00000000 11111111 11111111 (4278255615 un-signed int)
                 }
                 else {
                     if( mask = 2 ){
@@ -314,14 +311,12 @@ class Output {
                         let temp3 = temp3-1;
                         let bitmap = bitmap * Math.twoToThe(8); // 256 = b'00000000 00000000 00000001 00000000
                         let bitmap = bitmap & temp2; // 65280 = b'00000000 00000000 11111111 00000000
-                        let temp4 = (screen2[newaddress] & (temp3)) | bitmap;
+                        let temp4 = (screen[newaddress] & (temp3)) | bitmap;
                         let screen[newaddress] = temp4; // -65281 = b'11111111 11111111 00000000 11111111 (4294902015 un-signed int) 
-                        let screen2[newaddress] = temp4; // -65281 = b'11111111 11111111 00000000 11111111 (4294902015 un-signed int)
                     }
                     else {
-                        let temp4 = (screen2[newaddress] & (-256)) | bitmap; // -256 = b'11111111 11111111 11111111 00000000
+                        let temp4 = (screen[newaddress] & (-256)) | bitmap; // -256 = b'11111111 11111111 11111111 00000000
                         let screen[newaddress] = temp4; // -256 = b'11111111 11111111 11111111 00000000
-                        let screen2[newaddress] = temp4; // -256 = b'11111111 11111111 11111111 00000000
                     }
                 }
             }
@@ -412,32 +407,28 @@ class Output {
 
             if( mask = 0) {
                 let temp3 = Math.twoToThe(24) - 1;
-                let temp4 = (screen2[newaddress] & (temp3));
+                let temp4 = (screen[newaddress] & (temp3));
                 let screen[newaddress] = temp4;  // 16777215 = b'00000000 11111111 11111111 11111111
-                let screen2[newaddress] = temp4;  // 16777215 = b'00000000 11111111 11111111 11111111
                 // do Output.create(65,0, 8, 20, 34, 62, 34, 34, 0); // A
             }else {
                 if( mask = 1 ){
                     let temp1 = Math.twoToThe(24) - Math.twoToThe(16); // 16711680 = b'00000000 11111111 00000000 00000000
                     let temp3 = 0-temp1;
                     let temp3 = temp3-1;
-                    let temp4 = (screen2[newaddress] & (temp3));
+                    let temp4 = (screen[newaddress] & (temp3));
                     let screen[newaddress] = temp4; // -16711681 = b'11111111 00000000 11111111 11111111 (4278255615 un-signed int) 
-                    let screen2[newaddress] = temp4; // -16711681 = b'11111111 00000000 11111111 11111111 (4278255615 un-signed int)
                 }
                 else {
                     if( mask = 2 ){
                         let temp2 = Math.twoToThe(16) - Math.twoToThe(8); // 65280 = b'00000000 00000000 11111111 00000000
                         let temp3 = 0-temp2;
                         let temp3 = temp3-1;
-                        let temp4 = (screen2[newaddress] & (temp3));
+                        let temp4 = (screen[newaddress] & (temp3));
                         let screen[newaddress] = temp4; // -65281 = b'11111111 11111111 00000000 11111111 (4294902015 un-signed int) 
-                        let screen2[newaddress] = temp4; // -65281 = b'11111111 11111111 00000000 11111111 (4294902015 un-signed int)
                     }
                     else {
-                        let temp4 = (screen2[newaddress] & (-256)); // -256 = b'11111111 11111111 11111111 00000000
+                        let temp4 = (screen[newaddress] & (-256)); // -256 = b'11111111 11111111 11111111 00000000
                         let screen[newaddress] = temp4; // -256 = b'11111111 11111111 11111111 00000000
-                        let screen2[newaddress] = temp4; // -256 = b'11111111 11111111 11111111 00000000
                     }
                 }
             }

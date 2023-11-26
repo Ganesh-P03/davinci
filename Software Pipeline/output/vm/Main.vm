@@ -271,8 +271,6 @@ eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-call Output.printLine 0
-pop temp 0
 push local 5
 call Output.printString 1
 pop temp 0

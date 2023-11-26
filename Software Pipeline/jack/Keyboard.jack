@@ -110,6 +110,7 @@ class Keyboard {
         while(~(c = String.newLine())){
             if(c = String.backSpace()){
                 do line.eraseLastChar();
+                do Output.backSpace();
             }else{
                 do line.appendChar(c);
             }

@@ -13,8 +13,8 @@ class Main{
     let snake = 83;
     let hangman = 72;
     let space = " ";
-    let arrow = "---> ";
-    let error = "invalid command";
+    let arrow = "davinci$ ";
+    let error = "invalid";
     let zero = 0;
     let one = 1;
     let fibo_print = " fibo ";
