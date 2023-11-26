@@ -38,12 +38,12 @@ class Hangman {
         let wordLengthArray[16] = 7;
         let i=0;
         let  underscore = 95;
-        let currWordIs = "Current word: ";
-        let enterLowerCaseLetter = "Enter a letter(lower case)";
-        let wrongGuessGameover = "Wrong guess, game over!";
-        let wordIs = "The word is ";
-        let congratulationsYouHaveWonTheGame = "win!!";
-        let theWordIs = "The word is ";
+        let currWordIs = "word: ";
+        let enterLowerCaseLetter = "Enter: ";
+        let wrongGuessGameover = "over!";
+        let wordIs = "Word:";
+        let congratulationsYouHaveWonTheGame = "win";
+        let theWordIs = "Word: ";
         //5 is the size of teh array change it later if new words are added
 
         while(i<5){
