@@ -311,6 +311,10 @@ lw $that, 16($t0)
 jalr $ra, $ra, 0
 Array.dispose:
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $this, $t0, 0
 sw $this, 0($sp)
 addi $sp, $sp, 4
@@ -481,6 +485,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 20($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 20($lcl)
 lw $t0, 20($lcl)
 sw $t0, 0($sp)
@@ -509,13 +517,25 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -523,6 +543,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_1$Fibonacci.calculate_fibo
 lui $t0, IF_TRUE0$Fibonacci.calculate_fibo
 addi $t0, $t0, IF_TRUE0$Fibonacci.calculate_fibo
@@ -561,17 +585,33 @@ jal $ra, IF_END0$Fibonacci.calculate_fibo
 IF_FALSE0$Fibonacci.calculate_fibo:
 IF_END0$Fibonacci.calculate_fibo:
 addi $t0, $zero, 2
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 16($lcl)
 WHILE_EXP0$Fibonacci.calculate_fibo:
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_2$Fibonacci.calculate_fibo
 lui $t0, WHILE_END0$Fibonacci.calculate_fibo
 addi $t0, $t0, WHILE_END0$Fibonacci.calculate_fibo
@@ -582,21 +622,45 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 16($lcl)
 jal $ra, WHILE_EXP0$Fibonacci.calculate_fibo
 WHILE_END0$Fibonacci.calculate_fibo:
@@ -960,6 +1024,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 76($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 76($lcl)
 addi $t0, $zero, 11
 sw $t0, 0($sp)
@@ -1307,6 +1375,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 80($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 80($lcl)
 addi $t0, $zero, 8
 sw $t0, 0($sp)
@@ -1567,6 +1639,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 84($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 84($lcl)
 addi $t0, $zero, 8
 sw $t0, 0($sp)
@@ -1827,6 +1903,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 88($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 88($lcl)
 addi $t0, $zero, 7
 sw $t0, 0($sp)
@@ -2058,90 +2138,154 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 92($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 92($lcl)
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 76($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 80($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 84($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 88($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 16
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 92($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 5
@@ -2174,90 +2318,158 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 60($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 4
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 60($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 11
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 60($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 8
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 60($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 8
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 16
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 60($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 7
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 addi $t0, $zero, 95
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 44($lcl)
 addi $t0, $zero, 14
 sw $t0, 0($sp)
@@ -2692,6 +2904,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 96($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 96($lcl)
 addi $t0, $zero, 26
 sw $t0, 0($sp)
@@ -3474,6 +3690,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 100($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 100($lcl)
 addi $t0, $zero, 23
 sw $t0, 0($sp)
@@ -4169,6 +4389,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 104($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 104($lcl)
 addi $t0, $zero, 12
 sw $t0, 0($sp)
@@ -4545,6 +4769,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 108($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 108($lcl)
 addi $t0, $zero, 5
 sw $t0, 0($sp)
@@ -4718,6 +4946,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 112($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 112($lcl)
 addi $t0, $zero, 12
 sw $t0, 0($sp)
@@ -5094,17 +5326,33 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 116($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 116($lcl)
 WHILE_EXP0$Hangman.main:
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 5
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_3$Hangman.main
 lui $t0, WHILE_END0$Hangman.main
 addi $t0, $t0, WHILE_END0$Hangman.main
@@ -5112,6 +5360,10 @@ add $t0, $t0, $pc
 jalr $ra, $t0, 0
 LOOP_EXIT_3$Hangman.main:
 addi $t0, $zero, 6
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 20($lcl)
 addi $t0, $zero, 26
 sw $t0, 0($sp)
@@ -5140,17 +5392,33 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 4($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 WHILE_EXP1$Hangman.main:
 lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 26
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_4$Hangman.main
 lui $t0, WHILE_END1$Hangman.main
 addi $t0, $t0, WHILE_END1$Hangman.main
@@ -5190,26 +5458,46 @@ lw $t0, 64($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 jal $ra, WHILE_EXP1$Hangman.main
 WHILE_END1$Hangman.main:
@@ -5246,17 +5534,33 @@ lw $t0, 68($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 60($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 16($lcl)
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -5264,6 +5568,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_5$Hangman.main
 lui $t0, IF_TRUE0$Hangman.main
 addi $t0, $t0, IF_TRUE0$Hangman.main
@@ -5357,6 +5665,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 24($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 24($lcl)
 jal $ra, IF_END0$Hangman.main
 IF_FALSE0$Hangman.main:
@@ -5364,6 +5676,10 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -5371,6 +5687,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_6$Hangman.main
 lui $t0, IF_TRUE1$Hangman.main
 addi $t0, $t0, IF_TRUE1$Hangman.main
@@ -5551,6 +5871,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 24($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 24($lcl)
 jal $ra, IF_END1$Hangman.main
 IF_FALSE1$Hangman.main:
@@ -5558,6 +5882,10 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 2
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -5565,6 +5893,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_7$Hangman.main
 lui $t0, IF_TRUE2$Hangman.main
 addi $t0, $t0, IF_TRUE2$Hangman.main
@@ -5716,6 +6048,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 24($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 24($lcl)
 jal $ra, IF_END2$Hangman.main
 IF_FALSE2$Hangman.main:
@@ -5723,6 +6059,10 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -5730,6 +6070,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_8$Hangman.main
 lui $t0, IF_TRUE3$Hangman.main
 addi $t0, $t0, IF_TRUE3$Hangman.main
@@ -5881,6 +6225,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 24($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 24($lcl)
 jal $ra, IF_END3$Hangman.main
 IF_FALSE3$Hangman.main:
@@ -5998,12 +6346,20 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 24($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 24($lcl)
 IF_END3$Hangman.main:
 IF_END2$Hangman.main:
 IF_END1$Hangman.main:
 IF_END0$Hangman.main:
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 32($lcl)
 addi $t0, $zero, 68
 sw $t0, 0($sp)
@@ -6036,6 +6392,10 @@ lw $t0, 32($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -6046,17 +6406,33 @@ andi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 20($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_9$Hangman.main
 lui $t0, WHILE_END2$Hangman.main
 addi $t0, $t0, WHILE_END2$Hangman.main
@@ -6220,33 +6596,65 @@ lw $t0, 72($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 48($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 WHILE_EXP3$Hangman.main:
 lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 16($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_10$Hangman.main
 lui $t0, WHILE_END3$Hangman.main
 addi $t0, $t0, WHILE_END3$Hangman.main
@@ -6286,12 +6694,24 @@ lw $t0, 68($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 56($lcl)
 lw $t0, 56($lcl)
 sw $t0, 0($sp)
@@ -6326,6 +6746,10 @@ lw $t0, 40($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 28($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -6333,6 +6757,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_11$Hangman.main
 lui $t0, IF_TRUE4$Hangman.main
 addi $t0, $t0, IF_TRUE4$Hangman.main
@@ -6342,6 +6770,10 @@ LOOP_EXIT_11$Hangman.main:
 jal $ra, IF_FALSE4$Hangman.main
 IF_TRUE4$Hangman.main:
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 48($lcl)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
@@ -6382,9 +6814,17 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 jal $ra, WHILE_EXP3$Hangman.main
 WHILE_END3$Hangman.main:
@@ -6392,6 +6832,10 @@ lw $t0, 48($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -6399,6 +6843,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_12$Hangman.main
 lui $t0, IF_TRUE5$Hangman.main
 addi $t0, $t0, IF_TRUE5$Hangman.main
@@ -6411,6 +6859,10 @@ lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -6418,6 +6870,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_13$Hangman.main
 lui $t0, IF_TRUE6$Hangman.main
 addi $t0, $t0, IF_TRUE6$Hangman.main
@@ -6534,9 +6990,17 @@ lw $t0, 68($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -6696,26 +7160,54 @@ lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 20($lcl)
 jal $ra, IF_END5$Hangman.main
 IF_FALSE5$Hangman.main:
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 52($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 WHILE_EXP4$Hangman.main:
 lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 16($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_14$Hangman.main
 lui $t0, WHILE_END4$Hangman.main
 addi $t0, $t0, WHILE_END4$Hangman.main
@@ -6755,6 +7247,10 @@ lw $t0, 40($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 44($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -6762,6 +7258,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_15$Hangman.main
 lui $t0, IF_TRUE7$Hangman.main
 addi $t0, $t0, IF_TRUE7$Hangman.main
@@ -6771,6 +7271,10 @@ LOOP_EXIT_15$Hangman.main:
 jal $ra, IF_FALSE7$Hangman.main
 IF_TRUE7$Hangman.main:
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 52($lcl)
 jal $ra, IF_END7$Hangman.main
 IF_FALSE7$Hangman.main:
@@ -6779,9 +7283,17 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 jal $ra, WHILE_EXP4$Hangman.main
 WHILE_END4$Hangman.main:
@@ -6789,6 +7301,10 @@ lw $t0, 52($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -6796,6 +7312,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_16$Hangman.main
 lui $t0, IF_TRUE8$Hangman.main
 addi $t0, $t0, IF_TRUE8$Hangman.main
@@ -6805,6 +7325,10 @@ LOOP_EXIT_16$Hangman.main:
 jal $ra, IF_FALSE8$Hangman.main
 IF_TRUE8$Hangman.main:
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 32($lcl)
 lw $t0, 112($lcl)
 sw $t0, 0($sp)
@@ -6963,9 +7487,17 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 jal $ra, WHILE_EXP0$Hangman.main
 WHILE_END0$Hangman.main:
@@ -6989,6 +7521,10 @@ jalr $ra, $ra, 0
 Keyboard.init:
 lui $t0, 4
 addi $t0, $t0, 4095
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Keyboard.0
 lw $t0, Keyboard.0
 sw $t0, 0($sp)
@@ -7020,6 +7556,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, Keyboard.0
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Keyboard.1
 addi $t0, $zero, 0
 sw $t0, 0($sp)
@@ -7043,9 +7583,17 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Keyboard.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -7071,6 +7619,10 @@ addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 addi $t0, $zero, 66
 sw $t0, 0($sp)
@@ -7103,6 +7655,10 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -7110,8 +7666,16 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_17$Keyboard.readChar
 lui $t0, WHILE_END0$Keyboard.readChar
 addi $t0, $t0, WHILE_END0$Keyboard.readChar
@@ -7145,6 +7709,10 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 9
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -7152,6 +7720,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_18$Keyboard.readChar
 lui $t0, IF_TRUE0$Keyboard.readChar
 addi $t0, $t0, IF_TRUE0$Keyboard.readChar
@@ -7164,6 +7736,10 @@ lw $t0, Keyboard.1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -7171,6 +7747,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_19$Keyboard.readChar
 lui $t0, IF_TRUE1$Keyboard.readChar
 addi $t0, $t0, IF_TRUE1$Keyboard.readChar
@@ -7180,10 +7760,18 @@ LOOP_EXIT_19$Keyboard.readChar:
 jal $ra, IF_FALSE1$Keyboard.readChar
 IF_TRUE1$Keyboard.readChar:
 addi $t0, $zero, 32
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Keyboard.1
 jal $ra, IF_END1$Keyboard.readChar
 IF_FALSE1$Keyboard.readChar:
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Keyboard.1
 IF_END1$Keyboard.readChar:
 jal $ra, IF_END0$Keyboard.readChar
@@ -7192,6 +7780,10 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -7199,6 +7791,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_20$Keyboard.readChar
 lui $t0, IF_TRUE2$Keyboard.readChar
 addi $t0, $t0, IF_TRUE2$Keyboard.readChar
@@ -7210,6 +7806,10 @@ IF_TRUE2$Keyboard.readChar:
 jal $ra, IF_END2$Keyboard.readChar
 IF_FALSE2$Keyboard.readChar:
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 IF_END2$Keyboard.readChar:
 IF_END0$Keyboard.readChar:
@@ -7219,9 +7819,17 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 96
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_21$Keyboard.readChar
 lui $t0, IF_TRUE3$Keyboard.readChar
 addi $t0, $t0, IF_TRUE3$Keyboard.readChar
@@ -7234,9 +7842,17 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 123
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_22$Keyboard.readChar
 lui $t0, IF_TRUE4$Keyboard.readChar
 addi $t0, $t0, IF_TRUE4$Keyboard.readChar
@@ -7249,9 +7865,17 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Keyboard.1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
@@ -7289,9 +7913,17 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 47
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_23$Keyboard.readChar
 lui $t0, IF_TRUE5$Keyboard.readChar
 addi $t0, $t0, IF_TRUE5$Keyboard.readChar
@@ -7304,9 +7936,17 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 58
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_24$Keyboard.readChar
 lui $t0, IF_TRUE6$Keyboard.readChar
 addi $t0, $t0, IF_TRUE6$Keyboard.readChar
@@ -7477,10 +8117,22 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_25$Keyboard.readLine
 lui $t0, WHILE_END1$Keyboard.readLine
 addi $t0, $t0, WHILE_END1$Keyboard.readLine
@@ -7519,6 +8171,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_26$Keyboard.readLine
 lui $t0, IF_TRUE7$Keyboard.readLine
 addi $t0, $t0, IF_TRUE7$Keyboard.readLine
@@ -7731,18 +8387,46 @@ addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 67
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 48($lcl)
 addi $t0, $zero, 76
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 44($lcl)
 addi $t0, $zero, 70
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 56($lcl)
 addi $t0, $zero, 81
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 60($lcl)
 addi $t0, $zero, 69
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 52($lcl)
 addi $t0, $zero, 83
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 64($lcl)
 addi $t0, $zero, 72
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 68($lcl)
 addi $t0, $zero, 1
 sw $t0, 0($sp)
@@ -7800,6 +8484,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 addi $t0, $zero, 9
 sw $t0, 0($sp)
@@ -8089,6 +8777,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 addi $t0, $zero, 7
 sw $t0, 0($sp)
@@ -8320,10 +9012,22 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 16($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 16($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 addi $t0, $zero, 6
 sw $t0, 0($sp)
@@ -8526,6 +9230,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 20($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 20($lcl)
 addi $t0, $zero, 11
 sw $t0, 0($sp)
@@ -8873,6 +9581,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 24($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 24($lcl)
 addi $t0, $zero, 7
 sw $t0, 0($sp)
@@ -9104,6 +9816,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 28($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 28($lcl)
 addi $t0, $zero, 9
 sw $t0, 0($sp)
@@ -9393,17 +10109,33 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 32($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 32($lcl)
 WHILE_EXP0$Main.main:
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_27$Main.main
 lui $t0, WHILE_END0$Main.main
 addi $t0, $t0, WHILE_END0$Main.main
@@ -9469,6 +10201,10 @@ lw $t0, 40($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 44($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -9476,6 +10212,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_28$Main.main
 lui $t0, IF_TRUE0$Main.main
 addi $t0, $t0, IF_TRUE0$Main.main
@@ -9617,6 +10357,10 @@ lw $t0, 40($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 48($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -9624,6 +10368,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_29$Main.main
 lui $t0, IF_TRUE1$Main.main
 addi $t0, $t0, IF_TRUE1$Main.main
@@ -9667,6 +10415,10 @@ lw $t0, 40($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 52($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -9674,6 +10426,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_30$Main.main
 lui $t0, IF_TRUE2$Main.main
 addi $t0, $t0, IF_TRUE2$Main.main
@@ -9683,6 +10439,10 @@ LOOP_EXIT_30$Main.main:
 jal $ra, IF_FALSE2$Main.main
 IF_TRUE2$Main.main:
 addi $t0, $zero, 2
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 jal $ra, IF_END2$Main.main
 IF_FALSE2$Main.main:
@@ -9690,6 +10450,10 @@ lw $t0, 40($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 56($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -9697,6 +10461,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_31$Main.main
 lui $t0, IF_TRUE3$Main.main
 addi $t0, $t0, IF_TRUE3$Main.main
@@ -9734,6 +10502,10 @@ lw $t0, 40($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 68($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -9741,6 +10513,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_32$Main.main
 lui $t0, IF_TRUE4$Main.main
 addi $t0, $t0, IF_TRUE4$Main.main
@@ -9852,193 +10628,329 @@ addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 2
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 4
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 8
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 16
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 16
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 20
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 32
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 24
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 64
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 28
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 128
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 32
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 256
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 36
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 512
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 40
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1024
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 44
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10046,17 +10958,29 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, 1
 addi $t0, $t0, 2048
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10064,17 +10988,29 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, 1
 addi $t0, $t0, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 52
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10082,17 +11018,29 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, 2
 addi $t0, $t0, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 56
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10100,17 +11048,29 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, 4
 addi $t0, $t0, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 60
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10122,20 +11082,36 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, 4
 addi $t0, $t0, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 64
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10145,9 +11121,17 @@ addi $t0, $zero, 60
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10157,26 +11141,50 @@ addi $t0, $zero, 60
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 68
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10186,9 +11194,17 @@ addi $t0, $zero, 64
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10198,26 +11214,50 @@ addi $t0, $zero, 64
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 72
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10227,9 +11267,17 @@ addi $t0, $zero, 68
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10239,26 +11287,50 @@ addi $t0, $zero, 68
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 76
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10268,9 +11340,17 @@ addi $t0, $zero, 72
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10280,26 +11360,50 @@ addi $t0, $zero, 72
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 80
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10309,9 +11413,17 @@ addi $t0, $zero, 76
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10321,26 +11433,50 @@ addi $t0, $zero, 76
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 84
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10350,9 +11486,17 @@ addi $t0, $zero, 80
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10362,26 +11506,50 @@ addi $t0, $zero, 80
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 88
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10391,9 +11559,17 @@ addi $t0, $zero, 84
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10403,26 +11579,50 @@ addi $t0, $zero, 84
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 92
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10432,9 +11632,17 @@ addi $t0, $zero, 88
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10444,26 +11652,50 @@ addi $t0, $zero, 88
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 96
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10473,9 +11705,17 @@ addi $t0, $zero, 92
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10485,26 +11725,50 @@ addi $t0, $zero, 92
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 100
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10514,9 +11778,17 @@ addi $t0, $zero, 96
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10526,26 +11798,50 @@ addi $t0, $zero, 96
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 104
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10555,9 +11851,17 @@ addi $t0, $zero, 100
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10567,26 +11871,50 @@ addi $t0, $zero, 100
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 108
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10596,9 +11924,17 @@ addi $t0, $zero, 104
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10608,26 +11944,50 @@ addi $t0, $zero, 104
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 112
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10637,9 +11997,17 @@ addi $t0, $zero, 108
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10649,26 +12017,50 @@ addi $t0, $zero, 108
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 116
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10678,9 +12070,17 @@ addi $t0, $zero, 112
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10690,26 +12090,50 @@ addi $t0, $zero, 112
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 120
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10719,9 +12143,17 @@ addi $t0, $zero, 116
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10731,26 +12163,50 @@ addi $t0, $zero, 116
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 124
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -10760,9 +12216,17 @@ addi $t0, $zero, 120
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -10772,20 +12236,40 @@ addi $t0, $zero, 120
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 0
@@ -10813,21 +12297,45 @@ addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 WHILE_EXP0$Math.multiply:
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 128
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_33$Math.multiply
 lui $t0, WHILE_END0$Math.multiply
 addi $t0, $t0, WHILE_END0$Math.multiply
@@ -10841,18 +12349,34 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -10860,8 +12384,16 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_34$Math.multiply
 lui $t0, IF_TRUE0$Math.multiply
 addi $t0, $t0, IF_TRUE0$Math.multiply
@@ -10874,9 +12406,17 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 jal $ra, IF_END0$Math.multiply
 IF_FALSE0$Math.multiply:
@@ -10885,17 +12425,33 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 4
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 jal $ra, WHILE_EXP0$Math.multiply
 WHILE_END0$Math.multiply:
@@ -10921,9 +12477,17 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_35$Math.abs
 lui $t0, IF_TRUE1$Math.abs
 addi $t0, $t0, IF_TRUE1$Math.abs
@@ -10933,7 +12497,15 @@ LOOP_EXIT_35$Math.abs:
 jal $ra, IF_FALSE1$Math.abs
 IF_TRUE1$Math.abs:
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 jal $ra, IF_END1$Math.abs
 IF_FALSE1$Math.abs:
@@ -10966,6 +12538,10 @@ lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -10973,6 +12549,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_36$Math.divide
 lui $t0, IF_TRUE2$Math.divide
 addi $t0, $t0, IF_TRUE2$Math.divide
@@ -10982,6 +12562,10 @@ LOOP_EXIT_36$Math.divide:
 jal $ra, IF_FALSE2$Math.divide
 IF_TRUE2$Math.divide:
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11006,6 +12590,10 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
@@ -11015,9 +12603,17 @@ lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -11025,8 +12621,16 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, 0($arg)
 sw $t0, 0($sp)
@@ -11081,21 +12685,45 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 4($arg)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 WHILE_EXP1$Math.divide:
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_37$Math.divide
 lui $t0, WHILE_END1$Math.divide
 addi $t0, $t0, WHILE_END1$Math.divide
@@ -11106,31 +12734,63 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 jal $ra, WHILE_EXP1$Math.divide
 WHILE_END1$Math.divide:
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_38$Math.divide
 lui $t0, IF_TRUE3$Math.divide
 addi $t0, $t0, IF_TRUE3$Math.divide
@@ -11140,7 +12800,15 @@ LOOP_EXIT_38$Math.divide:
 jal $ra, IF_FALSE3$Math.divide
 IF_TRUE3$Math.divide:
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 jal $ra, IF_END3$Math.divide
 IF_FALSE3$Math.divide:
@@ -11196,9 +12864,17 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Math.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -11221,9 +12897,17 @@ jalr $ra, $ra, 0
 Memory.init:
 lui $t0, 2
 addi $t0, $t0, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.6
 lui $t0, 4
 addi $t0, $t0, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.5
 lw $t0, Memory.5
 sw $t0, 0($sp)
@@ -11256,22 +12940,50 @@ lw $t0, 0($sp)
 sw $t0, Memory.5
 lui $t0, 1
 addi $t0, $t0, 2048
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.4
 lui $t0, 4
 addi $t0, $t0, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.3
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.0
 lw $t0, Memory.6
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.1
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.7
 addi $t0, $zero, 4
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.8
 lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Memory.1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -11281,35 +12993,67 @@ lw $t0, Memory.3
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Memory.4
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Memory.1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 4
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.9
 addi $t0, $zero, 0
 sw $t0, 0($sp)
@@ -11333,25 +13077,49 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Memory.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -11376,33 +13144,61 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Memory.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 0
@@ -11432,30 +13228,58 @@ addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, Memory.3
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Memory.4
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 lw $t0, Memory.1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -11463,6 +13287,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_39$Memory.bestFit
 lui $t0, IF_TRUE0$Memory.bestFit
 addi $t0, $t0, IF_TRUE0$Memory.bestFit
@@ -11496,6 +13324,10 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -11503,10 +13335,22 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_40$Memory.bestFit
 lui $t0, WHILE_END0$Memory.bestFit
 addi $t0, $t0, WHILE_END0$Memory.bestFit
@@ -11517,26 +13361,50 @@ lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
 sw $t0, 0($sp)
@@ -11545,12 +13413,24 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_41$Memory.bestFit
 lui $t0, IF_TRUE1$Memory.bestFit
 addi $t0, $t0, IF_TRUE1$Memory.bestFit
@@ -11560,8 +13440,16 @@ LOOP_EXIT_41$Memory.bestFit:
 jal $ra, IF_FALSE1$Memory.bestFit
 IF_TRUE1$Memory.bestFit:
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 jal $ra, IF_END1$Memory.bestFit
 IF_FALSE1$Memory.bestFit:
@@ -11570,12 +13458,24 @@ lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 jal $ra, WHILE_EXP0$Memory.bestFit
 WHILE_END0$Memory.bestFit:
@@ -11607,20 +13507,40 @@ lw $t0, Memory.9
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 lw $t0, 0($arg)
 sw $t0, 0($sp)
@@ -11652,6 +13572,10 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -11659,6 +13583,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_42$Memory.deAlloc
 lui $t0, IF_TRUE2$Memory.deAlloc
 addi $t0, $t0, IF_TRUE2$Memory.deAlloc
@@ -11671,37 +13599,65 @@ lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Memory.1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.1
 jal $ra, IF_END2$Memory.deAlloc
 IF_FALSE2$Memory.deAlloc:
@@ -11712,18 +13668,34 @@ lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -11731,6 +13703,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_43$Memory.deAlloc
 lui $t0, IF_TRUE3$Memory.deAlloc
 addi $t0, $t0, IF_TRUE3$Memory.deAlloc
@@ -11743,6 +13719,10 @@ lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -11752,26 +13732,50 @@ lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 jal $ra, IF_END3$Memory.deAlloc
 IF_FALSE3$Memory.deAlloc:
@@ -11779,23 +13783,39 @@ lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -11805,34 +13825,62 @@ lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 IF_END3$Memory.deAlloc:
@@ -11844,12 +13892,24 @@ lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
@@ -11859,12 +13919,24 @@ lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -11872,6 +13944,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_44$Memory.deAlloc
 lui $t0, IF_TRUE4$Memory.deAlloc
 addi $t0, $t0, IF_TRUE4$Memory.deAlloc
@@ -11884,17 +13960,33 @@ lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -11904,9 +13996,17 @@ lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -11916,26 +14016,50 @@ lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -11945,17 +14069,33 @@ lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 jal $ra, IF_END4$Memory.deAlloc
@@ -11985,9 +14125,17 @@ lw $t0, Memory.1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_45$Memory.findPreFree
 lui $t0, IF_TRUE5$Memory.findPreFree
 addi $t0, $t0, IF_TRUE5$Memory.findPreFree
@@ -12017,21 +14165,37 @@ jal $ra, IF_END5$Memory.findPreFree
 IF_FALSE5$Memory.findPreFree:
 IF_END5$Memory.findPreFree:
 lw $t0, Memory.1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 WHILE_EXP1$Memory.findPreFree:
 lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -12039,6 +14203,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
 sw $t0, 0($sp)
@@ -12047,23 +14215,47 @@ lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_46$Memory.findPreFree
 lui $t0, WHILE_END1$Memory.findPreFree
 addi $t0, $t0, WHILE_END1$Memory.findPreFree
@@ -12074,12 +14266,24 @@ lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 jal $ra, WHILE_EXP1$Memory.findPreFree
 WHILE_END1$Memory.findPreFree:
@@ -12137,16 +14341,32 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 4
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.10
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -12154,8 +14374,16 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_47$Memory.alloc
 lui $t0, IF_TRUE6$Memory.alloc
 addi $t0, $t0, IF_TRUE6$Memory.alloc
@@ -12168,9 +14396,17 @@ lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -12180,12 +14416,24 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_48$Memory.alloc
 lui $t0, IF_TRUE7$Memory.alloc
 addi $t0, $t0, IF_TRUE7$Memory.alloc
@@ -12198,38 +14446,66 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 4
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -12239,23 +14515,43 @@ lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -12265,35 +14561,63 @@ lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, Memory.9
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -12303,21 +14627,45 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.11
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.1
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.12
 jal $ra, IF_END7$Memory.alloc
 IF_FALSE7$Memory.alloc:
@@ -12325,17 +14673,33 @@ lw $t0, Memory.8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, Memory.9
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -12345,20 +14709,40 @@ lw $t0, Memory.7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 2
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Memory.12
 IF_END7$Memory.alloc:
 jal $ra, IF_END6$Memory.alloc
@@ -12443,21 +14827,45 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1408
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Output.3
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Output.1
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Output.2
 lui $t0, Output.initMap$ret.302
 addi $t0, $t0, Output.initMap$ret.302
@@ -17407,153 +19815,261 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 16($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 16
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 20($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 20
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 24($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 24
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 28($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 28
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 32($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 0
@@ -17580,6 +20096,10 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 32
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
@@ -17589,12 +20109,24 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 126
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 or $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_49$Output.getMap
 lui $t0, IF_TRUE0$Output.getMap
 addi $t0, $t0, IF_TRUE0$Output.getMap
@@ -17604,6 +20136,10 @@ LOOP_EXIT_49$Output.getMap:
 jal $ra, IF_FALSE0$Output.getMap
 IF_TRUE0$Output.getMap:
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 jal $ra, IF_END0$Output.getMap
 IF_FALSE0$Output.getMap:
@@ -17612,29 +20148,53 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -17666,8 +20226,16 @@ addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Output.1
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Output.2
 lw $t0, Output.2
 sw $t0, 0($sp)
@@ -17749,27 +20317,55 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, Output.1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 WHILE_EXP0$Output.moveCursor:
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 8
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_50$Output.moveCursor
 lui $t0, WHILE_END0$Output.moveCursor
 addi $t0, $t0, WHILE_END0$Output.moveCursor
@@ -17809,6 +20405,10 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -17816,6 +20416,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_51$Output.moveCursor
 lui $t0, IF_TRUE1$Output.moveCursor
 addi $t0, $t0, IF_TRUE1$Output.moveCursor
@@ -17854,6 +20458,10 @@ lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -17863,23 +20471,43 @@ lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 or $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 jal $ra, IF_END1$Output.moveCursor
@@ -17888,6 +20516,10 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -17895,6 +20527,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_52$Output.moveCursor
 lui $t0, IF_TRUE2$Output.moveCursor
 addi $t0, $t0, IF_TRUE2$Output.moveCursor
@@ -17933,6 +20569,10 @@ lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -17942,23 +20582,43 @@ lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 or $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 jal $ra, IF_END2$Output.moveCursor
@@ -17967,6 +20627,10 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 2
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -17974,6 +20638,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_53$Output.moveCursor
 lui $t0, IF_TRUE3$Output.moveCursor
 addi $t0, $t0, IF_TRUE3$Output.moveCursor
@@ -18012,6 +20680,10 @@ lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -18021,23 +20693,43 @@ lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 or $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 jal $ra, IF_END3$Output.moveCursor
@@ -18072,6 +20764,10 @@ lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -18081,23 +20777,43 @@ lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 or $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 IF_END3$Output.moveCursor:
@@ -18107,17 +20823,33 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 10
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 jal $ra, WHILE_EXP0$Output.moveCursor
 WHILE_END0$Output.moveCursor:
@@ -18267,27 +20999,55 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, Output.1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 16($lcl)
 WHILE_EXP1$Output.printChar:
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 8
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_54$Output.printChar
 lui $t0, WHILE_END1$Output.printChar
 addi $t0, $t0, WHILE_END1$Output.printChar
@@ -18327,12 +21087,24 @@ lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
@@ -18367,6 +21139,10 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -18374,6 +21150,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_55$Output.printChar
 lui $t0, IF_TRUE4$Output.printChar
 addi $t0, $t0, IF_TRUE4$Output.printChar
@@ -18461,48 +21241,88 @@ lw $t0, 36($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 36($lcl)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 36($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 or $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 40($lcl)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 40($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 jal $ra, IF_END4$Output.printChar
@@ -18511,6 +21331,10 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -18518,6 +21342,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_56$Output.printChar
 lui $t0, IF_TRUE5$Output.printChar
 addi $t0, $t0, IF_TRUE5$Output.printChar
@@ -18577,22 +21405,42 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 28($lcl)
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 28($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 36($lcl)
 lw $t0, 36($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 36($lcl)
 lw $t0, 12($lcl)
 sw $t0, 0($sp)
@@ -18647,48 +21495,88 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 28($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 36($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 or $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 40($lcl)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 40($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 jal $ra, IF_END5$Output.printChar
@@ -18697,6 +21585,10 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 2
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -18704,6 +21596,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_57$Output.printChar
 lui $t0, IF_TRUE6$Output.printChar
 addi $t0, $t0, IF_TRUE6$Output.printChar
@@ -18763,22 +21659,42 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 32($lcl)
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 32($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 36($lcl)
 lw $t0, 36($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 36($lcl)
 lw $t0, 12($lcl)
 sw $t0, 0($sp)
@@ -18833,48 +21749,88 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 32($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 36($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 or $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 40($lcl)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 40($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 jal $ra, IF_END6$Output.printChar
@@ -18883,41 +21839,77 @@ lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 256
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 or $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 40($lcl)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 40($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 IF_END6$Output.printChar:
@@ -18927,17 +21919,33 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 10
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 16($lcl)
 jal $ra, WHILE_EXP1$Output.printChar
 WHILE_END1$Output.printChar:
@@ -18945,6 +21953,10 @@ lw $t0, Output.1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 39
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -18952,6 +21964,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_58$Output.printChar
 lui $t0, IF_TRUE7$Output.printChar
 addi $t0, $t0, IF_TRUE7$Output.printChar
@@ -18992,6 +22008,10 @@ lw $t0, Output.1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -19042,6 +22062,10 @@ Output.printString:
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 WHILE_EXP2$Output.printString:
 lw $t0, 0($lcl)
@@ -19075,8 +22099,16 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_59$Output.printString
 lui $t0, WHILE_END2$Output.printString
 addi $t0, $t0, WHILE_END2$Output.printString
@@ -19136,9 +22168,17 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 jal $ra, WHILE_EXP2$Output.printString
 WHILE_END2$Output.printString:
@@ -19291,9 +22331,17 @@ lw $t0, Output.2
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 29
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_60$Output.println
 lui $t0, IF_TRUE8$Output.println
 addi $t0, $t0, IF_TRUE8$Output.println
@@ -19306,6 +22354,10 @@ lw $t0, Output.2
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -19409,6 +22461,10 @@ lw $t0, Output.1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -19416,6 +22472,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_61$Output.backSpace
 lui $t0, IF_TRUE9$Output.backSpace
 addi $t0, $t0, IF_TRUE9$Output.backSpace
@@ -19428,6 +22488,10 @@ lw $t0, Output.2
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -19435,8 +22499,16 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_62$Output.backSpace
 lui $t0, IF_TRUE10$Output.backSpace
 addi $t0, $t0, IF_TRUE10$Output.backSpace
@@ -19449,6 +22521,10 @@ lw $t0, Output.2
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
@@ -19492,6 +22568,10 @@ lw $t0, Output.1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
@@ -19601,27 +22681,55 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, Output.1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 WHILE_EXP3$Output.backSpace:
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 8
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_63$Output.backSpace
 lui $t0, WHILE_END3$Output.backSpace
 addi $t0, $t0, WHILE_END3$Output.backSpace
@@ -19690,6 +22798,10 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -19697,6 +22809,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_64$Output.backSpace
 lui $t0, IF_TRUE11$Output.backSpace
 addi $t0, $t0, IF_TRUE11$Output.backSpace
@@ -19729,42 +22845,78 @@ add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
 Math.twoToThe$ret.445:
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 28($lcl)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 28($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 32($lcl)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 32($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 jal $ra, IF_END11$Output.backSpace
@@ -19773,6 +22925,10 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -19780,6 +22936,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_65$Output.backSpace
 lui $t0, IF_TRUE12$Output.backSpace
 addi $t0, $t0, IF_TRUE12$Output.backSpace
@@ -19839,55 +22999,103 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 20($lcl)
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 20($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 28($lcl)
 lw $t0, 28($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 28($lcl)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 28($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 32($lcl)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 32($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 jal $ra, IF_END12$Output.backSpace
@@ -19896,6 +23104,10 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 2
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -19903,6 +23115,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_66$Output.backSpace
 lui $t0, IF_TRUE13$Output.backSpace
 addi $t0, $t0, IF_TRUE13$Output.backSpace
@@ -19962,55 +23178,103 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 24($lcl)
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 24($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 28($lcl)
 lw $t0, 28($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 28($lcl)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 28($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 32($lcl)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 32($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 jal $ra, IF_END13$Output.backSpace
@@ -20019,35 +23283,67 @@ lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 256
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 32($lcl)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Output.3
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 32($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 IF_END13$Output.backSpace:
@@ -20057,17 +23353,33 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 10
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 jal $ra, WHILE_EXP3$Output.backSpace
 WHILE_END3$Output.backSpace:
@@ -20308,6 +23620,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 16($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 16($lcl)
 addi $t0, $zero, 10
 sw $t0, 0($sp)
@@ -20626,6 +23942,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 20($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 20($lcl)
 addi $t0, $zero, 8
 sw $t0, 0($sp)
@@ -20886,6 +24206,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 24($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 24($lcl)
 addi $t0, $zero, 2
 sw $t0, 0($sp)
@@ -20972,6 +24296,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 32($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 32($lcl)
 addi $t0, $zero, 0
 sw $t0, 0($sp)
@@ -21000,6 +24328,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 28($lcl)
 lw $t0, 28($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 28($lcl)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
@@ -21103,17 +24435,33 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 WHILE_EXP0$QuickSort.calculate_quick_sort:
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_67$QuickSort.calculate_quick_sort
 lui $t0, WHILE_END0$QuickSort.calculate_quick_sort
 addi $t0, $t0, WHILE_END0$QuickSort.calculate_quick_sort
@@ -21153,6 +24501,10 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -21188,15 +24540,27 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 jal $ra, WHILE_EXP0$QuickSort.calculate_quick_sort
 WHILE_END0$QuickSort.calculate_quick_sort:
@@ -21210,6 +24574,10 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
@@ -21265,17 +24633,33 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 WHILE_EXP1$QuickSort.calculate_quick_sort:
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_68$QuickSort.calculate_quick_sort
 lui $t0, WHILE_END1$QuickSort.calculate_quick_sort
 addi $t0, $t0, WHILE_END1$QuickSort.calculate_quick_sort
@@ -21315,9 +24699,17 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -21350,17 +24742,33 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_69$QuickSort.calculate_quick_sort
 lui $t0, IF_TRUE0$QuickSort.calculate_quick_sort
 addi $t0, $t0, IF_TRUE0$QuickSort.calculate_quick_sort
@@ -21447,9 +24855,17 @@ lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_70$QuickSort.sort
 lui $t0, IF_TRUE1$QuickSort.sort
 addi $t0, $t0, IF_TRUE1$QuickSort.sort
@@ -21500,6 +24916,10 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
@@ -21535,6 +24955,10 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -21636,33 +25060,69 @@ lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 WHILE_EXP2$QuickSort.partition:
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_71$QuickSort.partition
 lui $t0, WHILE_END2$QuickSort.partition
 addi $t0, $t0, WHILE_END2$QuickSort.partition
@@ -21702,18 +25162,34 @@ lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_72$QuickSort.partition
 lui $t0, IF_TRUE2$QuickSort.partition
 addi $t0, $t0, IF_TRUE2$QuickSort.partition
@@ -21726,9 +25202,17 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
@@ -21792,17 +25276,33 @@ lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -21812,34 +25312,62 @@ lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 jal $ra, IF_END2$QuickSort.partition
@@ -21849,9 +25377,17 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 jal $ra, WHILE_EXP2$QuickSort.partition
 WHILE_END2$QuickSort.partition:
@@ -21859,9 +25395,17 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 28($lcl)
 lw $t0, 28($lcl)
 sw $t0, 0($sp)
@@ -21925,17 +25469,33 @@ lw $t0, 28($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 lw $t0, 28($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -21945,40 +25505,72 @@ lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -22101,21 +25693,45 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1408
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Screen.0
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Screen.1
 addi $t0, $zero, 0
 sw $t0, 0($sp)
@@ -22140,6 +25756,10 @@ addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 WHILE_EXP0$Screen.clearScreen:
 lw $t0, 0($lcl)
@@ -22147,11 +25767,23 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, 1
 addi $t0, $t0, 2400
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_73$Screen.clearScreen
 lui $t0, WHILE_END0$Screen.clearScreen
 addi $t0, $t0, WHILE_END0$Screen.clearScreen
@@ -22162,46 +25794,82 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Screen.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 jal $ra, WHILE_EXP0$Screen.clearScreen
 WHILE_END0$Screen.clearScreen:
@@ -22224,6 +25892,10 @@ lw $that, 16($t0)
 jalr $ra, $ra, 0
 Screen.setColor:
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, Screen.1
 addi $t0, $zero, 0
 sw $t0, 0($sp)
@@ -22255,17 +25927,33 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 31
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 addi $t0, $zero, 31
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 lw $t0, 4($arg)
 sw $t0, 0($sp)
@@ -22324,26 +26012,46 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
@@ -22372,6 +26080,10 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 4($lcl)
 lw $t0, Screen.1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_74$Screen.drawPixel
 lui $t0, IF_TRUE0$Screen.drawPixel
 addi $t0, $t0, IF_TRUE0$Screen.drawPixel
@@ -22384,6 +26096,10 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Screen.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -22393,23 +26109,43 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Screen.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 or $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 jal $ra, IF_END0$Screen.drawPixel
@@ -22418,6 +26154,10 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Screen.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -22427,25 +26167,49 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, Screen.0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 IF_END0$Screen.drawPixel:
@@ -22483,9 +26247,17 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_75$Screen.drawLine
 lui $t0, IF_TRUE1$Screen.drawLine
 addi $t0, $t0, IF_TRUE1$Screen.drawLine
@@ -22495,16 +26267,40 @@ LOOP_EXIT_75$Screen.drawLine:
 jal $ra, IF_FALSE1$Screen.drawLine
 IF_TRUE1$Screen.drawLine:
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 16($lcl)
 lw $t0, 8($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 lw $t0, 16($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($arg)
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 16($lcl)
 lw $t0, 12($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($arg)
 lw $t0, 16($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($arg)
 jal $ra, IF_END1$Screen.drawLine
 IF_FALSE1$Screen.drawLine:
@@ -22513,26 +26309,54 @@ lw $t0, 8($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 12($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -22540,6 +26364,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_76$Screen.drawLine
 lui $t0, IF_TRUE2$Screen.drawLine
 addi $t0, $t0, IF_TRUE2$Screen.drawLine
@@ -22586,6 +26414,10 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -22593,6 +26425,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_77$Screen.drawLine
 lui $t0, IF_TRUE3$Screen.drawLine
 addi $t0, $t0, IF_TRUE3$Screen.drawLine
@@ -22636,14 +26472,26 @@ sw $t0, 0($temp)
 jal $ra, IF_END3$Screen.drawLine
 IF_FALSE3$Screen.drawLine:
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 20($lcl)
 lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_78$Screen.drawLine
 lui $t0, IF_TRUE4$Screen.drawLine
 addi $t0, $t0, IF_TRUE4$Screen.drawLine
@@ -22653,17 +26501,33 @@ LOOP_EXIT_78$Screen.drawLine:
 jal $ra, IF_FALSE4$Screen.drawLine
 IF_TRUE4$Screen.drawLine:
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 WHILE_EXP1$Screen.drawLine:
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
 sw $t0, 0($sp)
@@ -22672,16 +26536,36 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_79$Screen.drawLine
 lui $t0, WHILE_END1$Screen.drawLine
 addi $t0, $t0, WHILE_END1$Screen.drawLine
@@ -22692,6 +26576,10 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -22701,6 +26589,10 @@ lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -22733,9 +26625,17 @@ lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_80$Screen.drawLine
 lui $t0, IF_TRUE5$Screen.drawLine
 addi $t0, $t0, IF_TRUE5$Screen.drawLine
@@ -22748,17 +26648,33 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 20($lcl)
 jal $ra, IF_END5$Screen.drawLine
 IF_FALSE5$Screen.drawLine:
@@ -22766,17 +26682,33 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 20($lcl)
 IF_END5$Screen.drawLine:
 jal $ra, WHILE_EXP1$Screen.drawLine
@@ -22788,9 +26720,17 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
 sw $t0, 0($sp)
@@ -22799,16 +26739,36 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_81$Screen.drawLine
 lui $t0, WHILE_END2$Screen.drawLine
 addi $t0, $t0, WHILE_END2$Screen.drawLine
@@ -22819,6 +26779,10 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -22828,6 +26792,10 @@ lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
@@ -22860,9 +26828,17 @@ lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_82$Screen.drawLine
 lui $t0, IF_TRUE6$Screen.drawLine
 addi $t0, $t0, IF_TRUE6$Screen.drawLine
@@ -22875,17 +26851,33 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 20($lcl)
 jal $ra, IF_END6$Screen.drawLine
 IF_FALSE6$Screen.drawLine:
@@ -22893,17 +26885,33 @@ lw $t0, 12($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 12($lcl)
 lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 20($lcl)
 IF_END6$Screen.drawLine:
 jal $ra, WHILE_EXP2$Screen.drawLine
@@ -22935,9 +26943,17 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_83$Screen.drawHLine
 lui $t0, IF_TRUE7$Screen.drawHLine
 addi $t0, $t0, IF_TRUE7$Screen.drawHLine
@@ -22947,10 +26963,22 @@ LOOP_EXIT_83$Screen.drawHLine:
 jal $ra, IF_FALSE7$Screen.drawHLine
 IF_TRUE7$Screen.drawHLine:
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($arg)
 jal $ra, IF_END7$Screen.drawHLine
 IF_FALSE7$Screen.drawHLine:
@@ -22960,13 +26988,29 @@ lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_84$Screen.drawHLine
 lui $t0, WHILE_END3$Screen.drawHLine
 addi $t0, $t0, WHILE_END3$Screen.drawHLine
@@ -23006,9 +27050,17 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 jal $ra, WHILE_EXP3$Screen.drawHLine
 WHILE_END3$Screen.drawHLine:
@@ -23036,9 +27088,17 @@ lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_85$Screen.drawVLine
 lui $t0, IF_TRUE8$Screen.drawVLine
 addi $t0, $t0, IF_TRUE8$Screen.drawVLine
@@ -23048,10 +27108,22 @@ LOOP_EXIT_85$Screen.drawVLine:
 jal $ra, IF_FALSE8$Screen.drawVLine
 IF_TRUE8$Screen.drawVLine:
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 8($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($arg)
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($arg)
 jal $ra, IF_END8$Screen.drawVLine
 IF_FALSE8$Screen.drawVLine:
@@ -23061,13 +27133,29 @@ lw $t0, 8($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_86$Screen.drawVLine
 lui $t0, WHILE_END4$Screen.drawVLine
 addi $t0, $t0, WHILE_END4$Screen.drawVLine
@@ -23107,9 +27195,17 @@ lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($arg)
 jal $ra, WHILE_EXP4$Screen.drawVLine
 WHILE_END4$Screen.drawVLine:
@@ -23136,13 +27232,29 @@ lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 12($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_87$Screen.drawRectangle
 lui $t0, WHILE_END5$Screen.drawRectangle
 addi $t0, $t0, WHILE_END5$Screen.drawRectangle
@@ -23185,9 +27297,17 @@ lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($arg)
 jal $ra, WHILE_EXP5$Screen.drawRectangle
 WHILE_END5$Screen.drawRectangle:
@@ -23239,6 +27359,10 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -23246,6 +27370,10 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_88$String.new
 lui $t0, IF_TRUE0$String.new
 addi $t0, $t0, IF_TRUE0$String.new
@@ -23255,14 +27383,26 @@ LOOP_EXIT_88$String.new:
 jal $ra, IF_FALSE0$String.new
 IF_TRUE0$String.new:
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($arg)
 jal $ra, IF_END0$String.new
 IF_FALSE0$String.new:
 IF_END0$String.new:
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $this, $ram
 sw $t0, 4($t1)
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $this, $ram
 sw $t0, 0($t1)
 lw $t0, 0($arg)
@@ -23310,6 +27450,10 @@ lw $that, 16($t0)
 jalr $ra, $ra, 0
 String.length:
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $this, $t0, 0
 add $t1, $this, $ram
 lw $t0, 4($t1)
@@ -23333,6 +27477,10 @@ String.charAt:
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $this, $t0, 0
 lw $t0, 4($arg)
 sw $t0, 0($sp)
@@ -23368,9 +27516,17 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 add $t1, $this, $ram
 lw $t0, 8($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -23394,6 +27550,10 @@ String.setCharAt:
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $this, $t0, 0
 lw $t0, 4($arg)
 sw $t0, 0($sp)
@@ -23429,17 +27589,29 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 add $t1, $this, $ram
 lw $t0, 8($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 8($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 addi $t0, $zero, 0
@@ -23463,6 +27635,10 @@ String.appendChar:
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $this, $t0, 0
 add $t1, $this, $ram
 lw $t0, 4($t1)
@@ -23500,9 +27676,17 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 add $t1, $this, $ram
 lw $t0, 0($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_89$String.appendChar
 lui $t0, IF_TRUE1$String.appendChar
 addi $t0, $t0, IF_TRUE1$String.appendChar
@@ -23516,17 +27700,29 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 add $t1, $this, $ram
 lw $t0, 8($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $that, $t0, 0
 lw $t0, 0($temp)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 add $t1, $this, $ram
@@ -23534,9 +27730,17 @@ lw $t0, 4($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $this, $ram
 sw $t0, 4($t1)
 jal $ra, IF_END1$String.appendChar
@@ -23562,15 +27766,27 @@ lw $that, 16($t0)
 jalr $ra, $ra, 0
 String.eraseLastChar:
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $this, $t0, 0
 add $t1, $this, $ram
 lw $t0, 4($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_90$String.eraseLastChar
 lui $t0, IF_TRUE2$String.eraseLastChar
 addi $t0, $t0, IF_TRUE2$String.eraseLastChar
@@ -23584,9 +27800,17 @@ lw $t0, 4($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $this, $ram
 sw $t0, 4($t1)
 jal $ra, IF_END2$String.eraseLastChar
@@ -23617,14 +27841,26 @@ addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $this, $t0, 0
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 add $t1, $this, $ram
 lw $t0, 4($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
@@ -23635,15 +27871,27 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 add $t1, $this, $ram
 lw $t0, 8($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 45
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -23651,9 +27899,17 @@ slt $t3, $t0, $t1
 add $t0, $t2, $t3
 addi $t0, $t0, 1
 andi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_91$String.intValue
 lui $t0, IF_TRUE3$String.intValue
 addi $t0, $t0, IF_TRUE3$String.intValue
@@ -23663,16 +27919,36 @@ LOOP_EXIT_91$String.intValue:
 jal $ra, IF_FALSE3$String.intValue
 IF_TRUE3$String.intValue:
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 jal $ra, IF_END3$String.intValue
 IF_FALSE3$String.intValue:
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 8($lcl)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 IF_END3$String.intValue:
 WHILE_EXP0$String.intValue:
@@ -23681,6 +27957,10 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 add $t1, $this, $ram
 lw $t0, 4($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
@@ -23714,9 +27994,17 @@ jal $ra, Math.multiply
 Math.multiply$ret.520:
 add $t1, $this, $ram
 lw $t0, 8($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -23747,8 +28035,16 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_92$String.intValue
 lui $t0, WHILE_END0$String.intValue
 addi $t0, $t0, WHILE_END0$String.intValue
@@ -23809,9 +28105,17 @@ jal $ra, Math.multiply
 Math.multiply$ret.523:
 add $t1, $this, $ram
 lw $t0, 8($t1)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $that, $t0, 0
 add $t1, $that, $ram
 lw $t0, 0($t1)
@@ -23842,18 +28146,34 @@ lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 jal $ra, WHILE_EXP0$String.intValue
 WHILE_END0$String.intValue:
 lw $t0, 8($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_93$String.intValue
 lui $t0, IF_TRUE4$String.intValue
 addi $t0, $t0, IF_TRUE4$String.intValue
@@ -23863,6 +28183,10 @@ LOOP_EXIT_93$String.intValue:
 jal $ra, IF_FALSE4$String.intValue
 IF_TRUE4$String.intValue:
 lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -23905,9 +28229,17 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
 sw $t0, 0($sp)
@@ -23916,11 +28248,23 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 57
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t0, $t1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 and $t0, $t1, $t0
@@ -23945,6 +28289,10 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 sub $t0, $t1, $t0
@@ -23969,6 +28317,10 @@ lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -23990,8 +28342,16 @@ lw $that, 16($t0)
 jalr $ra, $ra, 0
 String.erase:
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $this, $t0, 0
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $this, $ram
 sw $t0, 4($t1)
 addi $t0, $zero, 0
@@ -24013,6 +28373,10 @@ lw $that, 16($t0)
 jalr $ra, $ra, 0
 String.setInt:
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $this, $t0, 0
 sw $this, 0($sp)
 addi $sp, $sp, 4
@@ -24040,15 +28404,27 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 add $t1, $this, $ram
 sw $t0, 4($t1)
 lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_94$String.setInt
 lui $t0, IF_TRUE5$String.setInt
 addi $t0, $t0, IF_TRUE5$String.setInt
@@ -24058,7 +28434,15 @@ LOOP_EXIT_94$String.setInt:
 jal $ra, IF_FALSE5$String.setInt
 IF_TRUE5$String.setInt:
 lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($arg)
 sw $this, 0($sp)
 addi $sp, $sp, 4
@@ -24140,14 +28524,26 @@ String.setIntHelper:
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $this, $t0, 0
 lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 10
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_95$String.setIntHelper
 lui $t0, IF_TRUE6$String.setIntHelper
 addi $t0, $t0, IF_TRUE6$String.setIntHelper
@@ -24418,6 +28814,10 @@ lw $that, 16($t0)
 jalr $ra, $ra, 0
 String.dispose:
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $this, $t0, 0
 add $t1, $this, $ram
 lw $t0, 8($t1)
@@ -24645,10 +29045,22 @@ jalr $ra, $ra, 0
 Sys.halt:
 WHILE_EXP0$Sys.halt:
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_96$Sys.halt
 lui $t0, WHILE_END0$Sys.halt
 addi $t0, $t0, WHILE_END0$Sys.halt
@@ -24680,17 +29092,33 @@ addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 WHILE_EXP1$Sys.wait:
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lw $t0, 0($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_97$Sys.wait
 lui $t0, WHILE_END1$Sys.wait
 addi $t0, $t0, WHILE_END1$Sys.wait
@@ -24698,17 +29126,33 @@ add $t0, $t0, $pc
 jalr $ra, $t0, 0
 LOOP_EXIT_97$Sys.wait:
 addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 WHILE_EXP2$Sys.wait:
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 100
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sub $t0, $zero, $t0
 addi $t0, $t0, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 beq $t0, $zero, LOOP_EXIT_98$Sys.wait
 lui $t0, WHILE_END2$Sys.wait
 addi $t0, $t0, WHILE_END2$Sys.wait
@@ -24719,9 +29163,17 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 4($lcl)
 jal $ra, WHILE_EXP2$Sys.wait
 WHILE_END2$Sys.wait:
@@ -24729,9 +29181,17 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $sp, $sp, -4
+lw $t0, 0($sp)
 sw $t0, 0($lcl)
 jal $ra, WHILE_EXP1$Sys.wait
 WHILE_END1$Sys.wait:

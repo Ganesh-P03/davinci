@@ -1,151 +1,158 @@
-// // Hangman.jack
+// Hangman.jack
 
 class Hangman {
     function void main() {
-//         var Array wordBank;
-//         var Array guessedWords;
-//         var int i,j,wordLength;
-//         var int attemptsRemaining;
-//         var String currword;
-//         var char letterGuessed;
-//         var int wordGuessed;
-//         var int temp;
-//         var char tempChar;
-//         var char underscore;
-//         var int letterFound;
-//         var int pending;
-//         var String tempString;
-//         var Array wordLengthArray;
-//         var int newJ,newI,newTemp;
-//         var String currWordIs,enterLowerCaseLetter,wrongGuessGameover,wordIs,congratulationsYouHaveWonTheGame,theWordIs;
-//         let wordBank = Array.new(5); // Set the number of words in the word bank
-//         let wordBank[0] = "JACK";
-//         let wordBank[4] = "PROGRAMMING";
-//         let wordBank[8] = "LANGUAGE";
-//         let wordBank[12] = "COMPILER";
-//         let wordBank[16] = "VIRTUAL";
-//         let wordLengthArray = Array.new(5);
-//         let wordLengthArray[0] = 4;
-//         let wordLengthArray[4] = 11;
-//         let wordLengthArray[8] = 8;
-//         let wordLengthArray[12] = 8;
-//         let wordLengthArray[16] = 7;
-//         let i=0;
-//         let  underscore = 95;
-//         let currWordIs = "Current word: ";
-//         let enterLowerCaseLetter = "Enter a letter(lower case)";
-//         let wrongGuessGameover = "Wrong guess, game over!";
-//         let wordIs = "The word is ";
-//         let congratulationsYouHaveWonTheGame = "win!!";
-//         let theWordIs = "The word is ";
-//         //5 is the size of teh array change it later if new words are added
+        var Array wordBank;
+        var Array guessedWords;
+        var int i,j,wordLength;
+        var int attemptsRemaining;
+        var String currword;
+        var char letterGuessed;
+        var int wordGuessed;
+        var int temp;
+        var char tempChar;
+        var char underscore;
+        var int letterFound;
+        var int pending;
+        var String tempString;
+        var Array wordLengthArray;
+        var int newJ,newI,newTemp;
+        var String JACK,PROGRAMMING,LANGUAGE,COMPILER,VIRTUAL;
+        var String currWordIs,enterLowerCaseLetter,wrongGuessGameover,wordIs,congratulationsYouHaveWonTheGame,theWordIs;
+        let wordBank = Array.new(5); // Set the number of words in the word bank
+        let JACK = "JACK";
+        let PROGRAMMING = "PROGRAMMING";
+        let LANGUAGE = "LANGUAGE";
+        let COMPILER = "COMPILER";
+        let VIRTUAL = "VIRTUAL";
+        let wordBank[0] = JACK;
+        let wordBank[4] = PROGRAMMING;
+        let wordBank[8] = LANGUAGE;
+        let wordBank[12] = COMPILER;
+        let wordBank[16] = VIRTUAL;
+        let wordLengthArray = Array.new(5);
+        let wordLengthArray[0] = 4;
+        let wordLengthArray[4] = 11;
+        let wordLengthArray[8] = 8;
+        let wordLengthArray[12] = 8;
+        let wordLengthArray[16] = 7;
+        let i=0;
+        let  underscore = 95;
+        let currWordIs = "Current word: ";
+        let enterLowerCaseLetter = "Enter a letter(lower case)";
+        let wrongGuessGameover = "Wrong guess, game over!";
+        let wordIs = "The word is ";
+        let congratulationsYouHaveWonTheGame = "win!!";
+        let theWordIs = "The word is ";
+        //5 is the size of teh array change it later if new words are added
 
-//         while(i<5){
+        while(i<5){
 
-//             let attemptsRemaining = 6;
-//             let guessedWords = Array.new(26);
-//             let j=0;
-//             while(j<26){
-//                 let newJ = j*4;
-//                 let guessedWords[newJ] = 0;
-//                 let j = j+1;
-//             }
-//             let newI = i*4;
-//             let wordLength = wordLengthArray[newI];
-//             if(i=0){
-//                 let currword = "__";
-//             }
-//             else{
-//                 if(i=1){
-//                     let currword = "_____";
-//                 }
-//                 else{
-//                     if(i=2){
-//                         let currword = "____";
-//                     }
-//                     else{
-//                         if(i=3){
-//                             let currword = "____";
-//                         }
-//                         else{
-//                             let currword = "___";
-//                         }
-//                     }
-//                 }
-//             }
+            let attemptsRemaining = 6;
+            let guessedWords = Array.new(26);
+            let j=0;
+            while(j<26){
+                let newJ = j*4;
+                let guessedWords[newJ] = 0;
+                let j = j+1;
+            }
+            let newI = i*4;
+            let wordLength = wordLengthArray[newI];
+            if(i=0){
+                let currword = "__";
+            }
+            else{
+                if(i=1){
+                    let currword = "_____";
+                }
+                else{
+                    if(i=2){
+                        let currword = "____";
+                    }
+                    else{
+                        if(i=3){
+                            let currword = "____";
+                        }
+                        else{
+                            let currword = "___";
+                        }
+                    }
+                }
+            }
 
-//             let wordGuessed = 0;
-//             while(wordGuessed=0 & attemptsRemaining>0){
-//                 do Output.printString(currWordIs);
-//                 do Output.printString(currword);
-//                 do Output.println();
-//                 do Output.printString(enterLowerCaseLetter);
-//                 let letterGuessed =  Keyboard.readChar();
-//                 // let temp = Hangman.charToInt(letterGuessed);
-//                 // let temp = temp-65;
-//                 // let newTemp = temp*4;
-//                 // if(guessedWords[newTemp]=1){
-//                 //     do Output.printString("letter already guessed, guess another letter");
-//                 //     do Output.println();
-//                 //     //continue;
-//                 // }
-//                 // else{
-//                     let newTemp = temp*4;
-//                     let guessedWords[newTemp] = 1;
-//                     let letterFound = 0;
-//                     let j=0;
-//                     while(j<wordLength){
-//                         let newI = i*4;
-//                         let tempString = wordBank[newI];
-//                         let tempChar = tempString.charAt(j);
-//                         if(tempChar=letterGuessed){
-//                             let letterFound = 1;
-//                             do currword.setCharAt(j,letterGuessed);
-//                         }
-//                         let j = j+1;
-//                     }
-//                     if(letterFound=0){
-//                         if(attemptsRemaining =1){
-//                             do Output.printString(wrongGuessGameover);
-//                             do Output.println();
-//                             do Output.printString(wordIs);
-//                             let newI = i*4;
-//                             do Output.printString(wordBank[newI]);
-//                             do Output.println();
-//                         }
-//                         else{
-//                             do Output.printString(wrongGuessGameover);
-//                             do Output.printInt(attemptsRemaining);
-//                             do Output.printString(attemptsRemaining);
-//                             do Output.println();
-//                         }
-//                         let attemptsRemaining = attemptsRemaining-1;
-//                     }
-//                     else{
-//                             let pending = 0;
-//                             let j =0;
-//                             while(j<wordLength){
-//                                 let tempChar = currword.charAt(j);
-//                                 if(tempChar =underscore){
-//                                     let pending = 1;
-//                                 }
-//                                 let j = j+1;
-//                             }
-//                             if(pending=0){
-//                                 let wordGuessed = 1;
-//                                 do Output.printString(congratulationsYouHaveWonTheGame);
-//                                 do Output.println();
-//                                 do Output.printString(wordIs);
-//                                 do Output.printString(currword);
-//                                 do Output.println();
-//                             }
-//                         }
-//                 // }
+            let wordGuessed = 0;
+            do Output.printChar(68);
+            while(wordGuessed=0 & attemptsRemaining>0){
+                do Output.printString(currWordIs);
+                do Output.printString(currword);
+                do Output.println();
+                do Output.printString(enterLowerCaseLetter);
+                let letterGuessed =  Keyboard.readChar();
+                // let temp = Hangman.charToInt(letterGuessed);
+                // let temp = temp-65;
+                // let newTemp = temp*4;
+                // if(guessedWords[newTemp]=1){
+                //     do Output.printString("letter already guessed, guess another letter");
+                //     do Output.println();
+                //     //continue;
+                // }
+                // else{
+                    let newTemp = temp*4;
+                    let guessedWords[newTemp] = 1;
+                    let letterFound = 0;
+                    let j=0;
+                    while(j<wordLength){
+                        let newI = i*4;
+                        let tempString = wordBank[newI];
+                        let tempChar = tempString.charAt(j);
+                        if(tempChar=letterGuessed){
+                            let letterFound = 1;
+                            do currword.setCharAt(j,letterGuessed);
+                        }
+                        let j = j+1;
+                    }
+                    if(letterFound=0){
+                        if(attemptsRemaining =1){
+                            do Output.printString(wrongGuessGameover);
+                            do Output.println();
+                            do Output.printString(wordIs);
+                            let newI = i*4;
+                            do Output.printString(wordBank[newI]);
+                            do Output.println();
+                        }
+                        else{
+                            do Output.printString(wrongGuessGameover);
+                            do Output.printInt(attemptsRemaining);
+                            do Output.printString(attemptsRemaining);
+                            do Output.println();
+                        }
+                        let attemptsRemaining = attemptsRemaining-1;
+                    }
+                    else{
+                            let pending = 0;
+                            let j =0;
+                            while(j<wordLength){
+                                let tempChar = currword.charAt(j);
+                                if(tempChar =underscore){
+                                    let pending = 1;
+                                }
+                                let j = j+1;
+                            }
+                            if(pending=0){
+                                let wordGuessed = 1;
+                                do Output.printString(congratulationsYouHaveWonTheGame);
+                                do Output.println();
+                                do Output.printString(wordIs);
+                                do Output.printString(currword);
+                                do Output.println();
+                            }
+                        }
+                // }
 
-//                 do Output.println();
-//             }
-//             let i = i+1;
-//         }
+                do Output.println();
+            }
+            let i = i+1;
+        }
     return;
     }
 }

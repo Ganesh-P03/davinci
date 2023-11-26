@@ -219,10 +219,39 @@ class Output {
     
     // ----------------------------------------- ACTUAL TESTING DONE ------------------------------------------------------
     function void moveCursor(int i, int j) {
+        var int address,loopIndex,mask,temp1,newaddress;
         let cursorX = j;
         let cursorY = i;
+        let address = (cursorY*10*8) + (cursorX/4);
+        let loopIndex = 0;
+        let mask = cursorX & 3;
+        while(loopIndex < 8){
+            let newaddress = address*4;
+            if(mask=0){
+                let temp1 = Math.twoToThe(30);
+                let screen[newaddress] = screen[newaddress] | temp1;
+            }else{
+                if(mask=1){
+                    let temp1 = Math.twoToThe(22);
+                    let screen[newaddress] = screen[newaddress] | temp1;
+                }else{
+                    if(mask=2){
+                        let temp1 = Math.twoToThe(14);
+                        let screen[newaddress] = screen[newaddress] | temp1;
+                    }else{
+                        let temp1 = Math.twoToThe(6);
+                        let screen[newaddress] = screen[newaddress] | temp1;
+                    }
+                }
+            }
+            let loopIndex = loopIndex+1;
+            let address = address + 10;
+        }
+
+        
         return;
     }
+
 
     /** Prints char c at the cursor location and advances the cursor one
      *  column forward. */

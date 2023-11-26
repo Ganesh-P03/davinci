@@ -19,6 +19,9 @@ return
 function Keyboard.readChar 2
 push constant 0
 pop local 1
+push constant 66
+call Output.printChar 1
+pop temp 0
 label WHILE_EXP0
 push local 1
 push constant 0
@@ -134,8 +137,6 @@ goto IF_FALSE7
 label IF_TRUE7
 push local 0
 call String.eraseLastChar 1
-pop temp 0
-call Output.backSpace 0
 pop temp 0
 goto IF_END7
 label IF_FALSE7

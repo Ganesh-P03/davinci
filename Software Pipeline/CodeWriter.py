@@ -23,7 +23,7 @@ class CodeWriter:
 
     # Set the output file/stream
     def __init__(self, output_path, meaningFull: bool = True):
-        self.__meaningFull = meaningFull
+        self.__meaningFull = meaningFull and False
 
         output_stream = None
 

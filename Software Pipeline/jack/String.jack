@@ -43,16 +43,16 @@ class String {
     }
 
     /** Sets the j'th character of this string to be c. */
-    // method void setCharAt(int j, int c) {
-    //     var int i;
-    //     // if(~(j < len)){
-    //     //     do Output.printString("Error: index out of bounds")
-    //     //     return;
-    //     // }
-    //     let i=Math.multiply(j,4);
-    //     let chars[i] = c;
-    //     return;
-    // }
+    method void setCharAt(int j, int c) {
+        var int i;
+        // if(~(j < len)){
+        //     do Output.printString("Error: index out of bounds")
+        //     return;
+        // }
+        let i=Math.multiply(j,4);
+        let chars[i] = c;
+        return;
+    }
 
     /** Appends the character c to the end of this String.
      *  Returns this string as the return value. */
