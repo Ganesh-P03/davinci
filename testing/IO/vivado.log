@@ -3,10 +3,10 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Sat Nov 25 18:49:59 2023
-# Process ID: 15764
+# Start of session at: Sun Nov 26 14:37:24 2023
+# Process ID: 21712
 # Current directory: D:/semester/7th sem/davinci/testing/IO
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14704 D:\semester\7th sem\davinci\testing\IO\Processor.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1816 D:\semester\7th sem\davinci\testing\IO\Processor.xpr
 # Log file: D:/semester/7th sem/davinci/testing/IO/vivado.log
 # Journal file: D:/semester/7th sem/davinci/testing/IO\vivado.jou
 # Running On: Ganesh, OS: Windows, CPU Frequency: 1190 MHz, CPU Physical cores: 4, Host memory: 8341 MB
@@ -84,14 +84,14 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2023.1/data/ip'.
-open_project: Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 1454.883 ; gain = 349.117
+open_project: Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 1462.973 ; gain = 262.520
 update_compile_order -fileset sources_1
 reset_run synth_1
 INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
 launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 19:06:49 2023] Launched synth_1...
+[Sun Nov 26 14:50:03 2023] Launched synth_1...
 Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 19:06:49 2023] Launched impl_1...
+[Sun Nov 26 14:50:03 2023] Launched impl_1...
 Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
 open_hw_manager
 connect_hw_server -allow_non_jtag
@@ -121,7 +121,7 @@ ECHO is off.
 
 
 
-connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:08 . Memory (MB): peak = 1504.172 ; gain = 0.000
+connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:08 . Memory (MB): peak = 1481.684 ; gain = 11.703
 open_hw_target
 INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210351B0FCA4A
 set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
@@ -141,9 +141,9 @@ WARNING: [Vivado 12-1017] Problems encountered:
 1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
 
 launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 19:16:48 2023] Launched synth_1...
+[Sun Nov 26 15:19:55 2023] Launched synth_1...
 Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 19:16:48 2023] Launched impl_1...
+[Sun Nov 26 15:19:55 2023] Launched impl_1...
 Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
 set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
 set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
@@ -158,304 +158,7 @@ WARNING: [Vivado 12-1017] Problems encountered:
 1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
 
 launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 19:37:47 2023] Launched synth_1...
+[Sun Nov 26 15:31:55 2023] Launched synth_1...
 Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 19:37:47 2023] Launched impl_1...
+[Sun Nov 26 15:31:55 2023] Launched impl_1...
 Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210351B0FCA4A
-INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210351B0FCA4A
-WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
-ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210351B0FCA4A
-INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210351B0FCA4A
-WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 19:47:07 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 19:47:08 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 19:55:14 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 19:55:14 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 20:02:54 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 20:02:54 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 20:09:30 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 20:09:30 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 20:20:53 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 20:20:53 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 20:29:18 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 20:29:18 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210351B0FCA4A
-INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210351B0FCA4A
-WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 22:40:21 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 22:40:21 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 23:03:20 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 23:03:20 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 23:19:28 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 23:19:28 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sat Nov 25 23:32:15 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sat Nov 25 23:32:15 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-update_compile_order -fileset sources_1
-WARNING: [filemgmt 56-315] Source scanning failed during design analysis. To get more details run synthesis or simulation and check the log.
-WARNING: [filemgmt 56-315] Source scanning failed during design analysis. To get more details run synthesis or simulation and check the log.
-WARNING: [filemgmt 56-315] Source scanning failed during design analysis. To get more details run synthesis or simulation and check the log.
-WARNING: [filemgmt 56-315] Source scanning failed during design analysis. To get more details run synthesis or simulation and check the log.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sun Nov 26 00:49:02 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sun Nov 26 00:49:02 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-update_compile_order -fileset sources_1
-reset_run synth_1
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sun Nov 26 00:50:16 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sun Nov 26 00:50:16 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sun Nov 26 01:09:09 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sun Nov 26 01:09:09 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-reset_run synth_1
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sun Nov 26 01:11:01 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sun Nov 26 01:11:01 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-reset_run synth_1
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sun Nov 26 01:11:21 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sun Nov 26 01:11:21 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sun Nov 26 01:21:30 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sun Nov 26 01:21:30 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-reset_run impl_1 -prev_step 
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sun Nov 26 01:29:22 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sun Nov 26 01:29:22 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
-reset_run synth_1
-INFO: [Project 1-1161] Replacing file D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp with file D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.dcp
-WARNING: [Vivado 12-1017] Problems encountered:
-1. Failed to delete one or more files in run directory D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
-
-launch_runs impl_1 -to_step write_bitstream -jobs 4
-[Sun Nov 26 01:39:53 2023] Launched synth_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/runme.log
-[Sun Nov 26 01:39:53 2023] Launched impl_1...
-Run output will be captured here: D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/runme.log
-set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
-set_property PROGRAM.FILE {D:/semester/7th sem/davinci/testing/IO/Processor.runs/impl_1/processor.bit} [get_hw_devices xc7z010_1]
-program_hw_devices [get_hw_devices xc7z010_1]
-INFO: [Labtools 27-3164] End of startup status: HIGH
-refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
-INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
