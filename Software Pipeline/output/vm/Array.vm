@@ -1,4 +1,0 @@
-function Array.new 0
-push argument 0
-call Memory.alloc 1
-return

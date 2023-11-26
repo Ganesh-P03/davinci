@@ -13,6 +13,7 @@ class CodeWriter:
 
     __return_counter = 0  # Return counter for return labels
     __loop_counter = 0  # Loop counter for loop labels
+    __reg = 15  # Use reg instead of stack
 
     # Inner flags
     __meaningFull = False
@@ -42,8 +43,16 @@ class CodeWriter:
 
     # Set the output file name
     def setFileName(self, file_name: str) -> None:
-        self.__base_filename = file_name
         self.__file_name = file_name
+
+    # Push and Pop registers
+    def popReg(self):
+        self.__reg -= 1
+        return "x" + str(self.__reg)
+
+    def pushReg(self):
+        self.__reg += 1
+        return "x" + str(self.__reg)
 
     # Generate return labels
     def genReturnLabel(self, function_name: str) -> str:
@@ -66,7 +75,10 @@ class CodeWriter:
                 self.__output_stream.write("\n")
 
     # Write assembly code
-    def write(self, assembly_code: str) -> None:
+    def write(
+        self,
+        assembly_code: str,
+    ) -> None:
         self.__output_stream.write(assembly_code + "\n")
 
     def writePCbase(self) -> None:
@@ -111,14 +123,11 @@ class CodeWriter:
         self.writeMessage("*** Call Sys.init ***")
         self.writeCall("Sys.init", 0)
         self.writeMessage("")
-        
+
         # Check code
         self.writeMessage("OS Verification code")
-        self.write("addi $sp, $sp, -4")  # SP = SP - 1
-        self.write("lw $t0, 0($sp)")
         self.write("jal x1, END")
         self.writeMessage("")
-        
 
     def writeASM(self, parser: Parser):
         self.setFileName(parser.getFileName())
@@ -158,89 +167,65 @@ class CodeWriter:
                 assert False, "Error while parsing command type"
 
             parser.advance()
-            
 
-       # Writes assembly code that effects arithmetic/logical commands
+    # Writes assembly code that effects arithmetic/logical commands
     def writeArithmetic(self, command: str) -> None:
-        if command == "reset":
-            self.write("reset")
-            return
-          
-        flg = False
-        
-        # Extract x from stack
-        self.writeMessage("Extract variable from stack")
-        self.write("addi $sp, $sp, -4")  # SP = SP - 1
-        self.write("lw $t0, 0($sp)")  # t0 = *SP (x)
-        self.writeMessage("")
+        reg2 = self.popReg()
 
         # If single operand command, perform operation and return
         if command == "not" or command == "neg":
             if command == "neg":
-                self.write("sub $t0, $zero, $t0")  # t0 = 0 - x (-x)
+                self.writeMessage("Neg x")
+                self.write(f"sub {reg2}, $zero, {reg2}")  # t0 = 0 - x (-x)
             else:
-                # [DONES] Implement not
-                self.write("sub $t0, $zero, $t0")  # t0 = 0 - x (-x)
-                self.write("addi $t0, $t0, 1")  # t0 = -x + 1
+                self.writeMessage("Not x")
+                self.write(f"sub {reg2}, $zero, {reg2}")  # t0 = 0 - x (-x)
+                self.write(f"addi {reg2}, {reg2}, 1")  # t0 = -x + 1
 
-            self.writeMessage("")
-
-            # Push result to stack
-            self.writeMessage("Push to stack")
-            self.write("sw $t0, 0($sp)")  # *SP = t0
-            self.write("addi $sp, $sp, 4")  # SP = SP + 1
+            self.pushReg()
             self.writeMessage("")
             return
 
-        # Extract y from stack
-        self.writeMessage("Extract variable from stack")
-        self.write("addi $sp, $sp, -4")  # SP = SP - 1
-        self.write("lw $t1, 0($sp)")  # t1 = *SP (y)
-        self.writeMessage("")
+        reg1 = self.popReg()
 
         # Add/Sub
         if command == "add":
-            self.write("add $t0, $t1, $t0")  # t0 = x + y
+            self.writeMessage("Add x, y")
+            self.write(f"add {reg1}, {reg1}, {reg2}")  # t0 = x + y
         elif command == "sub":
-            self.write("sub $t0, $t1, $t0")  # t0 = x - y
+            self.writeMessage("Sub x, y")
+            self.write(f"sub {reg1}, {reg1}, {reg2}")  # t0 = x - y
 
         # And/Or
         elif command == "and":
-            self.write("and $t0, $t1, $t0")  # t0 = x & y
+            self.writeMessage("And x, y")
+            self.write(f"and {reg1}, {reg1}, {reg2}")  # t0 = x & y
         elif command == "or":
-            self.write("or $t0, $t1, $t0")  # t0 = x | y
+            self.writeMessage("Or x, y")
+            self.write(f"or {reg1}, {reg1}, {reg2}")  # t0 = x | y
 
         # Eq/Gt/Lt
         elif command == "eq":
-            self.write("slt $t2, $t1, $t0")  # t2 = x < y
-            self.write("slt $t3, $t0, $t1")  # t3 = y < x
+            self.writeMessage("Equal? x=y")
+            self.write(f"slt $t2, {reg1}, {reg2}")  # t2 = x < y
+            self.write(f"slt $t3, {reg2}, {reg1}")  # t3 = y < x
 
-            self.write("add $t0, $t2, $t3")  # t0 = (x < y) + (y < x)
+            self.write(f"add {reg1}, $t2, $t3")  # t0 = (x < y) + (y < x)
 
-            self.write("addi $t0, $t0, 1")  # t0 = (x < y) | (y < x) + 1
-            self.write("andi $t0, $t0, 1")  # t0 = ((x < y) | (y < x) + 1) & 1
+            self.write(f"addi {reg1}, {reg1}, 1")  # t0 = (x < y) | (y < x) + 1
+            self.write(f"andi {reg1}, {reg1}, 1")  # t0 = ((x < y) | (y < x) + 1) & 1
         elif command == "gt":
-            self.write("slt $t0, $t0, $t1")  # t0 = (y < x) => x > y
+            self.writeMessage("Greater than? (x>y)")
+            self.write(f"slt {reg1}, {reg1}, {reg2}")  # t0 = (y < x) => x > y
         elif command == "lt":
-            self.write("slt $t0, $t1, $t0")  # t0 = x < y
-        elif command == "mac":
-            self.write("mac $t1, $t0")  # t0 = x < y
-            flg = True
+            self.writeMessage("Less than? (x<y)")
+            self.write(f"slt {reg1}, {reg2}, {reg1}")  # t0 = x < y
 
         else:
             assert False, "Error while parsing arithmetic command"
 
+        self.pushReg()
         self.writeMessage("")
-
-        # Push result to stack
-        self.writeMessage("Push to stack")
-        if not flg:
-          self.write("sw $t0, 0($sp)")  # *SP = t0
-        else:
-          self.write("sw x31, 0($sp)")
-        self.write("addi $sp, $sp, 4")  # SP = SP + 1
-        self.writeMessage("")
-        
 
     # Writes assembly code that effects the push/pop commands
     def writePushPop(self, command: str, segment: str, index: int) -> None:
@@ -249,34 +234,41 @@ class CodeWriter:
         index *= 4
 
         if command_type == "C_PUSH":
+            reg1 = "x" + str(self.__reg)
             self.writeMessage(
                 "Push to stack from " + str(segment) + " (" + str(index // 4) + ")"
             )
             if segment == "argument":
-                self.write("lw $t0, " + str(index) + "($arg)")  # t0 = *(arg + index)
+                self.write(
+                    f"lw {reg1}, " + str(index) + "($arg)"
+                )  # t0 = *(arg + index)
             elif segment == "local":
-                self.write("lw $t0, " + str(index) + "($lcl)")  # t0 = *(lcl + index)
+                self.write(
+                    f"lw {reg1}, " + str(index) + "($lcl)"
+                )  # t0 = *(lcl + index)
             elif segment == "this":
                 self.write("add $t1, $this, $ram")
-                self.write("lw $t0, " + str(index) + "($t1)")  # t0 = *(this + index)
+                self.write(
+                    f"lw {reg1}, " + str(index) + "($t1)"
+                )  # t0 = *(this + index)
             elif segment == "that":
                 self.write("add $t1, $that, $ram")
-                self.write("lw $t0, " + str(index) + "($t1)")  # t0 = *(that + index)
+                self.write(
+                    f"lw {reg1}, " + str(index) + "($t1)"
+                )  # t0 = *(that + index)
             elif segment == "temp":
-                self.write("lw $t0, " + str(index) + "($temp)")  # t0 = *(temp + index)
+                self.write(
+                    f"lw {reg1}, " + str(index) + "($temp)"
+                )  # t0 = *(temp + index)
             elif segment == "static":
                 self.write(
-                    "lw $t0, " + str(self.__file_name) + "." + str(index // 4)
+                    f"lw {reg1}, " + str(self.__file_name) + "." + str(index // 4)
                 )  # t0 = *(filename.index)
             elif segment == "pointer" and index == 0:
-                self.write("sw $this, 0($sp)")
-                self.write("addi $sp, $sp, 4")  # SP = SP + 1
-                self.writeMessage("")
+                self.write(f"add {reg1}, $this, $zero")
                 return
             elif segment == "pointer" and index == 4:
-                self.write("sw $that, 0($sp)")
-                self.write("addi $sp, $sp, 4")  # SP = SP + 1
-                self.writeMessage("")
+                self.write(f"add {reg1}, $that, $zero")
                 return
             elif segment == "constant":
                 index = int(index // 4)
@@ -287,17 +279,16 @@ class CodeWriter:
                 upper_bits += is_upper_set
 
                 if upper_bits != 0:
-                    self.write("lui $t0, " + str(upper_bits))  # t0 = upper_bits
-                    self.write("addi $t0, $t0, " + str(lower_bits))  # t0 = lower_bits
+                    self.write(f"lui {reg1}, " + str(upper_bits))  # t0 = upper_bits
+                    self.write(
+                        f"addi {reg1}, {reg1}, " + str(lower_bits)
+                    )  # t0 = lower_bits
                 else:
-                    self.write("addi $t0, $zero, " + str(lower_bits))  # t0 = lower_bits
+                    self.write(
+                        f"addi {reg1}, $zero, " + str(lower_bits)
+                    )  # t0 = lower_bits
 
-            self.writeMessage("")
-            self.writeMessage("Push to stack")
-
-            self.write("sw $t0, 0($sp)")  # *SP = t0
-            self.write("addi $sp, $sp, 4")  # SP = SP + 1
-
+            self.pushReg()
             self.writeMessage("")
             return
 
@@ -305,33 +296,39 @@ class CodeWriter:
             self.writeMessage(
                 "Pop from stack to " + str(segment) + " (" + str(index // 4) + ")"
             )
-
-            self.write("addi $sp, $sp, -4")  # SP = SP - 1
-            self.write("lw $t0, 0($sp)")  # t0 = *SP (x)
-            self.writeMessage("")
+            reg1 = self.popReg()
 
             if segment == "argument":
-                self.write("sw $t0, " + str(index) + "($arg)")  # t0 = *(arg + index)
+                self.write(
+                    f"sw {reg1}, " + str(index) + "($arg)"
+                )  # t0 = *(arg + index)
             elif segment == "local":
-                self.write("sw $t0, " + str(index) + "($lcl)")  # t0 = *(lcl + index)
+                self.write(
+                    f"sw {reg1}, " + str(index) + "($lcl)"
+                )  # t0 = *(lcl + index)
             elif segment == "this":
-                self.write("add $t1, $this, $ram")
-                self.write("sw $t0, " + str(index) + "($t1)")  # t0 = *(this + index)
+                self.write(f"add $t1, $this, $ram")
+                self.write(
+                    f"sw {reg1}, " + str(index) + "($t1)"
+                )  # t0 = *(this + index)
             elif segment == "that":
-                self.write("add $t1, $that, $ram")
-                self.write("sw $t0, " + str(index) + "($t1)")  # t0 = *(that + index)
+                self.write(f"add $t1, $that, $ram")
+                self.write(
+                    f"sw {reg1}, " + str(index) + "($t1)"
+                )  # t0 = *(that + index)
             elif segment == "temp":
-                self.write("sw $t0, " + str(index) + "($temp)")  # t0 = *(temp + index)
+                self.write(
+                    f"sw {reg1}, " + str(index) + "($temp)"
+                )  # t0 = *(temp + index)
             elif segment == "static":
                 self.write(
-                    "sw $t0, " + str(self.__file_name) + "." + str(index // 4)
+                    f"sw {reg1}, " + str(self.__file_name) + "." + str(index // 4)
                 )  # t0 = *(filename.index)
             elif segment == "pointer" and index == 0:
-                self.write("addi $this, $t0, 0")
+                self.write(f"addi $this, {reg1}, 0")
             elif segment == "pointer" and index == 4:
-                self.write("addi $that, $t0, 0")
+                self.write(f"addi $that, {reg1}, 0")
             self.writeMessage("")
-            
 
     # Writes assembly code that effects the label command
     def writeLabel(self, label: str) -> None:
@@ -339,7 +336,7 @@ class CodeWriter:
         if "IF" in label or "LOOP" in label or "WHILE" in label:
             if self.__function_name:
                 new_label = label + "$" + self.__function_name
-                
+
         self.write(new_label + ":")  # <label>:
 
     # Writes assembly code that effects the goto command
@@ -351,7 +348,6 @@ class CodeWriter:
         self.writeMessage("Jump to " + str(new_label))
         self.write("jal $ra, " + str(new_label))  # goto <label>
         self.writeMessage("")
-        
 
     # Writes assembly code that effects the if-goto command
     def writeIf(self, label: str) -> None:
@@ -360,13 +356,13 @@ class CodeWriter:
             if self.__function_name:
                 new_label = label + "$" + self.__function_name
 
+        reg1 = self.popReg()
+
         self.writeMessage("If-goto " + str(new_label))
-        self.write("addi $sp, $sp, -4")  # SP = SP - 1
-        self.write("lw $t0, 0($sp)")  # t0 = *SP (x)
 
         loop_label, loop_exit_label = self.genLoopLabel()
         self.write(
-            "beq $t0, $zero, " + str(loop_exit_label + "$" + self.__function_name)
+            f"beq {reg1}, $zero, " + str(loop_exit_label + "$" + self.__function_name)
         )  # if t0 == 0, goto loop_exit_label
         self.write("lui $t0, " + new_label)  # t0
         self.write("addi $t0, $t0, " + new_label)  # t0 = return_label
@@ -374,11 +370,17 @@ class CodeWriter:
         self.write("jalr $ra, $t0, 0")  # goto (label)
         self.writeLabel(loop_exit_label)
         self.writeMessage("")
-        
 
     # Writes assembly code that effects the call command
     def writeCall(self, function_name: str, n: int) -> None:
         self.writeMessage("Call " + str(function_name) + " " + str(n))
+
+        for _ in range(0, n):
+            regArg = self.popReg()
+            self.write(f"sw {regArg}, 0($sp)")  # *SP = t0
+            self.write("addi $sp, $sp, 4")
+
+        n = 0
         # Push return-address
         return_label = self.genReturnLabel(function_name)
         self.write("lui $t0, " + str(return_label))  # t0 = return_label
@@ -391,7 +393,7 @@ class CodeWriter:
         self.writeMessage("")
 
         # Push $lcl
-        self.writeMessage("Push $lcl, $arg, $this, $that")
+        self.writeMessage("Pushing $lcl, $arg, $this, $that")
         self.write("sw $lcl, 0($sp)")  # *SP = $lcl
         self.write("addi $sp, $sp, 4")  # SP = SP + 1
         self.writeMessage("")
@@ -427,7 +429,6 @@ class CodeWriter:
         self.writeMessage("")
         self.writeLabel(return_label)
         self.writeMessage("")
-        
 
     # Writes assembly code that effects the return command
     def writeReturn(self) -> None:
@@ -442,17 +443,15 @@ class CodeWriter:
         self.write("sub $t0, $lcl, $t0")  # t0 = (lcl - 5)
         self.write("lw $ra, 0($t0)")  # $ra = RETURN ADDRESS
         self.writeMessage("")
+        reg1 = self.popReg()
 
         # Reposition ARG = pop()
         self.writeMessage("ARG = pop()")
-        self.write("addi $sp, $sp, -4")  # SP = SP - 1
-        self.write("lw $t0, 0($sp)")  # t0 = res
-        self.write("sw $t0, 0($arg)")  # *(arg) = $arg
+        self.write(f"sw {reg1}, 0($arg)")  # *(arg) = $arg
         self.writeMessage("")
 
         self.writeMessage("Change SP = ARG + 1")
         self.write("addi $sp, $arg, 4")
-        self.writeMessage("")
 
         self.writeMessage("Get Segments")
         self.write("addi $t0, $zero, 20")  # t0 = 20
@@ -466,30 +465,23 @@ class CodeWriter:
         self.write("jalr $ra, $ra, 0")  # goto <return-address>
         self.writeMessage("")
 
-
     # Writes assembly code that effects the function command
     def writeFunction(self, function_name: str, n: int) -> None:
-        self.__function_name = function_name
         self.writeMessage("Function " + str(function_name) + " " + str(n))
         self.writeLabel(function_name)  # <function_name>:
         self.writeMessage("")
 
-        if n != 0:
-            self.writeMessage("Push " + str(n) + " zeros to stack")
-        else:
-            self.writeMessage("Pushed 0 zeros to stack; No locals")
-            
+        self.writeMessage("Pushing " + str(n) + " zeros to stack")
         for _ in range(n):
             self.write("sw $zero, 0($sp)")
             self.write("addi $sp, $sp, 4")
         self.writeMessage("")
 
-
-    # Closes the output file
     def close(self) -> None:
+        reg1 = "x" + str(self.__reg)
         self.writeMessage("END")
         self.write("END:")
-        self.write("addi x1, $t0, 0")
+        self.write(f"addi x1, {reg1}, 0")
         self.__output_stream.close()
 
 

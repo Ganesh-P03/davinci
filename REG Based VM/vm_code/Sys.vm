@@ -1,5 +1,9 @@
 function Sys.init 0
 push constant 100
+call Sys.main 1
+return
+function Sys.main 0
+push argument 0
 push constant 111
 add
 return

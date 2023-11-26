@@ -272,7 +272,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -298,9 +298,12 @@ jal $ra, Sys.init
 
 
 Sys.init$ret.1:
+
+
+// OS Verification code
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-jal $ra, END
+jal x1, END
 
 // ====================================
 // Virtual Machine Code File: Array
@@ -309,7 +312,7 @@ jal $ra, END
 // Function Array.new 0
 Array.new:
 
-// Pushing 0 zeros to stack
+// Pushed 0 zeros to stack; No locals
 
 // Push to stack from argument (0)
 lw $t0, 0($arg)
@@ -325,7 +328,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -364,6 +367,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -377,7 +381,7 @@ jalr $ra, $ra, 0
 // Function Array.dispose 0
 Array.dispose:
 
-// Pushing 0 zeros to stack
+// Pushed 0 zeros to stack; No locals
 
 // Push to stack from argument (0)
 lw $t0, 0($arg)
@@ -393,7 +397,7 @@ lw $t0, 0($sp)
 addi $this, $t0, 0
 
 // Push to stack from pointer (0)
-lw $this, 0($sp)
+sw $this, 0($sp)
 addi $sp, $sp, 4
 
 // Call Memory.deAlloc 1
@@ -403,7 +407,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -455,6 +459,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -472,7 +477,7 @@ jalr $ra, $ra, 0
 // Function Main.main 0
 Main.main:
 
-// Pushing 0 zeros to stack
+// Pushed 0 zeros to stack; No locals
 
 // Push to stack from constant (2)
 addi $t0, $zero, 2
@@ -495,7 +500,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -534,6 +539,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -551,7 +557,7 @@ jalr $ra, $ra, 0
 // Function Math.init 0
 Math.init:
 
-// Pushing 0 zeros to stack
+// Pushed 0 zeros to stack; No locals
 
 // Push to stack from constant (128)
 addi $t0, $zero, 128
@@ -567,7 +573,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -3638,6 +3644,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -3651,7 +3658,7 @@ jalr $ra, $ra, 0
 // Function Math.multiply 3
 Math.multiply:
 
-// Pushing 3 zeros to stack
+// Push 3 zeros to stack
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 sw $zero, 0($sp)
@@ -3698,7 +3705,7 @@ lw $t0, 0($sp)
 
 sw $t0, 8($lcl)
 
-WHILE_0:
+WHILE_0$Math.multiply:
 // Push to stack from local (2)
 lw $t0, 8($lcl)
 
@@ -3738,15 +3745,15 @@ addi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto END_WHILE_0
+// If-goto END_WHILE_0$Math.multiply
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_1
-lui $t0, END_WHILE_0
-addi $t0, $t0, END_WHILE_0
+beq $t0, $zero, LOOP_EXIT_1$Math.multiply
+lui $t0, END_WHILE_0$Math.multiply
+addi $t0, $t0, END_WHILE_0$Math.multiply
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_1:
+LOOP_EXIT_1$Math.multiply:
 
 // Push to stack from argument (1)
 lw $t0, 4($arg)
@@ -3847,20 +3854,20 @@ addi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_1
+// If-goto IF_1$Math.multiply
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_2
-lui $t0, IF_1
-addi $t0, $t0, IF_1
+beq $t0, $zero, LOOP_EXIT_2$Math.multiply
+lui $t0, IF_1$Math.multiply
+addi $t0, $t0, IF_1$Math.multiply
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_2:
+LOOP_EXIT_2$Math.multiply:
 
-// Jump to ENDIF_1
-jal $ra, ENDIF_1
+// Jump to ENDIF_1$Math.multiply
+jal $ra, ENDIF_1$Math.multiply
 
-IF_1:
+IF_1$Math.multiply:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -3895,7 +3902,7 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-ENDIF_1:
+ENDIF_1$Math.multiply:
 // Push to stack from local (1)
 lw $t0, 4($lcl)
 
@@ -3964,10 +3971,10 @@ lw $t0, 0($sp)
 
 sw $t0, 8($lcl)
 
-// Jump to WHILE_0
-jal $ra, WHILE_0
+// Jump to WHILE_0$Math.multiply
+jal $ra, WHILE_0$Math.multiply
 
-END_WHILE_0:
+END_WHILE_0$Math.multiply:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -3987,6 +3994,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -4000,7 +4008,7 @@ jalr $ra, $ra, 0
 // Function Math.divide 3
 Math.divide:
 
-// Pushing 3 zeros to stack
+// Push 3 zeros to stack
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 sw $zero, 0($sp)
@@ -4102,7 +4110,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -4149,7 +4157,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -4210,20 +4218,20 @@ slt $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_2
+// If-goto IF_2$Math.divide
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_3
-lui $t0, IF_2
-addi $t0, $t0, IF_2
+beq $t0, $zero, LOOP_EXIT_3$Math.divide
+lui $t0, IF_2$Math.divide
+addi $t0, $t0, IF_2$Math.divide
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_3:
+LOOP_EXIT_3$Math.divide:
 
-// Jump to ENDIF_2
-jal $ra, ENDIF_2
+// Jump to ENDIF_2$Math.divide
+jal $ra, ENDIF_2$Math.divide
 
-IF_2:
+IF_2$Math.divide:
 // Push to stack from constant (0)
 addi $t0, $zero, 0
 
@@ -4243,6 +4251,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -4253,7 +4262,7 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
-ENDIF_2:
+ENDIF_2$Math.divide:
 // Push to stack from argument (0)
 lw $t0, 0($arg)
 
@@ -4296,7 +4305,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -4357,7 +4366,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -4398,7 +4407,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -4460,15 +4469,15 @@ slt $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_3
+// If-goto IF_3$Math.divide
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_4
-lui $t0, IF_3
-addi $t0, $t0, IF_3
+beq $t0, $zero, LOOP_EXIT_4$Math.divide
+lui $t0, IF_3$Math.divide
+addi $t0, $t0, IF_3$Math.divide
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_4:
+LOOP_EXIT_4$Math.divide:
 
 // Push to stack from local (0)
 lw $t0, 0($lcl)
@@ -4525,10 +4534,10 @@ lw $t0, 0($sp)
 
 sw $t0, 4($lcl)
 
-// Jump to ENDIF_3
-jal $ra, ENDIF_3
+// Jump to ENDIF_3$Math.divide
+jal $ra, ENDIF_3$Math.divide
 
-IF_3:
+IF_3$Math.divide:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -4563,7 +4572,7 @@ lw $t0, 0($sp)
 
 sw $t0, 4($lcl)
 
-ENDIF_3:
+ENDIF_3$Math.divide:
 // Push to stack from local (2)
 lw $t0, 8($lcl)
 
@@ -4571,15 +4580,15 @@ lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_4
+// If-goto IF_4$Math.divide
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_5
-lui $t0, IF_4
-addi $t0, $t0, IF_4
+beq $t0, $zero, LOOP_EXIT_5$Math.divide
+lui $t0, IF_4$Math.divide
+addi $t0, $t0, IF_4$Math.divide
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_5:
+LOOP_EXIT_5$Math.divide:
 
 // Push to stack from local (1)
 lw $t0, 4($lcl)
@@ -4610,6 +4619,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -4620,10 +4630,10 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
-// Jump to ENDIF_4
-jal $ra, ENDIF_4
+// Jump to ENDIF_4$Math.divide
+jal $ra, ENDIF_4$Math.divide
 
-IF_4:
+IF_4$Math.divide:
 // Push to stack from local (1)
 lw $t0, 4($lcl)
 
@@ -4643,6 +4653,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -4653,11 +4664,11 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
-ENDIF_4:
+ENDIF_4$Math.divide:
 // Function Math.abs 0
 Math.abs:
 
-// Pushing 0 zeros to stack
+// Pushed 0 zeros to stack; No locals
 
 // Push to stack from argument (0)
 lw $t0, 0($arg)
@@ -4687,20 +4698,20 @@ slt $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_5
+// If-goto IF_5$Math.abs
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_6
-lui $t0, IF_5
-addi $t0, $t0, IF_5
+beq $t0, $zero, LOOP_EXIT_6$Math.abs
+lui $t0, IF_5$Math.abs
+addi $t0, $t0, IF_5$Math.abs
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_6:
+LOOP_EXIT_6$Math.abs:
 
-// Jump to ENDIF_5
-jal $ra, ENDIF_5
+// Jump to ENDIF_5$Math.abs
+jal $ra, ENDIF_5$Math.abs
 
-IF_5:
+IF_5$Math.abs:
 // Push to stack from argument (0)
 lw $t0, 0($arg)
 
@@ -4724,7 +4735,7 @@ lw $t0, 0($sp)
 
 sw $t0, 0($arg)
 
-ENDIF_5:
+ENDIF_5$Math.abs:
 // Push to stack from argument (0)
 lw $t0, 0($arg)
 
@@ -4744,6 +4755,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -4761,7 +4773,7 @@ jalr $ra, $ra, 0
 // Function Memory.init 0
 Memory.init:
 
-// Pushing 0 zeros to stack
+// Pushed 0 zeros to stack; No locals
 
 // Push to stack from constant (16384)
 lui $t0, 4
@@ -5002,6 +5014,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -5015,7 +5028,7 @@ jalr $ra, $ra, 0
 // Function Memory.peek 0
 Memory.peek:
 
-// Pushing 0 zeros to stack
+// Pushed 0 zeros to stack; No locals
 
 // Push to stack from static (0)
 lw $t0, Memory.0
@@ -5071,6 +5084,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -5084,7 +5098,7 @@ jalr $ra, $ra, 0
 // Function Memory.poke 0
 Memory.poke:
 
-// Pushing 0 zeros to stack
+// Pushed 0 zeros to stack; No locals
 
 // Push to stack from argument (1)
 lw $t0, 4($arg)
@@ -5153,6 +5167,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -5166,7 +5181,7 @@ jalr $ra, $ra, 0
 // Function Memory.bestFit 4
 Memory.bestFit:
 
-// Pushing 4 zeros to stack
+// Push 4 zeros to stack
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 sw $zero, 0($sp)
@@ -5303,20 +5318,20 @@ andi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_0
+// If-goto IF_0$Memory.bestFit
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_7
-lui $t0, IF_0
-addi $t0, $t0, IF_0
+beq $t0, $zero, LOOP_EXIT_7$Memory.bestFit
+lui $t0, IF_0$Memory.bestFit
+addi $t0, $t0, IF_0$Memory.bestFit
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_7:
+LOOP_EXIT_7$Memory.bestFit:
 
-// Jump to ENDIF_0
-jal $ra, ENDIF_0
+// Jump to ENDIF_0$Memory.bestFit
+jal $ra, ENDIF_0$Memory.bestFit
 
-IF_0:
+IF_0$Memory.bestFit:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -5336,6 +5351,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -5346,8 +5362,8 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
-ENDIF_0:
-WHILE_1:
+ENDIF_0$Memory.bestFit:
+WHILE_1$Memory.bestFit:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -5402,15 +5418,15 @@ addi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto END_WHILE_1
+// If-goto END_WHILE_1$Memory.bestFit
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_8
-lui $t0, END_WHILE_1
-addi $t0, $t0, END_WHILE_1
+beq $t0, $zero, LOOP_EXIT_8$Memory.bestFit
+lui $t0, END_WHILE_1$Memory.bestFit
+addi $t0, $t0, END_WHILE_1$Memory.bestFit
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_8:
+LOOP_EXIT_8$Memory.bestFit:
 
 // Push to stack from local (0)
 lw $t0, 0($lcl)
@@ -5562,20 +5578,20 @@ and $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_2
+// If-goto IF_2$Memory.bestFit
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_9
-lui $t0, IF_2
-addi $t0, $t0, IF_2
+beq $t0, $zero, LOOP_EXIT_9$Memory.bestFit
+lui $t0, IF_2$Memory.bestFit
+addi $t0, $t0, IF_2$Memory.bestFit
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_9:
+LOOP_EXIT_9$Memory.bestFit:
 
-// Jump to ENDIF_2
-jal $ra, ENDIF_2
+// Jump to ENDIF_2$Memory.bestFit
+jal $ra, ENDIF_2$Memory.bestFit
 
-IF_2:
+IF_2$Memory.bestFit:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -5602,7 +5618,7 @@ lw $t0, 0($sp)
 
 sw $t0, 8($lcl)
 
-ENDIF_2:
+ENDIF_2$Memory.bestFit:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -5651,10 +5667,10 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-// Jump to WHILE_1
-jal $ra, WHILE_1
+// Jump to WHILE_1$Memory.bestFit
+jal $ra, WHILE_1$Memory.bestFit
 
-END_WHILE_1:
+END_WHILE_1$Memory.bestFit:
 // Push to stack from local (1)
 lw $t0, 4($lcl)
 
@@ -5674,6 +5690,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -5687,7 +5704,7 @@ jalr $ra, $ra, 0
 // Function Memory.alloc 3
 Memory.alloc:
 
-// Pushing 3 zeros to stack
+// Push 3 zeros to stack
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 sw $zero, 0($sp)
@@ -5709,7 +5726,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -5819,20 +5836,20 @@ addi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_3
+// If-goto IF_3$Memory.alloc
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_10
-lui $t0, IF_3
-addi $t0, $t0, IF_3
+beq $t0, $zero, LOOP_EXIT_10$Memory.alloc
+lui $t0, IF_3$Memory.alloc
+addi $t0, $t0, IF_3$Memory.alloc
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_10:
+LOOP_EXIT_10$Memory.alloc:
 
-// Jump to ENDIF_3
-jal $ra, ENDIF_3
+// Jump to ENDIF_3$Memory.alloc
+jal $ra, ENDIF_3$Memory.alloc
 
-IF_3:
+IF_3$Memory.alloc:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -5917,15 +5934,15 @@ slt $t0, $t0, $t1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_4
+// If-goto IF_4$Memory.alloc
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_11
-lui $t0, IF_4
-addi $t0, $t0, IF_4
+beq $t0, $zero, LOOP_EXIT_11$Memory.alloc
+lui $t0, IF_4$Memory.alloc
+addi $t0, $t0, IF_4$Memory.alloc
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_11:
+LOOP_EXIT_11$Memory.alloc:
 
 // Push to stack from local (0)
 lw $t0, 0($lcl)
@@ -6058,10 +6075,10 @@ lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 
-// Jump to ENDIF_4
-jal $ra, ENDIF_4
+// Jump to ENDIF_4$Memory.alloc
+jal $ra, ENDIF_4$Memory.alloc
 
-IF_4:
+IF_4$Memory.alloc:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -6407,7 +6424,7 @@ lw $t0, 0($sp)
 
 sw $t0, Memory.1
 
-ENDIF_4:
+ENDIF_4$Memory.alloc:
 // Push to stack from local (1)
 lw $t0, 4($lcl)
 
@@ -6421,7 +6438,7 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-ENDIF_3:
+ENDIF_3$Memory.alloc:
 // Push to stack from local (2)
 lw $t0, 8($lcl)
 
@@ -6441,6 +6458,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -6454,7 +6472,7 @@ jalr $ra, $ra, 0
 // Function Memory.deAlloc 3
 Memory.deAlloc:
 
-// Pushing 3 zeros to stack
+// Push 3 zeros to stack
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 sw $zero, 0($sp)
@@ -6558,7 +6576,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -6623,15 +6641,15 @@ andi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_5
+// If-goto IF_5$Memory.deAlloc
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_12
-lui $t0, IF_5
-addi $t0, $t0, IF_5
+beq $t0, $zero, LOOP_EXIT_12$Memory.deAlloc
+lui $t0, IF_5$Memory.deAlloc
+addi $t0, $t0, IF_5$Memory.deAlloc
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_12:
+LOOP_EXIT_12$Memory.deAlloc:
 
 // Push to stack from local (0)
 lw $t0, 0($lcl)
@@ -6721,15 +6739,15 @@ andi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_6
+// If-goto IF_6$Memory.deAlloc
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_13
-lui $t0, IF_6
-addi $t0, $t0, IF_6
+beq $t0, $zero, LOOP_EXIT_13$Memory.deAlloc
+lui $t0, IF_6$Memory.deAlloc
+addi $t0, $t0, IF_6$Memory.deAlloc
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_13:
+LOOP_EXIT_13$Memory.deAlloc:
 
 // Push to stack from local (2)
 lw $t0, 8($lcl)
@@ -6910,10 +6928,10 @@ lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 
-// Jump to ENDIF_6
-jal $ra, ENDIF_6
+// Jump to ENDIF_6$Memory.deAlloc
+jal $ra, ENDIF_6$Memory.deAlloc
 
-IF_6:
+IF_6$Memory.deAlloc:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -7031,11 +7049,11 @@ lw $t0, 0($sp)
 
 sw $t0, 0($arg)
 
-ENDIF_6:
-// Jump to ENDIF_5
-jal $ra, ENDIF_5
+ENDIF_6$Memory.deAlloc:
+// Jump to ENDIF_5$Memory.deAlloc
+jal $ra, ENDIF_5$Memory.deAlloc
 
-IF_5:
+IF_5$Memory.deAlloc:
 // Push to stack from local (2)
 lw $t0, 8($lcl)
 
@@ -7145,7 +7163,7 @@ lw $t0, 0($sp)
 
 sw $t0, Memory.1
 
-ENDIF_5:
+ENDIF_5$Memory.deAlloc:
 // Push to stack from argument (0)
 lw $t0, 0($arg)
 
@@ -7269,20 +7287,20 @@ andi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_7
+// If-goto IF_7$Memory.deAlloc
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_14
-lui $t0, IF_7
-addi $t0, $t0, IF_7
+beq $t0, $zero, LOOP_EXIT_14$Memory.deAlloc
+lui $t0, IF_7$Memory.deAlloc
+addi $t0, $t0, IF_7$Memory.deAlloc
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_14:
+LOOP_EXIT_14$Memory.deAlloc:
 
-// Jump to ENDIF_7
-jal $ra, ENDIF_7
+// Jump to ENDIF_7$Memory.deAlloc
+jal $ra, ENDIF_7$Memory.deAlloc
 
-IF_7:
+IF_7$Memory.deAlloc:
 // Push to stack from argument (0)
 lw $t0, 0($arg)
 
@@ -7553,7 +7571,7 @@ lw $t0, 0($sp)
 add $t1, $that, $ram
 sw $t0, 0($t1)
 
-ENDIF_7:
+ENDIF_7$Memory.deAlloc:
 // Push to stack from constant (0)
 addi $t0, $zero, 0
 
@@ -7573,6 +7591,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -7586,7 +7605,7 @@ jalr $ra, $ra, 0
 // Function Memory.findPreFree 1
 Memory.findPreFree:
 
-// Pushing 1 zeros to stack
+// Push 1 zeros to stack
 sw $zero, 0($sp)
 addi $sp, $sp, 4
 
@@ -7618,20 +7637,20 @@ slt $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto IF_8
+// If-goto IF_8$Memory.findPreFree
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_15
-lui $t0, IF_8
-addi $t0, $t0, IF_8
+beq $t0, $zero, LOOP_EXIT_15$Memory.findPreFree
+lui $t0, IF_8$Memory.findPreFree
+addi $t0, $t0, IF_8$Memory.findPreFree
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_15:
+LOOP_EXIT_15$Memory.findPreFree:
 
-// Jump to ENDIF_8
-jal $ra, ENDIF_8
+// Jump to ENDIF_8$Memory.findPreFree
+jal $ra, ENDIF_8$Memory.findPreFree
 
-IF_8:
+IF_8$Memory.findPreFree:
 // Push to stack from constant (0)
 addi $t0, $zero, 0
 
@@ -7651,6 +7670,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -7661,7 +7681,7 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
-ENDIF_8:
+ENDIF_8$Memory.findPreFree:
 // Push to stack from static (1)
 lw $t0, Memory.1
 
@@ -7675,7 +7695,7 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-WHILE_9:
+WHILE_9$Memory.findPreFree:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -7842,15 +7862,15 @@ addi $t0, $t0, 1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// If-goto END_WHILE_9
+// If-goto END_WHILE_9$Memory.findPreFree
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-beq $t0, $zero, LOOP_EXIT_16
-lui $t0, END_WHILE_9
-addi $t0, $t0, END_WHILE_9
+beq $t0, $zero, LOOP_EXIT_16$Memory.findPreFree
+lui $t0, END_WHILE_9$Memory.findPreFree
+addi $t0, $t0, END_WHILE_9$Memory.findPreFree
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
-LOOP_EXIT_16:
+LOOP_EXIT_16$Memory.findPreFree:
 
 // Push to stack from local (0)
 lw $t0, 0($lcl)
@@ -7900,10 +7920,10 @@ lw $t0, 0($sp)
 
 sw $t0, 0($lcl)
 
-// Jump to WHILE_9
-jal $ra, WHILE_9
+// Jump to WHILE_9$Memory.findPreFree
+jal $ra, WHILE_9$Memory.findPreFree
 
-END_WHILE_9:
+END_WHILE_9$Memory.findPreFree:
 // Push to stack from local (0)
 lw $t0, 0($lcl)
 
@@ -7923,6 +7943,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -7940,7 +7961,7 @@ jalr $ra, $ra, 0
 // Function Sys.init 0
 Sys.init:
 
-// Pushing 0 zeros to stack
+// Pushed 0 zeros to stack; No locals
 
 // Call Memory.init 0
 lui $t0, Memory.init$ret.13
@@ -7949,7 +7970,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -7989,7 +8010,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -8029,7 +8050,7 @@ add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Pushing $lcl, $arg, $this, $that
+// Push $lcl, $arg, $this, $that
 sw $lcl, 0($sp)
 addi $sp, $sp, 4
 
@@ -8068,6 +8089,7 @@ sw $t0, 0($arg)
 
 // Change SP = ARG + 1
 addi $sp, $arg, 4
+
 // Get Segments
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
@@ -8078,5 +8100,6 @@ lw $that, 16($t0)
 
 jalr $ra, $ra, 0
 
+// END
 END:
 addi x1, $t0, 0

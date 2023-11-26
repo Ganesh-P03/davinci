@@ -56,6 +56,8 @@ class Parser:
       'and': 'C_ARITHMETIC',
       'or': 'C_ARITHMETIC',
       'not': 'C_ARITHMETIC',
+      'mac': 'C_ARITHMETIC',
+      'reset': 'C_ARITHMETIC',
       
       # Memory access commands
       'push': 'C_PUSH',
