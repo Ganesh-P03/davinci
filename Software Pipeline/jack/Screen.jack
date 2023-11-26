@@ -28,7 +28,7 @@ class Screen {
         let i = 0;
         while(i < 2400){
             let j=i+i+i+i;
-            let screen[j] = false;
+            let screen[j] = 0;
             let i = i+1;
         }
         return;

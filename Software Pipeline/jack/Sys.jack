@@ -55,7 +55,13 @@ class Sys {
     function void screenTest(){
         // do Output.printChar(65);
 
+        do Screen.drawHLine(0,319,0);
+        do Screen.drawHLine(0,319,239);
+
         
+
+        do Screen.drawRectangle(50,50,100,100);
+        do Screen.clearScreen();
                 // do Output.printChar(66);
        
         return;
