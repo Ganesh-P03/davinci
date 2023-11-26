@@ -31,6 +31,7 @@ class Fibonacci {
             let b = c;
             let i = i + 1;
         }
+        do Output.println();
         do Output.printInt(c);
         return;
     }
@@ -41,6 +42,7 @@ class Fibonacci {
         // let doYouWantToRepeat = "Do you want to continue? (yes(1)/no(0)): ";
         // let programEnded = "Program ended.";
         // let repeat = 1;
+        do Output.println();
         do Fibonacci.calculate_fibo();
         // Ask if the user wants to continue
         // while(repeat=1){

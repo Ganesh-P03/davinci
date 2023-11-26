@@ -40,23 +40,6 @@ add
 pop pointer 1
 push that 0
 return
-function String.setCharAt 1
-push argument 0
-pop pointer 0
-push argument 1
-push constant 4
-call Math.multiply 2
-pop local 0
-push local 0
-push this 2
-add
-push argument 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 0
-return
 function String.appendChar 1
 push argument 0
 pop pointer 0

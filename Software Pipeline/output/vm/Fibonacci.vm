@@ -57,12 +57,16 @@ add
 pop local 4
 goto WHILE_EXP0
 label WHILE_END0
+call Output.println 0
+pop temp 0
 push local 3
 call Output.printInt 1
 pop temp 0
 push constant 0
 return
 function Fibonacci.main 0
+call Output.println 0
+pop temp 0
 call Fibonacci.calculate_fibo 0
 pop temp 0
 push constant 0

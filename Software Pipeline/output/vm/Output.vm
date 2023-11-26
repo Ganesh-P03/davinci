@@ -1678,6 +1678,10 @@ pop that 0
 label IF_END10
 label IF_END9
 label IF_END8
+push local 0
+push constant 10
+add
+pop local 0
 push local 1
 push constant 1
 add

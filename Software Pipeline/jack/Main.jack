@@ -31,8 +31,9 @@ class Main{
         // do Output.println();
         // do Output.printString("You entered: ");
         // do Output.printString(input);
-        // do Output.println();
         if(currChar=ls){
+            do Output.println();
+
             do Output.printString(fibo_print);
             do Output.printString(snake_print);
             do Output.printString(qsort_print);
@@ -56,9 +57,9 @@ class Main{
                         //     do QuickSort.main();
                         // }
                         // else{
-                        //     if(currChar=hangman){
-                        //         do Hangman.main();
-                        //     }
+                            if(currChar=hangman){
+                                do Hangman.main();
+                            }
                         //     else{
                         //         if(currChar=snake){
                         //             do SnakeGameMain.main();

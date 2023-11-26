@@ -271,6 +271,8 @@ eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
+call Output.println 0
+pop temp 0
 push local 5
 call Output.printString 1
 pop temp 0
@@ -317,6 +319,17 @@ call Fibonacci.main 0
 pop temp 0
 goto IF_END3
 label IF_FALSE3
+push local 10
+push local 17
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+call Hangman.main 0
+pop temp 0
+goto IF_END4
+label IF_FALSE4
+label IF_END4
 label IF_END3
 label IF_END2
 label IF_END1
