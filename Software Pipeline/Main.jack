@@ -1,0 +1,80 @@
+class Main{
+  function void main() {
+    var int zero,one;
+    var String arrow,space,error,fibo_print,snake_print,qsort_print,hangman_print;
+    var String input;
+    var char currChar;
+    var char ls,clear,exit,fibo,qsort,snake,hangman;
+	let clear = 67;
+	let ls = 76;
+	let fibo = 70;
+	let qsort = 81;
+	let exit = 69;
+    let snake = 83;
+    let hangman = 72;
+    let space = " ";
+    let arrow = "davinci$ ";
+    let error = "invalid";
+    let zero = 0;
+    let one = 1;
+    let fibo_print = " fibo ";
+    let snake_print = " snakegame ";
+    let qsort_print = " qsort ";
+    let hangman_print = " hangman ";
+
+
+    while(zero<one){ 
+        let input = Keyboard.readLine(arrow);
+        let currChar = input.charAt(0);
+        // do Output.printString("You entered: ");
+        // do Output.printChar(currChar);
+        // do Output.println();
+        // do Output.printString("You entered: ");
+        // do Output.printString(input);
+        // do Output.println();
+        if(currChar=ls){
+            do Output.printLine()
+            do Output.printString(fibo_print);
+            do Output.printString(snake_print);
+            do Output.printString(qsort_print);
+            do Output.printString(hangman_print);
+        }
+        else{
+            if(currChar=clear){
+               // do Screen.clearScreen();
+                do Output.moveCursor(0,0);
+            }
+            else{
+                if(currChar=exit){
+                    let zero=2;
+                }
+                else{
+                    if(currChar=fibo){
+                        do Fibonacci.main();
+                    }
+                    else{
+                        // if(currChar=qsort){
+                        //     do QuickSort.main();
+                        // }
+                        // else{
+                        //     if(currChar=hangman){
+                        //         do Hangman.main();
+                        //     }
+                        //     else{
+                        //         if(currChar=snake){
+                        //             do SnakeGameMain.main();
+                        //         }
+                        //         else{
+                        //             do Output.printString(error);
+                        //         }
+                        //     }
+                        // }
+                    }
+                }
+            }
+        }
+        do Output.println();
+    }
+    return;
+  }
+}

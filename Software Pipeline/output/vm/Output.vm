@@ -14,8 +14,6 @@ push constant 0
 push local 0
 sub
 pop static 3
-push constant 16384
-pop static 4
 push constant 0
 pop static 1
 push constant 0
@@ -1264,7 +1262,7 @@ push constant 1
 sub
 pop local 9
 push local 6
-push static 4
+push static 3
 add
 pop pointer 1
 push that 0
@@ -1275,14 +1273,6 @@ or
 pop local 10
 push local 6
 push static 3
-add
-push local 10
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push local 6
-push static 4
 add
 push local 10
 pop temp 0
@@ -1321,7 +1311,7 @@ push local 7
 and
 pop local 3
 push local 6
-push static 4
+push static 3
 add
 pop pointer 1
 push that 0
@@ -1332,14 +1322,6 @@ or
 pop local 10
 push local 6
 push static 3
-add
-push local 10
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push local 6
-push static 4
 add
 push local 10
 pop temp 0
@@ -1378,7 +1360,7 @@ push local 8
 and
 pop local 3
 push local 6
-push static 4
+push static 3
 add
 pop pointer 1
 push that 0
@@ -1395,18 +1377,10 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push local 6
-push static 4
-add
-push local 10
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
 goto IF_END3
 label IF_FALSE3
 push local 6
-push static 4
+push static 3
 add
 pop pointer 1
 push that 0
@@ -1418,14 +1392,6 @@ or
 pop local 10
 push local 6
 push static 3
-add
-push local 10
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push local 6
-push static 4
 add
 push local 10
 pop temp 0
@@ -1599,7 +1565,7 @@ push constant 1
 sub
 pop local 7
 push local 4
-push static 4
+push static 3
 add
 pop pointer 1
 push that 0
@@ -1608,14 +1574,6 @@ and
 pop local 8
 push local 4
 push static 3
-add
-push local 8
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push local 4
-push static 4
 add
 push local 8
 pop temp 0
@@ -1645,7 +1603,7 @@ push constant 1
 sub
 pop local 7
 push local 4
-push static 4
+push static 3
 add
 pop pointer 1
 push that 0
@@ -1654,14 +1612,6 @@ and
 pop local 8
 push local 4
 push static 3
-add
-push local 8
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push local 4
-push static 4
 add
 push local 8
 pop temp 0
@@ -1691,7 +1641,7 @@ push constant 1
 sub
 pop local 7
 push local 4
-push static 4
+push static 3
 add
 pop pointer 1
 push that 0
@@ -1706,18 +1656,10 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-push local 4
-push static 4
-add
-push local 8
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
 goto IF_END10
 label IF_FALSE10
 push local 4
-push static 4
+push static 3
 add
 pop pointer 1
 push that 0
@@ -1727,14 +1669,6 @@ and
 pop local 8
 push local 4
 push static 3
-add
-push local 8
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push local 4
-push static 4
 add
 push local 8
 pop temp 0

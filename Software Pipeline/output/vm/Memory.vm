@@ -4,12 +4,8 @@ pop static 6
 push constant 16384
 pop static 5
 push static 5
-push static 5
-add
-push static 5
-add
-push static 5
-add
+push constant 4
+call Math.multiply 2
 pop static 5
 push constant 2048
 pop static 4

@@ -1,0 +1,57 @@
+// Fibonacci.jack
+
+class Fibonacci {
+    function void calculate_fibo(){
+        var int n, a, b, c, i;
+        var String enterNumber,thefirst,fibonacci_numbers,comma;
+        let enterNumber = "Enter the number of Fibonacci numbers to print: ";
+        let thefirst = "The first ";
+        let fibonacci_numbers = " Fibonacci numbers are: ";
+        let comma = ", ";
+        let n = Keyboard.readInt(enterNumber); // Read user input for the number of Fibonacci numbers to print
+        let a = 0;
+        let b = 1;
+        do Output.printString(thefirst);
+        do Output.printInt(n);
+        do Output.printString(fibonacci_numbers);
+        do Output.printInt(a); // Print the first number in the sequence
+
+        if (n > 1) {
+            do Output.printString(comma);
+            do Output.printInt(b); // Print the second number in the sequence
+        }
+
+        // Print subsequent Fibonacci numbers
+        let i = 2;
+        while (i < n) {
+            let c = a + b;
+            do Output.printString(comma);
+            do Output.printInt(c);
+            let a = b;
+            let b = c;
+            let i = i + 1;
+        }
+        return;
+    }
+    function void main() {
+        var int repeat;
+        var String answer;
+        var String doYouWantToRepeat,programEnded;
+        let doYouWantToRepeat = "Do you want to continue? (yes(1)/no(0)): ";
+        let programEnded = "Program ended.";
+        let repeat = 1;
+        do Fibonacci.calculate_fibo();
+        // Ask if the user wants to continue
+        while(repeat=1){
+            do Output.println();
+            let answer = Keyboard.readInt(doYouWantToRepeat);
+            if (answer =1) {
+                do Fibonacci.calculate_fibo(); // Restart the program
+            } else {
+                let repeat = 0;
+                do Output.printString(programEnded); // End the program
+            }
+        }
+        return;
+    }
+}

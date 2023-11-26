@@ -3,7 +3,11 @@ call Memory.init 0
 pop temp 0
 call Math.init 0
 pop temp 0
-call Sys.test 0
+call Output.init 0
+pop temp 0
+call Keyboard.init 0
+pop temp 0
+call Main.main 0
 pop temp 0
 call Sys.halt 0
 pop temp 0
@@ -48,60 +52,5 @@ add
 pop local 0
 goto WHILE_EXP1
 label WHILE_END1
-push constant 0
-return
-function Sys.test 4
-push constant 17
-call Array.new 1
-pop local 3
-push constant 3
-call String.new 1
-pop local 0
-push local 0
-push constant 49
-call String.appendChar 2
-pop temp 0
-push local 0
-push constant 50
-call String.appendChar 2
-pop temp 0
-push local 0
-push constant 51
-call String.appendChar 2
-pop temp 0
-push local 0
-pop local 0
-push local 0
-call String.intValue 1
-pop local 2
-push constant 0
-push local 3
-add
-push local 2
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push constant 0
-return
-function Sys.screenTest 0
-push constant 0
-push constant 319
-push constant 0
-call Screen.drawHLine 3
-pop temp 0
-push constant 0
-push constant 319
-push constant 239
-call Screen.drawHLine 3
-pop temp 0
-push constant 50
-push constant 50
-push constant 100
-push constant 100
-call Screen.drawRectangle 4
-pop temp 0
-call Screen.clearScreen 0
-pop temp 0
 push constant 0
 return
