@@ -13,12 +13,13 @@ class CodeWriter:
 
     __return_counter = 0  # Return counter for return labels
     __loop_counter = 0  # Loop counter for loop labels
-    __reg = 15  # Use reg instead of stack
 
     # Inner flags
     __meaningFull = False
     __function_name = None
     __base_filename = None
+
+    __reg = 16
 
     p = None  # Parser object
 
@@ -43,16 +44,8 @@ class CodeWriter:
 
     # Set the output file name
     def setFileName(self, file_name: str) -> None:
+        self.__base_filename = file_name
         self.__file_name = file_name
-
-    # Push and Pop registers
-    def popReg(self):
-        self.__reg -= 1
-        return "x" + str(self.__reg)
-
-    def pushReg(self):
-        self.__reg += 1
-        return "x" + str(self.__reg)
 
     # Generate return labels
     def genReturnLabel(self, function_name: str) -> str:
@@ -74,11 +67,17 @@ class CodeWriter:
             else:
                 self.__output_stream.write("\n")
 
+    # Push and Pop registers
+    def popReg(self):
+        self.__reg -= 1
+        return "x" + str(self.__reg)
+
+    def pushReg(self):
+        self.__reg += 1
+        return "x" + str(self.__reg)
+
     # Write assembly code
-    def write(
-        self,
-        assembly_code: str,
-    ) -> None:
+    def write(self, assembly_code: str) -> None:
         self.__output_stream.write(assembly_code + "\n")
 
     def writePCbase(self) -> None:
@@ -126,6 +125,8 @@ class CodeWriter:
 
         # Check code
         self.writeMessage("OS Verification code")
+        self.write("addi $sp, $sp, -4")  # SP = SP - 1
+        self.write("lw $t0, 0($sp)")
         self.write("jal x1, END")
         self.writeMessage("")
 
@@ -235,6 +236,8 @@ class CodeWriter:
 
         if command_type == "C_PUSH":
             reg1 = "x" + str(self.__reg)
+            self.pushReg()
+
             self.writeMessage(
                 "Push to stack from " + str(segment) + " (" + str(index // 4) + ")"
             )
@@ -288,7 +291,6 @@ class CodeWriter:
                         f"addi {reg1}, $zero, " + str(lower_bits)
                     )  # t0 = lower_bits
 
-            self.pushReg()
             self.writeMessage("")
             return
 
@@ -329,7 +331,6 @@ class CodeWriter:
             elif segment == "pointer" and index == 4:
                 self.write(f"addi $that, {reg1}, 0")
             self.writeMessage("")
-
     # Writes assembly code that effects the label command
     def writeLabel(self, label: str) -> None:
         new_label = label
@@ -375,11 +376,13 @@ class CodeWriter:
     def writeCall(self, function_name: str, n: int) -> None:
         self.writeMessage("Call " + str(function_name) + " " + str(n))
 
-        for _ in range(0, n):
-            regArg = self.popReg()
-            self.write(f"sw {regArg}, 0($sp)")  # *SP = t0
-            self.write("addi $sp, $sp, 4")
-
+        if n != 0:
+            for _ in range(0, n):
+                regArg = self.popReg()
+                self.write(f"sw {regArg}, 0($sp)")  # *SP = t0
+                self.write("addi $sp, $sp, 4")
+            self.pushReg()
+        
         n = 0
         # Push return-address
         return_label = self.genReturnLabel(function_name)
@@ -444,7 +447,6 @@ class CodeWriter:
         self.write("lw $ra, 0($t0)")  # $ra = RETURN ADDRESS
         self.writeMessage("")
         reg1 = "x" + str(self.__reg)
-        # self.pushReg()
 
         # Reposition ARG = pop()
         self.writeMessage("ARG = pop()")
@@ -468,6 +470,7 @@ class CodeWriter:
 
     # Writes assembly code that effects the function command
     def writeFunction(self, function_name: str, n: int) -> None:
+        self.__function_name = function_name
         self.writeMessage("Function " + str(function_name) + " " + str(n))
         self.writeLabel(function_name)  # <function_name>:
         self.writeMessage("")
@@ -484,6 +487,7 @@ class CodeWriter:
         self.write("END:")
         self.write(f"addi x1, {reg1}, 0")
         self.__output_stream.close()
+
 
 
 # End of CodeWriter.py

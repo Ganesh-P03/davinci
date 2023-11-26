@@ -68,53 +68,31 @@ class Assembler:
     __pcbase = 9600
 
     __nstatic = 0
-    MAC = 'x31'
 
-    def __init__(self):
-        self.__contents = None
-        self.__input_file = None
-
-    def assemble(self, asm_base: str, bin_base: str):
-        input_path = os.path.join(asm_base, "riscv_code.asm")
-        print(input_path)
+    def __init__(self, input_path):
         try:
             self.__input_file = open(input_path, "r")
         except:
             print("Error: Input file not found.")
             exit(1)
 
-        try:
-            # Create output directory
-            output_path = os.path.join(bin_base, "dump")
-            if not os.path.exists(output_path):
-                os.makedirs(output_path)
+        # Create output directory
+        if not os.path.exists("output"):
+            os.makedirs("output")
 
-            tables_path = os.path.join(output_path, "tables")
-            pass_path = os.path.join(output_path, "pass")
+        # Create tables directory
+        if not os.path.exists("output/tables"):
+            os.makedirs("output/tables")
 
-            # Create tables directory
-            if not os.path.exists(tables_path):
-                os.makedirs(tables_path)
+        self.__contents = self.sanitizeCode(self.__input_file.readlines())
+        self.__input_file.close()
 
-            # Create pass directory
-            if not os.path.exists(pass_path):
-                os.makedirs(pass_path)
+        self.firstPass(save=True)
+        self.secondPass(save=True)
 
-            self.__tables_path = tables_path
-            self.__pass_path = pass_path
+        self.translate()
 
-            self.__contents = self.sanitizeCode(self.__input_file.readlines())
-            self.__input_file.close()
-
-            self.firstPass(save=True)
-            self.secondPass(save=True)
-            self.translate(bin_base)
-
-            self.showTables(save=True)
-        except:
-            return False
-
-        return True
+        self.showTables(save=True)
 
     def getContents(self):
         return self.__contents
@@ -143,11 +121,11 @@ class Assembler:
             label_table.add_row([key, value])
 
         if save:
-            with open(os.path.join(self.__tables_path, "register_table.txt"), "w") as f:
+            with open("output/tables/register_table.txt", "w") as f:
                 f.write(str(register_table))
-            with open(os.path.join(self.__tables_path, "symbol_table.txt"), "w") as f:
+            with open("output/tables/symbol_table.txt", "w") as f:
                 f.write(str(symbol_table))
-            with open(os.path.join(self.__tables_path, "label_table.txt"), "w") as f:
+            with open("output/tables/label_table.txt", "w") as f:
                 f.write(str(label_table))
             return
 
@@ -185,7 +163,6 @@ class Assembler:
         return label in self.__label_table.keys()
 
     def getLabel(self, label: str) -> int:
-        print("Label: ", label)
         return int(self.__label_table[label])
 
     def setLabel(self, label: str, value: int):
@@ -231,8 +208,6 @@ class Assembler:
             or (cmd == "and")
             or (cmd == "or")
             or (cmd == "slt")
-            or (cmd == "mul")
-            or (cmd == "rst")
         ), ("Invalid command" + cmd)
         assert rd != "00000", "Storing to zero register"
         assert len(rs1) == 5 and len(rs2) == 5 and len(rd) == 5, (
@@ -249,8 +224,6 @@ class Assembler:
             return "0000000" + rs2 + rs1 + "111" + rd + "0110011"
         elif cmd == "slt":
             return "0000000" + rs2 + rs1 + "010" + rd + "0110011"
-        elif cmd == "mul":
-            return "0000000" + rs2 + rs1 + "100" + rd + "0110011"
 
     def translateIType(self, code: list) -> str:
         # [0..6](opcode) [7..11](rd) [12..14](funct3) [15..19](rs1) [20..24](rs2) [25..31](funct7)
@@ -273,7 +246,12 @@ class Assembler:
 
             assert len(rs1) == 5 and len(rd) == 5, "Invalid register length " + cmd
             assert len(imm) == 12, (
-                "Invalid immediate length " + cmd + " " + str(len(imm))
+                "Invalid immediate length "
+                + cmd
+                + " "
+                + str(len(imm))
+                + "x: "
+                + (",".join(code))
             )
 
             if cmd == "addi":
@@ -394,19 +372,6 @@ class Assembler:
             elif (command == "lw" or command == "sw") and (line[-1].find(".") != -1):
                 self.setSymbol(line[-1])
                 self.__nstatic += 1
-            elif (command == "mac"):
-                rs1 = line[1]
-                rs2 = line[2]
-                rd = self.MAC
-                
-                mul_code = ['mul', rd, rs1, rs2]
-                address += 1
-                wl_contents.append(mul_code)
-                
-                add_code = ['add', rd, rd, rs1]
-                address += 1
-                wl_contents.append(add_code)
-                continue                
 
             address += 1
             wl_contents.append(line)
@@ -414,9 +379,11 @@ class Assembler:
         self.__contents = wl_contents
 
         if save:
-            with open(os.path.join(self.__pass_path, "first_pass.txt"), "w") as f:
+            with open("output/first_pass.txt", "w") as f:
                 for i, line in enumerate(wl_contents):
-                    f.write("(" + str(self.__pcbase + i * 4) + "): " + " ".join(line) + "\n")
+                    f.write(
+                        "(" + str(self.__pcbase + i * 4) + "): " + " ".join(line) + "\n"
+                    )
             return
 
     # Second pass
@@ -463,13 +430,15 @@ class Assembler:
         self.__contents = pcode
 
         if save:
-            with open(os.path.join(self.__pass_path, "second_pass.txt"), "w") as f:
+            with open("output/second_pass.txt", "w") as f:
                 for i, line in enumerate(pcode):
-                    f.write("(" + str(self.__pcbase + i * 4) + "): " + " ".join(line) + "\n")
+                    f.write(
+                        "(" + str(self.__pcbase + i * 4) + "): " + " ".join(line) + "\n"
+                    )
         return pcode
 
     # Translate to Machine Code
-    def translate(self, output_path: str):
+    def translate(self):
         mcode = []
         for pc, code in enumerate(self.__contents):
             cmd = code[0]
@@ -489,8 +458,6 @@ class Assembler:
                 or (cmd == "and")
                 or (cmd == "or")
                 or (cmd == "slt")
-                or (cmd == "mul")
-                or (cmd == "rst")
             ):
                 code = self.translateRType(code)
 
@@ -509,57 +476,26 @@ class Assembler:
 
         self.__contents = mcode
 
-        bin_path = os.path.join(output_path, "riscv.bin")
-        rom_path = os.path.join(output_path, "ROM.v")
-        hex_path = os.path.join(output_path, "HEX.txt")
-
-        with open(bin_path, "w") as f:
+        with open("output/bin.txt", "w") as f:
             for line in mcode:
                 f.write(line + "\n")
 
-        with open(rom_path, "w") as f:
-            # Begin code
-            begin_code = """module ROM ( //Instruction Memory
-    input [16:0] addr,
-    input clock,
-    output [31:0] Inst
-    );
-    wire [14:0] address;
-    
-    (* ram_style="block" *)
-    reg [31:0] ROM[32767:0];
-
-    initial
-        begin
-    """
-            f.write(begin_code)
-            for i, line in enumerate(mcode):
-                f.write("ROM[" + str(i) + "] <= 32'b" + line + ";\n")
-
-            # End code
-            end_code = """        end
-    assign address = addr[16:2];
-    assign Inst = ROM[address];
-        
-endmodule"""
-            f.write(end_code)
-
-        with open(hex_path, "w") as f:
+        with open("output/HEX.txt", "w") as f:
             for line in mcode:
+                # convert 32 bit binary to hex
                 hex = format(int(line, 2), "08x")
                 hex = str(hex)
                 hex = hex.upper()
                 f.write(hex + "\n")
-                
-                
+
+        with open("output/rom.txt", "w") as f:
+            for i, line in enumerate(mcode):
+                f.write("ROM[" + str(i) + "] <= 32'b" + line + ";\n")
+
+
 if __name__ == "__main__":
     base_path = os.path.dirname(os.path.realpath(__file__))
-    asm_base = base_path
-    bin_base = os.path.join(base_path, "output")
-    assembler = Assembler()
-    
-    print("ASM Base: ", asm_base)
-    print("BIN Base: ", bin_base)
-    
-    assembler.assemble(asm_base, bin_base)
+    file_path = os.path.join(base_path, "riscv_code.asm")
+
+    assembler = Assembler(file_path)
 # assembler.showTables(save=True)
