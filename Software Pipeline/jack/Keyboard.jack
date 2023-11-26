@@ -6,14 +6,17 @@
 /**
  * A library for handling user input from the keyboard.
  */
+// ----------------------------------------- ACTUAL TESTING DONE ------------------------------------------------------
 class Keyboard {
     
     static Array keyboard;
+    static int isCaps;
 
     /** Initializes the keyboard. */
     function void init() {
         let keyboard = 16383;
         let keyboard = keyboard + keyboard + keyboard + keyboard;
+        let isCaps = 0;
         //let keyboard = keyboard + keyboard + keyboard + keyboard;
         return;
     } 
@@ -54,19 +57,37 @@ class Keyboard {
        // do Output.printChar(66); //B
         while(i = 0){
             let key = Keyboard.keyPressed();
-            if(key = 0){
-               
+
+            if(key = 9){
+                if(isCaps = 0){
+                    let isCaps = 32;
+                }
+                else{
+                    let isCaps = 0;
+                }
             }
             else{
-                let i=1;
+                if(key = 0){
+                
+                }
+                else{
+                    let i=1;
+                }
             }
         }
        // do Output.printChar(67); //C
        // while(~(Keyboard.keyPressed() = 0)){}
+
        if(key >96 ){
         if(key < 123){
-            let key=key-32;
+            let key=key-isCaps;
         do Output.printChar(key);    
+        }
+       }
+
+       if(key > 47){
+        if(key<58){
+               do Output.printChar(key);    
         }
        }
         // let key=key-32;

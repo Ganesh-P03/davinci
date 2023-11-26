@@ -83,6 +83,7 @@ always @*
 			8'h66: ascii_code = 8'h08;   // backspace
 			8'h0D: ascii_code = 8'h09;   // horizontal tab	
 			
+			
 			default: ascii_code = 8'h2A; // *
 		endcase
 		end

@@ -14,9 +14,9 @@ class Sys {
         
         do Memory.init();
         do Math.init();
-        do Output.init();
-        do Keyboard.init();
-        do Screen.init();
+       // do Output.init();
+        //do Keyboard.init();
+       // do Screen.init();
         do Sys.test();
         do Sys.halt();
         // do Sys.screenTest();
@@ -46,12 +46,27 @@ class Sys {
     function void test(){
       var String str;
       var String message;
+      var int temp;
+      var Array a;
+      let a  = Array.new(17);
+    //   do Output.printChar(65);
+    //   do Output.printChar(66);
+    //   do Output.printChar(67);
+
+    //     do Output.printChar(71);
+    //     do Output.printChar(72);
+    //     do Output.printChar(73);
+    //     do Output.printChar(74);
     //   var int temp;
-      let message="ABCD";
-      let str = Keyboard.readLine(message);
-      do Output.printString(str);
+    //   let message="aBcD";
+    //   let str = Keyboard.readLine(message);
+    //   do Output.printString(str);
     //   let temp = Keyboard.readInt(message);
+    //  do Output.printInt(temp);
     //   do Output.printInt(temp);
+    let str = "123";
+    let temp = str.intValue();
+    let a[0] = temp;
       return;
     }
 
