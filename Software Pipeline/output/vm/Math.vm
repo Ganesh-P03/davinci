@@ -548,43 +548,6 @@ label IF_FALSE3
 label IF_END3
 push local 0
 return
-function Math.max 0
-push argument 0
-push argument 1
-gt
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
-push argument 0
-return
-goto IF_END4
-label IF_FALSE4
-label IF_END4
-push argument 1
-return
-function Math.min 0
-push argument 0
-push argument 1
-lt
-if-goto IF_TRUE5
-goto IF_FALSE5
-label IF_TRUE5
-push argument 0
-return
-goto IF_END5
-label IF_FALSE5
-label IF_END5
-push argument 1
-return
-function Math.mod 0
-push argument 0
-push argument 0
-push argument 1
-call Math.divide 2
-push argument 1
-call Math.multiply 2
-sub
-return
 function Math.twoToThe 0
 push argument 0
 push constant 4

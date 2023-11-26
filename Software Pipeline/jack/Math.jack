@@ -103,25 +103,25 @@ function void init() {
     
 
     /** Returns the greater number. */
-    function int max(int a, int b) {
-        if(a > b){
-            return a;
-        }
-        return b;
-    }
+    // function int max(int a, int b) {
+    //     if(a > b){
+    //         return a;
+    //     }
+    //     return b;
+    // }
 
     /** Returns the smaller number. */
-    function int min(int a, int b) {
-        if(a < b){
-            return a;
-        }
-        return b;
-    }
+    // function int min(int a, int b) {
+    //     if(a < b){
+    //         return a;
+    //     }
+    //     return b;
+    // }
 
     /** helper function: mod */
-    function int mod(int a, int b){
-        return a - (Math.divide(a,b) * b); 
-    }
+    // function int mod(int a, int b){
+    //     return a - (Math.divide(a,b) * b); 
+    // }
 
     /** helper function two to the power i i.e. 2^i */
     function int twoToThe(int i){

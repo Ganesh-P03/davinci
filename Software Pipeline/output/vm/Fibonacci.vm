@@ -1,4 +1,4 @@
-function Fibonacci.calculate_fibo 9
+function Fibonacci.calculate_fibo 6
 push constant 3
 call String.new 1
 pop local 5
