@@ -24392,6 +24392,46 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
+// Call Sys.halt 0
+lui $t0, Sys.halt$ret.118
+addi $t0, $t0, Sys.halt$ret.118
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 0
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Sys.halt
+jal $ra, Sys.halt
+
+
+Sys.halt$ret.118:
+
+// Pop from stack to temp (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($temp)
+
 // Push to stack from constant (0)
 addi $t0, $zero, 0
 
@@ -24759,8 +24799,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call String.new 1
-lui $t0, String.new$ret.118
-addi $t0, $t0, String.new$ret.118
+lui $t0, String.new$ret.119
+addi $t0, $t0, String.new$ret.119
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -24790,7 +24830,7 @@ add $lcl, $zero, $sp
 jal $ra, String.new
 
 
-String.new$ret.118:
+String.new$ret.119:
 
 // Pop from stack to local (1)
 addi $sp, $sp, -4
@@ -24807,60 +24847,6 @@ addi $sp, $sp, 4
 
 // Push to stack from constant (65)
 addi $t0, $zero, 65
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Call String.appendChar 2
-lui $t0, String.appendChar$ret.119
-addi $t0, $t0, String.appendChar$ret.119
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push $lcl, $arg, $this, $that
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-
-sw $this, 0($sp)
-addi $sp, $sp, 4
-
-sw $that, 0($sp)
-addi $sp, $sp, 4
-
-// Reposition ARG, LCL
-addi $t0, $zero, 20
-addi $t0, $t0, 8
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-
-add $lcl, $zero, $sp
-
-// Jump to String.appendChar
-jal $ra, String.appendChar
-
-
-String.appendChar$ret.119:
-
-// Pop from stack to temp (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($temp)
-
-// Push to stack from local (1)
-lw $t0, 4($lcl)
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (66)
-addi $t0, $zero, 66
 
 // Push to stack
 sw $t0, 0($sp)
@@ -24913,8 +24899,8 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (67)
-addi $t0, $zero, 67
+// Push to stack from constant (66)
+addi $t0, $zero, 66
 
 // Push to stack
 sw $t0, 0($sp)
@@ -24967,8 +24953,8 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
-// Push to stack from constant (68)
-addi $t0, $zero, 68
+// Push to stack from constant (67)
+addi $t0, $zero, 67
 
 // Push to stack
 sw $t0, 0($sp)
@@ -25021,6 +25007,60 @@ lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 
+// Push to stack from constant (68)
+addi $t0, $zero, 68
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call String.appendChar 2
+lui $t0, String.appendChar$ret.123
+addi $t0, $t0, String.appendChar$ret.123
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to String.appendChar
+jal $ra, String.appendChar
+
+
+String.appendChar$ret.123:
+
+// Pop from stack to temp (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($temp)
+
+// Push to stack from local (1)
+lw $t0, 4($lcl)
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
 // Pop from stack to local (1)
 addi $sp, $sp, -4
 lw $t0, 0($sp)
@@ -25035,8 +25075,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call Keyboard.readLine 1
-lui $t0, Keyboard.readLine$ret.123
-addi $t0, $t0, Keyboard.readLine$ret.123
+lui $t0, Keyboard.readLine$ret.124
+addi $t0, $t0, Keyboard.readLine$ret.124
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -25066,7 +25106,7 @@ add $lcl, $zero, $sp
 jal $ra, Keyboard.readLine
 
 
-Keyboard.readLine$ret.123:
+Keyboard.readLine$ret.124:
 
 // Pop from stack to local (0)
 addi $sp, $sp, -4
@@ -25082,8 +25122,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call Output.printString 1
-lui $t0, Output.printString$ret.124
-addi $t0, $t0, Output.printString$ret.124
+lui $t0, Output.printString$ret.125
+addi $t0, $t0, Output.printString$ret.125
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -25113,7 +25153,7 @@ add $lcl, $zero, $sp
 jal $ra, Output.printString
 
 
-Output.printString$ret.124:
+Output.printString$ret.125:
 
 // Pop from stack to temp (0)
 addi $sp, $sp, -4
@@ -25178,67 +25218,6 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call Screen.drawHLine 3
-lui $t0, Screen.drawHLine$ret.125
-addi $t0, $t0, Screen.drawHLine$ret.125
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push $lcl, $arg, $this, $that
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-
-sw $this, 0($sp)
-addi $sp, $sp, 4
-
-sw $that, 0($sp)
-addi $sp, $sp, 4
-
-// Reposition ARG, LCL
-addi $t0, $zero, 20
-addi $t0, $t0, 12
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-
-add $lcl, $zero, $sp
-
-// Jump to Screen.drawHLine
-jal $ra, Screen.drawHLine
-
-
-Screen.drawHLine$ret.125:
-
-// Pop from stack to temp (0)
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-
-sw $t0, 0($temp)
-
-// Push to stack from constant (0)
-addi $t0, $zero, 0
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (319)
-addi $t0, $zero, 319
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Push to stack from constant (239)
-addi $t0, $zero, 239
-
-// Push to stack
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-
-// Call Screen.drawHLine 3
 lui $t0, Screen.drawHLine$ret.126
 addi $t0, $t0, Screen.drawHLine$ret.126
 add $t0, $t0, $pc
@@ -25278,6 +25257,67 @@ lw $t0, 0($sp)
 
 sw $t0, 0($temp)
 
+// Push to stack from constant (0)
+addi $t0, $zero, 0
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (319)
+addi $t0, $zero, 319
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push to stack from constant (239)
+addi $t0, $zero, 239
+
+// Push to stack
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Call Screen.drawHLine 3
+lui $t0, Screen.drawHLine$ret.127
+addi $t0, $t0, Screen.drawHLine$ret.127
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+
+// Push $lcl, $arg, $this, $that
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+
+sw $this, 0($sp)
+addi $sp, $sp, 4
+
+sw $that, 0($sp)
+addi $sp, $sp, 4
+
+// Reposition ARG, LCL
+addi $t0, $zero, 20
+addi $t0, $t0, 12
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+
+add $lcl, $zero, $sp
+
+// Jump to Screen.drawHLine
+jal $ra, Screen.drawHLine
+
+
+Screen.drawHLine$ret.127:
+
+// Pop from stack to temp (0)
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+
+sw $t0, 0($temp)
+
 // Push to stack from constant (50)
 addi $t0, $zero, 50
 
@@ -25307,8 +25347,8 @@ sw $t0, 0($sp)
 addi $sp, $sp, 4
 
 // Call Screen.drawRectangle 4
-lui $t0, Screen.drawRectangle$ret.127
-addi $t0, $t0, Screen.drawRectangle$ret.127
+lui $t0, Screen.drawRectangle$ret.128
+addi $t0, $t0, Screen.drawRectangle$ret.128
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -25338,7 +25378,7 @@ add $lcl, $zero, $sp
 jal $ra, Screen.drawRectangle
 
 
-Screen.drawRectangle$ret.127:
+Screen.drawRectangle$ret.128:
 
 // Pop from stack to temp (0)
 addi $sp, $sp, -4
@@ -25347,8 +25387,8 @@ lw $t0, 0($sp)
 sw $t0, 0($temp)
 
 // Call Screen.clearScreen 0
-lui $t0, Screen.clearScreen$ret.128
-addi $t0, $t0, Screen.clearScreen$ret.128
+lui $t0, Screen.clearScreen$ret.129
+addi $t0, $t0, Screen.clearScreen$ret.129
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -25378,7 +25418,7 @@ add $lcl, $zero, $sp
 jal $ra, Screen.clearScreen
 
 
-Screen.clearScreen$ret.128:
+Screen.clearScreen$ret.129:
 
 // Pop from stack to temp (0)
 addi $sp, $sp, -4

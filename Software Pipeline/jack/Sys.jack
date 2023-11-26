@@ -15,9 +15,10 @@ class Sys {
         do Memory.init();
         do Math.init();
         do Output.init();
-       do Keyboard.init();
+        do Keyboard.init();
         do Screen.init();
         do Sys.test();
+        do Sys.halt();
         // do Sys.screenTest();
         return;
     }
@@ -45,9 +46,12 @@ class Sys {
     function void test(){
       var String str;
       var String message;
+    //   var int temp;
       let message="ABCD";
       let str = Keyboard.readLine(message);
       do Output.printString(str);
+    //   let temp = Keyboard.readInt(message);
+    //   do Output.printInt(temp);
       return;
     }
 
