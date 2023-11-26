@@ -1,5 +1,0 @@
-function Sys.init 0
-push constant 100
-push constant 111
-add
-return

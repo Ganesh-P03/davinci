@@ -1,9 +1,0 @@
-class Sys {
-    function int init() {
-        return Sys.main(100);
-    }
-
-    function int main(int argc){
-        return argc + 111;
-    }
-}

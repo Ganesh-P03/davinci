@@ -40,9 +40,9 @@ def main():
     else:
         print("Compilation Error")
 
-    # Replace ROM.v file in ../Processor_MultiCycle/ with /output/bin/rom.v
-    ROM_path = os.path.join(basePath, "..\\Processor_MultiCycle\\ROM.v")
-    rom_path = os.path.join(basePath, "output\\bin\\ROM.v")
+    # Replace ROM.v file in testing\IO\Processor.srcs\sources_1\new
+    ROM_path = os.path.join(basePath, "..\\testing\\IO\\Processor.srcs\\sources_1\\new\\inst.mem")
+    rom_path = os.path.join(basePath, "output\\bin\\HEX.txt")
     
     
     if not os.path.exists(ROM_path):
@@ -50,7 +50,7 @@ def main():
         
     os.remove(ROM_path)
     os.rename(rom_path, ROM_path)
-    print("ROM.v file replaced")
+    print("HEX file replaced")
     print("SUCCESS!!!")
 
 

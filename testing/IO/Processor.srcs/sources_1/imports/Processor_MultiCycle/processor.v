@@ -10,7 +10,8 @@ reg [31:0] Result;
 reg [24:0] count = 0;
 always @ (posedge(sysclk)) count <= count + 1;
 wire clk;
-assign clk = count[22];
+//clock cycle time = 4*8 = 32 ns
+assign clk = count[2];
 
 //-----------Screen-------------------------//
 output [2:0] TMDSp;
@@ -77,10 +78,10 @@ always @(negedge scan_code_ready)
         sample <= ~sample;
     end  
 
-always @(negedge scan_code_ready)
-      begin
-      led <= ascii_code[3:0];
-      end
+// always @(negedge scan_code_ready)
+//       begin
+//       led <= ascii_code[3:0];
+//       end
 //-----------Keyboard----------------------//
 wire [31:0] ResultWire;
 wire [31:0] ReadData;
@@ -133,7 +134,7 @@ end
 //register_32bit buf_reg_1 (.D(ResultWire), .clk(clk), .regwrite(PCWrite), .Q(PC));   //Program Counter
 // assign PC = Result;
 MUX2x1_32bit mux_1 (.a(PC1), .b(Result), .s(AddrSrc), .y(Addr));
-Memory mem (.clock(clk), .isWrite(MemWrite), .byteWrite(Zero),.address(Addr), .writeData(WriteData), .RD(ReadData), .displayAddr(display_address), .displayData(display_dataOut), .sample(sample), .key_reg(key_reg));
+Memory mem (.clock(clk), .isWrite(MemWrite), .byteWrite(Zero),.address(Addr), .writeData(WriteData), .RD(ReadData), .displayAddr(display_address), .displayData(display_dataOut), .sample(sample), .key_reg(key_reg),.led(led));
 //Memory instr_data_mem (.addr(Addr), .WD(WriteData), .clk(clk), .MemWrite(MemWrite), .RD(ReadData));
 register_32bit_neg buf_reg_2 (.D(ReadData), .clk(clk), .Q(Data));  //To store the data that is from memory 
   //To store PC value of currently executing Insttuction

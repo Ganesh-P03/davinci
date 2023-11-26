@@ -420,15 +420,26 @@ class CompilationEngine:
     def compile_string(self):
         tk = self.tokenizer
         string = tk.curr_token[1:]
+        # print(tk.double_prev_token)
+        _Stype, Scat, Si = self.symbol_table.get(tk.double_prev_token)
+        Scat = self.convert_kind[Scat]
+        # print(Scat)
+        # print(_Stype)
+        # print(Si)
+        # print(self.convert_kind[Scat])
 
         self.generator.write_push_pop("push", "CONST", len(string))
         self.generator.write_call("String.new", 1)
+        self.generator.write_push_pop("pop", Scat, Si)
 
         for char in string:
+            self.generator.write_push_pop("push", Scat, Si)
             self.generator.write_push_pop("push", "CONST", ord(char))
             self.generator.write_call("String.appendChar", 2)
+            self.generator.write_push_pop("pop", "TEMP", 0)
 
         tk.advance()
+        self.generator.write_push_pop("push", Scat, Si)
 
     def compile_expression_Array(self):
         tk = self.tokenizer

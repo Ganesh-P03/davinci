@@ -3,6 +3,7 @@ class Main{
     var int zero,one;
     var String arrow;
     var String input,error;
+    var String snake,hangman;
     var String clear,ls,fibo,qsort,pri,rev,exit,space;
 	let clear = "clear";
 	let ls = "ls";
@@ -16,6 +17,8 @@ class Main{
     let error = "invalid command";
     let zero = 0;
     let one = 1;
+    let snake = "snake";
+    let hangman ="hangman";
     while(zero<one){ 
         let input = Keyboard.readLine(arrow);
         if(input=ls){
@@ -39,7 +42,28 @@ class Main{
                     zero=2;
                 }
                 else{
-                    do Output.printString(error);
+                    if(input=fibo){
+                        do Fibonacci.main();
+                    }
+                    else{
+                        if(input=qsort){
+                            do QuickSort.main();
+                        }
+                        else{
+                            if(input=hangman){
+                                do Hangman.main();
+                            }
+                            else{
+                                if(input=snake){
+                                    do SnakeGameMain.main();
+                                }
+                                else{
+                                    do Output.printString(error);
+
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
