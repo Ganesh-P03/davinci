@@ -123,7 +123,7 @@ always @*
 			8'h2a: ascii_code = 8'h76;   // v
 			8'h1d: ascii_code = 8'h77;   // w
 			8'h22: ascii_code = 8'h78;   // x
-			8'h35: ascii_code = 8'h79;   // y
+			8'h35: ascii_code = 8'h79;   // y     
 			8'h1a: ascii_code = 8'h7A;   // z
 			8'h0e: ascii_code = 8'h60;   // `
 			8'h4e: ascii_code = 8'h2D;   // -
@@ -136,11 +136,12 @@ always @*
 			8'h41: ascii_code = 8'h2C;   // ,
 			8'h49: ascii_code = 8'h2E;   // .
 			8'h4a: ascii_code = 8'h2F;   // /
-			8'h29: ascii_code = 8'h20;   // space
-			8'h5a: ascii_code = 8'h0D;   // enter
+			8'h29: ascii_code = 8'h20;   // space   decimal 32
+			8'h5a: ascii_code = 8'h0D;   // enter   decimal 13
 			8'h66: ascii_code = 8'h08;   // backspace
 			8'h0D: ascii_code = 8'h09;   // horizontal tab	
 			
+
 			default: ascii_code = 8'h2A; // *
 		endcase
 		end

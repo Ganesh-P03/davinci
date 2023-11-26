@@ -17,8 +17,8 @@ class Sys {
         do Output.init();
        do Keyboard.init();
         do Screen.init();
-        // do Sys.test();
-        do Sys.screenTest();
+        do Sys.test();
+        // do Sys.screenTest();
         return;
     }
 
@@ -47,7 +47,7 @@ class Sys {
       var String message;
       let message="ABCD";
       let str = Keyboard.readLine(message);
-     // do Output.printString(str);
+      do Output.printString(str);
       return;
     }
 

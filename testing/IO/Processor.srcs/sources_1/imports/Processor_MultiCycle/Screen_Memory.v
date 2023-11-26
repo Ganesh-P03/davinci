@@ -8,7 +8,7 @@ module Screen_Memory(
 	output reg [31:0] content,
     output [31:0] displayData
     );
-    
+
     (* ram_style = "block" *)
     reg [31:0] memory [2399:0];
     
@@ -23,19 +23,9 @@ module Screen_Memory(
 	    content <= memory[addr];			
 		if(isWrite) 
 			begin
-			    if( byteWrite == 1'b0 )
-			         memory[addr] <= writeData;
-			    else
-			         begin
-			             if( address[1:0] == 2'b00 )
-			                 memory[addr][31:24] <= writeData[7:0];
-			             else if( address[1:0] == 2'b01 )
-			                 memory[addr][23:16] <= writeData[7:0];
-			             else if( address[1:0] == 2'b10 )
-			                 memory[addr][15:8] <= writeData[7:0];
-			             else 
-			                 memory[addr][7:0] <= writeData[7:0];
-			         end
+			   
+				memory[addr] <= writeData;
+			  
 			end
 	end
 

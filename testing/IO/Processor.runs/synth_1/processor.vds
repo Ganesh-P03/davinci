@@ -3,8 +3,8 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Sun Nov 26 15:31:59 2023
-# Process ID: 3048
+# Start of session at: Sun Nov 26 19:32:40 2023
+# Process ID: 1128
 # Current directory: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1
 # Command line: vivado.exe -log processor.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source processor.tcl
 # Log file: D:/semester/7th sem/davinci/testing/IO/Processor.runs/synth_1/processor.vds
@@ -12,7 +12,7 @@
 # Running On: Ganesh, OS: Windows, CPU Frequency: 1190 MHz, CPU Physical cores: 4, Host memory: 8341 MB
 #-----------------------------------------------------------
 source processor.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:15 . Memory (MB): peak = 430.695 ; gain = 162.578
+create_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:12 . Memory (MB): peak = 430.816 ; gain = 163.680
 Command: read_checkpoint -auto_incremental -incremental {D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp}
 INFO: [Vivado 12-5825] Read reference checkpoint from D:/semester/7th sem/davinci/testing/IO/Processor.srcs/utils_1/imports/synth_1/TB_Processor.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -25,7 +25,7 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 18124
+INFO: [Synth 8-7075] Helper process launched with PID 1600
 INFO: [Synth 8-11241] undeclared symbol 'xor2', assumed default net type 'wire' [D:/semester/7th sem/davinci/testing/IO/Processor.srcs/sources_1/imports/Processor_MultiCycle/ALU_RISCv.v:24]
 INFO: [Synth 8-11241] undeclared symbol 'CLKOUT0', assumed default net type 'wire' [D:/semester/7th sem/davinci/testing/IO/Processor.srcs/sources_1/new/DisplayDriver.v:73]
 INFO: [Synth 8-11241] undeclared symbol 'CLKOUT0B', assumed default net type 'wire' [D:/semester/7th sem/davinci/testing/IO/Processor.srcs/sources_1/new/DisplayDriver.v:74]
@@ -40,7 +40,7 @@ INFO: [Synth 8-11241] undeclared symbol 'CLKFBOUTB', assumed default net type 'w
 INFO: [Synth 8-11241] undeclared symbol 'LOCKED', assumed default net type 'wire' [D:/semester/7th sem/davinci/testing/IO/Processor.srcs/sources_1/new/DisplayDriver.v:88]
 INFO: [Synth 8-11241] undeclared symbol 'PWRDWN', assumed default net type 'wire' [D:/semester/7th sem/davinci/testing/IO/Processor.srcs/sources_1/new/DisplayDriver.v:92]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:10 . Memory (MB): peak = 1250.602 ; gain = 410.559
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 1251.273 ; gain = 410.723
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'processor' [D:/semester/7th sem/davinci/testing/IO/Processor.srcs/sources_1/imports/Processor_MultiCycle/processor.v:1]
 INFO: [Synth 8-6157] synthesizing module 'DisplayDriver' [D:/semester/7th sem/davinci/testing/IO/Processor.srcs/sources_1/new/DisplayDriver.v:22]
@@ -181,6 +181,9 @@ WARNING: [Synth 8-7129] Port address[1] in module RAM is either unconnected or h
 WARNING: [Synth 8-7129] Port address[0] in module RAM is either unconnected or has no load
 WARNING: [Synth 8-7129] Port address[15] in module Screen_Memory is either unconnected or has no load
 WARNING: [Synth 8-7129] Port address[14] in module Screen_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[1] in module Screen_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[0] in module Screen_Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port byteWrite in module Screen_Memory is either unconnected or has no load
 WARNING: [Synth 8-7129] Port byteRead in module Memory is either unconnected or has no load
 WARNING: [Synth 8-7129] Port displayAddr[31] in module Memory is either unconnected or has no load
 WARNING: [Synth 8-7129] Port displayAddr[30] in module Memory is either unconnected or has no load
@@ -202,18 +205,18 @@ WARNING: [Synth 8-7129] Port clk in module ps2_rx is either unconnected or has n
 WARNING: [Synth 8-7129] Port reset in module ps2_rx is either unconnected or has no load
 WARNING: [Synth 8-7129] Port rx_en in module ps2_rx is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:14 . Memory (MB): peak = 1369.105 ; gain = 529.062
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:15 . Memory (MB): peak = 1367.023 ; gain = 526.473
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:15 . Memory (MB): peak = 1369.105 ; gain = 529.062
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:16 . Memory (MB): peak = 1367.023 ; gain = 526.473
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:15 . Memory (MB): peak = 1369.105 ; gain = 529.062
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:16 . Memory (MB): peak = 1367.023 ; gain = 526.473
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.118 . Memory (MB): peak = 1369.105 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.074 . Memory (MB): peak = 1370.230 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -230,30 +233,30 @@ Resolution: To avoid this warning, move constraints listed in [.Xil/processor_pr
 INFO: [Timing 38-2] Deriving generated clocks
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1430.695 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1474.293 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 5 instances were transformed.
   MMCME2_BASE => MMCME2_ADV: 1 instance 
   OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS(x2)): 4 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.025 . Memory (MB): peak = 1430.695 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.052 . Memory (MB): peak = 1474.293 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:31 . Memory (MB): peak = 1430.695 ; gain = 590.652
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:33 . Memory (MB): peak = 1474.293 ; gain = 633.742
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:31 . Memory (MB): peak = 1430.695 ; gain = 590.652
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:33 . Memory (MB): peak = 1474.293 ; gain = 633.742
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:32 . Memory (MB): peak = 1430.695 ; gain = 590.652
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:33 . Memory (MB): peak = 1474.293 ; gain = 633.742
 ---------------------------------------------------------------------------------
 There may be more BRAMs than expected because of power optimized decomposition 
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "RAM:/RAM_reg"
@@ -273,7 +276,7 @@ INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of 
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "RAM:/RAM_reg"
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "RAM:/RAM_reg"
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:35 . Memory (MB): peak = 1430.695 ; gain = 590.652
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:36 . Memory (MB): peak = 1474.293 ; gain = 633.742
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -305,8 +308,8 @@ Detailed RTL Component Info :
 	             512K Bit	(16384 X 32 bit)          RAMs := 1     
 	              75K Bit	(2400 X 32 bit)          RAMs := 1     
 +---Muxes : 
-	   2 Input   32 Bit        Muxes := 14    
-	   5 Input   32 Bit        Muxes := 5     
+	   2 Input   32 Bit        Muxes := 13    
+	   5 Input   32 Bit        Muxes := 4     
 	   4 Input   32 Bit        Muxes := 1     
 	   5 Input   10 Bit        Muxes := 3     
 	   2 Input   10 Bit        Muxes := 3     
@@ -339,3 +342,70 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port instr[31] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[29] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[28] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[27] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[26] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[25] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[24] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[23] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[22] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[21] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[20] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[19] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[18] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[17] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[16] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[15] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[11] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[10] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[9] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[8] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[7] in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port carry in module control_unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[16] in module ROM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[1] in module ROM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addr[0] in module ROM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port byteWrite in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port byteRead in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[31] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[30] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[29] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[28] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[27] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[26] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[25] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[24] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[23] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[22] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[21] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[20] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[19] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[18] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[17] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port displayAddr[16] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clk in module ps2_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module ps2_rx is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rx_en in module ps2_rx is either unconnected or has no load
+There may be more BRAMs than expected because of power optimized decomposition 
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 32 for RAM "processor/mem/ram/RAM_reg"
+WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "processor/mem/disMem/memory_reg",trying to implement using LUTRAM
+WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "processor/mem/disMem/memory_reg",trying to implement using LUTRAM
+WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "processor/mem/disMem/memory_reg",trying to implement using LUTRAM
+WARNING: [Synth 8-6849] Infeasible attribute ram_style = "block" set for RAM "processor/mem/disMem/memory_reg",trying to implement using LUTRAM
