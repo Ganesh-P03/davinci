@@ -172,4 +172,10 @@ class String {
     function char doubleQuote() {
         return 34;
     }
+
+    /** De-allocates the string and frees its space. */
+    method void dispose() {
+        do chars.dispose();
+        return;
+    }
 }
