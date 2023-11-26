@@ -127,11 +127,11 @@ function int charToInt(char x){
         var String tempString;
         var Array wordLengthArray;
         let wordBank = Array.new(5); // Set the number of words in the word bank
-        let wordBank[0] = "jack";
-        let wordBank[1] = "programming";
-        let wordBank[2] = "language";
-        let wordBank[3] = "compiler";
-        let wordBank[4] = "virtual";
+        let wordBank[0] = "JACK";
+        let wordBank[1] = "PROGRAMMING";
+        let wordBank[2] = "LANGUAGE";
+        let wordBank[3] = "COMPILER";
+        let wordBank[4] = "VIRTUAL";
         let wordLengthArray = Array.new(5);
         let wordLengthArray[0] = 4;
         let wordLengthArray[1] = 11;
@@ -178,12 +178,13 @@ function int charToInt(char x){
             while(wordGuessed=0 & attemptsRemaining>0){
                 do Output.printString("Current word: ");
                 do Output.printString(currword);
-                do Output.printString("\n Enter a letter(lower case)");
-                let letterGuessed =  Keyboard.readChar("");
-
+                do Output.println();
+                do Output.printString("Enter a letter(lower case)");
+                let letterGuessed =  Keyboard.readChar();
                 let temp = Hangman.charToInt(letterGuessed);
-                if(~(guessedWords[temp]=0)){
-                    do Output.printString("letter already guessed, guess another letter\n");
+                if(guessedWords[temp]=1){
+                    do Output.printString("letter already guessed, guess another letter");
+                    do Output.println();
                     //continue;
                 }
                 else{
@@ -199,16 +200,19 @@ function int charToInt(char x){
                         }
                         let j = j+1;
                     }
-                    if(letterFound=1){
+                    if(letterFound=0){
                         if(attemptsRemaining =1){
-                            do Output.printString("Wrong guess, game over! \n");
+                            do Output.printString("Wrong guess, game over!");
+                            do Output.println();
                             do Output.printString("The word is" );
                             do Output.printString(wordBank[i]);
+                            do Output.println();
                         }
                         else{
-                            do Output.printString("Wrong guess \n you have");
-                            do Output.printString(attemptsRemaining);
-                            do Output.printString("attempts remaining");
+                            do Output.printString("Wrong guess, you have ");
+                            do Output.printInt(attemptsRemaining);
+                            do Output.printString(" attempts remaining");
+                            do Output.println();
                         }
                         let attemptsRemaining = attemptsRemaining-1;
                     }
@@ -225,13 +229,15 @@ function int charToInt(char x){
                             if(pending=0){
                                 let wordGuessed = 1;
                                 do Output.printString("congratulations you have won the game!");
-                                do Output.printString("The word is");
+                                do Output.println();
+                                do Output.printString("The word is ");
                                 do Output.printString(currword);
+                                do Output.println();
                             }
                         }
                 }
 
-
+                do Output.println();
             }
             let i = i+1;
         }

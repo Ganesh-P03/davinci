@@ -11,14 +11,38 @@ class SnakeGrid {
 
 
     field Array grid;
-
+    field Array RandomArrayX;
+    field Array RandomArrayY;
+    field int randomIndex;
     constructor SnakeGrid new(SnakeGame Agame, int Ax, int Ay) {
 
         let game = Agame;
         let sizeX = Ax / 4;
         let sizeY = (Ay-16) / 4;
-
+        let RandomArrayX = Array.new(10);
+        let RandomArrayY = Array.new(10);
         // initialize the grid
+        let RandomArrayY[0] = 57;
+        let RandomArrayY[1] = 24;
+        let RandomArrayY[2] = 83;
+        let RandomArrayY[3] = 75;
+        let RandomArrayY[4] = 36;
+        let RandomArrayY[5] = 99;
+        let RandomArrayY[6] = 68;
+        let RandomArrayY[7] = 42;
+        let RandomArrayY[8] = 90;
+        let RandomArrayY[9] = 72;
+        let RandomArrayX[0] = 54;
+        let RandomArrayX[1] = 43;
+        let RandomArrayX[2] = 88;
+        let RandomArrayX[3] = 75;
+        let RandomArrayX[4] = 87;
+        let RandomArrayX[5] = 21;
+        let RandomArrayX[6] = 09;
+        let RandomArrayX[7] = 66;
+        let RandomArrayX[8] = 56;
+        let RandomArrayX[9] = 35;
+        let randomIndex = 0;
         do initGrid();
 
         return this;
@@ -52,8 +76,12 @@ class SnakeGrid {
         // don't place the food on top of a snake piece
         let found = false;
         while( ~found ) {
-            let randX = Random.randRange(sizeX);
-            let randY = Random.randRange(sizeY);
+            let randX = RandomArrayX[randomIndex];
+            let randY = RandomArrayY[randomIndex];
+            let randomIndex = randomIndex + 1;
+            if(randomIndex=2){
+                let randomIndex = 0;
+            }
             if( ~ checkOccupied(randX, randY) ) {
                 let found = true;
             }
