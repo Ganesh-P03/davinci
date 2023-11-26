@@ -1,0 +1,399 @@
+function SnakeGame.new 0
+push constant 7
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+pop this 2
+push constant 1
+pop this 3
+push constant 0
+pop this 4
+push constant 0
+pop this 5
+push constant 100
+pop this 6
+push pointer 0
+push constant 512
+push constant 256
+call SnakeGrid.new 3
+pop this 1
+push pointer 0
+push this 1
+call SnakeGrid.sizeX 1
+push constant 2
+call Math.divide 2
+push this 1
+call SnakeGrid.sizeY 1
+push constant 2
+call Math.divide 2
+push constant 10
+push constant 3
+call Snake.new 5
+pop this 0
+push this 1
+call SnakeGrid.placeFood 1
+pop temp 0
+push this 1
+call SnakeGrid.drawStatus 1
+pop temp 0
+push pointer 0
+return
+function SnakeGame.dispose 0
+push argument 0
+pop pointer 0
+push this 0
+call Snake.dispose 1
+pop temp 0
+push this 1
+call SnakeGrid.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function SnakeGame.run 3
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+label WHILE_0
+push local 1
+not
+not
+if-goto END_WHILE_0
+push this 0
+call Snake.rememberDir 1
+pop temp 0
+push this 4
+if-goto IF_1
+goto ENDIF_1
+label IF_1
+push constant 0
+pop local 0
+label WHILE_2
+push local 0
+not
+not
+if-goto END_WHILE_2
+push constant 0
+pop local 2
+label WHILE_3
+push local 2
+not
+not
+if-goto END_WHILE_3
+call Keyboard.keyPressed 0
+pop local 2
+goto WHILE_3
+label END_WHILE_3
+push local 2
+push constant 80
+eq
+if-goto IF_4
+goto ENDIF_4
+label IF_4
+push constant 1
+neg
+pop local 0
+push constant 0
+pop this 4
+label ENDIF_4
+push local 2
+push constant 81
+eq
+if-goto IF_5
+goto ENDIF_5
+label IF_5
+push constant 1
+neg
+pop local 0
+push constant 1
+neg
+pop local 1
+label ENDIF_5
+push this 1
+call SnakeGrid.drawStatus 1
+pop temp 0
+push this 6
+call Sys.wait 1
+pop temp 0
+goto WHILE_2
+label END_WHILE_2
+label ENDIF_1
+call Keyboard.keyPressed 0
+pop local 2
+push local 2
+push constant 80
+eq
+if-goto IF_6
+goto ENDIF_6
+label IF_6
+push constant 1
+neg
+pop this 4
+label ENDIF_6
+push local 2
+push constant 81
+eq
+if-goto IF_7
+goto ENDIF_7
+label IF_7
+push constant 1
+neg
+pop local 1
+label ENDIF_7
+push local 2
+push constant 130
+eq
+if-goto IF_8
+goto ENDIF_8
+label IF_8
+push this 0
+call Snake.getLastDir 1
+push constant 1
+eq
+if-goto IF_9
+goto ENDIF_9
+label IF_9
+push this 0
+push constant 3
+call Snake.setDir 2
+pop temp 0
+label ENDIF_9
+push this 0
+call Snake.getLastDir 1
+push constant 2
+eq
+if-goto IF_10
+goto ENDIF_10
+label IF_10
+push this 0
+push constant 3
+call Snake.setDir 2
+pop temp 0
+label ENDIF_10
+label ENDIF_8
+push local 2
+push constant 131
+eq
+if-goto IF_11
+goto ENDIF_11
+label IF_11
+push this 0
+call Snake.getLastDir 1
+push constant 3
+eq
+if-goto IF_12
+goto ENDIF_12
+label IF_12
+push this 0
+push constant 1
+call Snake.setDir 2
+pop temp 0
+label ENDIF_12
+push this 0
+call Snake.getLastDir 1
+push constant 4
+eq
+if-goto IF_13
+goto ENDIF_13
+label IF_13
+push this 0
+push constant 1
+call Snake.setDir 2
+pop temp 0
+label ENDIF_13
+label ENDIF_11
+push local 2
+push constant 132
+eq
+if-goto IF_14
+goto ENDIF_14
+label IF_14
+push this 0
+call Snake.getLastDir 1
+push constant 1
+eq
+if-goto IF_15
+goto ENDIF_15
+label IF_15
+push this 0
+push constant 4
+call Snake.setDir 2
+pop temp 0
+label ENDIF_15
+push this 0
+call Snake.getLastDir 1
+push constant 2
+eq
+if-goto IF_16
+goto ENDIF_16
+label IF_16
+push this 0
+push constant 4
+call Snake.setDir 2
+pop temp 0
+label ENDIF_16
+label ENDIF_14
+push local 2
+push constant 133
+eq
+if-goto IF_17
+goto ENDIF_17
+label IF_17
+push this 0
+call Snake.getLastDir 1
+push constant 3
+eq
+if-goto IF_18
+goto ENDIF_18
+label IF_18
+push this 0
+push constant 2
+call Snake.setDir 2
+pop temp 0
+label ENDIF_18
+push this 0
+call Snake.getLastDir 1
+push constant 4
+eq
+if-goto IF_19
+goto ENDIF_19
+label IF_19
+push this 0
+push constant 2
+call Snake.setDir 2
+pop temp 0
+label ENDIF_19
+label ENDIF_17
+push this 0
+call Snake.tryMove 1
+not
+if-goto IF_20
+goto ENDIF_20
+label IF_20
+push this 1
+call SnakeGrid.drawCrashed 1
+pop temp 0
+call Sys.halt 0
+pop temp 0
+label ENDIF_20
+push this 1
+push this 0
+call Snake.posX 1
+push this 0
+call Snake.posY 1
+call SnakeGrid.checkFood 3
+if-goto IF_21
+goto ENDIF_21
+label IF_21
+push this 0
+call Snake.eatFood 1
+pop temp 0
+push pointer 0
+call SnakeGame.nextLevel 1
+pop temp 0
+push this 1
+call SnakeGrid.placeFood 1
+pop temp 0
+label ENDIF_21
+push this 0
+push this 5
+call Snake.grow 2
+pop temp 0
+push this 1
+call SnakeGrid.drawFood 1
+pop temp 0
+push this 1
+call SnakeGrid.drawStatus 1
+pop temp 0
+push this 6
+call Sys.wait 1
+pop temp 0
+push pointer 0
+call SnakeGame.nextCycle 1
+pop temp 0
+push this 0
+call Snake.checkRewriteHistory 1
+if-goto IF_22
+goto ENDIF_22
+label IF_22
+push this 0
+call Snake.getLength 1
+pop this 5
+label ENDIF_22
+goto WHILE_0
+label END_WHILE_0
+push this 1
+call SnakeGrid.drawDone 1
+pop temp 0
+call Sys.halt 0
+pop temp 0
+push constant 0
+return
+function SnakeGame.nextLevel 0
+push argument 0
+pop pointer 0
+push this 2
+push constant 10
+push this 3
+call Math.multiply 2
+add
+pop this 2
+push this 3
+push constant 1
+add
+pop this 3
+push this 6
+push constant 30
+gt
+if-goto IF_23
+goto ENDIF_23
+label IF_23
+push this 6
+push constant 5
+sub
+pop this 6
+label ENDIF_23
+push constant 0
+return
+function SnakeGame.nextCycle 0
+push argument 0
+pop pointer 0
+push this 5
+push constant 1
+add
+pop this 5
+push this 5
+return
+function SnakeGame.getGrid 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function SnakeGame.getSnake 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function SnakeGame.getCycle 0
+push argument 0
+pop pointer 0
+push this 5
+return
+function SnakeGame.getScore 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function SnakeGame.getLevel 0
+push argument 0
+pop pointer 0
+push this 3
+return
+function SnakeGame.getPaused 0
+push argument 0
+pop pointer 0
+push this 4
+return

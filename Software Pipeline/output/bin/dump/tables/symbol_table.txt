@@ -1,0 +1,26 @@
++------------+-----------+
+|   Symbol   | Reference |
++------------+-----------+
+| Keyboard.0 |     0     |
+|   Math.0   |     1     |
+|  Memory.6  |     2     |
+|  Memory.5  |     3     |
+|  Memory.4  |     4     |
+|  Memory.3  |     5     |
+|  Memory.0  |     6     |
+|  Memory.1  |     7     |
+|  Memory.7  |     8     |
+|  Memory.8  |     9     |
+|  Memory.9  |     10    |
+| Memory.10  |     11    |
+| Memory.12  |     12    |
+| Memory.11  |     13    |
+|  Output.3  |     14    |
+|  Output.4  |     15    |
+|  Output.1  |     16    |
+|  Output.2  |     17    |
+|  Output.0  |     18    |
+|  Random.0  |     19    |
+|  Screen.0  |     20    |
+|  Screen.1  |     21    |
++------------+-----------+

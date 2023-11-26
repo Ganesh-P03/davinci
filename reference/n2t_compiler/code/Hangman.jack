@@ -1,0 +1,246 @@
+// Hangman.jack
+
+class Hangman {
+function int charToInt(char x){
+    if(x = 65){
+        return 65;
+    } else {
+        if(x = 66){
+            return 66;
+        } else {
+            if(x = 67){
+                return 67;
+            } else {
+                if(x = 68){
+                    return 68;
+                } else {
+                    if(x = 69){
+                        return 69;
+                    } else {
+                        if(x = 70){
+                            return 70;
+                        } else {
+                            if(x = 71){
+                                return 71;
+                            } else {
+                                if(x = 72){
+                                    return 72;
+                                } else {
+                                    if(x = 73){
+                                        return 73;
+                                    } else {
+                                        if(x = 74){
+                                            return 74;
+                                        } else {
+                                            if(x = 75){
+                                                return 75;
+                                            } else {
+                                                if(x = 76){
+                                                    return 76;
+                                                } else {
+                                                    if(x = 77){
+                                                        return 77;
+                                                    } else {
+                                                        if(x = 78){
+                                                            return 78;
+                                                        } else {
+                                                            if(x = 79){
+                                                                return 79;
+                                                            } else {
+                                                                if(x = 80){
+                                                                    return 80;
+                                                                } else {
+                                                                    if(x = 81){
+                                                                        return 81;
+                                                                    } else {
+                                                                        if(x = 82){
+                                                                            return 82;
+                                                                        } else {
+                                                                            if(x = 83){
+                                                                                return 83;
+                                                                            } else {
+                                                                                if(x = 84){
+                                                                                    return 84;
+                                                                                } else {
+                                                                                    if(x = 85){
+                                                                                        return 85;
+                                                                                    } else {
+                                                                                        if(x = 86){
+                                                                                            return 86;
+                                                                                        } else {
+                                                                                            if(x = 87){
+                                                                                                return 87;
+                                                                                            } else {
+                                                                                                if(x = 88){
+                                                                                                    return 88;
+                                                                                                } else {
+                                                                                                    if(x = 89){
+                                                                                                        return 89;
+                                                                                                    } else {
+                                                                                                        if(x = 90){
+                                                                                                            return 90;
+                                                                                                        } else {
+                                                                                                            // Return -1 for characters not covered
+                                                                                                            return -1;
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+    function void main() {
+        var Array wordBank;
+        var Array guessedWords;
+        var int i,j,wordLength;
+        var int attemptsRemaining;
+        var String currword;
+        var char letterGuessed;
+        var int wordGuessed;
+        var int temp;
+        var char tempChar;
+        var char underscore;
+        var int letterFound;
+        var int pending;
+        var String tempString;
+        var Array wordLengthArray;
+        let wordBank = Array.new(5); // Set the number of words in the word bank
+        let wordBank[0*4] = "JACK";
+        let wordBank[1*4] = "PROGRAMMING";
+        let wordBank[2*4] = "LANGUAGE";
+        let wordBank[3*4] = "COMPILER";
+        let wordBank[4*4] = "VIRTUAL";
+        let wordLengthArray = Array.new(5);
+        let wordLengthArray[0*4] = 4;
+        let wordLengthArray[1*4] = 11;
+        let wordLengthArray[2*4] = 8;
+        let wordLengthArray[3*4] = 8;
+        let wordLengthArray[4*4] = 7;
+        let i=0;
+        let  underscore = 95;
+        //5 is the size of teh array change it later if new words are added
+
+        while(i<5){
+
+            let attemptsRemaining = 6;
+            let guessedWords = Array.new(26);
+            let j=0;
+            while(j<26){
+                let guessedWords[j*4] = 0;
+                let j = j+1;
+            }
+            let wordLength = wordLengthArray[i*4];
+            if(i=0){
+                let currword = "____";
+            }
+            else{
+                if(i=1){
+                    let currword = "___________";
+                }
+                else{
+                    if(i=2){
+                        let currword = "________";
+                    }
+                    else{
+                        if(i=3){
+                            let currword = "________";
+                        }
+                        else{
+                            let currword = "_______";
+                        }
+                    }
+                }
+            }
+
+            let wordGuessed = 0;
+            while(wordGuessed=0 & attemptsRemaining>0){
+                do Output.printString("Current word: ");
+                do Output.printString(currword);
+                do Output.println();
+                do Output.printString("Enter a letter(lower case)");
+                let letterGuessed =  Keyboard.readChar();
+                let temp = Hangman.charToInt(letterGuessed);
+                if(guessedWords[temp*4]=1){
+                    do Output.printString("letter already guessed, guess another letter");
+                    do Output.println();
+                    //continue;
+                }
+                else{
+                    let guessedWords[temp*4] = 1;
+                    let letterFound = 0;
+                    let j=0;
+                    while(j<wordLength){
+                        let tempString = wordBank[i*4];
+                        let tempChar = tempString.charAt(j*4);
+                        if(tempChar=letterGuessed){
+                            let letterFound = 1;
+                            do currword.setCharAt(j*4,letterGuessed);
+                        }
+                        let j = j+1;
+                    }
+                    if(letterFound=0){
+                        if(attemptsRemaining =1){
+                            do Output.printString("Wrong guess, game over!");
+                            do Output.println();
+                            do Output.printString("The word is" );
+                            do Output.printString(wordBank[i*4]);
+                            do Output.println();
+                        }
+                        else{
+                            do Output.printString("Wrong guess, you have ");
+                            do Output.printInt(attemptsRemaining);
+                            do Output.printString(" attempts remaining");
+                            do Output.println();
+                        }
+                        let attemptsRemaining = attemptsRemaining-1;
+                    }
+                    else{
+                            let pending = 0;
+                            let j =0;
+                            while(j<wordLength){
+                                let tempChar = currword.charAt(j*4);
+                                if(tempChar =underscore){
+                                    let pending = 1;
+                                }
+                                let j = j+1;
+                            }
+                            if(pending=0){
+                                let wordGuessed = 1;
+                                do Output.printString("congratulations you have won the game!");
+                                do Output.println();
+                                do Output.printString("The word is ");
+                                do Output.printString(currword);
+                                do Output.println();
+                            }
+                        }
+                }
+
+                do Output.println();
+            }
+            let i = i+1;
+        }
+    return;
+    }
+}

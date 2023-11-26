@@ -22,8 +22,8 @@ def main():
         print("Compilation Success : VM code generated")
 
         vm = VirtualMachine.VirtualMachine()
-        if True:
-        # if vm.translateSourceFiles("output\\asm\\riscv.asm", "output\\vm"):
+        # if True:
+        if vm.translateSourceFiles("output\\asm\\riscv.asm", "output\\vm"):
             print("Virtual Machine Success : ASM code generated")
 
             asm = Assembler.Assembler()

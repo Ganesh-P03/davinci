@@ -111,7 +111,9 @@ class Assembler:
             self.translate(bin_base)
 
             self.showTables(save=True)
-        except:
+        except Exception:
+            print("Error: Assembler failed.")
+            print(sys.exc_info()[0])
             return False
 
         return True

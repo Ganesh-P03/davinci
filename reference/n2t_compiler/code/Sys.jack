@@ -9,13 +9,17 @@
 class Sys {
 
     /** Performs all the initializations required by the OS. */
-    function int init() {
+    function void init() {
         // do Screen.init();
-        // do Keyboard.init();
+        
         do Memory.init();
         do Math.init();
-
-        return Main.main();
+        do Output.init();
+       do Keyboard.init();
+        do Screen.init();
+        // do Sys.test();
+        do Sys.screenTest();
+        return;
     }
 
     /** Halts execution. */
@@ -37,14 +41,47 @@ class Sys {
         }
         return;
     }
+    
+    function void test(){
+      var String str;
+      var String message;
+      let message="ABCD";
+      let str = Keyboard.readLine(message);
+     // do Output.printString(str);
+      return;
+    }
 
+
+    function void screenTest(){
+        // do Output.printChar(65);
+
+        do Screen.drawHLine(0,319,0);
+        do Screen.drawHLine(0,319,239);
+
+        do Screen.drawVLine(0,0,239);
+        do Screen.drawVLine(319,0,239);
+
+         do Screen.drawHLine(50,100,50);
+        do Screen.drawHLine(50,100,100);
+
+        do Screen.drawVLine(50,100,50);
+        do Screen.drawVLine(50,100,100);
+
+        do Screen.drawLine(0,0,50,50);
+        do Screen.drawLine(319,239,100,100);
+
+        do Screen.drawRectangle(2,2,4,4);
+                // do Output.printChar(66);
+       
+        return;
+    }
     
 
     /** Prints the given error code in the form "ERR<errorCode>", and halts. */
-    // function void error(String errorCode) {
-    //     do Output.printString("Err");
-    //     do Output.printString(errorCode);
-    //     do Sys.halt(); // stop execution
-    //     return;
-    // }
+    function void error(String errorCode) {
+        do Output.printString("Err");
+        do Output.printString(errorCode);
+        do Sys.halt(); // stop execution
+        return;
+    }
 }

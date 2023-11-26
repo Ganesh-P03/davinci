@@ -1,0 +1,87 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Sys.jack
+
+/**
+ * A library of basic system services.
+ */
+class Sys {
+
+    /** Performs all the initializations required by the OS. */
+    function void init() {
+        // do Screen.init();
+        
+        do Memory.init();
+        do Math.init();
+        do Output.init();
+       do Keyboard.init();
+        do Screen.init();
+        // do Sys.test();
+        do Sys.screenTest();
+        return;
+    }
+
+    /** Halts execution. */
+    function void halt() {
+        while(true){}
+        return;
+    }
+
+    /** Waits approximately duration milliseconds and then returns. */
+    function void wait(int duration) {
+        var int i, j;
+        let i = 0;
+        while(i < duration) {
+            let j = 0;
+            while(j < 100){
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+        return;
+    }
+    
+    function void test(){
+      var String str;
+      var String message;
+      let message="ABCD";
+      let str = Keyboard.readLine(message);
+     // do Output.printString(str);
+      return;
+    }
+
+
+    function void screenTest(){
+        // do Output.printChar(65);
+
+        do Screen.drawHLine(0,319,0);
+        do Screen.drawHLine(0,319,239);
+
+        do Screen.drawVLine(0,0,239);
+        do Screen.drawVLine(319,0,239);
+
+         do Screen.drawHLine(50,100,50);
+        do Screen.drawHLine(50,100,100);
+
+        do Screen.drawVLine(50,100,50);
+        do Screen.drawVLine(50,100,100);
+
+        do Screen.drawLine(0,0,50,50);
+        do Screen.drawLine(319,239,100,100);
+
+        do Screen.drawRectangle(2,2,4,4);
+                // do Output.printChar(66);
+       
+        return;
+    }
+    
+
+    /** Prints the given error code in the form "ERR<errorCode>", and halts. */
+    // function void error(String errorCode) {
+    //     do Output.printString("Err");
+    //     do Output.printString(errorCode);
+    //     do Sys.halt(); // stop execution
+    //     return;
+    // }
+}

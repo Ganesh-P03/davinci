@@ -126,8 +126,6 @@ class CodeWriter:
     
     # Check code
     self.writeMessage("OS Verification code")
-    self.write("addi $sp, $sp, -4")  # SP = SP - 1
-    self.write("lw $t0, 0($sp)")
     self.write("jal x1, END")
     self.writeMessage("")
   
@@ -467,6 +465,10 @@ class CodeWriter:
   
   # Closes the output file
   def close(self) -> None:
+    reg1 = "x" + str(self.__reg)
+    self.writeMessage("END")
+    self.write("END:")
+    self.write(f"addi x1, {reg1}, 0")
     self.__output_stream.close()
 
 # End of CodeWriter.py

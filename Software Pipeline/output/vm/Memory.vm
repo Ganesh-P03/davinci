@@ -1,0 +1,416 @@
+function Memory.init 0
+push constant 8192
+pop static 6
+push constant 16384
+pop static 5
+push static 5
+push static 5
+add
+push static 5
+add
+push static 5
+add
+pop static 5
+push constant 2048
+pop static 4
+push constant 16384
+pop static 3
+push constant 0
+pop static 0
+push static 6
+pop static 1
+push constant 0
+pop static 7
+push constant 4
+pop static 8
+push static 3
+push static 4
+sub
+push static 1
+push static 7
+add
+pop pointer 1
+pop that 0
+push constant 0
+push static 1
+push static 8
+add
+pop pointer 1
+pop that 0
+push constant 4
+neg
+pop static 9
+push constant 0
+return
+function Memory.peek 0
+push argument 0
+push argument 0
+add
+pop argument 0
+push argument 0
+push argument 0
+add
+pop argument 0
+push static 0
+push argument 0
+add
+pop pointer 1
+push that 0
+return
+function Memory.poke 0
+push argument 0
+push argument 0
+add
+pop argument 0
+push argument 0
+push argument 0
+add
+pop argument 0
+push argument 1
+push static 0
+push argument 0
+add
+pop pointer 1
+pop that 0
+push constant 0
+return
+function Memory.bestFit 4
+push constant 0
+pop local 1
+push static 3
+push static 4
+sub
+pop local 2
+push static 1
+pop local 0
+push local 0
+push static 8
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+if-goto IF_0
+goto ENDIF_0
+label IF_0
+push local 0
+return
+label ENDIF_0
+label WHILE_1
+push local 0
+push constant 0
+eq
+not
+not
+if-goto END_WHILE_1
+push local 0
+push static 7
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop local 3
+push local 3
+push argument 0
+lt
+not
+push local 3
+push local 2
+lt
+and
+if-goto IF_2
+goto ENDIF_2
+label IF_2
+push local 0
+pop local 1
+push local 3
+pop local 2
+label ENDIF_2
+push local 0
+push static 8
+add
+pop pointer 1
+push that 0
+pop local 0
+goto WHILE_1
+label END_WHILE_1
+push local 1
+return
+function Memory.deAlloc 3
+push argument 0
+push static 9
+add
+pop pointer 1
+push that 0
+pop local 2
+push argument 0
+push constant 1
+add
+pop argument 0
+push argument 0
+call Memory.findPreFree 1
+pop local 0
+push local 0
+push constant 0
+eq
+if-goto IF_3
+push local 0
+push local 0
+push static 7
+add
+pop pointer 1
+push that 0
+sub
+push argument 0
+eq
+if-goto IF_4
+push local 2
+push argument 0
+push static 7
+add
+pop pointer 1
+pop that 0
+push local 0
+push static 8
+add
+pop pointer 1
+push that 0
+push argument 0
+push static 8
+add
+pop pointer 1
+pop that 0
+push argument 0
+push local 0
+push static 8
+add
+pop pointer 1
+pop that 0
+goto ENDIF_4
+label IF_4
+push local 0
+push static 7
+add
+pop pointer 1
+push that 0
+push local 2
+add
+push local 0
+push static 7
+add
+pop pointer 1
+pop that 0
+push local 0
+pop argument 0
+label ENDIF_4
+goto ENDIF_3
+label IF_3
+push local 2
+push argument 0
+push static 7
+add
+pop pointer 1
+pop that 0
+push static 1
+push argument 0
+push static 8
+add
+pop pointer 1
+pop that 0
+push argument 0
+pop static 1
+label ENDIF_3
+push argument 0
+push argument 0
+push static 7
+add
+pop pointer 1
+push that 0
+sub
+push argument 0
+push static 8
+add
+pop pointer 1
+push that 0
+eq
+if-goto IF_5
+goto ENDIF_5
+label IF_5
+push argument 0
+push static 8
+add
+pop pointer 1
+push that 0
+pop local 1
+push argument 0
+push static 7
+add
+pop pointer 1
+push that 0
+push local 1
+push static 7
+add
+pop pointer 1
+push that 0
+add
+push argument 0
+push static 7
+add
+pop pointer 1
+pop that 0
+push local 1
+push static 8
+add
+pop pointer 1
+push that 0
+push argument 0
+push static 8
+add
+pop pointer 1
+pop that 0
+label ENDIF_5
+push constant 0
+return
+function Memory.findPreFree 1
+push static 1
+push argument 0
+lt
+if-goto IF_6
+goto ENDIF_6
+label IF_6
+push constant 0
+return
+label ENDIF_6
+push static 1
+pop local 0
+label WHILE_7
+push local 0
+push static 8
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+not
+push local 0
+push static 8
+add
+pop pointer 1
+push that 0
+push argument 0
+gt
+and
+not
+if-goto END_WHILE_7
+push local 0
+push static 8
+add
+pop pointer 1
+push that 0
+pop local 0
+goto WHILE_7
+label END_WHILE_7
+push local 0
+return
+function Memory.alloc 3
+push argument 0
+call Memory.bestFit 1
+pop local 0
+push local 0
+push constant 4
+add
+pop local 2
+push local 2
+pop static 10
+push local 0
+push constant 0
+eq
+not
+if-goto IF_8
+goto ENDIF_8
+label IF_8
+push local 0
+push static 7
+add
+pop pointer 1
+push that 0
+push argument 0
+push constant 3
+add
+gt
+if-goto IF_9
+push local 0
+push static 8
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 0
+push static 7
+add
+pop pointer 1
+push that 0
+push local 2
+push static 9
+add
+pop pointer 1
+pop that 0
+push constant 2
+pop static 12
+goto ENDIF_9
+label IF_9
+push local 0
+push argument 0
+add
+push argument 0
+add
+push argument 0
+add
+push argument 0
+add
+push constant 4
+add
+pop local 1
+push local 0
+push static 8
+add
+pop pointer 1
+push that 0
+push local 1
+push static 8
+add
+pop pointer 1
+pop that 0
+push local 0
+push static 7
+add
+pop pointer 1
+push that 0
+push argument 0
+sub
+push constant 1
+sub
+push local 1
+push static 7
+add
+pop pointer 1
+pop that 0
+push argument 0
+push constant 1
+add
+push local 2
+push static 9
+add
+pop pointer 1
+pop that 0
+push local 2
+pop static 11
+push local 1
+pop static 1
+push constant 1
+pop static 12
+label ENDIF_9
+label ENDIF_8
+push local 2
+return

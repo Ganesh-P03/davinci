@@ -185,6 +185,7 @@ class Assembler:
         return label in self.__label_table.keys()
 
     def getLabel(self, label: str) -> int:
+        print("Label: ", label)
         return int(self.__label_table[label])
 
     def setLabel(self, label: str, value: int):

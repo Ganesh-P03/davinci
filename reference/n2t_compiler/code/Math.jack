@@ -12,7 +12,7 @@ class Math {
 
     /** Initializes the library. */
 function void init() {
-        let bitArray = Array.new(31);
+        let bitArray = Array.new(32);
         let bitArray[0] = 1; // 0000000000000001
         let bitArray[4] = 2; // 0000000000000010
         let bitArray[8] = 4; // 0000000000000100
@@ -44,7 +44,7 @@ function void init() {
         let bitArray[112] = bitArray[108]+bitArray[108];
         let bitArray[116] = bitArray[112]+bitArray[112];
         let bitArray[120] = bitArray[116]+bitArray[116];
-        // let bitArray[124] = bitArray[120]+bitArray[120];
+        let bitArray[124] = bitArray[120]+bitArray[120];
         return;
     }
 
@@ -55,7 +55,7 @@ function void init() {
         let shiftedX = x;
         let j = 0;
 
-        while(j < 124){
+        while(j < 128){
             if(~((y&bitArray[j])=0)){ // if jth bit of y is 1
                 let sum = sum + shiftedX;
             }
@@ -100,7 +100,32 @@ function void init() {
         
     }
 
+        /** Returns the integer part of the square root of x. */
+        function int sqrt(int x) {
+            var int y,j,temp,tempQ;
+            if (x<0){
+                do Sys.error("sqrt: argument is negative\n");
+                do Sys.halt();
+                return -1;
+            }
+            let y = 0;
     
+            // j = 7 for 16 bit system
+            // NEED TO BE MODIFIED TO 32 BIT SYSTEM WHERE j = 15
+            let j = 124;
+    
+    
+            while(~(j < 0)){ // while j >= 0
+                let temp = y + bitArray[j];
+                let tempQ = temp * temp;
+                if(~(tempQ > x) & (tempQ > 0)){
+                    let y = temp;
+                }
+                let j = j - 4;
+            }
+    
+            return y;
+        }
 
     /** Returns the greater number. */
     function int max(int a, int b) {

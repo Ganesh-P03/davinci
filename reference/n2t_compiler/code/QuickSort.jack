@@ -1,0 +1,87 @@
+// QuickSort.jack
+class QuickSort {
+    function void calculate_quick_sort() {
+        var Array arr;
+        var int size, i;
+        let size = Keyboard.readInt("Enter the size of the array: "); // Read user input for array size
+        let arr = Array.new(size); // Create a new array of the specified size
+        // Initialize the array elements with user input
+        do Output.printString("Enter the elements of the array: ");
+        do Output.println();
+        let i = 0;
+        while (i < size) {
+            let arr[i*4] = Keyboard.readInt("");
+            let i = i + 1;
+        }
+
+        // Perform QuickSort on the array
+        do QuickSort.sort(arr, 0, size - 1);
+
+        // Print the sorted array
+        do Output.printString("The sorted array is: ");
+        let i = 0;
+        while (i < size) {
+            do Output.printInt(arr[i*4]);
+            let i = i + 1;
+            if (i < size) {
+                do Output.printString(", ");
+            } else {
+                do Output.printString("\n");
+            }
+        }
+        return;
+    }
+
+    function void sort(Array arr, int low, int high) {
+        var int pi;
+        if (low < high) {
+            let pi = QuickSort.partition(arr, low, high);
+
+            // Recursively sort elements before and after partition
+            do QuickSort.sort(arr, low, pi - 1);
+            do QuickSort.sort(arr, pi + 1, high);
+        }
+        return;
+    }
+
+    function int partition(Array arr, int low, int high) {
+        var int pivot, i, j, temp;
+        let pivot = arr[high*4];
+        let i = low - 1;
+        let j = low;
+        
+        while (j < high) {
+            if (arr[j*4] < pivot) {
+                let i = i + 1;
+                let temp = arr[i*4];
+                let arr[i*4] = arr[j*4];
+                let arr[j*4] = temp;
+            }
+            let j = j + 1;
+        }
+        
+        let temp = arr[(i + 1)*4];
+        let arr[(i + 1)*4] = arr[high*4];
+        let arr[high*4] = temp;
+        
+        return i + 1;
+    }
+    function void main(){
+        var int repeat;
+        var int answer;
+        let repeat = 1;
+        do QuickSort.calculate_quick_sort();
+        while(repeat=1){
+            do Output.println();
+            let answer = Keyboard.readInt("Do you want to continue? (yes(1)/no(0)): ");
+            if (answer=1) {
+                do QuickSort.calculate_quick_sort(); // Restart the program
+            } else {
+                let repeat = 0;
+                do Output.printString("Program ended."); // End the program
+            }
+        }
+        return;
+
+    }
+}
