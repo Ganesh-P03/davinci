@@ -18,8 +18,6 @@ pop this 1
 push argument 0
 pop this 0
 push argument 0
-push constant 4
-call Math.multiply 2
 call Array.new 1
 pop this 2
 push pointer 0
@@ -279,10 +277,10 @@ label IF_END6
 push constant 0
 return
 function String.newLine 0
-push constant 128
+push constant 13
 return
 function String.backSpace 0
-push constant 129
+push constant 8
 return
 function String.doubleQuote 0
 push constant 34

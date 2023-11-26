@@ -436,8 +436,10 @@ class CompilationEngine:
             self.generator.write_push_pop("push", Scat, Si)
             self.generator.write_push_pop("push", "CONST", ord(char))
             self.generator.write_call("String.appendChar", 2)
+            self.generator.write_push_pop("pop", "TEMP", 0)
 
         tk.advance()
+        self.generator.write_push_pop("push", Scat, Si)
 
     def compile_expression_Array(self):
         tk = self.tokenizer

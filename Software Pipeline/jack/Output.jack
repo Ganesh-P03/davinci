@@ -43,10 +43,11 @@ class Output {
         let temp1 = Math.twoToThe(12);
         let temp1 = 34*temp1;
         let temp1 = temp1 + 1408;
-        let screen = 4-temp1; // starting memory address of the screen array
-        let screen2 = 16384;
+        let screen = 0-temp1; // starting memory address of the screen array
+        let screen2 =  16384;
         let cursorX = 0;
         let cursorY = 0;
+     
         // let screen[400] = 767;
         // let screen[404] = 768;
         // let screen[408] = 769;

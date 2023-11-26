@@ -10,7 +10,7 @@ push local 0
 push constant 1408
 add
 pop local 0
-push constant 4
+push constant 0
 push local 0
 sub
 pop static 0

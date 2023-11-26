@@ -17,7 +17,7 @@ class Screen {
         let temp1 = Math.twoToThe(12); // 2^12 = 4096
         let temp1 = 34*temp1;     // 34*4096 = 139264
         let temp1 = temp1 + 1408; // 139264 + 1408 = 140672
-        let screen = 4-temp1;     // 4-140672 = -140668 //since screen[0] not working
+        let screen = 0-temp1;     // 4-140672 = -140668 //since screen[0] not working
         let color = true;
         return;
     }

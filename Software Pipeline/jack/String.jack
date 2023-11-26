@@ -20,7 +20,7 @@ class String {
 
         let len = 0;
         let maxLen = maxLength;
-        let chars = Array.new(maxLength*4);
+        let chars = Array.new(maxLength);
         return this;
     }
 
