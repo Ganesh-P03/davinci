@@ -195,12 +195,12 @@ and
 return
 function String.charToDigit 0
 push argument 0
-push constant 65
+push constant 48
 sub
 return
 function String.digitToChar 0
 push argument 0
-push constant 65
+push constant 48
 add
 return
 function String.erase 0

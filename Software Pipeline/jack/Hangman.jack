@@ -59,22 +59,22 @@ class Hangman {
             let newI = i*4;
             let wordLength = wordLengthArray[newI];
             if(i=0){
-                let currword = "__";
+                let currword = "____";
             }
             else{
                 if(i=1){
-                    let currword = "_____";
+                    let currword = "___________";
                 }
                 else{
                     if(i=2){
-                        let currword = "____";
+                        let currword = "________";
                     }
                     else{
                         if(i=3){
-                            let currword = "____";
+                            let currword = "________";
                         }
                         else{
-                            let currword = "___";
+                            let currword = "_______";
                         }
                     }
                 }

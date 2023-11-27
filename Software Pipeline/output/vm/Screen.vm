@@ -1,0 +1,54 @@
+function Screen.init 1
+push constant 12
+call Math.twoToThe 1
+pop local 0
+push constant 34
+push local 0
+call Math.multiply 2
+pop local 0
+push local 0
+push constant 1408
+add
+pop local 0
+push constant 0
+push local 0
+sub
+pop static 0
+push constant 0
+not
+pop static 1
+push constant 0
+return
+function Screen.clearScreen 2
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 2400
+lt
+not
+if-goto WHILE_END0
+push local 0
+push local 0
+add
+push local 0
+add
+push local 0
+add
+pop local 1
+push local 1
+push static 0
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

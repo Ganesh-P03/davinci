@@ -3,8 +3,8 @@ class Main{
     var int zero,one;
     var String arrow,space,error,fibo_print,snake_print,qsort_print,hangman_print;
     var String input;
-    var char ch_fibo;
-    var char ch_fibo_ans;
+    // var char ch_fibo;
+    // var char ch_fibo_ans;
     var int n, a, b, c, i;
     var String enterNumber;//,thefirst,fibonacci_numbers,comma;
     var char currChar;
@@ -25,7 +25,7 @@ class Main{
     let snake_print = " snakegame ";
     let qsort_print = " qsort ";
     let hangman_print = " hangman ";
-
+    do Output.printString(fibo_print);
 
     while(zero<one){ 
         let input = Keyboard.readLine(arrow);
@@ -45,7 +45,7 @@ class Main{
         }
         else{
             if(currChar=clear){
-                // do Screen.clearScreen();
+                do Screen.clearScreen();
                 do Output.moveCursor(0,0);
             }
             else{
@@ -55,10 +55,9 @@ class Main{
                 else{
                     if(currChar=fibo){
                         let enterNumber = "n: ";
-                        do Output.printString(enterNumber);
-                        let ch_fibo = Keyboard.readChar();
-                    //    let n = Keyboard.readInt(enterNumber); // Read user input for the number of Fibonacci numbers to print
-                        let n = String.charToDigit(ch_fibo);
+                        
+                        let n = Keyboard.readInt(enterNumber); // Read user input for the number of Fibonacci numbers to print
+                        // let n = String.charToDigit(ch_fibo);
                         let a = 0;
                         let b = 1;
                     
@@ -76,9 +75,10 @@ class Main{
                             let b = c;
                             let i = i + 1;
                         }
-                        let ch_fibo_ans = String.digitToChar(c);
+                        // let ch_fibo_ans = String.digitToChar(c);
                         do Output.println();
-                        do Output.printChar(ch_fibo_ans);
+                        do Output.printInt(c);
+                        // do Output.printChar(ch_fibo_ans);
                     }
                     else{
                         // if(currChar=qsort){
@@ -86,7 +86,7 @@ class Main{
                         // }
                        // else{
                             if(currChar=hangman){
-                                do Output.printString(hangman_print);
+                                // do Output.printString(hangman_print);
                                 do Hangman.main();
                             }
                         //     else{

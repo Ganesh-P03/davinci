@@ -115,13 +115,13 @@ class String {
 
     /** must be called after String.isDigit */
     function int charToDigit(char c){
-        return c - 48;
+        return c - 65;
     }
 
 
     /** must have 0<= d <= 9*/
     function char digitToChar(int d){
-        return d + 48;
+        return d + 65;
     }
 
     method void erase() {
@@ -176,7 +176,7 @@ class String {
 
     /** De-allocates the string and frees its space. */
     method void dispose() {
-        do chars.dispose();
+        // do chars.dispose();
         return;
     }
 }

@@ -111,6 +111,9 @@ label IF_END5
 push local 0
 return
 function Keyboard.readLine 2
+push argument 0
+call Output.printString 1
+pop temp 0
 push constant 50
 call String.new 1
 pop local 0
