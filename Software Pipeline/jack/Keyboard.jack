@@ -54,7 +54,7 @@ class Keyboard {
         var char key;
         var int i;
         let i=0;
-       do Output.printChar(66); //B
+      // do Output.printChar(66); //B
         while(i = 0){
             let key = Keyboard.keyPressed();
 
@@ -102,7 +102,7 @@ class Keyboard {
         var String line;
         var char c;
         //do Output.printChar(66); //B
-        do Output.printString(message);
+        //do Output.printString(message);
 
         let line = String.new(50);
 

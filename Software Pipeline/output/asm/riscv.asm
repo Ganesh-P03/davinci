@@ -5034,32 +5034,6 @@ sw $zero, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 4($lcl)
-addi $t0, $zero, 66
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.printChar$ret.141
-addi $t0, $t0, Output.printChar$ret.141
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 4
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.printChar
-Output.printChar$ret.141:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
 WHILE_EXP0$Keyboard.readChar:
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
@@ -5080,8 +5054,8 @@ addi $t0, $t0, WHILE_END0$Keyboard.readChar
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
 LOOP_EXIT_19$Keyboard.readChar:
-lui $t0, Keyboard.keyPressed$ret.142
-addi $t0, $t0, Keyboard.keyPressed$ret.142
+lui $t0, Keyboard.keyPressed$ret.141
+addi $t0, $t0, Keyboard.keyPressed$ret.141
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5099,7 +5073,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Keyboard.keyPressed
-Keyboard.keyPressed$ret.142:
+Keyboard.keyPressed$ret.141:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
@@ -5218,8 +5192,8 @@ sw $t0, 0($lcl)
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.printChar$ret.143
-addi $t0, $t0, Output.printChar$ret.143
+lui $t0, Output.printChar$ret.142
+addi $t0, $t0, Output.printChar$ret.142
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5237,7 +5211,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.printChar
-Output.printChar$ret.143:
+Output.printChar$ret.142:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -5280,8 +5254,8 @@ IF_TRUE6$Keyboard.readChar:
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.printChar$ret.144
-addi $t0, $t0, Output.printChar$ret.144
+lui $t0, Output.printChar$ret.143
+addi $t0, $t0, Output.printChar$ret.143
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5299,7 +5273,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.printChar
-Output.printChar$ret.144:
+Output.printChar$ret.143:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -5331,37 +5305,11 @@ sw $zero, 0($sp)
 addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
-lw $t0, 0($arg)
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.printString$ret.145
-addi $t0, $t0, Output.printString$ret.145
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 4
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.printString
-Output.printString$ret.145:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
 addi $t0, $zero, 50
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.new$ret.146
-addi $t0, $t0, String.new$ret.146
+lui $t0, String.new$ret.144
+addi $t0, $t0, String.new$ret.144
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5379,12 +5327,12 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.new
-String.new$ret.146:
+String.new$ret.144:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
-lui $t0, Keyboard.readChar$ret.147
-addi $t0, $t0, Keyboard.readChar$ret.147
+lui $t0, Keyboard.readChar$ret.145
+addi $t0, $t0, Keyboard.readChar$ret.145
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5402,7 +5350,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Keyboard.readChar
-Keyboard.readChar$ret.147:
+Keyboard.readChar$ret.145:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 4($lcl)
@@ -5410,8 +5358,8 @@ WHILE_EXP1$Keyboard.readLine:
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.newLine$ret.148
-addi $t0, $t0, String.newLine$ret.148
+lui $t0, String.newLine$ret.146
+addi $t0, $t0, String.newLine$ret.146
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5429,7 +5377,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.newLine
-String.newLine$ret.148:
+String.newLine$ret.146:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -5452,8 +5400,8 @@ LOOP_EXIT_27$Keyboard.readLine:
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.backSpace$ret.149
-addi $t0, $t0, String.backSpace$ret.149
+lui $t0, String.backSpace$ret.147
+addi $t0, $t0, String.backSpace$ret.147
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5471,7 +5419,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.backSpace
-String.backSpace$ret.149:
+String.backSpace$ret.147:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -5492,8 +5440,8 @@ IF_TRUE7$Keyboard.readLine:
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.eraseLastChar$ret.150
-addi $t0, $t0, String.eraseLastChar$ret.150
+lui $t0, String.eraseLastChar$ret.148
+addi $t0, $t0, String.eraseLastChar$ret.148
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5511,12 +5459,12 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.eraseLastChar
-String.eraseLastChar$ret.150:
+String.eraseLastChar$ret.148:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lui $t0, Output.backSpace$ret.151
-addi $t0, $t0, Output.backSpace$ret.151
+lui $t0, Output.backSpace$ret.149
+addi $t0, $t0, Output.backSpace$ret.149
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5534,7 +5482,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.backSpace
-Output.backSpace$ret.151:
+Output.backSpace$ret.149:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -5546,8 +5494,8 @@ addi $sp, $sp, 4
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.appendChar$ret.152
-addi $t0, $t0, String.appendChar$ret.152
+lui $t0, String.appendChar$ret.150
+addi $t0, $t0, String.appendChar$ret.150
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5565,13 +5513,13 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.appendChar
-String.appendChar$ret.152:
+String.appendChar$ret.150:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 IF_END7$Keyboard.readLine:
-lui $t0, Keyboard.readChar$ret.153
-addi $t0, $t0, Keyboard.readChar$ret.153
+lui $t0, Keyboard.readChar$ret.151
+addi $t0, $t0, Keyboard.readChar$ret.151
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5589,7 +5537,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Keyboard.readChar
-Keyboard.readChar$ret.153:
+Keyboard.readChar$ret.151:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 4($lcl)
@@ -5618,8 +5566,8 @@ addi $sp, $sp, 4
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Keyboard.readLine$ret.154
-addi $t0, $t0, Keyboard.readLine$ret.154
+lui $t0, Keyboard.readLine$ret.152
+addi $t0, $t0, Keyboard.readLine$ret.152
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5637,15 +5585,15 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Keyboard.readLine
-Keyboard.readLine$ret.154:
+Keyboard.readLine$ret.152:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.intValue$ret.155
-addi $t0, $t0, String.intValue$ret.155
+lui $t0, String.intValue$ret.153
+addi $t0, $t0, String.intValue$ret.153
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5663,7 +5611,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.intValue
-String.intValue$ret.155:
+String.intValue$ret.153:
 addi $t0, $zero, 20
 sub $t0, $lcl, $t0
 lw $ra, 0($t0)
@@ -5729,21 +5677,80 @@ sw $zero, 0($sp)
 addi $sp, $sp, 4
 sw $zero, 0($sp)
 addi $sp, $sp, 4
+sw $zero, 0($sp)
+addi $sp, $sp, 4
 addi $t0, $zero, 67
-sw $t0, 76($lcl)
-addi $t0, $zero, 76
-sw $t0, 72($lcl)
-addi $t0, $zero, 70
-sw $t0, 84($lcl)
-addi $t0, $zero, 81
-sw $t0, 88($lcl)
-addi $t0, $zero, 69
 sw $t0, 80($lcl)
-addi $t0, $zero, 83
+addi $t0, $zero, 76
+sw $t0, 76($lcl)
+addi $t0, $zero, 70
+sw $t0, 88($lcl)
+addi $t0, $zero, 81
 sw $t0, 92($lcl)
-addi $t0, $zero, 72
+addi $t0, $zero, 69
+sw $t0, 84($lcl)
+addi $t0, $zero, 83
 sw $t0, 96($lcl)
+addi $t0, $zero, 72
+sw $t0, 100($lcl)
 addi $t0, $zero, 1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, String.new$ret.154
+addi $t0, $t0, String.new$ret.154
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, String.new
+String.new$ret.154:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 12($lcl)
+lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 32
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, String.appendChar$ret.155
+addi $t0, $t0, String.appendChar$ret.155
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, String.appendChar
+String.appendChar$ret.155:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+lw $t0, 12($lcl)
+sw $t0, 12($lcl)
+addi $t0, $zero, 9
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.new$ret.156
@@ -5768,11 +5775,11 @@ jal $ra, String.new
 String.new$ret.156:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 12($lcl)
-lw $t0, 12($lcl)
+sw $t0, 8($lcl)
+lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 32
+addi $t0, $zero, 100
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.157
@@ -5798,13 +5805,14 @@ String.appendChar$ret.157:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lw $t0, 12($lcl)
-sw $t0, 12($lcl)
-addi $t0, $zero, 9
+lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.new$ret.158
-addi $t0, $t0, String.new$ret.158
+addi $t0, $zero, 97
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, String.appendChar$ret.158
+addi $t0, $t0, String.appendChar$ret.158
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -5817,19 +5825,19 @@ addi $sp, $sp, 4
 sw $that, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 20
-addi $t0, $t0, 4
+addi $t0, $t0, 8
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, String.new
-String.new$ret.158:
+jal $ra, String.appendChar
+String.appendChar$ret.158:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 8($lcl)
+sw $t0, 0($temp)
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 100
+addi $t0, $zero, 118
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.159
@@ -5858,7 +5866,7 @@ sw $t0, 0($temp)
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 97
+addi $t0, $zero, 105
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.160
@@ -5887,7 +5895,7 @@ sw $t0, 0($temp)
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 118
+addi $t0, $zero, 110
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.161
@@ -5916,7 +5924,7 @@ sw $t0, 0($temp)
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 105
+addi $t0, $zero, 99
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.162
@@ -5945,7 +5953,7 @@ sw $t0, 0($temp)
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 110
+addi $t0, $zero, 105
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.163
@@ -5974,7 +5982,7 @@ sw $t0, 0($temp)
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 99
+addi $t0, $zero, 36
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.164
@@ -6003,7 +6011,7 @@ sw $t0, 0($temp)
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 105
+addi $t0, $zero, 32
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.165
@@ -6030,13 +6038,12 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 8($lcl)
+sw $t0, 8($lcl)
+addi $t0, $zero, 7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 36
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, String.appendChar$ret.166
-addi $t0, $t0, String.appendChar$ret.166
+lui $t0, String.new$ret.166
+addi $t0, $t0, String.new$ret.166
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6049,19 +6056,19 @@ addi $sp, $sp, 4
 sw $that, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 20
-addi $t0, $t0, 8
+addi $t0, $t0, 4
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, String.appendChar
-String.appendChar$ret.166:
+jal $ra, String.new
+String.new$ret.166:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 0($temp)
-lw $t0, 8($lcl)
+sw $t0, 16($lcl)
+lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 32
+addi $t0, $zero, 105
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.167
@@ -6087,13 +6094,14 @@ String.appendChar$ret.167:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lw $t0, 8($lcl)
-sw $t0, 8($lcl)
-addi $t0, $zero, 7
+lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.new$ret.168
-addi $t0, $t0, String.new$ret.168
+addi $t0, $zero, 110
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, String.appendChar$ret.168
+addi $t0, $t0, String.appendChar$ret.168
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6106,19 +6114,19 @@ addi $sp, $sp, 4
 sw $that, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 20
-addi $t0, $t0, 4
+addi $t0, $t0, 8
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, String.new
-String.new$ret.168:
+jal $ra, String.appendChar
+String.appendChar$ret.168:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 16($lcl)
+sw $t0, 0($temp)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 105
+addi $t0, $zero, 118
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.169
@@ -6147,7 +6155,7 @@ sw $t0, 0($temp)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 110
+addi $t0, $zero, 97
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.170
@@ -6176,7 +6184,7 @@ sw $t0, 0($temp)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 118
+addi $t0, $zero, 108
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.171
@@ -6205,7 +6213,7 @@ sw $t0, 0($temp)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 97
+addi $t0, $zero, 105
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.172
@@ -6234,7 +6242,7 @@ sw $t0, 0($temp)
 lw $t0, 16($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 108
+addi $t0, $zero, 100
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.173
@@ -6261,13 +6269,16 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 16($lcl)
+sw $t0, 16($lcl)
+addi $t0, $zero, 0
+sw $t0, 0($lcl)
+addi $t0, $zero, 1
+sw $t0, 4($lcl)
+addi $t0, $zero, 6
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 105
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, String.appendChar$ret.174
-addi $t0, $t0, String.appendChar$ret.174
+lui $t0, String.new$ret.174
+addi $t0, $t0, String.new$ret.174
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6280,19 +6291,19 @@ addi $sp, $sp, 4
 sw $that, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 20
-addi $t0, $t0, 8
+addi $t0, $t0, 4
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, String.appendChar
-String.appendChar$ret.174:
+jal $ra, String.new
+String.new$ret.174:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 0($temp)
-lw $t0, 16($lcl)
+sw $t0, 20($lcl)
+lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 100
+addi $t0, $zero, 32
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.175
@@ -6318,17 +6329,14 @@ String.appendChar$ret.175:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lw $t0, 16($lcl)
-sw $t0, 16($lcl)
-addi $t0, $zero, 0
-sw $t0, 0($lcl)
-addi $t0, $zero, 1
-sw $t0, 4($lcl)
-addi $t0, $zero, 6
+lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.new$ret.176
-addi $t0, $t0, String.new$ret.176
+addi $t0, $zero, 102
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, String.appendChar$ret.176
+addi $t0, $t0, String.appendChar$ret.176
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6341,19 +6349,19 @@ addi $sp, $sp, 4
 sw $that, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 20
-addi $t0, $t0, 4
+addi $t0, $t0, 8
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, String.new
-String.new$ret.176:
+jal $ra, String.appendChar
+String.appendChar$ret.176:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 20($lcl)
+sw $t0, 0($temp)
 lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 32
+addi $t0, $zero, 105
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.177
@@ -6382,7 +6390,7 @@ sw $t0, 0($temp)
 lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 102
+addi $t0, $zero, 98
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.178
@@ -6411,7 +6419,7 @@ sw $t0, 0($temp)
 lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 105
+addi $t0, $zero, 111
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.179
@@ -6440,7 +6448,7 @@ sw $t0, 0($temp)
 lw $t0, 20($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 98
+addi $t0, $zero, 32
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.180
@@ -6467,13 +6475,12 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 20($lcl)
+sw $t0, 20($lcl)
+addi $t0, $zero, 11
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 111
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, String.appendChar$ret.181
-addi $t0, $t0, String.appendChar$ret.181
+lui $t0, String.new$ret.181
+addi $t0, $t0, String.new$ret.181
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6486,16 +6493,16 @@ addi $sp, $sp, 4
 sw $that, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 20
-addi $t0, $t0, 8
+addi $t0, $t0, 4
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, String.appendChar
-String.appendChar$ret.181:
+jal $ra, String.new
+String.new$ret.181:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 0($temp)
-lw $t0, 20($lcl)
+sw $t0, 24($lcl)
+lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 32
@@ -6524,13 +6531,14 @@ String.appendChar$ret.182:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lw $t0, 20($lcl)
-sw $t0, 20($lcl)
-addi $t0, $zero, 11
+lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.new$ret.183
-addi $t0, $t0, String.new$ret.183
+addi $t0, $zero, 115
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, String.appendChar$ret.183
+addi $t0, $t0, String.appendChar$ret.183
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6543,19 +6551,19 @@ addi $sp, $sp, 4
 sw $that, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 20
-addi $t0, $t0, 4
+addi $t0, $t0, 8
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, String.new
-String.new$ret.183:
+jal $ra, String.appendChar
+String.appendChar$ret.183:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 24($lcl)
+sw $t0, 0($temp)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 32
+addi $t0, $zero, 110
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.184
@@ -6584,7 +6592,7 @@ sw $t0, 0($temp)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 115
+addi $t0, $zero, 97
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.185
@@ -6613,7 +6621,7 @@ sw $t0, 0($temp)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 110
+addi $t0, $zero, 107
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.186
@@ -6642,7 +6650,7 @@ sw $t0, 0($temp)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 97
+addi $t0, $zero, 101
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.187
@@ -6671,7 +6679,7 @@ sw $t0, 0($temp)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 107
+addi $t0, $zero, 103
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.188
@@ -6700,7 +6708,7 @@ sw $t0, 0($temp)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 101
+addi $t0, $zero, 97
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.189
@@ -6729,7 +6737,7 @@ sw $t0, 0($temp)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 103
+addi $t0, $zero, 109
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.190
@@ -6758,7 +6766,7 @@ sw $t0, 0($temp)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 97
+addi $t0, $zero, 101
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.191
@@ -6787,7 +6795,7 @@ sw $t0, 0($temp)
 lw $t0, 24($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 109
+addi $t0, $zero, 32
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.192
@@ -6814,13 +6822,12 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 24($lcl)
+sw $t0, 24($lcl)
+addi $t0, $zero, 7
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 101
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, String.appendChar$ret.193
-addi $t0, $t0, String.appendChar$ret.193
+lui $t0, String.new$ret.193
+addi $t0, $t0, String.new$ret.193
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6833,16 +6840,16 @@ addi $sp, $sp, 4
 sw $that, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 20
-addi $t0, $t0, 8
+addi $t0, $t0, 4
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, String.appendChar
-String.appendChar$ret.193:
+jal $ra, String.new
+String.new$ret.193:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 0($temp)
-lw $t0, 24($lcl)
+sw $t0, 28($lcl)
+lw $t0, 28($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 32
@@ -6871,13 +6878,14 @@ String.appendChar$ret.194:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lw $t0, 24($lcl)
-sw $t0, 24($lcl)
-addi $t0, $zero, 7
+lw $t0, 28($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.new$ret.195
-addi $t0, $t0, String.new$ret.195
+addi $t0, $zero, 113
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, String.appendChar$ret.195
+addi $t0, $t0, String.appendChar$ret.195
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -6890,19 +6898,19 @@ addi $sp, $sp, 4
 sw $that, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 20
-addi $t0, $t0, 4
+addi $t0, $t0, 8
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, String.new
-String.new$ret.195:
+jal $ra, String.appendChar
+String.appendChar$ret.195:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 28($lcl)
+sw $t0, 0($temp)
 lw $t0, 28($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 32
+addi $t0, $zero, 115
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.196
@@ -6931,7 +6939,7 @@ sw $t0, 0($temp)
 lw $t0, 28($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 113
+addi $t0, $zero, 111
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.197
@@ -6960,7 +6968,7 @@ sw $t0, 0($temp)
 lw $t0, 28($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 115
+addi $t0, $zero, 114
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.198
@@ -6989,7 +6997,7 @@ sw $t0, 0($temp)
 lw $t0, 28($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 111
+addi $t0, $zero, 116
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.199
@@ -7018,7 +7026,7 @@ sw $t0, 0($temp)
 lw $t0, 28($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 114
+addi $t0, $zero, 32
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.200
@@ -7045,13 +7053,12 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 28($lcl)
+sw $t0, 28($lcl)
+addi $t0, $zero, 9
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 116
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, String.appendChar$ret.201
-addi $t0, $t0, String.appendChar$ret.201
+lui $t0, String.new$ret.201
+addi $t0, $t0, String.new$ret.201
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7064,16 +7071,16 @@ addi $sp, $sp, 4
 sw $that, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 20
-addi $t0, $t0, 8
+addi $t0, $t0, 4
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, String.appendChar
-String.appendChar$ret.201:
+jal $ra, String.new
+String.new$ret.201:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 0($temp)
-lw $t0, 28($lcl)
+sw $t0, 32($lcl)
+lw $t0, 32($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 32
@@ -7102,13 +7109,14 @@ String.appendChar$ret.202:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lw $t0, 28($lcl)
-sw $t0, 28($lcl)
-addi $t0, $zero, 9
+lw $t0, 32($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.new$ret.203
-addi $t0, $t0, String.new$ret.203
+addi $t0, $zero, 104
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, String.appendChar$ret.203
+addi $t0, $t0, String.appendChar$ret.203
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7121,19 +7129,19 @@ addi $sp, $sp, 4
 sw $that, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 20
-addi $t0, $t0, 4
+addi $t0, $t0, 8
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, String.new
-String.new$ret.203:
+jal $ra, String.appendChar
+String.appendChar$ret.203:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 32($lcl)
+sw $t0, 0($temp)
 lw $t0, 32($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 32
+addi $t0, $zero, 97
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.204
@@ -7162,7 +7170,7 @@ sw $t0, 0($temp)
 lw $t0, 32($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 104
+addi $t0, $zero, 110
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.205
@@ -7191,7 +7199,7 @@ sw $t0, 0($temp)
 lw $t0, 32($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 97
+addi $t0, $zero, 103
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.206
@@ -7220,7 +7228,7 @@ sw $t0, 0($temp)
 lw $t0, 32($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 110
+addi $t0, $zero, 109
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.207
@@ -7249,7 +7257,7 @@ sw $t0, 0($temp)
 lw $t0, 32($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 103
+addi $t0, $zero, 97
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.208
@@ -7278,7 +7286,7 @@ sw $t0, 0($temp)
 lw $t0, 32($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 109
+addi $t0, $zero, 110
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.209
@@ -7307,7 +7315,7 @@ sw $t0, 0($temp)
 lw $t0, 32($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 97
+addi $t0, $zero, 32
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.210
@@ -7334,64 +7342,6 @@ addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 32($lcl)
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 110
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, String.appendChar$ret.211
-addi $t0, $t0, String.appendChar$ret.211
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 8
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, String.appendChar
-String.appendChar$ret.211:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
-lw $t0, 32($lcl)
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 32
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, String.appendChar$ret.212
-addi $t0, $t0, String.appendChar$ret.212
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 8
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, String.appendChar
-String.appendChar$ret.212:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
-lw $t0, 32($lcl)
 sw $t0, 32($lcl)
 WHILE_EXP0$Main.main:
 lw $t0, 0($lcl)
@@ -7412,8 +7362,8 @@ LOOP_EXIT_29$Main.main:
 lw $t0, 8($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Keyboard.readLine$ret.213
-addi $t0, $t0, Keyboard.readLine$ret.213
+lui $t0, Keyboard.readLine$ret.211
+addi $t0, $t0, Keyboard.readLine$ret.211
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7431,7 +7381,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Keyboard.readLine
-Keyboard.readLine$ret.213:
+Keyboard.readLine$ret.211:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 36($lcl)
@@ -7441,8 +7391,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.charAt$ret.214
-addi $t0, $t0, String.charAt$ret.214
+lui $t0, String.charAt$ret.212
+addi $t0, $t0, String.charAt$ret.212
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7460,14 +7410,14 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.charAt
-String.charAt$ret.214:
+String.charAt$ret.212:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 68($lcl)
-lw $t0, 68($lcl)
+sw $t0, 72($lcl)
+lw $t0, 72($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lw $t0, 72($lcl)
+lw $t0, 76($lcl)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -7483,8 +7433,8 @@ jalr $ra, $t0, 0
 LOOP_EXIT_30$Main.main:
 jal $ra, IF_FALSE0$Main.main
 IF_TRUE0$Main.main:
-lui $t0, Output.println$ret.215
-addi $t0, $t0, Output.println$ret.215
+lui $t0, Output.println$ret.213
+addi $t0, $t0, Output.println$ret.213
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7502,11 +7452,63 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.println
-Output.println$ret.215:
+Output.println$ret.213:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 20($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, Output.printString$ret.214
+addi $t0, $t0, Output.printString$ret.214
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Output.printString
+Output.printString$ret.214:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+lw $t0, 24($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, Output.printString$ret.215
+addi $t0, $t0, Output.printString$ret.215
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Output.printString
+Output.printString$ret.215:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+lw $t0, 28($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, Output.printString$ret.216
@@ -7532,7 +7534,7 @@ Output.printString$ret.216:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lw $t0, 24($lcl)
+lw $t0, 32($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, Output.printString$ret.217
@@ -7558,64 +7560,12 @@ Output.printString$ret.217:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lw $t0, 28($lcl)
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.printString$ret.218
-addi $t0, $t0, Output.printString$ret.218
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 4
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.printString
-Output.printString$ret.218:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
-lw $t0, 32($lcl)
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.printString$ret.219
-addi $t0, $t0, Output.printString$ret.219
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 4
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.printString
-Output.printString$ret.219:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
 jal $ra, IF_END0$Main.main
 IF_FALSE0$Main.main:
-lw $t0, 68($lcl)
+lw $t0, 72($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lw $t0, 76($lcl)
+lw $t0, 80($lcl)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -7637,8 +7587,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.moveCursor$ret.220
-addi $t0, $t0, Output.moveCursor$ret.220
+lui $t0, Output.moveCursor$ret.218
+addi $t0, $t0, Output.moveCursor$ret.218
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7656,16 +7606,16 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.moveCursor
-Output.moveCursor$ret.220:
+Output.moveCursor$ret.218:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 jal $ra, IF_END1$Main.main
 IF_FALSE1$Main.main:
-lw $t0, 68($lcl)
+lw $t0, 72($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lw $t0, 80($lcl)
+lw $t0, 84($lcl)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -7685,10 +7635,10 @@ addi $t0, $zero, 2
 sw $t0, 0($lcl)
 jal $ra, IF_END2$Main.main
 IF_FALSE2$Main.main:
-lw $t0, 68($lcl)
+lw $t0, 72($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lw $t0, 84($lcl)
+lw $t0, 88($lcl)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -7707,8 +7657,8 @@ IF_TRUE3$Main.main:
 addi $t0, $zero, 3
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.new$ret.221
-addi $t0, $t0, String.new$ret.221
+lui $t0, String.new$ret.219
+addi $t0, $t0, String.new$ret.219
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7726,14 +7676,72 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.new
-String.new$ret.221:
+String.new$ret.219:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 64($lcl)
-lw $t0, 64($lcl)
+sw $t0, 68($lcl)
+lw $t0, 68($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 110
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, String.appendChar$ret.220
+addi $t0, $t0, String.appendChar$ret.220
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, String.appendChar
+String.appendChar$ret.220:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+lw $t0, 68($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 58
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, String.appendChar$ret.221
+addi $t0, $t0, String.appendChar$ret.221
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, String.appendChar
+String.appendChar$ret.221:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+lw $t0, 68($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 32
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, String.appendChar$ret.222
@@ -7759,71 +7767,13 @@ String.appendChar$ret.222:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lw $t0, 64($lcl)
+lw $t0, 68($lcl)
+sw $t0, 68($lcl)
+lw $t0, 68($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 58
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, String.appendChar$ret.223
-addi $t0, $t0, String.appendChar$ret.223
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 8
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, String.appendChar
-String.appendChar$ret.223:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
-lw $t0, 64($lcl)
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 32
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, String.appendChar$ret.224
-addi $t0, $t0, String.appendChar$ret.224
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 8
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, String.appendChar
-String.appendChar$ret.224:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
-lw $t0, 64($lcl)
-sw $t0, 64($lcl)
-lw $t0, 64($lcl)
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.printString$ret.225
-addi $t0, $t0, Output.printString$ret.225
+lui $t0, Output.printString$ret.223
+addi $t0, $t0, Output.printString$ret.223
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7841,12 +7791,12 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.printString
-Output.printString$ret.225:
+Output.printString$ret.223:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lui $t0, Keyboard.readChar$ret.226
-addi $t0, $t0, Keyboard.readChar$ret.226
+lui $t0, Keyboard.readChar$ret.224
+addi $t0, $t0, Keyboard.readChar$ret.224
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7864,15 +7814,15 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Keyboard.readChar
-Keyboard.readChar$ret.226:
+Keyboard.readChar$ret.224:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 40($lcl)
 lw $t0, 40($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.charToDigit$ret.227
-addi $t0, $t0, String.charToDigit$ret.227
+lui $t0, String.charToDigit$ret.225
+addi $t0, $t0, String.charToDigit$ret.225
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7890,15 +7840,15 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.charToDigit
-String.charToDigit$ret.227:
+String.charToDigit$ret.225:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
-sw $t0, 44($lcl)
-addi $t0, $zero, 0
 sw $t0, 48($lcl)
-addi $t0, $zero, 1
+addi $t0, $zero, 0
 sw $t0, 52($lcl)
-lw $t0, 44($lcl)
+addi $t0, $zero, 1
+sw $t0, 56($lcl)
+lw $t0, 48($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
@@ -7917,11 +7867,11 @@ jalr $ra, $t0, 0
 LOOP_EXIT_34$Main.main:
 jal $ra, IF_FALSE4$Main.main
 IF_TRUE4$Main.main:
-lw $t0, 52($lcl)
+lw $t0, 56($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.printInt$ret.228
-addi $t0, $t0, Output.printInt$ret.228
+lui $t0, Output.printInt$ret.226
+addi $t0, $t0, Output.printInt$ret.226
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -7939,7 +7889,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.printInt
-Output.printInt$ret.228:
+Output.printInt$ret.226:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -7947,12 +7897,12 @@ jal $ra, IF_END4$Main.main
 IF_FALSE4$Main.main:
 IF_END4$Main.main:
 addi $t0, $zero, 2
-sw $t0, 60($lcl)
+sw $t0, 64($lcl)
 WHILE_EXP1$Main.main:
-lw $t0, 60($lcl)
+lw $t0, 64($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lw $t0, 44($lcl)
+lw $t0, 48($lcl)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t0, $t1, $t0
@@ -7964,30 +7914,56 @@ addi $t0, $t0, WHILE_END1$Main.main
 add $t0, $t0, $pc
 jalr $ra, $t0, 0
 LOOP_EXIT_35$Main.main:
-lw $t0, 48($lcl)
+lw $t0, 52($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lw $t0, 52($lcl)
+lw $t0, 56($lcl)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
-sw $t0, 56($lcl)
-lw $t0, 52($lcl)
-sw $t0, 48($lcl)
+sw $t0, 60($lcl)
 lw $t0, 56($lcl)
 sw $t0, 52($lcl)
 lw $t0, 60($lcl)
+sw $t0, 56($lcl)
+lw $t0, 64($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 1
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
-sw $t0, 60($lcl)
+sw $t0, 64($lcl)
 jal $ra, WHILE_EXP1$Main.main
 WHILE_END1$Main.main:
-lui $t0, Output.println$ret.229
-addi $t0, $t0, Output.println$ret.229
+lw $t0, 60($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, String.digitToChar$ret.227
+addi $t0, $t0, String.digitToChar$ret.227
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, String.digitToChar
+String.digitToChar$ret.227:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 44($lcl)
+lui $t0, Output.println$ret.228
+addi $t0, $t0, Output.println$ret.228
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8005,15 +7981,15 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.println
-Output.println$ret.229:
+Output.println$ret.228:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lw $t0, 56($lcl)
+lw $t0, 44($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.printInt$ret.230
-addi $t0, $t0, Output.printInt$ret.230
+lui $t0, Output.printChar$ret.229
+addi $t0, $t0, Output.printChar$ret.229
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8030,17 +8006,17 @@ addi $t0, $t0, 4
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, Output.printInt
-Output.printInt$ret.230:
+jal $ra, Output.printChar
+Output.printChar$ret.229:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 jal $ra, IF_END3$Main.main
 IF_FALSE3$Main.main:
-lw $t0, 68($lcl)
+lw $t0, 72($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lw $t0, 96($lcl)
+lw $t0, 100($lcl)
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 slt $t2, $t1, $t0
@@ -8059,8 +8035,8 @@ IF_TRUE5$Main.main:
 lw $t0, 32($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.printString$ret.231
-addi $t0, $t0, Output.printString$ret.231
+lui $t0, Output.printString$ret.230
+addi $t0, $t0, Output.printString$ret.230
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8078,12 +8054,12 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.printString
-Output.printString$ret.231:
+Output.printString$ret.230:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lui $t0, Hangman.main$ret.232
-addi $t0, $t0, Hangman.main$ret.232
+lui $t0, Hangman.main$ret.231
+addi $t0, $t0, Hangman.main$ret.231
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8101,7 +8077,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Hangman.main
-Hangman.main$ret.232:
+Hangman.main$ret.231:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -8112,8 +8088,8 @@ IF_END3$Main.main:
 IF_END2$Main.main:
 IF_END1$Main.main:
 IF_END0$Main.main:
-lui $t0, Output.println$ret.233
-addi $t0, $t0, Output.println$ret.233
+lui $t0, Output.println$ret.232
+addi $t0, $t0, Output.println$ret.232
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8131,7 +8107,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.println
-Output.println$ret.233:
+Output.println$ret.232:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -8158,8 +8134,8 @@ Math.init:
 addi $t0, $zero, 32
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Array.new$ret.234
-addi $t0, $t0, Array.new$ret.234
+lui $t0, Array.new$ret.233
+addi $t0, $t0, Array.new$ret.233
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -8177,7 +8153,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Array.new
-Array.new$ret.234:
+Array.new$ret.233:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, Math.0
@@ -9364,6 +9340,32 @@ sw $t0, 4($lcl)
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Math.abs$ret.234
+addi $t0, $t0, Math.abs$ret.234
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Math.abs
+Math.abs$ret.234:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($arg)
+lw $t0, 4($arg)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Math.abs$ret.235
 addi $t0, $t0, Math.abs$ret.235
 add $t0, $t0, $pc
@@ -9384,32 +9386,6 @@ add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.abs
 Math.abs$ret.235:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($arg)
-lw $t0, 4($arg)
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Math.abs$ret.236
-addi $t0, $t0, Math.abs$ret.236
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 4
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Math.abs
-Math.abs$ret.236:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 4($arg)
@@ -9502,8 +9478,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.237
-addi $t0, $t0, Math.multiply$ret.237
+lui $t0, Math.multiply$ret.236
+addi $t0, $t0, Math.multiply$ret.236
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9521,7 +9497,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.237:
+Math.multiply$ret.236:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($arg)
@@ -9564,8 +9540,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.238
-addi $t0, $t0, Math.multiply$ret.238
+lui $t0, Math.multiply$ret.237
+addi $t0, $t0, Math.multiply$ret.237
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9583,7 +9559,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.238:
+Math.multiply$ret.237:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, Memory.5
@@ -9958,8 +9934,8 @@ sw $t0, 0($arg)
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Memory.findPreFree$ret.239
-addi $t0, $t0, Memory.findPreFree$ret.239
+lui $t0, Memory.findPreFree$ret.238
+addi $t0, $t0, Memory.findPreFree$ret.238
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -9977,7 +9953,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Memory.findPreFree
-Memory.findPreFree$ret.239:
+Memory.findPreFree$ret.238:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
@@ -10443,8 +10419,8 @@ addi $sp, $sp, 4
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Memory.bestFit$ret.240
-addi $t0, $t0, Memory.bestFit$ret.240
+lui $t0, Memory.bestFit$ret.239
+addi $t0, $t0, Memory.bestFit$ret.239
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10462,7 +10438,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Memory.bestFit
-Memory.bestFit$ret.240:
+Memory.bestFit$ret.239:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
@@ -10720,8 +10696,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.241
-addi $t0, $t0, Math.twoToThe$ret.241
+lui $t0, Math.twoToThe$ret.240
+addi $t0, $t0, Math.twoToThe$ret.240
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10739,7 +10715,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
-Math.twoToThe$ret.241:
+Math.twoToThe$ret.240:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
@@ -10749,8 +10725,8 @@ addi $sp, $sp, 4
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.242
-addi $t0, $t0, Math.multiply$ret.242
+lui $t0, Math.multiply$ret.241
+addi $t0, $t0, Math.multiply$ret.241
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10768,7 +10744,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.242:
+Math.multiply$ret.241:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
@@ -10792,8 +10768,8 @@ addi $t0, $zero, 0
 sw $t0, Output.1
 addi $t0, $zero, 0
 sw $t0, Output.2
-lui $t0, Output.initMap$ret.243
-addi $t0, $t0, Output.initMap$ret.243
+lui $t0, Output.initMap$ret.242
+addi $t0, $t0, Output.initMap$ret.242
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10811,7 +10787,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.initMap
-Output.initMap$ret.243:
+Output.initMap$ret.242:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -10838,8 +10814,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 127
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Array.new$ret.244
-addi $t0, $t0, Array.new$ret.244
+lui $t0, Array.new$ret.243
+addi $t0, $t0, Array.new$ret.243
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10857,7 +10833,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Array.new
-Array.new$ret.244:
+Array.new$ret.243:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, Output.0
@@ -10880,6 +10856,56 @@ addi $t0, $zero, 63
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 63
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, Output.create$ret.244
+addi $t0, $t0, Output.create$ret.244
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 36
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Output.create
+Output.create$ret.244:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+addi $t0, $zero, 32
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
@@ -10911,56 +10937,6 @@ Output.create$ret.245:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 32
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.create$ret.246
-addi $t0, $t0, Output.create$ret.246
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 36
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.create
-Output.create$ret.246:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
 addi $t0, $zero, 33
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -10988,8 +10964,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.247
-addi $t0, $t0, Output.create$ret.247
+lui $t0, Output.create$ret.246
+addi $t0, $t0, Output.create$ret.246
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11007,7 +10983,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.247:
+Output.create$ret.246:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11038,8 +11014,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.248
-addi $t0, $t0, Output.create$ret.248
+lui $t0, Output.create$ret.247
+addi $t0, $t0, Output.create$ret.247
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11057,7 +11033,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.248:
+Output.create$ret.247:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11088,8 +11064,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.249
-addi $t0, $t0, Output.create$ret.249
+lui $t0, Output.create$ret.248
+addi $t0, $t0, Output.create$ret.248
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11107,7 +11083,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.249:
+Output.create$ret.248:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11138,8 +11114,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.250
-addi $t0, $t0, Output.create$ret.250
+lui $t0, Output.create$ret.249
+addi $t0, $t0, Output.create$ret.249
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11157,7 +11133,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.250:
+Output.create$ret.249:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11188,8 +11164,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.251
-addi $t0, $t0, Output.create$ret.251
+lui $t0, Output.create$ret.250
+addi $t0, $t0, Output.create$ret.250
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11207,7 +11183,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.251:
+Output.create$ret.250:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11238,8 +11214,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.252
-addi $t0, $t0, Output.create$ret.252
+lui $t0, Output.create$ret.251
+addi $t0, $t0, Output.create$ret.251
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11257,7 +11233,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.252:
+Output.create$ret.251:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11288,8 +11264,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.253
-addi $t0, $t0, Output.create$ret.253
+lui $t0, Output.create$ret.252
+addi $t0, $t0, Output.create$ret.252
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11307,7 +11283,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.253:
+Output.create$ret.252:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11338,8 +11314,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.254
-addi $t0, $t0, Output.create$ret.254
+lui $t0, Output.create$ret.253
+addi $t0, $t0, Output.create$ret.253
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11357,7 +11333,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.254:
+Output.create$ret.253:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11388,6 +11364,56 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Output.create$ret.254
+addi $t0, $t0, Output.create$ret.254
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 36
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Output.create
+Output.create$ret.254:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+addi $t0, $zero, 42
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 102
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 60
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 255
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 60
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 102
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Output.create$ret.255
 addi $t0, $t0, Output.create$ret.255
 add $t0, $t0, $pc
@@ -11411,25 +11437,25 @@ Output.create$ret.255:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 42
+addi $t0, $zero, 43
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 102
+addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 60
+addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 255
+addi $t0, $zero, 252
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 60
+addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 102
+addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
@@ -11461,56 +11487,6 @@ Output.create$ret.256:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 43
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 48
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 48
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 252
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 48
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 48
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.create$ret.257
-addi $t0, $t0, Output.create$ret.257
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 36
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.create
-Output.create$ret.257:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
 addi $t0, $zero, 44
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11538,8 +11514,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 96
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.258
-addi $t0, $t0, Output.create$ret.258
+lui $t0, Output.create$ret.257
+addi $t0, $t0, Output.create$ret.257
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11557,7 +11533,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.258:
+Output.create$ret.257:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11588,8 +11564,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.259
-addi $t0, $t0, Output.create$ret.259
+lui $t0, Output.create$ret.258
+addi $t0, $t0, Output.create$ret.258
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11607,7 +11583,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.259:
+Output.create$ret.258:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11638,8 +11614,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.260
-addi $t0, $t0, Output.create$ret.260
+lui $t0, Output.create$ret.259
+addi $t0, $t0, Output.create$ret.259
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11657,7 +11633,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.260:
+Output.create$ret.259:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11688,8 +11664,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.261
-addi $t0, $t0, Output.create$ret.261
+lui $t0, Output.create$ret.260
+addi $t0, $t0, Output.create$ret.260
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11707,7 +11683,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.261:
+Output.create$ret.260:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11738,6 +11714,56 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Output.create$ret.261
+addi $t0, $t0, Output.create$ret.261
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 36
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Output.create
+Output.create$ret.261:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+addi $t0, $zero, 49
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 112
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 252
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Output.create$ret.262
 addi $t0, $t0, Output.create$ret.262
 add $t0, $t0, $pc
@@ -11761,25 +11787,25 @@ Output.create$ret.262:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 49
+addi $t0, $zero, 50
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 48
+addi $t0, $zero, 120
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 112
+addi $t0, $zero, 204
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 48
+addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 48
+addi $t0, $zero, 56
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 48
+addi $t0, $zero, 96
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 48
+addi $t0, $zero, 204
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 252
@@ -11811,56 +11837,6 @@ Output.create$ret.263:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 50
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 120
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 204
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 12
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 56
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 96
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 204
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 252
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.create$ret.264
-addi $t0, $t0, Output.create$ret.264
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 36
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.create
-Output.create$ret.264:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
 addi $t0, $zero, 51
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11888,8 +11864,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.265
-addi $t0, $t0, Output.create$ret.265
+lui $t0, Output.create$ret.264
+addi $t0, $t0, Output.create$ret.264
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -11907,7 +11883,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.265:
+Output.create$ret.264:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -11938,6 +11914,56 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Output.create$ret.265
+addi $t0, $t0, Output.create$ret.265
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 36
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Output.create
+Output.create$ret.265:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+addi $t0, $zero, 53
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 252
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 192
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 248
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 12
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 12
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 204
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 120
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Output.create$ret.266
 addi $t0, $t0, Output.create$ret.266
 add $t0, $t0, $pc
@@ -11961,10 +11987,13 @@ Output.create$ret.266:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 53
+addi $t0, $zero, 54
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 252
+addi $t0, $zero, 56
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 96
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 192
@@ -11973,10 +12002,7 @@ addi $sp, $sp, 4
 addi $t0, $zero, 248
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 12
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 12
+addi $t0, $zero, 204
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 204
@@ -12011,28 +12037,28 @@ Output.create$ret.267:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 54
+addi $t0, $zero, 55
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 56
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 96
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 192
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 248
+addi $t0, $zero, 252
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 204
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 204
+addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 120
+addi $t0, $zero, 24
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 0
@@ -12061,56 +12087,6 @@ Output.create$ret.268:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 55
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 252
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 204
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 12
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 24
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 48
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 48
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 48
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.create$ret.269
-addi $t0, $t0, Output.create$ret.269
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 36
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.create
-Output.create$ret.269:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
 addi $t0, $zero, 56
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12138,8 +12114,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.270
-addi $t0, $t0, Output.create$ret.270
+lui $t0, Output.create$ret.269
+addi $t0, $t0, Output.create$ret.269
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12157,7 +12133,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.270:
+Output.create$ret.269:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12188,8 +12164,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.271
-addi $t0, $t0, Output.create$ret.271
+lui $t0, Output.create$ret.270
+addi $t0, $t0, Output.create$ret.270
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12207,7 +12183,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.271:
+Output.create$ret.270:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12238,8 +12214,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.272
-addi $t0, $t0, Output.create$ret.272
+lui $t0, Output.create$ret.271
+addi $t0, $t0, Output.create$ret.271
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12257,7 +12233,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.272:
+Output.create$ret.271:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12288,8 +12264,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 96
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.273
-addi $t0, $t0, Output.create$ret.273
+lui $t0, Output.create$ret.272
+addi $t0, $t0, Output.create$ret.272
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12307,7 +12283,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.273:
+Output.create$ret.272:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12338,8 +12314,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.274
-addi $t0, $t0, Output.create$ret.274
+lui $t0, Output.create$ret.273
+addi $t0, $t0, Output.create$ret.273
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12357,7 +12333,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.274:
+Output.create$ret.273:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12388,8 +12364,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.275
-addi $t0, $t0, Output.create$ret.275
+lui $t0, Output.create$ret.274
+addi $t0, $t0, Output.create$ret.274
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12407,7 +12383,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.275:
+Output.create$ret.274:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12438,8 +12414,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.276
-addi $t0, $t0, Output.create$ret.276
+lui $t0, Output.create$ret.275
+addi $t0, $t0, Output.create$ret.275
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12457,7 +12433,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.276:
+Output.create$ret.275:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12488,8 +12464,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.277
-addi $t0, $t0, Output.create$ret.277
+lui $t0, Output.create$ret.276
+addi $t0, $t0, Output.create$ret.276
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12507,7 +12483,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.277:
+Output.create$ret.276:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12538,8 +12514,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.278
-addi $t0, $t0, Output.create$ret.278
+lui $t0, Output.create$ret.277
+addi $t0, $t0, Output.create$ret.277
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12557,7 +12533,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.278:
+Output.create$ret.277:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12588,8 +12564,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.279
-addi $t0, $t0, Output.create$ret.279
+lui $t0, Output.create$ret.278
+addi $t0, $t0, Output.create$ret.278
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12607,7 +12583,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.279:
+Output.create$ret.278:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12638,8 +12614,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.280
-addi $t0, $t0, Output.create$ret.280
+lui $t0, Output.create$ret.279
+addi $t0, $t0, Output.create$ret.279
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12657,7 +12633,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.280:
+Output.create$ret.279:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12688,8 +12664,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.281
-addi $t0, $t0, Output.create$ret.281
+lui $t0, Output.create$ret.280
+addi $t0, $t0, Output.create$ret.280
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12707,7 +12683,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.281:
+Output.create$ret.280:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12738,8 +12714,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.282
-addi $t0, $t0, Output.create$ret.282
+lui $t0, Output.create$ret.281
+addi $t0, $t0, Output.create$ret.281
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12757,7 +12733,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.282:
+Output.create$ret.281:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12788,8 +12764,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.283
-addi $t0, $t0, Output.create$ret.283
+lui $t0, Output.create$ret.282
+addi $t0, $t0, Output.create$ret.282
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12807,7 +12783,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.283:
+Output.create$ret.282:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12838,8 +12814,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.284
-addi $t0, $t0, Output.create$ret.284
+lui $t0, Output.create$ret.283
+addi $t0, $t0, Output.create$ret.283
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12857,7 +12833,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.284:
+Output.create$ret.283:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12888,8 +12864,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.285
-addi $t0, $t0, Output.create$ret.285
+lui $t0, Output.create$ret.284
+addi $t0, $t0, Output.create$ret.284
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -12907,7 +12883,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.285:
+Output.create$ret.284:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -12938,6 +12914,56 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Output.create$ret.285
+addi $t0, $t0, Output.create$ret.285
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 36
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Output.create
+Output.create$ret.285:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+addi $t0, $zero, 73
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 120
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 48
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 120
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Output.create$ret.286
 addi $t0, $t0, Output.create$ret.286
 add $t0, $t0, $pc
@@ -12961,25 +12987,25 @@ Output.create$ret.286:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 73
+addi $t0, $zero, 74
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 120
+addi $t0, $zero, 30
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 48
+addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 48
+addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 48
+addi $t0, $zero, 12
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 48
+addi $t0, $zero, 204
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 48
+addi $t0, $zero, 204
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 120
@@ -13011,56 +13037,6 @@ Output.create$ret.287:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 74
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 30
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 12
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 12
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 12
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 204
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 204
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 120
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.create$ret.288
-addi $t0, $t0, Output.create$ret.288
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 36
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.create
-Output.create$ret.288:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
 addi $t0, $zero, 75
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13088,8 +13064,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.289
-addi $t0, $t0, Output.create$ret.289
+lui $t0, Output.create$ret.288
+addi $t0, $t0, Output.create$ret.288
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13107,7 +13083,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.289:
+Output.create$ret.288:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -13138,6 +13114,56 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Output.create$ret.289
+addi $t0, $t0, Output.create$ret.289
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 36
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Output.create
+Output.create$ret.289:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+addi $t0, $zero, 77
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 198
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 238
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 254
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 254
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 214
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 198
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 198
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Output.create$ret.290
 addi $t0, $t0, Output.create$ret.290
 add $t0, $t0, $pc
@@ -13161,22 +13187,22 @@ Output.create$ret.290:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 77
+addi $t0, $zero, 78
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 198
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 238
+addi $t0, $zero, 230
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 254
+addi $t0, $zero, 246
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 254
+addi $t0, $zero, 222
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 214
+addi $t0, $zero, 206
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 198
@@ -13211,56 +13237,6 @@ Output.create$ret.291:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 78
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 198
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 230
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 246
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 222
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 206
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 198
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 198
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.create$ret.292
-addi $t0, $t0, Output.create$ret.292
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 36
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.create
-Output.create$ret.292:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
 addi $t0, $zero, 79
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13288,8 +13264,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.293
-addi $t0, $t0, Output.create$ret.293
+lui $t0, Output.create$ret.292
+addi $t0, $t0, Output.create$ret.292
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13307,7 +13283,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.293:
+Output.create$ret.292:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -13338,8 +13314,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.294
-addi $t0, $t0, Output.create$ret.294
+lui $t0, Output.create$ret.293
+addi $t0, $t0, Output.create$ret.293
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13357,7 +13333,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.294:
+Output.create$ret.293:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -13388,8 +13364,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.295
-addi $t0, $t0, Output.create$ret.295
+lui $t0, Output.create$ret.294
+addi $t0, $t0, Output.create$ret.294
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13407,7 +13383,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.295:
+Output.create$ret.294:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -13438,6 +13414,56 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Output.create$ret.295
+addi $t0, $t0, Output.create$ret.295
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 36
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Output.create
+Output.create$ret.295:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+addi $t0, $zero, 83
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 120
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 204
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 224
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 112
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 28
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 204
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 120
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Output.create$ret.296
 addi $t0, $t0, Output.create$ret.296
 add $t0, $t0, $pc
@@ -13461,25 +13487,25 @@ Output.create$ret.296:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 83
+addi $t0, $zero, 84
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 120
+addi $t0, $zero, 252
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 204
+addi $t0, $zero, 180
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 224
+addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 112
+addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 28
+addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 204
+addi $t0, $zero, 48
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 120
@@ -13511,56 +13537,6 @@ Output.create$ret.297:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 84
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 252
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 180
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 48
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 48
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 48
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 48
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 120
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.create$ret.298
-addi $t0, $t0, Output.create$ret.298
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 36
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.create
-Output.create$ret.298:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
 addi $t0, $zero, 85
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13588,8 +13564,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.299
-addi $t0, $t0, Output.create$ret.299
+lui $t0, Output.create$ret.298
+addi $t0, $t0, Output.create$ret.298
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13607,7 +13583,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.299:
+Output.create$ret.298:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -13638,6 +13614,56 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Output.create$ret.299
+addi $t0, $t0, Output.create$ret.299
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 36
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Output.create
+Output.create$ret.299:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+addi $t0, $zero, 87
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 198
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 198
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 198
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 214
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 254
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 238
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 198
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Output.create$ret.300
 addi $t0, $t0, Output.create$ret.300
 add $t0, $t0, $pc
@@ -13661,7 +13687,7 @@ Output.create$ret.300:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 87
+addi $t0, $zero, 88
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 198
@@ -13670,16 +13696,16 @@ addi $sp, $sp, 4
 addi $t0, $zero, 198
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 198
+addi $t0, $zero, 108
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 214
+addi $t0, $zero, 56
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 254
+addi $t0, $zero, 56
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 238
+addi $t0, $zero, 108
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 198
@@ -13711,56 +13737,6 @@ Output.create$ret.301:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-addi $t0, $zero, 88
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 198
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 198
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 108
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 56
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 56
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 108
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 198
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.create$ret.302
-addi $t0, $t0, Output.create$ret.302
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 36
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.create
-Output.create$ret.302:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
 addi $t0, $zero, 89
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13788,8 +13764,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.303
-addi $t0, $t0, Output.create$ret.303
+lui $t0, Output.create$ret.302
+addi $t0, $t0, Output.create$ret.302
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13807,7 +13783,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.303:
+Output.create$ret.302:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -13838,8 +13814,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.304
-addi $t0, $t0, Output.create$ret.304
+lui $t0, Output.create$ret.303
+addi $t0, $t0, Output.create$ret.303
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13857,7 +13833,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.304:
+Output.create$ret.303:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -13888,8 +13864,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.305
-addi $t0, $t0, Output.create$ret.305
+lui $t0, Output.create$ret.304
+addi $t0, $t0, Output.create$ret.304
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13907,7 +13883,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.305:
+Output.create$ret.304:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -13938,8 +13914,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.306
-addi $t0, $t0, Output.create$ret.306
+lui $t0, Output.create$ret.305
+addi $t0, $t0, Output.create$ret.305
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -13957,7 +13933,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.306:
+Output.create$ret.305:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -13988,8 +13964,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.307
-addi $t0, $t0, Output.create$ret.307
+lui $t0, Output.create$ret.306
+addi $t0, $t0, Output.create$ret.306
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14007,7 +13983,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.307:
+Output.create$ret.306:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14038,8 +14014,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.308
-addi $t0, $t0, Output.create$ret.308
+lui $t0, Output.create$ret.307
+addi $t0, $t0, Output.create$ret.307
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14057,7 +14033,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.308:
+Output.create$ret.307:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14088,8 +14064,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 255
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.309
-addi $t0, $t0, Output.create$ret.309
+lui $t0, Output.create$ret.308
+addi $t0, $t0, Output.create$ret.308
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14107,7 +14083,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.309:
+Output.create$ret.308:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14138,8 +14114,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.310
-addi $t0, $t0, Output.create$ret.310
+lui $t0, Output.create$ret.309
+addi $t0, $t0, Output.create$ret.309
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14157,7 +14133,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.310:
+Output.create$ret.309:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14188,8 +14164,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.311
-addi $t0, $t0, Output.create$ret.311
+lui $t0, Output.create$ret.310
+addi $t0, $t0, Output.create$ret.310
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14207,7 +14183,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.311:
+Output.create$ret.310:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14238,8 +14214,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.312
-addi $t0, $t0, Output.create$ret.312
+lui $t0, Output.create$ret.311
+addi $t0, $t0, Output.create$ret.311
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14257,7 +14233,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.312:
+Output.create$ret.311:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14288,8 +14264,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.313
-addi $t0, $t0, Output.create$ret.313
+lui $t0, Output.create$ret.312
+addi $t0, $t0, Output.create$ret.312
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14307,7 +14283,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.313:
+Output.create$ret.312:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14338,8 +14314,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.314
-addi $t0, $t0, Output.create$ret.314
+lui $t0, Output.create$ret.313
+addi $t0, $t0, Output.create$ret.313
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14357,7 +14333,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.314:
+Output.create$ret.313:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14388,8 +14364,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.315
-addi $t0, $t0, Output.create$ret.315
+lui $t0, Output.create$ret.314
+addi $t0, $t0, Output.create$ret.314
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14407,7 +14383,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.315:
+Output.create$ret.314:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14438,8 +14414,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.316
-addi $t0, $t0, Output.create$ret.316
+lui $t0, Output.create$ret.315
+addi $t0, $t0, Output.create$ret.315
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14457,7 +14433,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.316:
+Output.create$ret.315:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14488,8 +14464,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 248
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.317
-addi $t0, $t0, Output.create$ret.317
+lui $t0, Output.create$ret.316
+addi $t0, $t0, Output.create$ret.316
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14507,7 +14483,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.317:
+Output.create$ret.316:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14538,8 +14514,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.318
-addi $t0, $t0, Output.create$ret.318
+lui $t0, Output.create$ret.317
+addi $t0, $t0, Output.create$ret.317
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14557,7 +14533,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.318:
+Output.create$ret.317:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14588,8 +14564,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.319
-addi $t0, $t0, Output.create$ret.319
+lui $t0, Output.create$ret.318
+addi $t0, $t0, Output.create$ret.318
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14607,7 +14583,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.319:
+Output.create$ret.318:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14638,8 +14614,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 120
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.320
-addi $t0, $t0, Output.create$ret.320
+lui $t0, Output.create$ret.319
+addi $t0, $t0, Output.create$ret.319
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14657,7 +14633,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.320:
+Output.create$ret.319:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14688,8 +14664,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.321
-addi $t0, $t0, Output.create$ret.321
+lui $t0, Output.create$ret.320
+addi $t0, $t0, Output.create$ret.320
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14707,7 +14683,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.321:
+Output.create$ret.320:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14738,8 +14714,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.322
-addi $t0, $t0, Output.create$ret.322
+lui $t0, Output.create$ret.321
+addi $t0, $t0, Output.create$ret.321
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14757,7 +14733,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.322:
+Output.create$ret.321:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14788,8 +14764,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.323
-addi $t0, $t0, Output.create$ret.323
+lui $t0, Output.create$ret.322
+addi $t0, $t0, Output.create$ret.322
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14807,7 +14783,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.323:
+Output.create$ret.322:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14838,8 +14814,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.324
-addi $t0, $t0, Output.create$ret.324
+lui $t0, Output.create$ret.323
+addi $t0, $t0, Output.create$ret.323
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14857,7 +14833,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.324:
+Output.create$ret.323:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14888,8 +14864,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.325
-addi $t0, $t0, Output.create$ret.325
+lui $t0, Output.create$ret.324
+addi $t0, $t0, Output.create$ret.324
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14907,7 +14883,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.325:
+Output.create$ret.324:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14938,8 +14914,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 240
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.326
-addi $t0, $t0, Output.create$ret.326
+lui $t0, Output.create$ret.325
+addi $t0, $t0, Output.create$ret.325
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -14957,7 +14933,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.326:
+Output.create$ret.325:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -14988,8 +14964,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 30
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.327
-addi $t0, $t0, Output.create$ret.327
+lui $t0, Output.create$ret.326
+addi $t0, $t0, Output.create$ret.326
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15007,7 +14983,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.327:
+Output.create$ret.326:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15038,8 +15014,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.328
-addi $t0, $t0, Output.create$ret.328
+lui $t0, Output.create$ret.327
+addi $t0, $t0, Output.create$ret.327
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15057,7 +15033,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.328:
+Output.create$ret.327:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15088,8 +15064,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.329
-addi $t0, $t0, Output.create$ret.329
+lui $t0, Output.create$ret.328
+addi $t0, $t0, Output.create$ret.328
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15107,7 +15083,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.329:
+Output.create$ret.328:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15138,8 +15114,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.330
-addi $t0, $t0, Output.create$ret.330
+lui $t0, Output.create$ret.329
+addi $t0, $t0, Output.create$ret.329
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15157,7 +15133,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.330:
+Output.create$ret.329:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15188,8 +15164,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.331
-addi $t0, $t0, Output.create$ret.331
+lui $t0, Output.create$ret.330
+addi $t0, $t0, Output.create$ret.330
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15207,7 +15183,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.331:
+Output.create$ret.330:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15238,8 +15214,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.332
-addi $t0, $t0, Output.create$ret.332
+lui $t0, Output.create$ret.331
+addi $t0, $t0, Output.create$ret.331
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15257,7 +15233,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.332:
+Output.create$ret.331:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15288,8 +15264,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.333
-addi $t0, $t0, Output.create$ret.333
+lui $t0, Output.create$ret.332
+addi $t0, $t0, Output.create$ret.332
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15307,7 +15283,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.333:
+Output.create$ret.332:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15338,8 +15314,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.334
-addi $t0, $t0, Output.create$ret.334
+lui $t0, Output.create$ret.333
+addi $t0, $t0, Output.create$ret.333
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15357,7 +15333,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.334:
+Output.create$ret.333:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15388,8 +15364,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 248
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.335
-addi $t0, $t0, Output.create$ret.335
+lui $t0, Output.create$ret.334
+addi $t0, $t0, Output.create$ret.334
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15407,7 +15383,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.335:
+Output.create$ret.334:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15438,8 +15414,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.336
-addi $t0, $t0, Output.create$ret.336
+lui $t0, Output.create$ret.335
+addi $t0, $t0, Output.create$ret.335
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15457,7 +15433,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.336:
+Output.create$ret.335:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15488,8 +15464,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.337
-addi $t0, $t0, Output.create$ret.337
+lui $t0, Output.create$ret.336
+addi $t0, $t0, Output.create$ret.336
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15507,7 +15483,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.337:
+Output.create$ret.336:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15538,8 +15514,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.338
-addi $t0, $t0, Output.create$ret.338
+lui $t0, Output.create$ret.337
+addi $t0, $t0, Output.create$ret.337
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15557,7 +15533,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.338:
+Output.create$ret.337:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15588,8 +15564,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.339
-addi $t0, $t0, Output.create$ret.339
+lui $t0, Output.create$ret.338
+addi $t0, $t0, Output.create$ret.338
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15607,7 +15583,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.339:
+Output.create$ret.338:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15638,8 +15614,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.create$ret.340
-addi $t0, $t0, Output.create$ret.340
+lui $t0, Output.create$ret.339
+addi $t0, $t0, Output.create$ret.339
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15657,7 +15633,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.create
-Output.create$ret.340:
+Output.create$ret.339:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -15684,8 +15660,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Array.new$ret.341
-addi $t0, $t0, Array.new$ret.341
+lui $t0, Array.new$ret.340
+addi $t0, $t0, Array.new$ret.340
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15703,7 +15679,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Array.new
-Array.new$ret.341:
+Array.new$ret.340:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
@@ -15713,8 +15689,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.342
-addi $t0, $t0, Math.multiply$ret.342
+lui $t0, Math.multiply$ret.341
+addi $t0, $t0, Math.multiply$ret.341
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -15732,7 +15708,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.342:
+Math.multiply$ret.341:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($arg)
@@ -16008,6 +15984,29 @@ addi $sp, $sp, 4
 addi $t0, $zero, 10
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Math.multiply$ret.342
+addi $t0, $t0, Math.multiply$ret.342
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Math.multiply
+Math.multiply$ret.342:
+addi $t0, $zero, 8
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Math.multiply$ret.343
 addi $t0, $t0, Math.multiply$ret.343
 add $t0, $t0, $pc
@@ -16028,37 +16027,14 @@ add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
 Math.multiply$ret.343:
-addi $t0, $zero, 8
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.344
-addi $t0, $t0, Math.multiply$ret.344
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 8
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Math.multiply
-Math.multiply$ret.344:
 lw $t0, Output.1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.divide$ret.345
-addi $t0, $t0, Math.divide$ret.345
+lui $t0, Math.divide$ret.344
+addi $t0, $t0, Math.divide$ret.344
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16076,7 +16052,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.divide
-Math.divide$ret.345:
+Math.divide$ret.344:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -16115,8 +16091,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.346
-addi $t0, $t0, Math.multiply$ret.346
+lui $t0, Math.multiply$ret.345
+addi $t0, $t0, Math.multiply$ret.345
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16134,7 +16110,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.346:
+Math.multiply$ret.345:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 16($lcl)
@@ -16160,8 +16136,8 @@ IF_TRUE1$Output.moveCursor:
 addi $t0, $zero, 30
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.347
-addi $t0, $t0, Math.twoToThe$ret.347
+lui $t0, Math.twoToThe$ret.346
+addi $t0, $t0, Math.twoToThe$ret.346
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16179,7 +16155,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
-Math.twoToThe$ret.347:
+Math.twoToThe$ret.346:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 12($lcl)
@@ -16239,8 +16215,8 @@ IF_TRUE2$Output.moveCursor:
 addi $t0, $zero, 22
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.348
-addi $t0, $t0, Math.twoToThe$ret.348
+lui $t0, Math.twoToThe$ret.347
+addi $t0, $t0, Math.twoToThe$ret.347
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16258,7 +16234,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
-Math.twoToThe$ret.348:
+Math.twoToThe$ret.347:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 12($lcl)
@@ -16318,8 +16294,8 @@ IF_TRUE3$Output.moveCursor:
 addi $t0, $zero, 14
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.349
-addi $t0, $t0, Math.twoToThe$ret.349
+lui $t0, Math.twoToThe$ret.348
+addi $t0, $t0, Math.twoToThe$ret.348
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16337,7 +16313,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
-Math.twoToThe$ret.349:
+Math.twoToThe$ret.348:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 12($lcl)
@@ -16378,8 +16354,8 @@ IF_FALSE3$Output.moveCursor:
 addi $t0, $zero, 6
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.350
-addi $t0, $t0, Math.twoToThe$ret.350
+lui $t0, Math.twoToThe$ret.349
+addi $t0, $t0, Math.twoToThe$ret.349
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16397,7 +16373,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
-Math.twoToThe$ret.350:
+Math.twoToThe$ret.349:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 12($lcl)
@@ -16497,8 +16473,8 @@ addi $sp, $sp, 4
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.getMap$ret.351
-addi $t0, $t0, Output.getMap$ret.351
+lui $t0, Output.getMap$ret.350
+addi $t0, $t0, Output.getMap$ret.350
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16516,7 +16492,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.getMap
-Output.getMap$ret.351:
+Output.getMap$ret.350:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
@@ -16524,6 +16500,29 @@ lw $t0, Output.2
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 10
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, Math.multiply$ret.351
+addi $t0, $t0, Math.multiply$ret.351
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Math.multiply
+Math.multiply$ret.351:
+addi $t0, $zero, 8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, Math.multiply$ret.352
@@ -16546,37 +16545,14 @@ add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
 Math.multiply$ret.352:
-addi $t0, $zero, 8
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.353
-addi $t0, $t0, Math.multiply$ret.353
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 8
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Math.multiply
-Math.multiply$ret.353:
 lw $t0, Output.1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.divide$ret.354
-addi $t0, $t0, Math.divide$ret.354
+lui $t0, Math.divide$ret.353
+addi $t0, $t0, Math.divide$ret.353
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16594,7 +16570,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.divide
-Math.divide$ret.354:
+Math.divide$ret.353:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -16633,8 +16609,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.355
-addi $t0, $t0, Math.multiply$ret.355
+lui $t0, Math.multiply$ret.354
+addi $t0, $t0, Math.multiply$ret.354
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16652,7 +16628,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.355:
+Math.multiply$ret.354:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 20($lcl)
@@ -16673,8 +16649,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.356
-addi $t0, $t0, Math.multiply$ret.356
+lui $t0, Math.multiply$ret.355
+addi $t0, $t0, Math.multiply$ret.355
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16692,7 +16668,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.356:
+Math.multiply$ret.355:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 24($lcl)
@@ -16718,6 +16694,35 @@ IF_TRUE4$Output.printChar:
 addi $t0, $zero, 24
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Math.twoToThe$ret.356
+addi $t0, $t0, Math.twoToThe$ret.356
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Math.twoToThe
+Math.twoToThe$ret.356:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 36($lcl)
+lw $t0, 12($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 24
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Math.twoToThe$ret.357
 addi $t0, $t0, Math.twoToThe$ret.357
 add $t0, $t0, $pc
@@ -16738,37 +16743,8 @@ add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
 Math.twoToThe$ret.357:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 36($lcl)
-lw $t0, 12($lcl)
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 24
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.358
-addi $t0, $t0, Math.twoToThe$ret.358
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 4
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Math.twoToThe
-Math.twoToThe$ret.358:
-lui $t0, Math.multiply$ret.359
-addi $t0, $t0, Math.multiply$ret.359
+lui $t0, Math.multiply$ret.358
+addi $t0, $t0, Math.multiply$ret.358
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16786,7 +16762,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.359:
+Math.multiply$ret.358:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 12($lcl)
@@ -16862,6 +16838,29 @@ IF_TRUE5$Output.printChar:
 addi $t0, $zero, 24
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Math.twoToThe$ret.359
+addi $t0, $t0, Math.twoToThe$ret.359
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Math.twoToThe
+Math.twoToThe$ret.359:
+addi $t0, $zero, 16
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Math.twoToThe$ret.360
 addi $t0, $t0, Math.twoToThe$ret.360
 add $t0, $t0, $pc
@@ -16882,29 +16881,6 @@ add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
 Math.twoToThe$ret.360:
-addi $t0, $zero, 16
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.361
-addi $t0, $t0, Math.twoToThe$ret.361
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 4
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Math.twoToThe
-Math.twoToThe$ret.361:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -16933,8 +16909,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 16
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.362
-addi $t0, $t0, Math.twoToThe$ret.362
+lui $t0, Math.twoToThe$ret.361
+addi $t0, $t0, Math.twoToThe$ret.361
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16952,9 +16928,9 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
-Math.twoToThe$ret.362:
-lui $t0, Math.multiply$ret.363
-addi $t0, $t0, Math.multiply$ret.363
+Math.twoToThe$ret.361:
+lui $t0, Math.multiply$ret.362
+addi $t0, $t0, Math.multiply$ret.362
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -16972,7 +16948,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.363:
+Math.multiply$ret.362:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 12($lcl)
@@ -17048,6 +17024,29 @@ IF_TRUE6$Output.printChar:
 addi $t0, $zero, 16
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Math.twoToThe$ret.363
+addi $t0, $t0, Math.twoToThe$ret.363
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Math.twoToThe
+Math.twoToThe$ret.363:
+addi $t0, $zero, 8
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Math.twoToThe$ret.364
 addi $t0, $t0, Math.twoToThe$ret.364
 add $t0, $t0, $pc
@@ -17068,29 +17067,6 @@ add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
 Math.twoToThe$ret.364:
-addi $t0, $zero, 8
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.365
-addi $t0, $t0, Math.twoToThe$ret.365
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 4
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Math.twoToThe
-Math.twoToThe$ret.365:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -17119,8 +17095,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.366
-addi $t0, $t0, Math.twoToThe$ret.366
+lui $t0, Math.twoToThe$ret.365
+addi $t0, $t0, Math.twoToThe$ret.365
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17138,9 +17114,9 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
-Math.twoToThe$ret.366:
-lui $t0, Math.multiply$ret.367
-addi $t0, $t0, Math.multiply$ret.367
+Math.twoToThe$ret.365:
+lui $t0, Math.multiply$ret.366
+addi $t0, $t0, Math.multiply$ret.366
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17158,7 +17134,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.367:
+Math.multiply$ret.366:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 12($lcl)
@@ -17293,8 +17269,8 @@ jalr $ra, $t0, 0
 LOOP_EXIT_62$Output.printChar:
 jal $ra, IF_FALSE7$Output.printChar
 IF_TRUE7$Output.printChar:
-lui $t0, Output.println$ret.368
-addi $t0, $t0, Output.println$ret.368
+lui $t0, Output.println$ret.367
+addi $t0, $t0, Output.println$ret.367
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17312,7 +17288,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.println
-Output.println$ret.368:
+Output.println$ret.367:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -17330,8 +17306,8 @@ lw $t1, 0($sp)
 add $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.moveCursor$ret.369
-addi $t0, $t0, Output.moveCursor$ret.369
+lui $t0, Output.moveCursor$ret.368
+addi $t0, $t0, Output.moveCursor$ret.368
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17349,7 +17325,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.moveCursor
-Output.moveCursor$ret.369:
+Output.moveCursor$ret.368:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -17383,8 +17359,8 @@ addi $sp, $sp, 4
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.length$ret.370
-addi $t0, $t0, String.length$ret.370
+lui $t0, String.length$ret.369
+addi $t0, $t0, String.length$ret.369
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17402,7 +17378,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.length
-String.length$ret.370:
+String.length$ret.369:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -17422,8 +17398,8 @@ addi $sp, $sp, 4
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.charAt$ret.371
-addi $t0, $t0, String.charAt$ret.371
+lui $t0, String.charAt$ret.370
+addi $t0, $t0, String.charAt$ret.370
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17441,9 +17417,9 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.charAt
-String.charAt$ret.371:
-lui $t0, Output.printChar$ret.372
-addi $t0, $t0, Output.printChar$ret.372
+String.charAt$ret.370:
+lui $t0, Output.printChar$ret.371
+addi $t0, $t0, Output.printChar$ret.371
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17461,7 +17437,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.printChar
-Output.printChar$ret.372:
+Output.printChar$ret.371:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -17498,8 +17474,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 10
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.new$ret.373
-addi $t0, $t0, String.new$ret.373
+lui $t0, String.new$ret.372
+addi $t0, $t0, String.new$ret.372
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17517,7 +17493,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.new
-String.new$ret.373:
+String.new$ret.372:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
@@ -17527,8 +17503,8 @@ addi $sp, $sp, 4
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.setInt$ret.374
-addi $t0, $t0, String.setInt$ret.374
+lui $t0, String.setInt$ret.373
+addi $t0, $t0, String.setInt$ret.373
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17546,15 +17522,15 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.setInt
-String.setInt$ret.374:
+String.setInt$ret.373:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Output.printString$ret.375
-addi $t0, $t0, Output.printString$ret.375
+lui $t0, Output.printString$ret.374
+addi $t0, $t0, Output.printString$ret.374
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17572,15 +17548,15 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.printString
-Output.printString$ret.375:
+Output.printString$ret.374:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.dispose$ret.376
-addi $t0, $t0, String.dispose$ret.376
+lui $t0, String.dispose$ret.375
+addi $t0, $t0, String.dispose$ret.375
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17598,7 +17574,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.dispose
-String.dispose$ret.376:
+String.dispose$ret.375:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -17647,6 +17623,37 @@ addi $sp, $sp, 4
 addi $t0, $zero, 0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Output.moveCursor$ret.376
+addi $t0, $t0, Output.moveCursor$ret.376
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Output.moveCursor
+Output.moveCursor$ret.376:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+jal $ra, IF_END8$Output.println
+IF_FALSE8$Output.println:
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Output.moveCursor$ret.377
 addi $t0, $t0, Output.moveCursor$ret.377
 add $t0, $t0, $pc
@@ -17667,37 +17674,6 @@ add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.moveCursor
 Output.moveCursor$ret.377:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
-jal $ra, IF_END8$Output.println
-IF_FALSE8$Output.println:
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.moveCursor$ret.378
-addi $t0, $t0, Output.moveCursor$ret.378
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 8
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Output.moveCursor
-Output.moveCursor$ret.378:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -17790,6 +17766,46 @@ addi $sp, $sp, 4
 addi $t0, $zero, 39
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Output.moveCursor$ret.378
+addi $t0, $t0, Output.moveCursor$ret.378
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Output.moveCursor
+Output.moveCursor$ret.378:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 0($temp)
+jal $ra, IF_END10$Output.backSpace
+IF_FALSE10$Output.backSpace:
+IF_END10$Output.backSpace:
+jal $ra, IF_END9$Output.backSpace
+IF_FALSE9$Output.backSpace:
+lw $t0, Output.2
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lw $t0, Output.1
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 1
+addi $sp, $sp, -4
+lw $t1, 0($sp)
+sub $t0, $t1, $t0
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Output.moveCursor$ret.379
 addi $t0, $t0, Output.moveCursor$ret.379
 add $t0, $t0, $pc
@@ -17813,25 +17829,15 @@ Output.moveCursor$ret.379:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-jal $ra, IF_END10$Output.backSpace
-IF_FALSE10$Output.backSpace:
-IF_END10$Output.backSpace:
-jal $ra, IF_END9$Output.backSpace
-IF_FALSE9$Output.backSpace:
+IF_END9$Output.backSpace:
 lw $t0, Output.2
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lw $t0, Output.1
+addi $t0, $zero, 10
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 1
-addi $sp, $sp, -4
-lw $t1, 0($sp)
-sub $t0, $t1, $t0
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Output.moveCursor$ret.380
-addi $t0, $t0, Output.moveCursor$ret.380
+lui $t0, Math.multiply$ret.380
+addi $t0, $t0, Math.multiply$ret.380
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17848,16 +17854,9 @@ addi $t0, $t0, 8
 sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
-jal $ra, Output.moveCursor
-Output.moveCursor$ret.380:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 0($temp)
-IF_END9$Output.backSpace:
-lw $t0, Output.2
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 10
+jal $ra, Math.multiply
+Math.multiply$ret.380:
+addi $t0, $zero, 8
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, Math.multiply$ret.381
@@ -17880,37 +17879,14 @@ add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
 Math.multiply$ret.381:
-addi $t0, $zero, 8
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.382
-addi $t0, $t0, Math.multiply$ret.382
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 8
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Math.multiply
-Math.multiply$ret.382:
 lw $t0, Output.1
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.divide$ret.383
-addi $t0, $t0, Math.divide$ret.383
+lui $t0, Math.divide$ret.382
+addi $t0, $t0, Math.divide$ret.382
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -17928,7 +17904,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.divide
-Math.divide$ret.383:
+Math.divide$ret.382:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -17967,6 +17943,35 @@ addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Math.multiply$ret.383
+addi $t0, $t0, Math.multiply$ret.383
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Math.multiply
+Math.multiply$ret.383:
+addi $sp, $sp, -4
+lw $t0, 0($sp)
+sw $t0, 12($lcl)
+lw $t0, 0($lcl)
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 4
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Math.multiply$ret.384
 addi $t0, $t0, Math.multiply$ret.384
 add $t0, $t0, $pc
@@ -17987,35 +17992,6 @@ add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
 Math.multiply$ret.384:
-addi $sp, $sp, -4
-lw $t0, 0($sp)
-sw $t0, 12($lcl)
-lw $t0, 0($lcl)
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 4
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.385
-addi $t0, $t0, Math.multiply$ret.385
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 8
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Math.multiply
-Math.multiply$ret.385:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 16($lcl)
@@ -18041,8 +18017,8 @@ IF_TRUE11$Output.backSpace:
 addi $t0, $zero, 24
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.386
-addi $t0, $t0, Math.twoToThe$ret.386
+lui $t0, Math.twoToThe$ret.385
+addi $t0, $t0, Math.twoToThe$ret.385
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18060,7 +18036,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
-Math.twoToThe$ret.386:
+Math.twoToThe$ret.385:
 addi $t0, $zero, 1
 addi $sp, $sp, -4
 lw $t1, 0($sp)
@@ -18124,6 +18100,29 @@ IF_TRUE12$Output.backSpace:
 addi $t0, $zero, 24
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Math.twoToThe$ret.386
+addi $t0, $t0, Math.twoToThe$ret.386
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Math.twoToThe
+Math.twoToThe$ret.386:
+addi $t0, $zero, 16
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Math.twoToThe$ret.387
 addi $t0, $t0, Math.twoToThe$ret.387
 add $t0, $t0, $pc
@@ -18144,29 +18143,6 @@ add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
 Math.twoToThe$ret.387:
-addi $t0, $zero, 16
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.388
-addi $t0, $t0, Math.twoToThe$ret.388
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 4
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Math.twoToThe
-Math.twoToThe$ret.388:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -18247,6 +18223,29 @@ IF_TRUE13$Output.backSpace:
 addi $t0, $zero, 16
 sw $t0, 0($sp)
 addi $sp, $sp, 4
+lui $t0, Math.twoToThe$ret.388
+addi $t0, $t0, Math.twoToThe$ret.388
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 4
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Math.twoToThe
+Math.twoToThe$ret.388:
+addi $t0, $zero, 8
+sw $t0, 0($sp)
+addi $sp, $sp, 4
 lui $t0, Math.twoToThe$ret.389
 addi $t0, $t0, Math.twoToThe$ret.389
 add $t0, $t0, $pc
@@ -18267,29 +18266,6 @@ add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.twoToThe
 Math.twoToThe$ret.389:
-addi $t0, $zero, 8
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Math.twoToThe$ret.390
-addi $t0, $t0, Math.twoToThe$ret.390
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 4
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Math.twoToThe
-Math.twoToThe$ret.390:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -18425,8 +18401,8 @@ String.new:
 addi $t0, $zero, 3
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Memory.alloc$ret.391
-addi $t0, $t0, Memory.alloc$ret.391
+lui $t0, Memory.alloc$ret.390
+addi $t0, $t0, Memory.alloc$ret.390
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18444,7 +18420,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Memory.alloc
-Memory.alloc$ret.391:
+Memory.alloc$ret.390:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $this, $t0, 0
@@ -18481,8 +18457,8 @@ sw $t0, 0($t1)
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Array.new$ret.392
-addi $t0, $t0, Array.new$ret.392
+lui $t0, Array.new$ret.391
+addi $t0, $t0, Array.new$ret.391
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18500,7 +18476,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Array.new
-Array.new$ret.392:
+Array.new$ret.391:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 add $t1, $this, $ram
@@ -18553,8 +18529,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.393
-addi $t0, $t0, Math.multiply$ret.393
+lui $t0, Math.multiply$ret.392
+addi $t0, $t0, Math.multiply$ret.392
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18572,7 +18548,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.393:
+Math.multiply$ret.392:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
@@ -18614,8 +18590,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.394
-addi $t0, $t0, Math.multiply$ret.394
+lui $t0, Math.multiply$ret.393
+addi $t0, $t0, Math.multiply$ret.393
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18633,7 +18609,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.394:
+Math.multiply$ret.393:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
@@ -18684,8 +18660,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 4
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.395
-addi $t0, $t0, Math.multiply$ret.395
+lui $t0, Math.multiply$ret.394
+addi $t0, $t0, Math.multiply$ret.394
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18703,7 +18679,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.395:
+Math.multiply$ret.394:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
@@ -18905,8 +18881,8 @@ addi $sp, $sp, 4
 lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.396
-addi $t0, $t0, Math.multiply$ret.396
+lui $t0, Math.multiply$ret.395
+addi $t0, $t0, Math.multiply$ret.395
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18924,7 +18900,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.396:
+Math.multiply$ret.395:
 add $t1, $this, $ram
 lw $t0, 8($t1)
 addi $sp, $sp, -4
@@ -18935,8 +18911,8 @@ add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.isDigit$ret.397
-addi $t0, $t0, String.isDigit$ret.397
+lui $t0, String.isDigit$ret.396
+addi $t0, $t0, String.isDigit$ret.396
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -18954,7 +18930,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.isDigit
-String.isDigit$ret.397:
+String.isDigit$ret.396:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -18972,6 +18948,32 @@ lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 addi $t0, $zero, 10
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lui $t0, Math.multiply$ret.397
+addi $t0, $t0, Math.multiply$ret.397
+add $t0, $t0, $pc
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+sw $lcl, 0($sp)
+addi $sp, $sp, 4
+sw $arg, 0($sp)
+addi $sp, $sp, 4
+sw $this, 0($sp)
+addi $sp, $sp, 4
+sw $that, 0($sp)
+addi $sp, $sp, 4
+addi $t0, $zero, 20
+addi $t0, $t0, 8
+sub $t0, $sp, $t0
+add $arg, $zero, $t0
+add $lcl, $zero, $sp
+jal $ra, Math.multiply
+Math.multiply$ret.397:
+addi $t0, $zero, 4
+sw $t0, 0($sp)
+addi $sp, $sp, 4
+lw $t0, 4($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
 lui $t0, Math.multiply$ret.398
@@ -18994,32 +18996,6 @@ add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
 Math.multiply$ret.398:
-addi $t0, $zero, 4
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lw $t0, 4($lcl)
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.399
-addi $t0, $t0, Math.multiply$ret.399
-add $t0, $t0, $pc
-sw $t0, 0($sp)
-addi $sp, $sp, 4
-sw $lcl, 0($sp)
-addi $sp, $sp, 4
-sw $arg, 0($sp)
-addi $sp, $sp, 4
-sw $this, 0($sp)
-addi $sp, $sp, 4
-sw $that, 0($sp)
-addi $sp, $sp, 4
-addi $t0, $zero, 20
-addi $t0, $t0, 8
-sub $t0, $sp, $t0
-add $arg, $zero, $t0
-add $lcl, $zero, $sp
-jal $ra, Math.multiply
-Math.multiply$ret.399:
 add $t1, $this, $ram
 lw $t0, 8($t1)
 addi $sp, $sp, -4
@@ -19030,8 +19006,8 @@ add $t1, $that, $ram
 lw $t0, 0($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.charToDigit$ret.400
-addi $t0, $t0, String.charToDigit$ret.400
+lui $t0, String.charToDigit$ret.399
+addi $t0, $t0, String.charToDigit$ret.399
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19049,7 +19025,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.charToDigit
-String.charToDigit$ret.400:
+String.charToDigit$ret.399:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -19181,7 +19157,7 @@ String.digitToChar:
 lw $t0, 0($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-addi $t0, $zero, 48
+addi $t0, $zero, 65
 addi $sp, $sp, -4
 lw $t1, 0($sp)
 add $t0, $t1, $t0
@@ -19229,8 +19205,8 @@ lw $t0, 0($arg)
 addi $this, $t0, 0
 sw $this, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.erase$ret.401
-addi $t0, $t0, String.erase$ret.401
+lui $t0, String.erase$ret.400
+addi $t0, $t0, String.erase$ret.400
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19248,7 +19224,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.erase
-String.erase$ret.401:
+String.erase$ret.400:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -19278,8 +19254,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 45
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.appendChar$ret.402
-addi $t0, $t0, String.appendChar$ret.402
+lui $t0, String.appendChar$ret.401
+addi $t0, $t0, String.appendChar$ret.401
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19297,7 +19273,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.appendChar
-String.appendChar$ret.402:
+String.appendChar$ret.401:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -19309,8 +19285,8 @@ addi $sp, $sp, 4
 lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.setIntHelper$ret.403
-addi $t0, $t0, String.setIntHelper$ret.403
+lui $t0, String.setIntHelper$ret.402
+addi $t0, $t0, String.setIntHelper$ret.402
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19328,7 +19304,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.setIntHelper
-String.setIntHelper$ret.403:
+String.setIntHelper$ret.402:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -19374,8 +19350,8 @@ addi $sp, $sp, 4
 lw $t0, 4($arg)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.digitToChar$ret.404
-addi $t0, $t0, String.digitToChar$ret.404
+lui $t0, String.digitToChar$ret.403
+addi $t0, $t0, String.digitToChar$ret.403
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19393,9 +19369,9 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.digitToChar
-String.digitToChar$ret.404:
-lui $t0, String.appendChar$ret.405
-addi $t0, $t0, String.appendChar$ret.405
+String.digitToChar$ret.403:
+lui $t0, String.appendChar$ret.404
+addi $t0, $t0, String.appendChar$ret.404
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19413,7 +19389,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.appendChar
-String.appendChar$ret.405:
+String.appendChar$ret.404:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -19425,8 +19401,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 10
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.divide$ret.406
-addi $t0, $t0, Math.divide$ret.406
+lui $t0, Math.divide$ret.405
+addi $t0, $t0, Math.divide$ret.405
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19444,7 +19420,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.divide
-Math.divide$ret.406:
+Math.divide$ret.405:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($lcl)
@@ -19453,8 +19429,8 @@ addi $sp, $sp, 4
 lw $t0, 0($lcl)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.setIntHelper$ret.407
-addi $t0, $t0, String.setIntHelper$ret.407
+lui $t0, String.setIntHelper$ret.406
+addi $t0, $t0, String.setIntHelper$ret.406
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19472,7 +19448,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.setIntHelper
-String.setIntHelper$ret.407:
+String.setIntHelper$ret.406:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -19487,8 +19463,8 @@ addi $sp, $sp, 4
 addi $t0, $zero, 10
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Math.multiply$ret.408
-addi $t0, $t0, Math.multiply$ret.408
+lui $t0, Math.multiply$ret.407
+addi $t0, $t0, Math.multiply$ret.407
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19506,7 +19482,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.multiply
-Math.multiply$ret.408:
+Math.multiply$ret.407:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 addi $sp, $sp, -4
@@ -19514,8 +19490,8 @@ lw $t1, 0($sp)
 sub $t0, $t1, $t0
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, String.digitToChar$ret.409
-addi $t0, $t0, String.digitToChar$ret.409
+lui $t0, String.digitToChar$ret.408
+addi $t0, $t0, String.digitToChar$ret.408
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19533,9 +19509,9 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.digitToChar
-String.digitToChar$ret.409:
-lui $t0, String.appendChar$ret.410
-addi $t0, $t0, String.appendChar$ret.410
+String.digitToChar$ret.408:
+lui $t0, String.appendChar$ret.409
+addi $t0, $t0, String.appendChar$ret.409
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19553,7 +19529,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, String.appendChar
-String.appendChar$ret.410:
+String.appendChar$ret.409:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -19636,8 +19612,8 @@ add $t1, $this, $ram
 lw $t0, 8($t1)
 sw $t0, 0($sp)
 addi $sp, $sp, 4
-lui $t0, Array.dispose$ret.411
-addi $t0, $t0, Array.dispose$ret.411
+lui $t0, Array.dispose$ret.410
+addi $t0, $t0, Array.dispose$ret.410
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19655,7 +19631,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Array.dispose
-Array.dispose$ret.411:
+Array.dispose$ret.410:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
@@ -19677,8 +19653,8 @@ lw $this, 12($t0)
 lw $that, 16($t0)
 jalr $ra, $ra, 0
 Sys.init:
-lui $t0, Memory.init$ret.412
-addi $t0, $t0, Memory.init$ret.412
+lui $t0, Memory.init$ret.411
+addi $t0, $t0, Memory.init$ret.411
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19696,12 +19672,12 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Memory.init
-Memory.init$ret.412:
+Memory.init$ret.411:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lui $t0, Math.init$ret.413
-addi $t0, $t0, Math.init$ret.413
+lui $t0, Math.init$ret.412
+addi $t0, $t0, Math.init$ret.412
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19719,12 +19695,12 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Math.init
-Math.init$ret.413:
+Math.init$ret.412:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lui $t0, Output.init$ret.414
-addi $t0, $t0, Output.init$ret.414
+lui $t0, Output.init$ret.413
+addi $t0, $t0, Output.init$ret.413
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19742,12 +19718,12 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Output.init
-Output.init$ret.414:
+Output.init$ret.413:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lui $t0, Keyboard.init$ret.415
-addi $t0, $t0, Keyboard.init$ret.415
+lui $t0, Keyboard.init$ret.414
+addi $t0, $t0, Keyboard.init$ret.414
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19765,12 +19741,12 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Keyboard.init
-Keyboard.init$ret.415:
+Keyboard.init$ret.414:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lui $t0, Main.main$ret.416
-addi $t0, $t0, Main.main$ret.416
+lui $t0, Main.main$ret.415
+addi $t0, $t0, Main.main$ret.415
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19788,12 +19764,12 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Main.main
-Main.main$ret.416:
+Main.main$ret.415:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)
-lui $t0, Sys.halt$ret.417
-addi $t0, $t0, Sys.halt$ret.417
+lui $t0, Sys.halt$ret.416
+addi $t0, $t0, Sys.halt$ret.416
 add $t0, $t0, $pc
 sw $t0, 0($sp)
 addi $sp, $sp, 4
@@ -19811,7 +19787,7 @@ sub $t0, $sp, $t0
 add $arg, $zero, $t0
 add $lcl, $zero, $sp
 jal $ra, Sys.halt
-Sys.halt$ret.417:
+Sys.halt$ret.416:
 addi $sp, $sp, -4
 lw $t0, 0($sp)
 sw $t0, 0($temp)

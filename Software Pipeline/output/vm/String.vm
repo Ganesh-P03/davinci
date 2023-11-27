@@ -200,7 +200,7 @@ sub
 return
 function String.digitToChar 0
 push argument 0
-push constant 48
+push constant 65
 add
 return
 function String.erase 0
