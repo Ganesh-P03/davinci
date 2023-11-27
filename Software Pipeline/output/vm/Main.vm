@@ -1,18 +1,18 @@
-function Main.main 24
+function Main.main 25
 push constant 67
-pop local 18
-push constant 76
-pop local 17
-push constant 70
-pop local 20
-push constant 81
-pop local 21
-push constant 69
 pop local 19
-push constant 83
+push constant 76
+pop local 18
+push constant 70
+pop local 21
+push constant 81
 pop local 22
-push constant 72
+push constant 69
+pop local 20
+push constant 83
 pop local 23
+push constant 72
+pop local 24
 push constant 1
 call String.new 1
 pop local 3
@@ -264,9 +264,9 @@ pop local 9
 push local 9
 push constant 0
 call String.charAt 2
-pop local 16
-push local 16
+pop local 17
 push local 17
+push local 18
 eq
 if-goto IF_TRUE0
 goto IF_FALSE0
@@ -287,8 +287,8 @@ call Output.printString 1
 pop temp 0
 goto IF_END0
 label IF_FALSE0
-push local 16
-push local 18
+push local 17
+push local 19
 eq
 if-goto IF_TRUE1
 goto IF_FALSE1
@@ -299,8 +299,8 @@ call Output.moveCursor 2
 pop temp 0
 goto IF_END1
 label IF_FALSE1
-push local 16
-push local 19
+push local 17
+push local 20
 eq
 if-goto IF_TRUE2
 goto IF_FALSE2
@@ -309,30 +309,96 @@ push constant 2
 pop local 0
 goto IF_END2
 label IF_FALSE2
-push local 16
-push local 20
+push local 17
+push local 21
 eq
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
-call Fibonacci.main 0
-pop temp 0
-goto IF_END3
-label IF_FALSE3
+push constant 3
+call String.new 1
+pop local 16
 push local 16
-push local 23
+push constant 110
+call String.appendChar 2
+pop temp 0
+push local 16
+push constant 58
+call String.appendChar 2
+pop temp 0
+push local 16
+push constant 32
+call String.appendChar 2
+pop temp 0
+push local 16
+pop local 16
+push local 16
+call Output.printString 1
+pop temp 0
+call Keyboard.readChar 0
+pop local 10
+push local 10
+call String.charToDigit 1
+pop local 11
+push constant 0
+pop local 12
+push constant 1
+pop local 13
+push local 11
+push constant 1
 eq
 if-goto IF_TRUE4
 goto IF_FALSE4
 label IF_TRUE4
+push local 13
+call Output.printInt 1
+pop temp 0
+goto IF_END4
+label IF_FALSE4
+label IF_END4
+push constant 2
+pop local 15
+label WHILE_EXP1
+push local 15
+push local 11
+lt
+not
+if-goto WHILE_END1
+push local 12
+push local 13
+add
+pop local 14
+push local 13
+pop local 12
+push local 14
+pop local 13
+push local 15
+push constant 1
+add
+pop local 15
+goto WHILE_EXP1
+label WHILE_END1
+call Output.println 0
+pop temp 0
+push local 14
+call Output.printInt 1
+pop temp 0
+goto IF_END3
+label IF_FALSE3
+push local 17
+push local 24
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
 push local 8
 call Output.printString 1
 pop temp 0
 call Hangman.main 0
 pop temp 0
-goto IF_END4
-label IF_FALSE4
-label IF_END4
+goto IF_END5
+label IF_FALSE5
+label IF_END5
 label IF_END3
 label IF_END2
 label IF_END1

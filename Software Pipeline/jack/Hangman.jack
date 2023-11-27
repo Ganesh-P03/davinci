@@ -4,7 +4,7 @@ class Hangman {
     function void main() {
         var Array wordBank;
         var Array guessedWords;
-        var int i,j,wordLength;
+        var int i,j,wordLength,tempVar;
         var int attemptsRemaining;
         var String currword;
         var char letterGuessed;
@@ -82,7 +82,13 @@ class Hangman {
 
             let wordGuessed = 0;
             do Output.printChar(68);
-            while(wordGuessed=0 & attemptsRemaining>0){
+            let tempVar = 0;
+            if(wordGuessed=0){
+                if(attemptsRemaining>0){
+                    let tempVar = 1;
+                }
+            }
+            while(tempVar=1){
                 do Output.printString(currWordIs);
                 do Output.printString(currword);
                 do Output.println();
@@ -149,6 +155,13 @@ class Hangman {
                         }
                 // }
 
+                let tempVar = 0;
+                if(wordGuessed=0){
+                    if(attemptsRemaining>0){
+                        let tempVar = 1;
+                    }
+                }
+                
                 do Output.println();
             }
             let i = i+1;

@@ -3,6 +3,7 @@ class Main{
     var int zero,one;
     var String arrow,space,error,fibo_print,snake_print,qsort_print,hangman_print;
     var String input;
+    var char ch_fibo;
     var int n, a, b, c, i;
     var String enterNumber;//,thefirst,fibonacci_numbers,comma;
     var char currChar;
@@ -43,7 +44,7 @@ class Main{
         }
         else{
             if(currChar=clear){
-               // do Screen.clearScreen();
+                // do Screen.clearScreen();
                 do Output.moveCursor(0,0);
             }
             else{
@@ -53,8 +54,10 @@ class Main{
                 else{
                     if(currChar=fibo){
                         let enterNumber = "n: ";
-                    
-                        let n = Keyboard.readInt(enterNumber); // Read user input for the number of Fibonacci numbers to print
+                        do Output.printString(enterNumber);
+                        let ch_fibo = Keyboard.readChar();
+                      //  let n = Keyboard.readInt(enterNumber); // Read user input for the number of Fibonacci numbers to print
+                        let n = String.charToDigit(ch_fibo);
                         let a = 0;
                         let b = 1;
                     
