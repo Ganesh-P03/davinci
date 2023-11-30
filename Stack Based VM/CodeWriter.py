@@ -23,7 +23,7 @@ class CodeWriter:
 
     # Set the output file/stream
     def __init__(self, output_path, meaningFull: bool = True):
-        self.__meaningFull = meaningFull and False
+        self.__meaningFull = meaningFull
 
         output_stream = None
 
@@ -111,14 +111,13 @@ class CodeWriter:
         self.writeMessage("*** Call Sys.init ***")
         self.writeCall("Sys.init", 0)
         self.writeMessage("")
-        
+
         # Check code
         self.writeMessage("OS Verification code")
         self.write("addi $sp, $sp, -4")  # SP = SP - 1
         self.write("lw $t0, 0($sp)")
         self.write("jal x1, END")
         self.writeMessage("")
-        
 
     def writeASM(self, parser: Parser):
         self.setFileName(parser.getFileName())
@@ -158,9 +157,8 @@ class CodeWriter:
                 assert False, "Error while parsing command type"
 
             parser.advance()
-            
 
-       # Writes assembly code that effects arithmetic/logical commands
+    # Writes assembly code that effects arithmetic/logical commands
     def writeArithmetic(self, command: str) -> None:
         if command == "reset":
             self.write("reset")
@@ -240,7 +238,6 @@ class CodeWriter:
           self.write("sw x31, 0($sp)")
         self.write("addi $sp, $sp, 4")  # SP = SP + 1
         self.writeMessage("")
-        
 
     # Writes assembly code that effects the push/pop commands
     def writePushPop(self, command: str, segment: str, index: int) -> None:
@@ -331,7 +328,6 @@ class CodeWriter:
             elif segment == "pointer" and index == 4:
                 self.write("addi $that, $t0, 0")
             self.writeMessage("")
-            
 
     # Writes assembly code that effects the label command
     def writeLabel(self, label: str) -> None:
@@ -339,7 +335,7 @@ class CodeWriter:
         if "IF" in label or "LOOP" in label or "WHILE" in label:
             if self.__function_name:
                 new_label = label + "$" + self.__function_name
-                
+
         self.write(new_label + ":")  # <label>:
 
     # Writes assembly code that effects the goto command
@@ -351,7 +347,6 @@ class CodeWriter:
         self.writeMessage("Jump to " + str(new_label))
         self.write("jal $ra, " + str(new_label))  # goto <label>
         self.writeMessage("")
-        
 
     # Writes assembly code that effects the if-goto command
     def writeIf(self, label: str) -> None:
@@ -374,7 +369,6 @@ class CodeWriter:
         self.write("jalr $ra, $t0, 0")  # goto (label)
         self.writeLabel(loop_exit_label)
         self.writeMessage("")
-        
 
     # Writes assembly code that effects the call command
     def writeCall(self, function_name: str, n: int) -> None:
@@ -427,7 +421,6 @@ class CodeWriter:
         self.writeMessage("")
         self.writeLabel(return_label)
         self.writeMessage("")
-        
 
     # Writes assembly code that effects the return command
     def writeReturn(self) -> None:
@@ -466,7 +459,6 @@ class CodeWriter:
         self.write("jalr $ra, $ra, 0")  # goto <return-address>
         self.writeMessage("")
 
-
     # Writes assembly code that effects the function command
     def writeFunction(self, function_name: str, n: int) -> None:
         self.__function_name = function_name
@@ -478,12 +470,11 @@ class CodeWriter:
             self.writeMessage("Push " + str(n) + " zeros to stack")
         else:
             self.writeMessage("Pushed 0 zeros to stack; No locals")
-            
+
         for _ in range(n):
             self.write("sw $zero, 0($sp)")
             self.write("addi $sp, $sp, 4")
         self.writeMessage("")
-
 
     # Closes the output file
     def close(self) -> None:
