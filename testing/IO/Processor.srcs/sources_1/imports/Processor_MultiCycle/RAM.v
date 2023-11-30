@@ -12,7 +12,8 @@ module RAM(
     (* ram_style="block" *)
     (*DONT_TOUCH = "true"*)
     reg [31:0] RAM[16383:0];
-    
+
+
     wire [13:0] addr;
     assign addr = address[15:2];
     // initial

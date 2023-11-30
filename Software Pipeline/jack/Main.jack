@@ -25,7 +25,6 @@ class Main{
     let snake_print = " snakegame ";
     let qsort_print = " qsort ";
     let hangman_print = " hangman ";
-    do Output.printString(fibo_print);
 
     while(zero<one){ 
         let input = Keyboard.readLine(arrow);
@@ -50,10 +49,12 @@ class Main{
             }
             else{
                 if(currChar=exit){
+                    do Screen.clearScreen();
                     let zero=2;
                 }
                 else{
                     if(currChar=fibo){
+                        do Output.println();
                         let enterNumber = "n: ";
                         
                         let n = Keyboard.readInt(enterNumber); // Read user input for the number of Fibonacci numbers to print
@@ -87,6 +88,7 @@ class Main{
                        // else{
                             if(currChar=hangman){
                                 // do Output.printString(hangman_print);
+                                do Output.println();
                                 do Hangman.main();
                             }
                         //     else{

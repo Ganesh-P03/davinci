@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Sun Nov 26 22:03:41 2023
+| Date         : Mon Nov 27 12:30:51 2023
 | Host         : Ganesh running 64-bit major release  (build 9200)
 | Command      : report_utilization -file processor_utilization_synth.rpt -pb processor_utilization_synth.pb
 | Design       : processor
@@ -31,16 +31,16 @@ Table of Contents
 +----------------------------+-------+-------+------------+-----------+-------+
 |          Site Type         |  Used | Fixed | Prohibited | Available | Util% |
 +----------------------------+-------+-------+------------+-----------+-------+
-| Slice LUTs*                | 15191 |     0 |          0 |     17600 | 86.31 |
-|   LUT as Logic             | 12759 |     0 |          0 |     17600 | 72.49 |
+| Slice LUTs*                | 16912 |     0 |          0 |     17600 | 96.09 |
+|   LUT as Logic             | 14480 |     0 |          0 |     17600 | 82.27 |
 |   LUT as Memory            |  2432 |     0 |          0 |      6000 | 40.53 |
 |     LUT as Distributed RAM |  2432 |     0 |            |           |       |
 |     LUT as Shift Register  |     0 |     0 |            |           |       |
 | Slice Registers            |  1436 |     0 |          0 |     35200 |  4.08 |
 |   Register as Flip Flop    |  1436 |     0 |          0 |     35200 |  4.08 |
 |   Register as Latch        |     0 |     0 |          0 |     35200 |  0.00 |
-| F7 Muxes                   |  3364 |     0 |          0 |      8800 | 38.23 |
-| F8 Muxes                   |   284 |     0 |          0 |      4400 |  6.45 |
+| F7 Muxes                   |  3588 |     0 |          0 |      8800 | 40.77 |
+| F8 Muxes                   |   371 |     0 |          0 |      4400 |  8.43 |
 +----------------------------+-------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
 Warning! LUT value is adjusted to account for LUT combining.
@@ -148,31 +148,31 @@ Warning! LUT value is adjusted to account for LUT combining.
 7. Primitives
 -------------
 
-+------------+------+---------------------+
-|  Ref Name  | Used | Functional Category |
-+------------+------+---------------------+
-| LUT6       | 9300 |                 LUT |
-| MUXF7      | 3364 |               MuxFx |
-| RAMD64E    | 2368 |  Distributed Memory |
-| LUT5       | 1612 |                 LUT |
-| LUT3       | 1571 |                 LUT |
-| FDRE       | 1427 |        Flop & Latch |
-| LUT4       |  868 |                 LUT |
-| MUXF8      |  284 |               MuxFx |
-| LUT2       |   80 |                 LUT |
-| RAMD32     |   64 |  Distributed Memory |
-| RAMB36E1   |   16 |        Block Memory |
-| LUT1       |   14 |                 LUT |
-| CARRY4     |   13 |          CarryLogic |
-| OBUFDS     |    8 |                  IO |
-| BUFG       |    6 |               Clock |
-| FDSE       |    5 |        Flop & Latch |
-| OBUF       |    4 |                  IO |
-| INV        |    4 |                 LUT |
-| IBUF       |    4 |                  IO |
-| FDCE       |    4 |        Flop & Latch |
-| MMCME2_ADV |    1 |               Clock |
-+------------+------+---------------------+
++------------+-------+---------------------+
+|  Ref Name  |  Used | Functional Category |
++------------+-------+---------------------+
+| LUT6       | 10390 |                 LUT |
+| MUXF7      |  3588 |               MuxFx |
+| RAMD64E    |  2368 |  Distributed Memory |
+| LUT5       |  2069 |                 LUT |
+| LUT3       |  1781 |                 LUT |
+| FDRE       |  1427 |        Flop & Latch |
+| LUT4       |   919 |                 LUT |
+| MUXF8      |   371 |               MuxFx |
+| LUT2       |    99 |                 LUT |
+| RAMD32     |    64 |  Distributed Memory |
+| RAMB36E1   |    16 |        Block Memory |
+| LUT1       |    14 |                 LUT |
+| CARRY4     |    13 |          CarryLogic |
+| OBUFDS     |     8 |                  IO |
+| BUFG       |     6 |               Clock |
+| FDSE       |     5 |        Flop & Latch |
+| OBUF       |     4 |                  IO |
+| INV        |     4 |                 LUT |
+| IBUF       |     4 |                  IO |
+| FDCE       |     4 |        Flop & Latch |
+| MMCME2_ADV |     1 |               Clock |
++------------+-------+---------------------+
 
 
 8. Black Boxes

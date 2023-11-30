@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date             : Sun Nov 26 22:07:21 2023
+| Date             : Mon Nov 27 12:34:34 2023
 | Host             : Ganesh running 64-bit major release  (build 9200)
 | Command          : report_power -file processor_power_routed.rpt -pb processor_power_summary_routed.pb -rpx processor_power_routed.rpx
 | Design           : processor
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.258        |
+| Total On-Chip Power (W)  | 1.195        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.149        |
-| Device Static (W)        | 0.110        |
+| Dynamic (W)              | 1.086        |
+| Device Static (W)        | 0.108        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 70.5         |
-| Junction Temperature (C) | 39.5         |
+| Max Ambient (C)          | 71.2         |
+| Junction Temperature (C) | 38.8         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,20 +53,20 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.003 |        6 |       --- |             --- |
-| Slice Logic              |     0.364 |    21237 |       --- |             --- |
-|   LUT as Logic           |     0.329 |    12141 |     17600 |           68.98 |
-|   LUT as Distributed RAM |     0.021 |     2400 |      6000 |           40.00 |
-|   F7/F8 Muxes            |     0.013 |     3648 |     17600 |           20.73 |
+| Slice Logic              |     0.345 |    23375 |       --- |             --- |
+|   LUT as Logic           |     0.311 |    13796 |     17600 |           78.39 |
+|   LUT as Distributed RAM |     0.022 |     2400 |      6000 |           40.00 |
+|   F7/F8 Muxes            |     0.012 |     3959 |     17600 |           22.49 |
 |   Register               |    <0.001 |     1439 |     35200 |            4.09 |
 |   CARRY4                 |    <0.001 |       13 |      4400 |            0.30 |
 |   BUFG                   |    <0.001 |        2 |        32 |            6.25 |
 |   Others                 |     0.000 |      281 |       --- |             --- |
-| Signals                  |     0.553 |    12967 |       --- |             --- |
+| Signals                  |     0.509 |    14483 |       --- |             --- |
 | Block RAM                |    <0.001 |       16 |        60 |           26.67 |
 | MMCM                     |     0.094 |        1 |         2 |           50.00 |
 | I/O                      |     0.135 |       16 |       100 |           16.00 |
-| Static Power             |     0.110 |          |           |                 |
-| Total                    |     1.258 |          |           |                 |
+| Static Power             |     0.108 |          |           |                 |
+| Total                    |     1.195 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.927 |       0.921 |      0.006 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.864 |       0.858 |      0.006 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.059 |       0.052 |      0.007 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.042 |       0.041 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -89,7 +89,7 @@ Table of Contents
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vccpint   |       1.000 |     0.026 |       0.000 |      0.026 |       NA    | Unspecified | NA         |
+| Vccpint   |       1.000 |     0.025 |       0.000 |      0.025 |       NA    | Unspecified | NA         |
 | Vccpaux   |       1.800 |     0.010 |       0.000 |      0.010 |       NA    | Unspecified | NA         |
 | Vccpll    |       1.800 |     0.003 |       0.000 |      0.003 |       NA    | Unspecified | NA         |
 | Vcco_ddr  |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -155,21 +155,23 @@ Table of Contents
 +----------------------+-----------+
 | Name                 | Power (W) |
 +----------------------+-----------+
-| processor            |     1.149 |
-|   buf_reg_3          |     0.009 |
+| processor            |     1.086 |
+|   buf_reg_3          |     0.012 |
 |     genblk1[10].reg1 |     0.002 |
 |       d              |     0.002 |
 |     genblk1[11].reg1 |     0.002 |
 |       d              |     0.002 |
+|     genblk1[16].reg1 |     0.001 |
+|       d              |     0.001 |
 |   buf_reg_6          |     0.014 |
-|   control_unit       |     0.246 |
-|     mainDecoder      |     0.246 |
+|   control_unit       |     0.213 |
+|     mainDecoder      |     0.213 |
 |   dispDriver         |     0.232 |
-|   mem                |     0.604 |
-|     disMem           |     0.049 |
-|     ram              |     0.009 |
-|     rom              |     0.457 |
-|   register_file      |     0.035 |
+|   mem                |     0.568 |
+|     disMem           |     0.050 |
+|     ram              |     0.008 |
+|     rom              |     0.422 |
+|   register_file      |     0.040 |
 +----------------------+-----------+
 
 

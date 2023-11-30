@@ -8,6 +8,7 @@ input regwrite;
 input [31:0] wd3;
 input clk;
 input reset;
+
 output [31:0] rd1;
 output [31:0] rd2;
 // output [3:0] led;
@@ -15,6 +16,7 @@ output [31:0] rd2;
 reg [31:0] register[31:0];
 
 //initialize all registers to 0
+
 integer i;
 initial
 begin

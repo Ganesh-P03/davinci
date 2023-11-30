@@ -195,12 +195,12 @@ and
 return
 function String.charToDigit 0
 push argument 0
-push constant 48
+push constant 65
 sub
 return
 function String.digitToChar 0
 push argument 0
-push constant 48
+push constant 65
 add
 return
 function String.erase 0
@@ -288,8 +288,5 @@ return
 function String.dispose 0
 push argument 0
 pop pointer 0
-push this 2
-call Array.dispose 1
-pop temp 0
 push constant 0
 return
