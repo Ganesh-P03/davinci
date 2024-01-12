@@ -17,7 +17,7 @@
 
 #### TODO:
 [] Set the base address in $temp register
-[] Set the static base address
+[] Set the static base address.
 [] Using register instead of memory(for temp segment)
 [] Most of the registers are not used(try to use them)
 [] Verification & Bug fixes.
