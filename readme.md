@@ -1,4 +1,4 @@
-Key Components
+## Key Components
 
 Custom High-Level Language: Designed a specialized programming language, JACK, specifically tailored for this system.
 
