@@ -1,23 +1,15 @@
-### Virtual Machine & Assembler Workflow
-#### Virtual Machine
-- Convert all the .jack files using compiler and get the .vm files
-- Put all the .vm files in vm_code directory(every time all the files in the dir will be converted)
-- (Note:) Terminal should be in the same directory as the VirtualMachine.py file(that is Virtual Machine folder)
-- Run the VirtualMachine.py file(no arguments)
-- The output will be in the output directory(riscv_code.asm)
+Key Components
 
-#### Assembler
-- Place the riscv_code.asm file in the assembler directory
-- (NOTE: ) Terminal should be in the same directory as the assembler.py file(that is Assembler folder)
-- Run the assembler.py file(no arguments)
-- The output will be in the output directory(output directory)
-- Binary code will be in bin.txt
-- First pass, Second pass view will be in first_pass.txt and second_pass.txt respectively
-- Symbol table, Label table, Register table will be in symbol_table.txt, label_table.txt, register_table.txt respectively (in tables folder)
+Custom High-Level Language: Designed a specialized programming language, JACK, specifically tailored for this system.
 
-#### TODO:
-[] Set the base address in $temp register
-[] Set the static base address.
-[] Using register instead of memory(for temp segment)
-[] Most of the registers are not used(try to use them)
-[] Verification & Bug fixes.
+Compiler: Built a compiler to translate JACK programs into executable machine code.
+
+Virtual Machine (VM): Developed an intermediate execution environment to abstract the underlying hardware.
+
+Assembler: Created an assembler to convert human-readable assembly instructions into binary machine code.
+
+Operating System (OS): Developed a custom OS to manage system resources and provide a platform for application execution.
+
+RISC-V Architecture Chip: Designed and implemented a custom RISC-V processor on a Vivado board, forming the core hardware.
+
+
